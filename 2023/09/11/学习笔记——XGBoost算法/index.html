@@ -16,28 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="学习笔记——LORA微调​	LORA是一种低资源微调LLM模型的方法，源自论文：[LoRA: Low-Rank Adaptation of Large Language Models。](2106.09685.pdf (arxiv.org)) 一、高效微调​	对于语言模型来说，在微调过程中，模型加载预训练参数$\Phi_{0}$进行初始化，并通过最大化条件语言模型概率实现参数调整$\Phi_{0}">
+    <meta name="description" content="学习笔记——XGBoost算法XGBoost和GBDT两者都是boosting方法，除了工程实现、解决问题上的一些差异外，最大的不同就是目标函数的定义。 1、基本原理1.1 目标函数XGBoost算法是一个加法模型，在每一步迭代中，只调优当前的子模型：$F_m(x_i)&#x3D;F_{m-1}(x_i)+f_m(x_i)$。其中$f_m(x_i)$表示当前的子模型，$F_{m-1}(x_i)$表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习笔记——LORA微调">
-<meta property="og:url" content="http://example.com/2023/08/16/LORA%E5%BE%AE%E8%B0%83/index.html">
+<meta property="og:title" content="学习笔记——XGBoost算法">
+<meta property="og:url" content="http://example.com/2023/09/11/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94XGBoost%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="学习笔记——LORA微调​	LORA是一种低资源微调LLM模型的方法，源自论文：[LoRA: Low-Rank Adaptation of Large Language Models。](2106.09685.pdf (arxiv.org)) 一、高效微调​	对于语言模型来说，在微调过程中，模型加载预训练参数$\Phi_{0}$进行初始化，并通过最大化条件语言模型概率实现参数调整$\Phi_{0}">
+<meta property="og:description" content="学习笔记——XGBoost算法XGBoost和GBDT两者都是boosting方法，除了工程实现、解决问题上的一些差异外，最大的不同就是目标函数的定义。 1、基本原理1.1 目标函数XGBoost算法是一个加法模型，在每一步迭代中，只调优当前的子模型：$F_m(x_i)&#x3D;F_{m-1}(x_i)+f_m(x_i)$。其中$f_m(x_i)$表示当前的子模型，$F_{m-1}(x_i)$表">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161517289.png">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161959472.png">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161954660.png">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308162040469.png">
-<meta property="article:published_time" content="2023-08-16T13:40:48.000Z">
-<meta property="article:modified_time" content="2023-08-16T14:00:43.191Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309111523571.png">
+<meta property="article:published_time" content="2023-09-11T08:27:52.000Z">
+<meta property="article:modified_time" content="2023-09-11T08:27:52.464Z">
 <meta property="article:author" content="Z Z">
-<meta property="article:tag" content="微调">
-<meta property="article:tag" content="实习">
+<meta property="article:tag" content="boosting">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161517289.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309111523571.png">
   
   
   
-  <title>学习笔记——LORA微调 - Zspace</title>
+  <title>学习笔记——XGBoost算法 - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="学习笔记——LORA微调"></span>
+            <span id="subtitle" data-typed-text="学习笔记——XGBoost算法"></span>
           
         </div>
 
@@ -214,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-16 21:40" pubdate>
-          2023年8月16日 晚上
+        <time datetime="2023-09-11 16:27" pubdate>
+          2023年9月11日 下午
         </time>
       </span>
     
@@ -226,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          4.1k 字
         
       </span>
     
@@ -237,7 +233,7 @@
         
         
         
-          22 分钟
+          35 分钟
         
       </span>
     
@@ -275,48 +271,63 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">学习笔记——LORA微调</h1>
+            <h1 style="display: none">学习笔记——XGBoost算法</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="学习笔记——LORA微调"><a href="#学习笔记——LORA微调" class="headerlink" title="学习笔记——LORA微调"></a>学习笔记——LORA微调</h1><p>​	LORA是一种低资源微调LLM模型的方法，源自论文：[LoRA: Low-Rank Adaptation of Large Language Models。](<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685.pdf">2106.09685.pdf (arxiv.org)</a>)</p>
-<h2 id="一、高效微调"><a href="#一、高效微调" class="headerlink" title="一、高效微调"></a>一、高效微调</h2><p>​	对于语言模型来说，在微调过程中，模型加载预训练参数$\Phi_{0}$进行初始化，并通过最大化条件语言模型概率实现参数调整$\Phi_{0}+\Delta\Phi $​，即：<br>$$<br>max_\Phi\sum_{(x,y)\in\mathcal{Z})}\sum_{t&#x3D;1}^{|y|}log(P_\Phi(y_t|x,y&lt;t))<br>$$<br>这种方式的主要缺点参数增量$\Delta\Phi$的维度和预训练参数$\Phi_{0}$是相同的，所需资源比较多，一般被称为full fine-tuing。</p>
-<p>为了用更少的参数来表示学习增量$\Delta\Phi$,提出了一系列方法叫做高效微调。例如：Adapter、prefixtuning等。相比于其他方法LORA使用一个低秩矩阵来编码参数增量，这种方法不会增加推理耗时并且便于优化。</p>
-<h2 id="二、实现方式"><a href="#二、实现方式" class="headerlink" title="二、实现方式"></a>二、实现方式</h2><p>​	研究表明：预训练模型拥有极小的内在维度（<strong>instrisic dimension</strong>，表示数据变化的自由变量的个数），换而言之，存在一个极低维度的参数，微调它和在全参数空间中微调能起到相同的效果。</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161517289.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>该论文认为参数矩阵更新的过程中也存在一个‘内在秩’。对于预训练的权重矩阵$W_0$，可以用一个低秩分解来表示参数更新$\Delta W$，即：<br>$$<br>W_0+\Delta W&#x3D;W_0+BA\quad B\in\mathbb{R}^{d\times r},A\in\mathbb{R}^{r\times k}\quad and\quad r\ll min(d,k)<br>$$<br>训练过程中可以冻结参数$W_0$，只训练A和B中的参数。如图所示，对于$h&#x3D;W_{0}x$​,前向传播过程就变为：<br>$$<br>h&#x3D;W_0x+\Delta Wx&#x3D;W_0x+BAx<br>$$</p>
-<h2 id="三、-QLORA-2305-14314-pdf-arxiv-org"><a href="#三、-QLORA-2305-14314-pdf-arxiv-org" class="headerlink" title="三、[QLORA](2305.14314.pdf (arxiv.org))"></a>三、[QLORA](<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2305.14314.pdf">2305.14314.pdf (arxiv.org)</a>)</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161959472.png" srcset="/img/loading.gif" lazyload alt="image-20230816195941425"></p>
-<p>QLORA训练过程和LORA基本一致，区别在于QLORA模型是按照NF4保存的，训练时需要将参数反量化到bf16后进行训练。<br>$$<br>Y^{BF16}&#x3D;X^{BF16}doubleDequant(c_{2}^{FP32},c_{2}^{k-bit},W^{NF8})+X^{BF16}B^{BF16}A^{BF16}<br>$$</p>
-<h3 id="分块量化（Block-wis-Quantization）"><a href="#分块量化（Block-wis-Quantization）" class="headerlink" title="分块量化（Block-wis Quantization）"></a>分块量化（Block-wis Quantization）</h3><p>量化是将输入从存储更多信息的表征映射为存储较少信息的表征的过程。</p>
-<p>全局量化的方式存在一个问题：当输入中存在极大值或者离群值时，一些较小的参数无法被精确的表示，从而导致量化后的神经网络效果急剧下降。</p>
-<p>分块量化是将输入划分为多个块，每个块分别量化，如图所示：</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161954660.png" srcset="/img/loading.gif" lazyload alt="image-20230816195439589"></p>
-<p>明显看到分块量化能够减少过程中的误差。</p>
-<h3 id="分位量化（Quantile-Quantization）"><a href="#分位量化（Quantile-Quantization）" class="headerlink" title="分位量化（Quantile Quantization）"></a>分位量化（Quantile Quantization）</h3><p>在将一个参数量化到4bit的情境中，最多可以使用$2^4$一共16个数字。按照传统的简易方法，一般是取最接近的数字或者直接round函数。分位量化则是将数字按顺序排列，再分为十六等分，最小的一块映射成量化后的第一个数，第二块映射成量化后的第二数，以此类推。这样就充分利用了已有的数位，原始数据在量化后的数字上分布也是均匀的。</p>
-<h3 id="4-bit-NormalFloat（NF4）"><a href="#4-bit-NormalFloat（NF4）" class="headerlink" title="4-bit NormalFloat（NF4）"></a>4-bit NormalFloat（NF4）</h3><p>这个概念是在分位量化的基础上进行改进，并结合分块量化，降低计算复杂度和误差。上述的分位量化会增加计算消耗，预训练模型的参数基本上都服从均值为0的正态分布，可以将其缩放到[-1,1]的范围内。同时可以在[-1,1]的范围内，将正态分布函数划分为$2^k +1$份，直接将参数映射到对应的分位上，不用每次都进行排序。</p>
-<h3 id="双重量化（double-Quantization）"><a href="#双重量化（double-Quantization）" class="headerlink" title="双重量化（double Quantization）"></a>双重量化（double Quantization）</h3><p>分块量化中每个块都会额外产生一个量化常数c，以块大小为64为例，每个块会产生32bit的量化常数，双重量化则是在第一次量化后，不会直接存储量化常数$C_1$,而是按照块大小256对量化常数再量化为8bit去存储，这个阶段会产生一个量化常数$C_2$。最终存储的参数为$8&#x2F;64 +32&#x2F;(64-256)&#x3D;0.127bits$.</p>
-<h2 id="四、AdaLORA"><a href="#四、AdaLORA" class="headerlink" title="四、AdaLORA"></a>四、AdaLORA</h2><h3 id="技术背景"><a href="#技术背景" class="headerlink" title="技术背景"></a>技术背景</h3><p>LORA技术预先规定每个增量矩阵$\Delta$的秩必须相同，这就忽略了不同层、类型参数对下游任务的影响。</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308162040469.png" srcset="/img/loading.gif" lazyload alt="image-20230816203952264"></p>
-<p>如图所示，将微调参数放在FFN的效果优于放在Attention矩阵中的效果；同时微调高层参数的效果优于微调底层参数。那么如何根据下游任务自动地找出重要的参数模块并给其分配更多地可微调参数呢？</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>AdaLORA主要包含两个模块：</p>
+                <h1 id="学习笔记——XGBoost算法"><a href="#学习笔记——XGBoost算法" class="headerlink" title="学习笔记——XGBoost算法"></a>学习笔记——XGBoost算法</h1><p>XGBoost和GBDT两者都是boosting方法，除了工程实现、解决问题上的一些差异外，最大的不同就是目标函数的定义。</p>
+<h2 id="1、基本原理"><a href="#1、基本原理" class="headerlink" title="1、基本原理"></a>1、基本原理</h2><h3 id="1-1-目标函数"><a href="#1-1-目标函数" class="headerlink" title="1.1 目标函数"></a>1.1 目标函数</h3><p>XGBoost算法<strong>是一个加法模型</strong>，在每一步迭代中，只调优当前的子模型：$F_m(x_i)&#x3D;F_{m-1}(x_i)+f_m(x_i)$。其中$f_m(x_i)$表示当前的子模型，$F_{m-1}(x_i)$表示前$m-1$个已固定模型。</p>
+<p>目标函数&#x3D;经验风险+结构风险（正则项）：<br>$$<br>\begin{aligned}<br>obj&amp; &#x3D;\sum_{i&#x3D;1}^NL[F_m(x_i),y_i]+\sum_{j&#x3D;1}^m\Omega(f_j)  \<br>&amp;&#x3D;\sum_{i&#x3D;1}^NL[F_{m-1}(x_i)+f_m(x_i),y_i]+\sum_{j&#x3D;1}^m\Omega(f_j)<br>\end{aligned}<br>$$</p>
+<p>其中正则项$\Omega(f_j)$表示模型$f$的复杂度。</p>
+<p>XGBoost用2阶泰勒公式：$f(x_0+\Delta x)\approx f(x_0)+f^{‘}(x_0)\Delta x+\frac{f^{‘’}(x_0)}{2}(\Delta x)^2$​来逼近损  失函数，我们可以将$F_{m-1}(x_i)$看作$x_0$,将$f_m(x_i)$看作$\Delta x$,所以（1）式就可以转化为：<br>$$<br>\begin{aligned}Obj&#x3D;\sum_{i&#x3D;1}^N\left[L[F_{m-1}(x_i),y_i]+\frac{\partial L}{\partial F_{m-1}(x_i)}f_m(x_i)+\frac{1}{2}\frac{\partial^2L}{\partial^2F_{m-1}(x_i)}f_m^2(x_i)\right]+\\sum_{j&#x3D;1}^m\Omega(f_j)\end{aligned}<br>$$<br>由于前m-1个模型是确定的，所以$\sum_{j&#x3D;1}^m\Omega(f_j)$，前m-1项均为常数，对目标函数的求解无影响，所以（2）式又可以转化为：<br>$$<br>Obj&#x3D;\sum_{i&#x3D;1}^{N}\left[g_{i}f_{m}(x_{i})+\frac{1}{2}h_{i}f_{m}^{2}(x_{i})\right]+\Omega(f_{m})<br>$$</p>
+<h3 id="1-2-基于树的正则化"><a href="#1-2-基于树的正则化" class="headerlink" title="1.2 基于树的正则化"></a>1.2 基于树的正则化</h3><p>XGBoost支持<strong>的基分类器包括决策树和线性模型</strong>，为<strong>防止过拟合</strong>，XGBoost将<strong>树的深度设置为正则项</strong>：$\Omega(f)&#x3D;\gamma T+\frac{1}{2}\lambda||w||^{2}$，其中$\gamma$和$\lambda$作为超参数。所以目标函数可以改写为：<br>$$<br>Obj&#x3D;\sum_{i&#x3D;1}^{N}\left[g_if_m(x_i)+\frac{1}{2}h_if_m^2(x_i)\right]+\gamma T+\frac{1}{2}\lambda\sum_{j&#x3D;1}^{T}w_j^2<br>$$<br>通过数学处理，可以将正则项和经验风险项合并：将经验风险项从样本层面上求和转换为叶节点层面上的求和。可以定义结点j上的样本集为$I(j)&#x3D;{x_{i}|q(x_{i})&#x3D;j}$,其中$q(x_i)$为将样本映射到叶节点上的索引函数，叶节点$j$上的回归值为$w_{j}&#x3D;f_{m}(x_{i}),i\in I(j)$.</p>
+<p>所以式（4）进一步简化,令$\sum_{i\in I(j)}g_i&#x3D;G_j,\sum_{i\in I(j)}h_i&#x3D;H_j$：<br>$$<br>Obj&#x3D;\sum_{j&#x3D;1}^T\left[G_jw_j+\frac{1}{2}(H_j+\lambda)w_j^2\right]+\gamma T<br>$$<br>如果一棵树的结构是确定的，则各个节点内的样本（$x_i,y_i,g_i,h_i,G_j,H_j,T$）也是确定的，每个叶子结点输出回归值应该使得式（5）最小，所以该函数的二次函数极值点为：$w_j^*&#x3D;-\frac{G_j}{H_j+\lambda}$</p>
+<p>树的评分也可以理解成所有叶节点的评分之和：$Obj^*&#x3D;\sum_{j&#x3D;1}^T\left(-\frac{1}{2}\frac{G_j^2}{H_j+\lambda}+\gamma\right)$.</p>
+<h3 id="1-3-结点分裂准则"><a href="#1-3-结点分裂准则" class="headerlink" title="1.3 结点分裂准则"></a>1.3 结点分裂准则</h3><p>XGBoost的子模型树和决策树模型一样，要依赖<strong>节点递归分裂的贪心准则来实现树的生成</strong>：</p>
+<p>从树的深度为0开始：</p>
+<ol>
+<li>对每个叶节点枚举所有的可用特征；</li>
+<li>针对每个特征，把属于该节点的训练样本根据该特征值进行升序排列，通过线性扫描的方式来决定该特征的最佳分裂点，并记录该特征的分裂收益；</li>
+<li>选择收益最大的特征作为分裂特征，用该特征的最佳分裂点作为分裂位置，在该节点上分裂出左右两个新的叶节点，并为每个新节点关联对应的样本集；</li>
+<li>回到第1步，递归执行直到满足特定条件为止；</li>
+</ol>
+<p>过程如图所示：</p>
+<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309111523571.png" srcset="/img/loading.gif" lazyload alt="image-20230911152316481"></p>
+<p>显然分裂收益是树A的评分减去树B的评分，因此分裂收益表达式为：<br>$$<br>Gain&#x3D;\frac12\Big[\frac{G_L^2}{H_L+\lambda}+\frac{G_R^2}{H_R+\lambda}-\frac{(G_L+G_R)^2}{H_L+H_R+\lambda}\Big]-\gamma<br>$$<br><strong>XGBoost还支持近似算法</strong>：根据特征分布的分位数提出候选划分点，然后将连续型特征映射到由这些候选点划分的桶中，然后聚合统计信息找到所有区间的最佳分裂点。具体而言，特征分位数的选取有global和local两种可选策略：</p>
 <ul>
-<li><p><strong>SVD形式参数更新（SVD-based adaptation）</strong>：直接将增量矩阵$\Delta$参数化为SVD地形式，避免在训练过程中进行SVD计算带来的计算资源消耗；</p>
-</li>
-<li><p><strong>根据重要程度地参数分配（Importance-aware rank allocation）</strong>：去除一些冗余的奇异值。</p>
-</li>
+<li>global在全体样本上的特征值中选取，在根节点分裂之前进行一次即可；</li>
+<li>local则是在待分裂节点包含的样本特征值上选取，每个节点分裂前都要进行。</li>
 </ul>
-<p>$$<br>W&#x3D;W^{(0)}+\Delta&#x3D;W^{(0)}+P\Lambda Q<br>$$</p>
-<p>$$<br>R(P,Q)&#x3D;||P^TP-I||_F^2+||Q^TQ-I||_F^2<br>$$</p>
-<p>如式(5)，AdaLORA增量矩阵$\Delta$替换为$P\Lambda Q$,这样既省去复杂的SVD计算又能去除奇异值。同时，为保证P和Q的正交性，在训练过程中增加了一个正则化，保证$P^{T}P&#x3D;Q^{T}Q&#x3D;I$.</p>
-<p>该方法相较于LORA有两个优点：</p>
+<p>通常，global由于只能划分一次，其划分粒度需要更细。通过这个方法可以解决数据量过大超过内存、或有并行计算需求的情况。</p>
+<p>由（3）式可得：令其偏导为0可以得到$f_{m}^{*}(x_{i})&#x3D;-\frac{g_{i}}{h_{i}}$,此目标函数可理解为以$h_i$为权重，$-\frac{g_{i}}{h_{i}}$​为标签的二次损失函数：<br>$$<br>\begin{aligned}<br>obj&amp; &#x3D;\sum_{i&#x3D;1}^{N}\left[g_{i}f_{m}(x_{i})+\frac{1}{2}h_{i}f_{m}^{2}(x_{i})\right]+\Omega(f_{m})  \<br>&amp;&#x3D;\sum_{i&#x3D;1}^{N}\frac{1}{2}h_{i}\Big[f_{m}(x_{i})-(-\frac{g_{i}}{h_{i}})\Big]^{2}+\Omega(f_{m})+C<br>\end{aligned}<br>$$<br>因此，在近似算法取分位数时，实际上XGBoost会取以二阶导$h_i$为权重的分位数。</p>
+<h3 id="1-4-列采样和学习率"><a href="#1-4-列采样和学习率" class="headerlink" title="1.4 列采样和学习率"></a>1.4 列采样和学习率</h3><p><strong>XGBoost还引入了两项特性：列采样和学习率</strong></p>
 <ul>
-<li>AdaLORA只去除奇异值矩阵，并不会去除奇异向量，更容易恢复误删的奇异值。</li>
-<li>AdaLORA的P和Q为正交举证，LORA的A和B矩阵非正交。训练过程中裁剪操作不会影响其他奇异值对应的奇异向量，训练会更稳定，泛化性能更好。</li>
+<li>列采样：即随机森林中的做法，每次节点分裂的待选特征集合不是剩下的全部特征，而是剩下特征的一个子集。是为了更好地对抗过拟合，还能减少计算开销。</li>
+<li>学习率：或者叫步长、shrinkage，是在每个子模型前（即在每个叶节点的回归值上）乘上该系数，削弱每颗树的影响，使得迭代更稳定。可以类比梯度下降中的学习率。XGBoost默认设定为0.3。</li>
 </ul>
-<h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/646791309">LORA微调系列(一)：LORA和它的基本原理 - 知乎 (zhihu.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/648239462">LORA微调系列(二)：QLORA和它的基本原理 - 知乎 (zhihu.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649756885">LORA微调系列(三)：AdaLORA和它的基本原理 - 知乎 (zhihu.com)</a></p>
+<h3 id="1-5-稀疏感知"><a href="#1-5-稀疏感知" class="headerlink" title="1.5 稀疏感知"></a>1.5 稀疏感知</h3><p>XGBoost将缺失值和稀疏0值等同视作缺失值，将这些缺失值“绑定”在一起，分裂结点的遍历则会跳过缺失值整体，提升了运算效率。</p>
+<h2 id="2-工程优化"><a href="#2-工程优化" class="headerlink" title="2. 工程优化"></a>2. 工程优化</h2><h3 id="2-1-并行列块的设计"><a href="#2-1-并行列块的设计" class="headerlink" title="2.1 并行列块的设计"></a>2.1 并行列块的设计</h3><p>XGBoost将每一列特征提前进行排序，以块（Block）的形式储存在缓存中，并以索引将特征值和梯度统计量$g_i,h_i$对应起来，每次节点分裂时会重复调用排好序的块。而且不同特征会分布在独立的块中，因此可以进行分布式或多线程的计算。</p>
+<h3 id="2-2-缓存访问"><a href="#2-2-缓存访问" class="headerlink" title="2.2 缓存访问"></a>2.2 缓存访问</h3><p>特征值排序后通过索引来取梯度 $g_i,h_i$ 会导致访问的内存空间不一致，进而降低缓存的命中率，影响算法效率。为解决这个问题，XGBoost为每个线程分配一个单独的连续缓存区，用来存放梯度信息。</p>
+<h3 id="2-3-核外块计算"><a href="#2-3-核外块计算" class="headerlink" title="2.3 核外块计算"></a>2.3 核外块计算</h3><p>数据量过大时，不能同时全部载入内存。XGBoost将数据分为多个blocks并储存在硬盘中，使用一个独立的线程专门从磁盘中读取数据到内存中，实现计算和读取数据的同时进行。为了进一步提高磁盘读取数据性能，XGBoost还使用了两种方法：</p>
+<ul>
+<li><strong>块压缩：</strong>通过压缩block，用解压缩的开销换取磁盘读取的开销；</li>
+<li><strong>块分区：</strong>将block分散储存在多个磁盘中，有助于提高磁盘吞吐量。</li>
+</ul>
+<h2 id="3-与GBDT比较"><a href="#3-与GBDT比较" class="headerlink" title="3. 与GBDT比较"></a>3. 与GBDT比较</h2><ul>
+<li>性质：GBDT是机器学习算法，XGBoost除了算法内容还包括一些工程实现方面的优化。</li>
+<li>基于二阶导：GBDT使用的是损失函数一阶导数，相当于函数空间中的梯度下降；而XGBoost还使用了损失函数二阶导数，相当于函数空间中的牛顿法。</li>
+<li>正则化：XGBoost显式地加入了正则项来控制模型的复杂度，能有效防止过拟合。</li>
+<li>列采样：XGBoost采用了随机森林中的做法，每次节点分裂前进行列随机采样。</li>
+<li>缺失值处理：XGBoost运用稀疏感知策略处理缺失值，而GBDT没有设计缺失策略。</li>
+<li>并行高效：XGBoost的列块设计能有效支持并行运算，提高效率。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>虽然利用预排序和近似算法可以降低寻找最佳分裂点的计算量，但在节点分裂过程中仍需要遍历数据集；</li>
+<li>预排序过程的空间复杂度过高，不仅需要存储特征值，还需要存储特征对应样本的梯度统计值的索引，相当于消耗了两倍的内存。</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/142413825?utm_id=0">机器学习 | XGBoost详解 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/83901304">深入理解XGBoost - 知乎 (zhihu.com)</a></p>
 
                 
               </div>
@@ -335,7 +346,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/NLP/" class="category-chain-item">NLP</a>
+  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">机器学习</a>
   
   
 
@@ -350,9 +361,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%BE%AE%E8%B0%83/">#微调</a>
-      
-        <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
+        <a href="/tags/boosting/">#boosting</a>
       
     </div>
   
@@ -364,8 +373,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>学习笔记——LORA微调</div>
-      <div>http://example.com/2023/08/16/LORA微调/</div>
+      <div>学习笔记——XGBoost算法</div>
+      <div>http://example.com/2023/09/11/学习笔记——XGBoost算法/</div>
     </div>
     <div class="license-meta">
       
@@ -377,7 +386,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月16日</div>
+          <div>2023年9月11日</div>
         </div>
       
       
@@ -409,15 +418,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/11/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94XGBoost%E7%AE%97%E6%B3%95/" title="学习笔记——XGBoost算法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">学习笔记——XGBoost算法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/08/16/LORA%E5%BE%AE%E8%B0%83/" title="学习笔记——LORA微调">
+                        <span class="hidden-mobile">学习笔记——LORA微调</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
