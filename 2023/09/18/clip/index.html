@@ -16,21 +16,18 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="论文阅读——CLIP算法原文链接：[2103.00020] Learning Transferable Visual Models From Natural Language Supervision (arxiv.org) 代码链接：openai&#x2F;CLIP: CLIP (Contrastive Language-Image Pretraining), Predict the most r">
+    <meta name="description" content="论文阅读——CLIP算法 原文链接：[2103.00020] Learning Transferable Visual Models From Natural Language Supervision (arxiv.org) 代码链接：openai&#x2F;CLIP: CLIP (Contrastive Language-Image Pretraining), Predict the most">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文阅读——CLIP算法">
 <meta property="og:url" content="http://example.com/2023/09/18/clip/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="论文阅读——CLIP算法原文链接：[2103.00020] Learning Transferable Visual Models From Natural Language Supervision (arxiv.org) 代码链接：openai&#x2F;CLIP: CLIP (Contrastive Language-Image Pretraining), Predict the most r">
+<meta property="og:description" content="论文阅读——CLIP算法 原文链接：[2103.00020] Learning Transferable Visual Models From Natural Language Supervision (arxiv.org) 代码链接：openai&#x2F;CLIP: CLIP (Contrastive Language-Image Pretraining), Predict the most">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:\Users\romaboy\AppData\Roaming\Typora\typora-user-images\image-20230917172037149.png">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309181104648.png">
 <meta property="article:published_time" content="2023-09-18T03:29:44.000Z">
-<meta property="article:modified_time" content="2023-09-18T07:34:13.421Z">
+<meta property="article:modified_time" content="2023-09-19T01:48:52.416Z">
 <meta property="article:author" content="Z Z">
 <meta property="article:tag" content="Zero-shot">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="c:\Users\romaboy\AppData\Roaming\Typora\typora-user-images\image-20230917172037149.png">
   
   
   
@@ -234,7 +231,7 @@
         
         
         
-          12 分钟
+          13 分钟
         
       </span>
     
@@ -277,24 +274,45 @@
             
               <div class="markdown-body">
                 
-                <h1 id="论文阅读——CLIP算法"><a href="#论文阅读——CLIP算法" class="headerlink" title="论文阅读——CLIP算法"></a>论文阅读——CLIP算法</h1><p><strong>原文链接：</strong>[<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2103.00020">2103.00020] Learning Transferable Visual Models From Natural Language Supervision (arxiv.org)</a></p>
-<p><strong>代码链接：</strong><a target="_blank" rel="noopener" href="https://github.com/OpenAI/CLIP">openai&#x2F;CLIP: CLIP (Contrastive Language-Image Pretraining), Predict the most relevant text snippet given an image (github.com)</a></p>
-<h2 id="1、算法原理"><a href="#1、算法原理" class="headerlink" title="1、算法原理"></a>1、算法原理</h2><p>CLIP（Contrastive Language-Image Pre-training）具备很强的迁移学习能力。在无任意一张ImageNet图片训练情景下，直接进行Zero-shot推理，就能媲美监督训练下的ResNet-50模型的结果。</p>
+                <h1 id="论文阅读clip算法">论文阅读——CLIP算法</h1>
+<p><strong>原文链接：</strong>[<a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2103.00020">2103.00020] Learning
+Transferable Visual Models From Natural Language Supervision
+(arxiv.org)</a></p>
+<p><strong>代码链接：</strong><a
+target="_blank" rel="noopener" href="https://github.com/OpenAI/CLIP">openai/CLIP: CLIP (Contrastive
+Language-Image Pretraining), Predict the most relevant text snippet
+given an image (github.com)</a></p>
+<h2 id="算法原理">1、算法原理</h2>
+<p>CLIP（Contrastive Language-Image
+Pre-training）具备很强的迁移学习能力。在无任意一张ImageNet图片训练情景下，直接进行Zero-shot推理，就能媲美监督训练下的ResNet-50模型的结果。</p>
 <p>宏观来看CLIP分为三部分：</p>
 <ul>
-<li><p>Contrastive pre-training：预训练阶段，使用图片 - 文本对进行对比学习训练；</p>
-</li>
-<li><p>Create dataset classifier from label text：提取预测类别文本特征;</p>
-</li>
-<li><p>Use for zero-shot predictiion：进行 Zero-Shoot 推理预测;</p>
-</li>
+<li><p>Contrastive pre-training：预训练阶段，使用图片 -
+文本对进行对比学习训练；</p></li>
+<li><p>Create dataset classifier from label
+text：提取预测类别文本特征;</p></li>
+<li><p>Use for zero-shot predictiion：进行 Zero-Shoot 推理预测;</p></li>
 </ul>
-<p><img src="C:\Users\romaboy\AppData\Roaming\Typora\typora-user-images\image-20230917172037149.png" srcset="/img/loading.gif" lazyload alt="image-20230917172037149"></p>
-<p>第一阶段，图像和文本分别通过图像、文本编码器生成对应的$l_1、l_2…l_n$、$T_1、T_2…T_n$的特征向量，计算对应角标向量的余弦相似度，通过temperature参数缩放，并借助softmax归一化为概率分布。图像编码器选用两个架构，第一个采用的是ResNet-50的基础架构，使用ResNetD和Rect-2进行改进，将全局平均池化层替换为一个单层的注意力池化机制；第二个采用改进的ViT模型。文本编码器使用的是一个Transformer编码器，有8个注意力头，使用了隐藏的自注意。</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309190948459.png" srcset="/img/loading.gif" lazyload
+alt="image-20230917172037149" />
+<figcaption aria-hidden="true">image-20230917172037149</figcaption>
+</figure>
+<p>第一阶段，图像和文本分别通过图像、文本编码器生成对应的<span
+class="math inline">\(l_1、l_2…l_n\)</span>、<span
+class="math inline">\(T_1、T_2…T_n\)</span>的特征向量，计算对应角标向量的余弦相似度，通过temperature参数缩放，并借助softmax归一化为概率分布。图像编码器选用两个架构，第一个采用的是ResNet-50的基础架构，使用ResNetD和Rect-2进行改进，将全局平均池化层替换为一个单层的注意力池化机制；第二个采用改进的ViT模型。文本编码器使用的是一个Transformer编码器，有8个注意力头，使用了隐藏的自注意。</p>
 <p>第二阶段，使用提示模板，帮助指定文本是否是关于图像的内容。将输出的句子通过文本编码器进行特征提取，得到特征向量。</p>
 <p>第三阶段，输入一张图片，经过图像编码器进行特征提取生成一个特征向量，与文本特征进行余弦相似度计算，最相似的即为预测结果。</p>
-<h2 id="2、代码实现"><a href="#2、代码实现" class="headerlink" title="2、代码实现"></a>2、代码实现</h2><p>伪代码如下：</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309181104648.png" srcset="/img/loading.gif" lazyload alt="image-20230918110417534"></p>
+<h2 id="代码实现">2、代码实现</h2>
+<p>伪代码如下：</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309181104648.png" srcset="/img/loading.gif" lazyload
+alt="image-20230918110417534" />
+<figcaption aria-hidden="true">image-20230918110417534</figcaption>
+</figure>
 <p>CLIP模型前向传播部分：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, image, text</span>):<br>  image_features = self.encode_image(image)    <span class="hljs-comment"># 图片编码提特征</span><br>  text_features = self.encode_text(text)       <span class="hljs-comment"># 文本编码提特征</span><br>​<br>  <span class="hljs-comment"># 特征归一化</span><br>  image_features = image_features / image_features.norm(dim=<span class="hljs-number">1</span>, keepdim=<span class="hljs-literal">True</span>)<br>  text_features = text_features / text_features.norm(dim=<span class="hljs-number">1</span>, keepdim=<span class="hljs-literal">True</span>)<br>​<br>  <span class="hljs-comment"># 计算余弦相似度</span><br>  logit_scale = self.logit_scale.exp()<br>  logits_per_image = logit_scale * image_features @ text_features.t()<br>  logits_per_text = logits_per_image.t()<br>​<br>  <span class="hljs-comment"># shape = [global_batch_size, global_batch_size]</span><br>  <span class="hljs-keyword">return</span> logits_per_image, logits_per_text<br></code></pre></td></tr></table></figure>
 
