@@ -16,22 +16,22 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="论文阅读——CLIP算法 原文链接：[2103.00020] Learning Transferable Visual Models From Natural Language Supervision (arxiv.org) 代码链接：openai&#x2F;CLIP: CLIP (Contrastive Language-Image Pretraining), Predict the most">
+    <meta name="description" content="遗传算法（genetic algorithm） 1、概述 ​ 算法的主要思想就是模拟生物的遗传与变异，快速的求出最大值或最小值的随机全局搜索优化方法。 2、前置知识 染色体（Chromosome）：又称为基因型个体。 个体（individual）：每个生物 种群（population）：一个系统中所有个体的总称。 种群个体数（POPULATION）：一个系统中个体的数量。 基因（">
 <meta property="og:type" content="article">
-<meta property="og:title" content="论文阅读——CLIP算法">
-<meta property="og:url" content="http://example.com/2023/09/18/clip/index.html">
+<meta property="og:title" content="遗传算法">
+<meta property="og:url" content="http://example.com/2023/09/19/genetic_algorithm/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="论文阅读——CLIP算法 原文链接：[2103.00020] Learning Transferable Visual Models From Natural Language Supervision (arxiv.org) 代码链接：openai&#x2F;CLIP: CLIP (Contrastive Language-Image Pretraining), Predict the most">
+<meta property="og:description" content="遗传算法（genetic algorithm） 1、概述 ​ 算法的主要思想就是模拟生物的遗传与变异，快速的求出最大值或最小值的随机全局搜索优化方法。 2、前置知识 染色体（Chromosome）：又称为基因型个体。 个体（individual）：每个生物 种群（population）：一个系统中所有个体的总称。 种群个体数（POPULATION）：一个系统中个体的数量。 基因（">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-18T03:29:44.000Z">
-<meta property="article:modified_time" content="2023-09-19T01:48:52.416Z">
+<meta property="article:published_time" content="2023-09-19T02:03:05.000Z">
+<meta property="article:modified_time" content="2023-09-19T07:26:40.972Z">
 <meta property="article:author" content="Z Z">
-<meta property="article:tag" content="Zero-shot">
+<meta property="article:tag" content="optimum solution">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>论文阅读——CLIP算法 - Zspace</title>
+  <title>遗传算法 - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="论文阅读——CLIP算法"></span>
+            <span id="subtitle" data-typed-text="遗传算法"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-18 11:29" pubdate>
-          2023年9月18日 上午
+        <time datetime="2023-09-19 10:03" pubdate>
+          2023年9月19日 上午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.2k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          13 分钟
+          10 分钟
         
       </span>
     
@@ -269,52 +269,136 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">论文阅读——CLIP算法</h1>
+            <h1 style="display: none">遗传算法</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="论文阅读clip算法">论文阅读——CLIP算法</h1>
-<p><strong>原文链接：</strong>[<a
-target="_blank" rel="noopener" href="https://arxiv.org/abs/2103.00020">2103.00020] Learning
-Transferable Visual Models From Natural Language Supervision
-(arxiv.org)</a></p>
-<p><strong>代码链接：</strong><a
-target="_blank" rel="noopener" href="https://github.com/OpenAI/CLIP">openai/CLIP: CLIP (Contrastive
-Language-Image Pretraining), Predict the most relevant text snippet
-given an image (github.com)</a></p>
-<h2 id="算法原理">1、算法原理</h2>
-<p>CLIP（Contrastive Language-Image
-Pre-training）具备很强的迁移学习能力。在无任意一张ImageNet图片训练情景下，直接进行Zero-shot推理，就能媲美监督训练下的ResNet-50模型的结果。</p>
-<p>宏观来看CLIP分为三部分：</p>
+                <h1 id="遗传算法genetic-algorithm">遗传算法（genetic algorithm）</h1>
+<h2 id="概述">1、概述</h2>
+<p>​
+算法的主要思想就是模拟生物的遗传与变异，快速的求出最大值或最小值的随机全局搜索优化方法。</p>
+<h2 id="前置知识">2、前置知识</h2>
+<p>染色体（Chromosome）：又称为基因型个体。</p>
+<p>个体（individual）：每个生物</p>
+<p>种群（population）：一个系统中所有个体的总称。</p>
+<p>种群个体数（POPULATION）：一个系统中个体的数量。</p>
+<p>基因（gene）：控制生物的性状。</p>
+<p>适应度（fitness）：对某个生物是否适应环境的定量评分。</p>
+<p>迭代次数（TIMES）：该生物种群繁衍的次数。</p>
+<h2 id="算法基础"><strong>3、算法基础</strong></h2>
+<p>​ <img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191024541.png" srcset="/img/loading.gif" lazyload
+alt="image-20230919102418240" /></p>
+<p>基本遗传算法是将群体中所有个体作为对象，只使用基本遗传算子：选择算子、交叉算子以及变异算子。可以用一个式子表示：
+<span class="math display">\[
+SGA=(C,E,P_0,M,\phi,\Gamma,\psi,T)
+\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>符号</strong></th>
+<th style="text-align: center;"><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math inline">\(E\)</span></td>
+<td style="text-align: center;">个体适应度评价函数</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span
+class="math inline">\(p_0\)</span></td>
+<td style="text-align: center;">初始种群</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math inline">\(C\)</span></td>
+<td style="text-align: center;">个体编码方案</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span
+class="math inline">\(M\)</span>（预先设定）</td>
+<td style="text-align: center;">种群大小</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math inline">\(\phi\)</span></td>
+<td style="text-align: center;">选择算子</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span
+class="math inline">\(\Gamma\)</span>（预先设定交叉概率）</td>
+<td style="text-align: center;">交叉算子</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math inline">\(\psi\)</span>（预先设定变异概率）</td>
+<td style="text-align: center;">变异算子</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span
+class="math inline">\(T\)</span>（预先设定）</td>
+<td style="text-align: center;">遗传算法终止条件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="算法步骤">4、算法步骤</h2>
+<h3 id="染色编码">4.1 染色编码</h3>
+<h5 id="编码">编码</h5>
+<p>将问题解空间的解表示为遗传算法中的染色体结构数据。常见的方法有：二进制编码、格雷码编码、
+浮点数编码、各参数级联编码、多参数交叉编码等。</p>
+<h5 id="解码">解码</h5>
+<p>将遗传算法染色体转换为问题的解.</p>
+<h3 id="初始群体的生成"><strong>4.2 初始群体的生成</strong></h3>
+<p>设定最大进化迭代数T，群体大小M，交叉概率<span
+class="math inline">\(P_c\)</span>,变异概率<span
+class="math inline">\(P_m\)</span>，随机生成M个个体作为初始化群体<span
+class="math inline">\(P_0\)</span>.</p>
+<h3 id="适应度评估检测">4.3 适应度评估检测</h3>
+<p>适应度函数表明个体或解的优劣性。</p>
+<p>适应度尺度变换：指算法迭代的不同阶段，通过适当调节个体适应度大小，避免群体间竞争减弱，导致种群收敛于局部最优解。</p>
+<p>尺度变化的方法：</p>
 <ul>
-<li><p>Contrastive pre-training：预训练阶段，使用图片 -
-文本对进行对比学习训练；</p></li>
-<li><p>Create dataset classifier from label
-text：提取预测类别文本特征;</p></li>
-<li><p>Use for zero-shot predictiion：进行 Zero-Shoot 推理预测;</p></li>
+<li><p>线性尺度变换：<span
+class="math inline">\(F^{\prime}=aF+b\)</span></p></li>
+<li><p>乘幂尺度变换：<span
+class="math inline">\(F^{\prime}=F^{k}\)</span></p></li>
+<li><p>指数尺度变换：<span class="math inline">\(F^{\prime}=e^{-\beta
+F}\)</span></p></li>
 </ul>
+<h3 id="遗传算子"><strong>4.4 遗传算子</strong></h3>
+<ul>
+<li><p>选择：从旧群体中按照一定概率选择优良个体组成新种群，繁殖得到下一代个体。个体的选择与适应度（<span
+class="math inline">\(f\)</span>）正相关： <span class="math display">\[
+P_i=\frac{f_i}{\sum_{k=1}^Mf_k}
+\]</span></p></li>
+<li><p>交叉：从种群中随机选择两个个体，随机选择点位，两个染色体交换组合，将父串的优秀特征遗传给子串，从而产生新的优秀个体。</p></li>
+</ul>
+<p>方法包括单点交叉、双（多）点交叉、均匀交叉、算数交叉。</p>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309190948459.png" srcset="/img/loading.gif" lazyload
-alt="image-20230917172037149" />
-<figcaption aria-hidden="true">image-20230917172037149</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191204307.png" srcset="/img/loading.gif" lazyload
+alt="image-20230919120432251" />
+<figcaption aria-hidden="true">image-20230919120432251</figcaption>
 </figure>
-<p>第一阶段，图像和文本分别通过图像、文本编码器生成对应的<span
-class="math inline">\(l_1、l_2…l_n\)</span>、<span
-class="math inline">\(T_1、T_2…T_n\)</span>的特征向量，计算对应角标向量的余弦相似度，通过temperature参数缩放，并借助softmax归一化为概率分布。图像编码器选用两个架构，第一个采用的是ResNet-50的基础架构，使用ResNetD和Rect-2进行改进，将全局平均池化层替换为一个单层的注意力池化机制；第二个采用改进的ViT模型。文本编码器使用的是一个Transformer编码器，有8个注意力头，使用了隐藏的自注意。</p>
-<p>第二阶段，使用提示模板，帮助指定文本是否是关于图像的内容。将输出的句子通过文本编码器进行特征提取，得到特征向量。</p>
-<p>第三阶段，输入一张图片，经过图像编码器进行特征提取生成一个特征向量，与文本特征进行余弦相似度计算，最相似的即为预测结果。</p>
-<h2 id="代码实现">2、代码实现</h2>
-<p>伪代码如下：</p>
+<ul>
+<li>变异：以二进制编码为例：一段基因序列中的某位由0变为1，则称该点发生了变异。该方法可以防止算法在优化过程中陷入局部最优解。</li>
+</ul>
+<p><strong><img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191459227.png" srcset="/img/loading.gif" lazyload
+alt="image-20230919145916185" /></strong></p>
+<h3 id="终止判断条件">4.5 终止判断条件</h3>
+<p>当<span
+class="math inline">\(t&gt;T\)</span>时，算法停止，选用前<span
+class="math inline">\(T\)</span>步中具有最大适应度的个体作为输出。</p>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309181104648.png" srcset="/img/loading.gif" lazyload
-alt="image-20230918110417534" />
-<figcaption aria-hidden="true">image-20230918110417534</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191516593.png" srcset="/img/loading.gif" lazyload
+alt="image-20230919151617541" />
+<figcaption aria-hidden="true">image-20230919151617541</figcaption>
 </figure>
-<p>CLIP模型前向传播部分：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, image, text</span>):<br>  image_features = self.encode_image(image)    <span class="hljs-comment"># 图片编码提特征</span><br>  text_features = self.encode_text(text)       <span class="hljs-comment"># 文本编码提特征</span><br>​<br>  <span class="hljs-comment"># 特征归一化</span><br>  image_features = image_features / image_features.norm(dim=<span class="hljs-number">1</span>, keepdim=<span class="hljs-literal">True</span>)<br>  text_features = text_features / text_features.norm(dim=<span class="hljs-number">1</span>, keepdim=<span class="hljs-literal">True</span>)<br>​<br>  <span class="hljs-comment"># 计算余弦相似度</span><br>  logit_scale = self.logit_scale.exp()<br>  logits_per_image = logit_scale * image_features @ text_features.t()<br>  logits_per_text = logits_per_image.t()<br>​<br>  <span class="hljs-comment"># shape = [global_batch_size, global_batch_size]</span><br>  <span class="hljs-keyword">return</span> logits_per_image, logits_per_text<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -333,7 +417,7 @@ alt="image-20230918110417534" />
     
       <span class="category-chain">
         
-  <a href="/categories/Multimodal-Deep-Learning/" class="category-chain-item">Multimodal Deep Learning</a>
+  <a href="/categories/algorithm/" class="category-chain-item">algorithm</a>
   
   
 
@@ -348,7 +432,7 @@ alt="image-20230918110417534" />
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Zero-shot/">#Zero-shot</a>
+        <a href="/tags/optimum-solution/">#optimum solution</a>
       
     </div>
   
@@ -360,8 +444,8 @@ alt="image-20230918110417534" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>论文阅读——CLIP算法</div>
-      <div>http://example.com/2023/09/18/clip/</div>
+      <div>遗传算法</div>
+      <div>http://example.com/2023/09/19/genetic_algorithm/</div>
     </div>
     <div class="license-meta">
       
@@ -373,7 +457,7 @@ alt="image-20230918110417534" />
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月18日</div>
+          <div>2023年9月19日</div>
         </div>
       
       
@@ -405,18 +489,12 @@ alt="image-20230918110417534" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/19/genetic_algorithm/" title="遗传算法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">遗传算法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/18/python/" title="Python数据处理——去除 NaN 值">
-                        <span class="hidden-mobile">Python数据处理——去除 NaN 值</span>
+                      <a href="/2023/09/18/clip/" title="论文阅读——CLIP算法">
+                        <span class="hidden-mobile">论文阅读——CLIP算法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
