@@ -16,18 +16,23 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="遗传算法（genetic algorithm） 1、概述 ​ 算法的主要思想就是模拟生物的遗传与变异，快速的求出最大值或最小值的随机全局搜索优化方法。 2、前置知识 染色体（Chromosome）：又称为基因型个体。 个体（individual）：每个生物 种群（population）：一个系统中所有个体的总称。 种群个体数（POPULATION）：一个系统中个体的数量。 基因（">
+    <meta name="description" content="遗传算法（genetic algorithm）1、概述​	算法的主要思想就是模拟生物的遗传与变异，快速的求出最大值或最小值的随机全局搜索优化方法。 2、前置知识染色体（Chromosome）：又称为基因型个体。 个体（individual）：每个生物 种群（population）：一个系统中所有个体的总称。 种群个体数（POPULATION）：一个系统中个体的数量。 基因（gene）：控制生物的性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="遗传算法">
 <meta property="og:url" content="http://example.com/2023/09/19/genetic_algorithm/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="遗传算法（genetic algorithm） 1、概述 ​ 算法的主要思想就是模拟生物的遗传与变异，快速的求出最大值或最小值的随机全局搜索优化方法。 2、前置知识 染色体（Chromosome）：又称为基因型个体。 个体（individual）：每个生物 种群（population）：一个系统中所有个体的总称。 种群个体数（POPULATION）：一个系统中个体的数量。 基因（">
+<meta property="og:description" content="遗传算法（genetic algorithm）1、概述​	算法的主要思想就是模拟生物的遗传与变异，快速的求出最大值或最小值的随机全局搜索优化方法。 2、前置知识染色体（Chromosome）：又称为基因型个体。 个体（individual）：每个生物 种群（population）：一个系统中所有个体的总称。 种群个体数（POPULATION）：一个系统中个体的数量。 基因（gene）：控制生物的性">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191024541.png">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191204307.png">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191459227.png">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191516593.png">
 <meta property="article:published_time" content="2023-09-19T02:03:05.000Z">
 <meta property="article:modified_time" content="2023-09-19T07:26:40.972Z">
 <meta property="article:author" content="Z Z">
 <meta property="article:tag" content="optimum solution">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191024541.png">
   
   
   
@@ -220,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.1k 字
         
       </span>
     
@@ -274,131 +279,84 @@
             
               <div class="markdown-body">
                 
-                <h1 id="遗传算法genetic-algorithm">遗传算法（genetic algorithm）</h1>
-<h2 id="概述">1、概述</h2>
-<p>​
-算法的主要思想就是模拟生物的遗传与变异，快速的求出最大值或最小值的随机全局搜索优化方法。</p>
-<h2 id="前置知识">2、前置知识</h2>
-<p>染色体（Chromosome）：又称为基因型个体。</p>
+                <h1 id="遗传算法（genetic-algorithm）"><a href="#遗传算法（genetic-algorithm）" class="headerlink" title="遗传算法（genetic algorithm）"></a>遗传算法（genetic algorithm）</h1><h2 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h2><p>​	算法的主要思想就是模拟生物的遗传与变异，快速的求出最大值或最小值的随机全局搜索优化方法。</p>
+<h2 id="2、前置知识"><a href="#2、前置知识" class="headerlink" title="2、前置知识"></a>2、前置知识</h2><p>染色体（Chromosome）：又称为基因型个体。</p>
 <p>个体（individual）：每个生物</p>
 <p>种群（population）：一个系统中所有个体的总称。</p>
 <p>种群个体数（POPULATION）：一个系统中个体的数量。</p>
 <p>基因（gene）：控制生物的性状。</p>
 <p>适应度（fitness）：对某个生物是否适应环境的定量评分。</p>
 <p>迭代次数（TIMES）：该生物种群繁衍的次数。</p>
-<h2 id="算法基础"><strong>3、算法基础</strong></h2>
-<p>​ <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191024541.png" srcset="/img/loading.gif" lazyload
-alt="image-20230919102418240" /></p>
-<p>基本遗传算法是将群体中所有个体作为对象，只使用基本遗传算子：选择算子、交叉算子以及变异算子。可以用一个式子表示：
-<span class="math display">\[
-SGA=(C,E,P_0,M,\phi,\Gamma,\psi,T)
-\]</span></p>
+<h2 id="3、算法基础"><a href="#3、算法基础" class="headerlink" title="3、算法基础"></a><strong>3、算法基础</strong></h2><p>​	<img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191024541.png" srcset="/img/loading.gif" lazyload alt="image-20230919102418240"></p>
+<p>基本遗传算法是将群体中所有个体作为对象，只使用基本遗传算子：选择算子、交叉算子以及变异算子。可以用一个式子表示：<br>$$<br>SGA&#x3D;(C,E,P_0,M,\phi,\Gamma,\psi,T)<br>$$</p>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;"><strong>符号</strong></th>
-<th style="text-align: center;"><strong>含义</strong></th>
+<tr>
+<th align="center"><strong>符号</strong></th>
+<th align="center"><strong>含义</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><span
-class="math inline">\(E\)</span></td>
-<td style="text-align: center;">个体适应度评价函数</td>
+<tbody><tr>
+<td align="center">$E$</td>
+<td align="center">个体适应度评价函数</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;"><span
-class="math inline">\(p_0\)</span></td>
-<td style="text-align: center;">初始种群</td>
+<tr>
+<td align="center">$p_0$</td>
+<td align="center">初始种群</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;"><span
-class="math inline">\(C\)</span></td>
-<td style="text-align: center;">个体编码方案</td>
+<tr>
+<td align="center">$C$</td>
+<td align="center">个体编码方案</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;"><span
-class="math inline">\(M\)</span>（预先设定）</td>
-<td style="text-align: center;">种群大小</td>
+<tr>
+<td align="center">$M$（预先设定）</td>
+<td align="center">种群大小</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;"><span
-class="math inline">\(\phi\)</span></td>
-<td style="text-align: center;">选择算子</td>
+<tr>
+<td align="center">$\phi$</td>
+<td align="center">选择算子</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;"><span
-class="math inline">\(\Gamma\)</span>（预先设定交叉概率）</td>
-<td style="text-align: center;">交叉算子</td>
+<tr>
+<td align="center">$\Gamma$（预先设定交叉概率）</td>
+<td align="center">交叉算子</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;"><span
-class="math inline">\(\psi\)</span>（预先设定变异概率）</td>
-<td style="text-align: center;">变异算子</td>
+<tr>
+<td align="center">$\psi$（预先设定变异概率）</td>
+<td align="center">变异算子</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;"><span
-class="math inline">\(T\)</span>（预先设定）</td>
-<td style="text-align: center;">遗传算法终止条件</td>
+<tr>
+<td align="center">$T$（预先设定）</td>
+<td align="center">遗传算法终止条件</td>
 </tr>
-</tbody>
-</table>
-<h2 id="算法步骤">4、算法步骤</h2>
-<h3 id="染色编码">4.1 染色编码</h3>
-<h5 id="编码">编码</h5>
-<p>将问题解空间的解表示为遗传算法中的染色体结构数据。常见的方法有：二进制编码、格雷码编码、
-浮点数编码、各参数级联编码、多参数交叉编码等。</p>
-<h5 id="解码">解码</h5>
-<p>将遗传算法染色体转换为问题的解.</p>
-<h3 id="初始群体的生成"><strong>4.2 初始群体的生成</strong></h3>
-<p>设定最大进化迭代数T，群体大小M，交叉概率<span
-class="math inline">\(P_c\)</span>,变异概率<span
-class="math inline">\(P_m\)</span>，随机生成M个个体作为初始化群体<span
-class="math inline">\(P_0\)</span>.</p>
-<h3 id="适应度评估检测">4.3 适应度评估检测</h3>
-<p>适应度函数表明个体或解的优劣性。</p>
+</tbody></table>
+<h2 id="4、算法步骤"><a href="#4、算法步骤" class="headerlink" title="4、算法步骤"></a>4、算法步骤</h2><h3 id="4-1-染色编码"><a href="#4-1-染色编码" class="headerlink" title="4.1 染色编码"></a>4.1 染色编码</h3><h5 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h5><p>将问题解空间的解表示为遗传算法中的染色体结构数据。常见的方法有：二进制编码、格雷码编码、 浮点数编码、各参数级联编码、多参数交叉编码等。</p>
+<h5 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h5><p>将遗传算法染色体转换为问题的解.</p>
+<h3 id="4-2-初始群体的生成"><a href="#4-2-初始群体的生成" class="headerlink" title="4.2 初始群体的生成"></a><strong>4.2 初始群体的生成</strong></h3><p>设定最大进化迭代数T，群体大小M，交叉概率$P_c$,变异概率$P_m$，随机生成M个个体作为初始化群体$P_0$.</p>
+<h3 id="4-3-适应度评估检测"><a href="#4-3-适应度评估检测" class="headerlink" title="4.3 适应度评估检测"></a>4.3 适应度评估检测</h3><p>适应度函数表明个体或解的优劣性。</p>
 <p>适应度尺度变换：指算法迭代的不同阶段，通过适当调节个体适应度大小，避免群体间竞争减弱，导致种群收敛于局部最优解。</p>
 <p>尺度变化的方法：</p>
 <ul>
-<li><p>线性尺度变换：<span
-class="math inline">\(F^{\prime}=aF+b\)</span></p></li>
-<li><p>乘幂尺度变换：<span
-class="math inline">\(F^{\prime}=F^{k}\)</span></p></li>
-<li><p>指数尺度变换：<span class="math inline">\(F^{\prime}=e^{-\beta
-F}\)</span></p></li>
+<li><p>线性尺度变换：$F^{\prime}&#x3D;aF+b$</p>
+</li>
+<li><p>乘幂尺度变换：$F^{\prime}&#x3D;F^{k}$</p>
+</li>
+<li><p>指数尺度变换：$F^{\prime}&#x3D;e^{-\beta F}$</p>
+</li>
 </ul>
-<h3 id="遗传算子"><strong>4.4 遗传算子</strong></h3>
-<ul>
-<li><p>选择：从旧群体中按照一定概率选择优良个体组成新种群，繁殖得到下一代个体。个体的选择与适应度（<span
-class="math inline">\(f\)</span>）正相关： <span class="math display">\[
-P_i=\frac{f_i}{\sum_{k=1}^Mf_k}
-\]</span></p></li>
-<li><p>交叉：从种群中随机选择两个个体，随机选择点位，两个染色体交换组合，将父串的优秀特征遗传给子串，从而产生新的优秀个体。</p></li>
+<h3 id="4-4-遗传算子"><a href="#4-4-遗传算子" class="headerlink" title="4.4 遗传算子"></a><strong>4.4 遗传算子</strong></h3><ul>
+<li><p>选择：从旧群体中按照一定概率选择优良个体组成新种群，繁殖得到下一代个体。个体的选择与适应度（$f$）正相关：<br>$$<br>P_i&#x3D;\frac{f_i}{\sum_{k&#x3D;1}^Mf_k}<br>$$</p>
+</li>
+<li><p>交叉：从种群中随机选择两个个体，随机选择点位，两个染色体交换组合，将父串的优秀特征遗传给子串，从而产生新的优秀个体。</p>
+</li>
 </ul>
 <p>方法包括单点交叉、双（多）点交叉、均匀交叉、算数交叉。</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191204307.png" srcset="/img/loading.gif" lazyload
-alt="image-20230919120432251" />
-<figcaption aria-hidden="true">image-20230919120432251</figcaption>
-</figure>
+<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191204307.png" srcset="/img/loading.gif" lazyload alt="image-20230919120432251"></p>
 <ul>
 <li>变异：以二进制编码为例：一段基因序列中的某位由0变为1，则称该点发生了变异。该方法可以防止算法在优化过程中陷入局部最优解。</li>
 </ul>
-<p><strong><img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191459227.png" srcset="/img/loading.gif" lazyload
-alt="image-20230919145916185" /></strong></p>
-<h3 id="终止判断条件">4.5 终止判断条件</h3>
-<p>当<span
-class="math inline">\(t&gt;T\)</span>时，算法停止，选用前<span
-class="math inline">\(T\)</span>步中具有最大适应度的个体作为输出。</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191516593.png" srcset="/img/loading.gif" lazyload
-alt="image-20230919151617541" />
-<figcaption aria-hidden="true">image-20230919151617541</figcaption>
-</figure>
+<p><strong><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191459227.png" srcset="/img/loading.gif" lazyload alt="image-20230919145916185"></strong></p>
+<h3 id="4-5-终止判断条件"><a href="#4-5-终止判断条件" class="headerlink" title="4.5 终止判断条件"></a>4.5 终止判断条件</h3><p>当$t&gt;T$时，算法停止，选用前$T$步中具有最大适应度的个体作为输出。</p>
+<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309191516593.png" srcset="/img/loading.gif" lazyload alt="image-20230919151617541"></p>
 
                 
               </div>
