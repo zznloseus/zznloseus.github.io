@@ -16,24 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="反转链表 1、题目描述   image-20230930222802631  2、解题方法 1：栈 原理图：   image-20230930222926165  12345678910111213141516171819202122232425import java.util.Stack;public class Solution &amp;#123;public ListNo">
+    <meta name="description" content="论文阅读——《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》 论文链接：[1810.04805] BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding (arxiv.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="反转链表">
-<meta property="og:url" content="http://example.com/2023/09/30/reverse-listnode/index.html">
+<meta property="og:title" content="BERT">
+<meta property="og:url" content="http://example.com/2023/10/04/BERT/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="反转链表 1、题目描述   image-20230930222802631  2、解题方法 1：栈 原理图：   image-20230930222926165  12345678910111213141516171819202122232425import java.util.Stack;public class Solution &amp;#123;public ListNo">
+<meta property="og:description" content="论文阅读——《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》 论文链接：[1810.04805] BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding (arxiv.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309302229385.png">
-<meta property="article:published_time" content="2023-09-30T15:24:25.000Z">
-<meta property="article:modified_time" content="2023-10-01T13:22:52.752Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041528009.png">
+<meta property="article:published_time" content="2023-10-04T07:26:02.000Z">
+<meta property="article:modified_time" content="2023-10-04T07:34:34.972Z">
 <meta property="article:author" content="Z Z">
-<meta property="article:tag" content="实习">
+<meta property="article:tag" content="PLM">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309302229385.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041528009.png">
   
   
   
-  <title>反转链表 - Zspace</title>
+  <title>BERT - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="反转链表"></span>
+            <span id="subtitle" data-typed-text="BERT"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-30 23:24" pubdate>
-          2023年9月30日 晚上
+        <time datetime="2023-10-04 15:26" pubdate>
+          2023年10月4日 下午
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          925 字
+          1.3k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          8 分钟
+          11 分钟
         
       </span>
     
@@ -271,31 +271,89 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">反转链表</h1>
+            <h1 style="display: none">BERT</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="反转链表">反转链表</h1>
-<h2 id="题目描述">1、题目描述</h2>
+                <h1
+id="论文阅读bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding">论文阅读——《BERT:
+Pre-training of Deep Bidirectional Transformers for Language
+Understanding》</h1>
+<p>论文链接：[<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1810.04805">1810.04805]
+BERT: Pre-training of Deep Bidirectional Transformers for Language
+Understanding (arxiv.org)</a></p>
+<p>源码链接：<a
+target="_blank" rel="noopener" href="https://github.com/google-research/bert">google-research/bert:
+TensorFlow code and pre-trained models for BERT (github.com)</a></p>
+<h2 id="模型的输入输出">1、模型的输入、输出</h2>
+<p><strong>模型输入：</strong>文本中字词的词向量，文本向量，位置向量。</p>
+<p><strong>模型输出：</strong>文本融合全文语义信息后的向量表示。</p>
+<p><strong>PS：</strong>英文词汇可以划分成细粒度的语义单位，例如<strong>doing</strong>可以划分为<strong>do</strong>和<strong>ing</strong></p>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309302229385.png" srcset="/img/loading.gif" lazyload
-alt="image-20230930222802631" />
-<figcaption aria-hidden="true">image-20230930222802631</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041319454.png" srcset="/img/loading.gif" lazyload
+alt="image-20231004131959418" />
+<figcaption aria-hidden="true">image-20231004131959418</figcaption>
 </figure>
-<h2 id="解题方法">2、解题方法</h2>
-<h3 id="栈">1：栈</h3>
-<p>原理图：</p>
+<ul>
+<li></li>
+</ul>
+<h2 id="预训练任务">2、预训练任务</h2>
+<p>预训练流程如下：</p>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202309302229013.png" srcset="/img/loading.gif" lazyload
-alt="image-20230930222926165" />
-<figcaption aria-hidden="true">image-20230930222926165</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041500393.png" srcset="/img/loading.gif" lazyload
+alt="image-20231004150000344" />
+<figcaption aria-hidden="true">image-20231004150000344</figcaption>
 </figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Stack;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">ReverseList</span><span class="hljs-params">(ListNode head)</span> &#123;<br>    Stack&lt;ListNode&gt; stack= <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>    <span class="hljs-comment">//把链表节点全部摘掉放到栈中</span><br>    <span class="hljs-keyword">while</span> (head != <span class="hljs-literal">null</span>) &#123;<br>        stack.push(head);<br>        head = head.next;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (stack.isEmpty())<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> stack.pop();<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> node;<br>    <span class="hljs-comment">//栈中的结点全部出栈，然后重新连成一个新的链表</span><br>    <span class="hljs-keyword">while</span> (!stack.isEmpty()) &#123;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">tempNode</span> <span class="hljs-operator">=</span> stack.pop();<br>        node.next = tempNode;<br>        node = node.next;<br>    &#125;<br>    <span class="hljs-comment">//最后一个结点就是反转前的头结点，一定要让他的next</span><br>    <span class="hljs-comment">//等于空，否则会构成环</span><br>    node.next = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">return</span> dummy;<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="双链表">2：双链表</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">ReverseList</span><span class="hljs-params">(ListNode head)</span> &#123;<br>    <span class="hljs-comment">//新链表</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">newHead</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">while</span> (head != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-comment">//先保存访问的节点的下一个节点，保存起来</span><br>        <span class="hljs-comment">//留着下一步访问的</span><br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> head.next;<br>        <span class="hljs-comment">//每次访问的原链表节点都会成为新链表的头结点，</span><br>        <span class="hljs-comment">//其实就是把新链表挂到访问的原链表节点的</span><br>        <span class="hljs-comment">//后面就行了</span><br>        head.next = newHead;<br>        <span class="hljs-comment">//更新新链表</span><br>        newHead = head;<br>        <span class="hljs-comment">//重新赋值，继续访问</span><br>        head = temp;<br>    &#125;<br>    <span class="hljs-comment">//返回新链表</span><br>    <span class="hljs-keyword">return</span> newHead;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>Bert Encoder：采用默认的12层transformer encoder
+layer对输入进行编码。编码后输出的张量形状：[Batch Size， Seq lens， Emb
+dim]。</li>
+<li>MLM模块：掩蔽语言模型，可以理解为完形填空，mask句子中若干词，用周围词去预测遮盖的词。作者会随机mask每一个句子中15%的词，用其上下文来做预测。</li>
+</ul>
+<p>80%的时间是采用[mask]，my dog is cute → my dog is [MASK]</p>
+<p>10%的时间是随机取一个词来代替mask的词，my dog is cute -&gt; my dog is
+apple</p>
+<p>10%的时间保持不变，my dog is cute -&gt; my dog is cute</p>
+<p>这样做的目的是因为Transformer要保持对每个输入token分布式的表征，否则Transformer很可能会记住这个[MASK]就是"cute"。</p>
+<ul>
+<li>NSP模块：下个句子预测，判断句子B在文章中是否属于句子A的下一句。选择句子对（A，B），B中50%的数据是A的下一条句子，剩余50%的数据是语料库中随机选择的，学习其中的相关性。</li>
+</ul>
+<h2 id="微调">3、微调</h2>
+<p>对于下游不同的NLP任务，模型的输入会进行微调，例如：</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041515233.png" srcset="/img/loading.gif" lazyload
+alt="image-20231004151545189" />
+<figcaption aria-hidden="true">image-20231004151545189</figcaption>
+</figure>
+<ul>
+<li>单文本分类任务</li>
+</ul>
+<p>对于文本分类任务，BERT模型在文本前插入一个[CLS]符号，并将该符号对应的输出向量作为整篇文本的语义表示，用于文本分类。</p>
+<ul>
+<li>语句对分类任务</li>
+</ul>
+<p>该任务的实际应用场景包括：问答（判断一个问题与一个答案是否匹配）、语句匹配（两句话是否表达同一个意思）等。对于该任务，BERT模型除了添加[CLS]符号并将对应的输出作为文本的语义表示，还对输入的两句话用一个[SEP]符号作分割，并分别对两句话附加两个不同的文本向量以作区分。</p>
+<h2 id="模型效果">4、模型效果</h2>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041519047.png" srcset="/img/loading.gif" lazyload
+alt="image-20231004151938011" />
+<figcaption aria-hidden="true">image-20231004151938011</figcaption>
+</figure>
+<p>除了架构差异之外，BERT和OpenAI
+GPT都是调优方法，而ELMo是基于特性的方法。</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041522054.png" srcset="/img/loading.gif" lazyload
+alt="image-20231004152215018" />
+<figcaption aria-hidden="true">image-20231004152215018</figcaption>
+</figure>
+<p><span
+class="math inline">\(BERT_{LARGE}\)</span>在各项评估指标上的效果要明显好于过往的模型。</p>
 
                 
               </div>
@@ -308,7 +366,7 @@ alt="image-20230930222926165" />
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
+        <a href="/tags/PLM/">#PLM</a>
       
     </div>
   
@@ -320,8 +378,8 @@ alt="image-20230930222926165" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>反转链表</div>
-      <div>http://example.com/2023/09/30/reverse-listnode/</div>
+      <div>BERT</div>
+      <div>http://example.com/2023/10/04/BERT/</div>
     </div>
     <div class="license-meta">
       
@@ -333,7 +391,7 @@ alt="image-20230930222926165" />
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月30日</div>
+          <div>2023年10月4日</div>
         </div>
       
       
@@ -365,18 +423,12 @@ alt="image-20230930222926165" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/01/merge-list/" title="合并链表">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">合并链表</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/19/genetic_algorithm/" title="遗传算法">
-                        <span class="hidden-mobile">遗传算法</span>
+                      <a href="/2023/10/01/merge-list/" title="合并链表">
+                        <span class="hidden-mobile">合并链表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

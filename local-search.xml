@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>BERT</title>
+    <link href="/2023/10/04/BERT/"/>
+    <url>/2023/10/04/BERT/</url>
+    
+    <content type="html"><![CDATA[<h1id="论文阅读bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding">论文阅读——《BERT:Pre-training of Deep Bidirectional Transformers for LanguageUnderstanding》</h1><p>论文链接：[<a href="https://arxiv.org/abs/1810.04805">1810.04805]BERT: Pre-training of Deep Bidirectional Transformers for LanguageUnderstanding (arxiv.org)</a></p><p>源码链接：<ahref="https://github.com/google-research/bert">google-research/bert:TensorFlow code and pre-trained models for BERT (github.com)</a></p><h2 id="模型的输入输出">1、模型的输入、输出</h2><p><strong>模型输入：</strong>文本中字词的词向量，文本向量，位置向量。</p><p><strong>模型输出：</strong>文本融合全文语义信息后的向量表示。</p><p><strong>PS：</strong>英文词汇可以划分成细粒度的语义单位，例如<strong>doing</strong>可以划分为<strong>do</strong>和<strong>ing</strong></p><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041319454.png"alt="image-20231004131959418" /><figcaption aria-hidden="true">image-20231004131959418</figcaption></figure><ul><li></li></ul><h2 id="预训练任务">2、预训练任务</h2><p>预训练流程如下：</p><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041500393.png"alt="image-20231004150000344" /><figcaption aria-hidden="true">image-20231004150000344</figcaption></figure><ul><li>Bert Encoder：采用默认的12层transformer encoderlayer对输入进行编码。编码后输出的张量形状：[Batch Size， Seq lens， Embdim]。</li><li>MLM模块：掩蔽语言模型，可以理解为完形填空，mask句子中若干词，用周围词去预测遮盖的词。作者会随机mask每一个句子中15%的词，用其上下文来做预测。</li></ul><p>80%的时间是采用[mask]，my dog is cute → my dog is [MASK]</p><p>10%的时间是随机取一个词来代替mask的词，my dog is cute -&gt; my dog isapple</p><p>10%的时间保持不变，my dog is cute -&gt; my dog is cute</p><p>这样做的目的是因为Transformer要保持对每个输入token分布式的表征，否则Transformer很可能会记住这个[MASK]就是"cute"。</p><ul><li>NSP模块：下个句子预测，判断句子B在文章中是否属于句子A的下一句。选择句子对（A，B），B中50%的数据是A的下一条句子，剩余50%的数据是语料库中随机选择的，学习其中的相关性。</li></ul><h2 id="微调">3、微调</h2><p>对于下游不同的NLP任务，模型的输入会进行微调，例如：</p><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041515233.png"alt="image-20231004151545189" /><figcaption aria-hidden="true">image-20231004151545189</figcaption></figure><ul><li>单文本分类任务</li></ul><p>对于文本分类任务，BERT模型在文本前插入一个[CLS]符号，并将该符号对应的输出向量作为整篇文本的语义表示，用于文本分类。</p><ul><li>语句对分类任务</li></ul><p>该任务的实际应用场景包括：问答（判断一个问题与一个答案是否匹配）、语句匹配（两句话是否表达同一个意思）等。对于该任务，BERT模型除了添加[CLS]符号并将对应的输出作为文本的语义表示，还对输入的两句话用一个[SEP]符号作分割，并分别对两句话附加两个不同的文本向量以作区分。</p><h2 id="模型效果">4、模型效果</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041519047.png"alt="image-20231004151938011" /><figcaption aria-hidden="true">image-20231004151938011</figcaption></figure><p>除了架构差异之外，BERT和OpenAIGPT都是调优方法，而ELMo是基于特性的方法。</p><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041522054.png"alt="image-20231004152215018" /><figcaption aria-hidden="true">image-20231004152215018</figcaption></figure><p><spanclass="math inline">\(BERT_{LARGE}\)</span>在各项评估指标上的效果要明显好于过往的模型。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>PLM</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>合并链表</title>
+    <link href="/2023/10/01/merge-list/"/>
+    <url>/2023/10/01/merge-list/</url>
+    
+    <content type="html"><![CDATA[<h1 id="合并两个排序的链表"><strong>合并两个排序的链表</strong></h1><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310012125054.png"alt="image-20231001212551984" /><figcaption aria-hidden="true">image-20231001212551984</figcaption></figure><h2 id="递归思路">1、递归思路</h2><ul><li>终止条件：两链表其中一个为空时，返回另一个链表；</li><li>当前递归内容：若<code>list1.val &lt;= list2.val</code>将较小的<code>list1.next</code>与merge后的表头连接，即<code>list1.next = Merge(list1.next,list2);</code><code>list2.val</code>较大时同理；</li><li>每次的返回值：排序好的链表头；</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">public class ListNode &#123;</span><br><span class="hljs-comment">    int val;</span><br><span class="hljs-comment">    ListNode next = null;</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">    ListNode(int val) &#123;</span><br><span class="hljs-comment">        this.val = val;</span><br><span class="hljs-comment">    &#125;</span><br><span class="hljs-comment">&#125;*/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">Merge</span><span class="hljs-params">(ListNode list1,ListNode list2)</span> &#123;<br>        <span class="hljs-keyword">if</span>(list1==<span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span> list2;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(list2==<span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span> list1;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(list2.val&gt;list1.val)&#123;<br>            list1.next = Merge(list1.next,list2);<br>            <span class="hljs-keyword">return</span> list1;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            list2.next = Merge(list1,list2.next);<br>            <span class="hljs-keyword">return</span> list2;<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure><h4 id="复杂度时间omn-空间-omn">复杂度：时间：O(m+n) 空间： O(m+n)</h4><h2 id="空间o1思路">2、空间O(1)思路</h2><ul><li>创建一个虚拟结点和一个哨兵结点</li><li>当<code>list1</code>与<code>list2</code>都不为<code>null</code>时循环</li><li>哪个的<code>val</code>小哪个赋给虚拟结点的<code>next</code>，虚拟结点后移。</li><li>退出循环后，哪个<code>list</code>不为空，哪个结点（包括剩下的）给虚拟结点的<code>next</code></li><li>最后返回哨兵结点的<code>next</code></li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">Merge</span><span class="hljs-params">(ListNode list1,ListNode list2)</span> &#123;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>);<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> dummy;<br>        <span class="hljs-comment">// 必须保证两个list都不为空</span><br>        <span class="hljs-keyword">while</span>(list1 != <span class="hljs-literal">null</span> &amp; list2 != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span>(list1.val &gt; list2.val) &#123;<br>                dummy.next = list2;<br>                list2 = list2.next;<br>                dummy = dummy.next;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(list1.val &lt;= list2.val) &#123;<br>                dummy.next = list1;<br>                list1 = list1.next;<br>                dummy = dummy.next;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// list1后面还有，就把剩下的全部拿走</span><br>        <span class="hljs-keyword">if</span>(list1 != <span class="hljs-literal">null</span>) &#123;<br>            dummy.next = list1;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(list2 != <span class="hljs-literal">null</span>) &#123;<br>            dummy.next = list2;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res.next;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>反转链表</title>
     <link href="/2023/09/30/reverse-listnode/"/>
     <url>/2023/09/30/reverse-listnode/</url>
@@ -14,7 +52,7 @@
     
     <tags>
       
-      <tag>剑指offer</tag>
+      <tag>实习</tag>
       
     </tags>
     
