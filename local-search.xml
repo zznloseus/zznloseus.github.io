@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>two_list_together_node</title>
+    <link href="/2023/10/07/two-list-together-node/"/>
+    <url>/2023/10/07/two-list-together-node/</url>
+    
+    <content type="html"><![CDATA[<h1 id="两个链表的第一个公共结点">两个链表的第一个公共结点</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310072142049.png"alt="image-20231007214226007" /><figcaption aria-hidden="true">image-20231007214226007</figcaption></figure><h2 id="解法">2、解法</h2><h4 id="思路">思路：</h4><p>使用两个指针N1,N2，一个从链表1的头节点开始遍历，我们记为N1，一个从链表2的头节点开始遍历，我们记为N2。</p><p>让N1和N2一起遍历，当N1先走完链表1的尽头（为null）的时候，则从链表2的头节点继续遍历，同样，如果N2先走完了链表2的尽头，则从链表1的头节点继续遍历，也就是说，N1和N2都会遍历链表1和链表2。</p><p>因为两个指针，同样的速度，走完同样长度（链表1+链表2），不管两条链表有无相同节点，都能够到达同时到达终点。（N1最后肯定能到达链表2的终点，N2肯定能到达链表1的终点）。</p><h4 id="代码实现">代码实现：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">FindFirstCommonNode</span><span class="hljs-params">(ListNode pHead1, ListNode pHead2)</span> &#123;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">l1</span> <span class="hljs-operator">=</span> pHead1, l2 = pHead2;<br>        <span class="hljs-keyword">while</span>(l1 != l2)&#123;<br>            l1 = (l1==<span class="hljs-literal">null</span>)?pHead2:l1.next;<br>            l2 = (l2==<span class="hljs-literal">null</span>)?pHead1:l2.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> l1;<br>    &#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>two_nums_sums</title>
+    <link href="/2023/10/07/two-nums-sums/"/>
+    <url>/2023/10/07/two-nums-sums/</url>
+    
+    <content type="html"><![CDATA[<h1 id="两数之和">两数之和</h1><h2 id="题目描述">1、题目描述</h2><p><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310072038912.png" /></p><h2 id="解法">2、解法</h2><h3 id="暴力枚举">1：暴力枚举</h3><p>枚举数组中的每一个数 <code>x</code>，寻找数组中是否存在<code>target - x</code>。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] twoSum(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">nums_length</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums_length; ++i) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> i + <span class="hljs-number">1</span>; j &lt; nums_length; ++j) &#123;<br>                <span class="hljs-keyword">if</span> (nums[i] + nums[j] == target) &#123;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;i, j&#125;;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">0</span>];<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure><h3 id="哈希表">2：哈希表</h3><p>创建一个哈希表，对于每一个 <code>x</code>，首先查询哈希表中是否存在<code>target - x</code>，然后将 <code>x</code>插入到哈希表中，即可保证不会让 <code>x</code> 和自己匹配。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] twoSum(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target) &#123;<br>        Map&lt;Integer, Integer&gt; hashtable = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;Integer, Integer&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums.length; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (hashtable.containsKey(target - nums[i])) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;hashtable.get(target - nums[i]), i&#125;;<br>            &#125;<br>            hashtable.put(nums[i], i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">0</span>];<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BERT</title>
     <link href="/2023/10/04/BERT/"/>
     <url>/2023/10/04/BERT/</url>
