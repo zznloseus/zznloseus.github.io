@@ -4,7 +4,26 @@
   
   
   <entry>
-    <title>circle_entrance</title>
+    <title>链表中倒数最后k个结点</title>
+    <link href="/2023/10/11/list-last-knode/"/>
+    <url>/2023/10/11/list-last-knode/</url>
+    
+    <content type="html"><![CDATA[<h1 id="链表中倒数最后k个结点">链表中倒数最后k个结点</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310111252662.png"alt="image-20231011125251579" /><figcaption aria-hidden="true">image-20231011125251579</figcaption></figure><h2 id="解法">2、解法</h2><h4 id="双指针">1：双指针</h4><p>思路：第一个指针先移动k步，然后第二个指针再从头开始，这个时候这两个指针同时移动，当第一个指针到链表的末尾的时候，返回第二个指针即可。注意，如果第一个指针还没走k步的时候链表就为空了，直接返回<code>null</code>即可。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">FindKthToTail</span><span class="hljs-params">(ListNode pHead, <span class="hljs-type">int</span> k)</span> &#123;<br>    <span class="hljs-keyword">if</span> (pHead == <span class="hljs-literal">null</span>)<br>        <span class="hljs-keyword">return</span> pHead;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">first</span> <span class="hljs-operator">=</span> pHead;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">second</span> <span class="hljs-operator">=</span> pHead;<br>    <span class="hljs-comment">//第一个指针先走k步</span><br>    <span class="hljs-keyword">while</span> (k-- &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">if</span> (first == <span class="hljs-literal">null</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        first = first.next;<br>    &#125;<br>    <span class="hljs-comment">//然后两个指针在同时前进</span><br>    <span class="hljs-keyword">while</span> (first != <span class="hljs-literal">null</span>) &#123;<br>        first = first.next;<br>        second = second.next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> second;<br>&#125;<br></code></pre></td></tr></table></figure><h4 id="栈">2：栈</h4><p>思路：把原链表的结点全部压栈，然后再把栈中最上面的k个节点出栈，出栈的结点重新串成一个新的链表。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">FindKthToTail</span><span class="hljs-params">(ListNode pHead, <span class="hljs-type">int</span> k)</span> &#123;<br>    Stack&lt;ListNode&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>    <span class="hljs-comment">//链表节点压栈</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (pHead != <span class="hljs-literal">null</span>) &#123;<br>        stack.push(pHead);<br>        pHead = pHead.next;<br>        count++;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (count &lt; k || k == <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-comment">//在出栈串成新的链表</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">firstNode</span> <span class="hljs-operator">=</span> stack.pop();<br>    <span class="hljs-keyword">while</span> (--k &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> stack.pop();<br>        temp.next = firstNode;<br>        firstNode = temp;<br>    &#125;<br>    <span class="hljs-keyword">return</span> firstNode;<br>&#125;<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>链表中环的入口结点</title>
     <link href="/2023/10/09/circle-entrance/"/>
     <url>/2023/10/09/circle-entrance/</url>
     
@@ -23,7 +42,7 @@
   
   
   <entry>
-    <title>two_nums_plus</title>
+    <title>两数相加</title>
     <link href="/2023/10/09/two-nums-plus/"/>
     <url>/2023/10/09/two-nums-plus/</url>
     
@@ -42,7 +61,7 @@
   
   
   <entry>
-    <title>two_list_together_node</title>
+    <title>两个链表的第一个公共结点</title>
     <link href="/2023/10/07/two-list-together-node/"/>
     <url>/2023/10/07/two-list-together-node/</url>
     
@@ -61,7 +80,7 @@
   
   
   <entry>
-    <title>two_nums_sums</title>
+    <title>两数之和</title>
     <link href="/2023/10/07/two-nums-sums/"/>
     <url>/2023/10/07/two-nums-sums/</url>
     
