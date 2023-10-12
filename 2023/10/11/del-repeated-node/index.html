@@ -16,24 +16,19 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="合并两个排序的链表   image-20231001212551984  1、递归思路  终止条件：两链表其中一个为空时，返回另一个链表； 当前递归内容：若list1.val &lt;&#x3D; list2.val 将较小的list1.next与merge后的表头连接，即list1.next &#x3D; Merge(list1.next,list2); list2.val较大时同理； 每次的">
-<meta property="og:type" content="article">
-<meta property="og:title" content="合并链表">
-<meta property="og:url" content="http://example.com/2023/10/01/merge-list/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="del_repeated_node">
+<meta property="og:url" content="http://example.com/2023/10/11/del-repeated-node/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="合并两个排序的链表   image-20231001212551984  1、递归思路  终止条件：两链表其中一个为空时，返回另一个链表； 当前递归内容：若list1.val &lt;&#x3D; list2.val 将较小的list1.next与merge后的表头连接，即list1.next &#x3D; Merge(list1.next,list2); list2.val较大时同理； 每次的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310012125054.png">
-<meta property="article:published_time" content="2023-10-01T13:18:06.000Z">
-<meta property="article:modified_time" content="2023-10-11T15:15:35.551Z">
+<meta property="article:published_time" content="2023-10-11T15:17:29.000Z">
+<meta property="article:modified_time" content="2023-10-11T15:17:29.189Z">
 <meta property="article:author" content="Z Z">
-<meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310012125054.png">
   
   
   
-  <title>合并链表 - Zspace</title>
+  <title>del_repeated_node - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +194,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="合并链表"></span>
+            <span id="subtitle" data-typed-text="del_repeated_node"></span>
           
         </div>
 
@@ -210,8 +205,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-01 21:18" pubdate>
-          2023年10月1日 晚上
+        <time datetime="2023-10-11 23:17" pubdate>
+          2023年10月11日 晚上
         </time>
       </span>
     
@@ -222,7 +217,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          0 字
         
       </span>
     
@@ -233,7 +228,7 @@
         
         
         
-          12 分钟
+          1 分钟
         
       </span>
     
@@ -271,37 +266,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">合并链表</h1>
+            <h1 style="display: none">del_repeated_node</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="合并两个排序的链表"><strong>合并两个排序的链表</strong></h1>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310012125054.png" srcset="/img/loading.gif" lazyload
-alt="image-20231001212551984" />
-<figcaption aria-hidden="true">image-20231001212551984</figcaption>
-</figure>
-<h2 id="递归思路">1、递归思路</h2>
-<ul>
-<li>终止条件：两链表其中一个为空时，返回另一个链表；</li>
-<li>当前递归内容：若<code>list1.val &lt;= list2.val</code>
-将较小的<code>list1.next</code>与merge后的表头连接，即<code>list1.next = Merge(list1.next,list2);</code>
-<code>list2.val</code>较大时同理；</li>
-<li>每次的返回值：排序好的链表头；</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">public class ListNode &#123;</span><br><span class="hljs-comment">    int val;</span><br><span class="hljs-comment">    ListNode next = null;</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">    ListNode(int val) &#123;</span><br><span class="hljs-comment">        this.val = val;</span><br><span class="hljs-comment">    &#125;</span><br><span class="hljs-comment">&#125;*/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">Merge</span><span class="hljs-params">(ListNode list1,ListNode list2)</span> &#123;<br>        <span class="hljs-keyword">if</span>(list1==<span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span> list2;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(list2==<span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span> list1;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(list2.val&gt;list1.val)&#123;<br>            list1.next = Merge(list1.next,list2);<br>            <span class="hljs-keyword">return</span> list1;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            list2.next = Merge(list1,list2.next);<br>            <span class="hljs-keyword">return</span> list2;<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h4 id="复杂度时间omn-空间-omn">复杂度：时间：O(m+n) 空间： O(m+n)</h4>
-<h2 id="空间o1思路">2、空间O(1)思路</h2>
-<ul>
-<li>创建一个虚拟结点和一个哨兵结点</li>
-<li>当<code>list1</code>与<code>list2</code>都不为<code>null</code>时循环</li>
-<li>哪个的<code>val</code>小哪个赋给虚拟结点的<code>next</code>，虚拟结点后移。</li>
-<li>退出循环后，哪个<code>list</code>不为空，哪个结点（包括剩下的）给虚拟结点的<code>next</code></li>
-<li>最后返回哨兵结点的<code>next</code></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">Merge</span><span class="hljs-params">(ListNode list1,ListNode list2)</span> &#123;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>);<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> dummy;<br>        <span class="hljs-comment">// 必须保证两个list都不为空</span><br>        <span class="hljs-keyword">while</span>(list1 != <span class="hljs-literal">null</span> &amp; list2 != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span>(list1.val &gt; list2.val) &#123;<br>                dummy.next = list2;<br>                list2 = list2.next;<br>                dummy = dummy.next;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(list1.val &lt;= list2.val) &#123;<br>                dummy.next = list1;<br>                list1 = list1.next;<br>                dummy = dummy.next;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// list1后面还有，就把剩下的全部拿走</span><br>        <span class="hljs-keyword">if</span>(list1 != <span class="hljs-literal">null</span>) &#123;<br>            dummy.next = list1;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(list2 != <span class="hljs-literal">null</span>) &#123;<br>            dummy.next = list2;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res.next;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+                
 
                 
               </div>
@@ -310,34 +280,6 @@ alt="image-20231001212551984" />
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/offer/" class="category-chain-item">offer</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
-      
-    </div>
   
 </div>
 
@@ -347,8 +289,8 @@ alt="image-20231001212551984" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>合并链表</div>
-      <div>http://example.com/2023/10/01/merge-list/</div>
+      <div>del_repeated_node</div>
+      <div>http://example.com/2023/10/11/del-repeated-node/</div>
     </div>
     <div class="license-meta">
       
@@ -360,7 +302,7 @@ alt="image-20231001212551984" />
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月1日</div>
+          <div>2023年10月11日</div>
         </div>
       
       
@@ -392,18 +334,12 @@ alt="image-20231001212551984" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/04/BERT/" title="BERT">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">BERT</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/30/reverse-listnode/" title="反转链表">
-                        <span class="hidden-mobile">反转链表</span>
+                      <a href="/2023/10/11/list-last-knode/" title="链表中倒数最后k个结点">
+                        <span class="hidden-mobile">链表中倒数最后k个结点</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
