@@ -16,24 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="删除链表中重复的结点 1、题目   image-20231011231822155  2、解题 1：直接删除 思路：  给链表添加一个表头。 遍历链表，每次比较相邻两个节点，如果遇到了两个相邻节点相同，则新开内循环将这一段所有的相同都遍历过去。 在第二步中这一连串相同的节点前的节点直接连上后续第一个不相同值的节点。 返回时去掉添加的表头。  1234567891011">
+    <meta name="description" content="删除链表的节点 1、题目   image-20231016222405387  2、解法  首先加入一个头部节点，方便于如果可能的话删除掉第一个元素。 准备两个指针遍历链表，一个指针指向当前要遍历的元素，另一个指针指向该元素的前序节点，便于获取它的指针。 遍历链表，找到目标节点，则断开连接，指向后一个。 返回时去掉加入的头节点。  12345678910111213141">
 <meta property="og:type" content="article">
-<meta property="og:title" content="del_repeated_node">
-<meta property="og:url" content="http://example.com/2023/10/11/del-repeated-node/index.html">
+<meta property="og:title" content="del_node">
+<meta property="og:url" content="http://example.com/2023/10/16/del-node/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="删除链表中重复的结点 1、题目   image-20231011231822155  2、解题 1：直接删除 思路：  给链表添加一个表头。 遍历链表，每次比较相邻两个节点，如果遇到了两个相邻节点相同，则新开内循环将这一段所有的相同都遍历过去。 在第二步中这一连串相同的节点前的节点直接连上后续第一个不相同值的节点。 返回时去掉添加的表头。  1234567891011">
+<meta property="og:description" content="删除链表的节点 1、题目   image-20231016222405387  2、解法  首先加入一个头部节点，方便于如果可能的话删除掉第一个元素。 准备两个指针遍历链表，一个指针指向当前要遍历的元素，另一个指针指向该元素的前序节点，便于获取它的指针。 遍历链表，找到目标节点，则断开连接，指向后一个。 返回时去掉加入的头节点。  12345678910111213141">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310112319059.png">
-<meta property="article:published_time" content="2023-10-11T15:17:29.000Z">
-<meta property="article:modified_time" content="2023-10-12T03:12:42.082Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310162228787.png">
+<meta property="article:published_time" content="2023-10-16T14:22:52.000Z">
+<meta property="article:modified_time" content="2023-10-16T14:29:43.438Z">
 <meta property="article:author" content="Z Z">
 <meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310112319059.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310162228787.png">
   
   
   
-  <title>del_repeated_node - Zspace</title>
+  <title>del_node - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="del_repeated_node"></span>
+            <span id="subtitle" data-typed-text="del_node"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-11 23:17" pubdate>
-          2023年10月11日 晚上
+        <time datetime="2023-10-16 22:22" pubdate>
+          2023年10月16日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          430 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          11 分钟
+          4 分钟
         
       </span>
     
@@ -271,32 +271,27 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">del_repeated_node</h1>
+            <h1 style="display: none">del_node</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="删除链表中重复的结点">删除链表中重复的结点</h1>
+                <h1 id="删除链表的节点"><strong>删除链表的节点</strong></h1>
 <h2 id="题目">1、题目</h2>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310112319059.png" srcset="/img/loading.gif" lazyload
-alt="image-20231011231822155" />
-<figcaption aria-hidden="true">image-20231011231822155</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310162228787.png" srcset="/img/loading.gif" lazyload
+alt="image-20231016222405387" />
+<figcaption aria-hidden="true">image-20231016222405387</figcaption>
 </figure>
-<h2 id="解题">2、解题</h2>
-<h4 id="直接删除">1：直接删除</h4>
-<p>思路：</p>
-<ol type="1">
-<li>给链表添加一个表头。</li>
-<li>遍历链表，每次比较相邻两个节点，如果遇到了两个相邻节点相同，则新开内循环将这一段所有的相同都遍历过去。</li>
-<li>在第二步中这一连串相同的节点前的节点直接连上后续第一个不相同值的节点。</li>
-<li>返回时去掉添加的表头。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">deleteDuplication</span><span class="hljs-params">(ListNode pHead)</span> &#123;<br>        <span class="hljs-comment">//空链表</span><br>        <span class="hljs-keyword">if</span>(pHead == <span class="hljs-literal">null</span>) <br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(<span class="hljs-number">0</span>);<br>        <span class="hljs-comment">//在链表前加一个表头</span><br>        res.next = pHead; <br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> res;<br>        <span class="hljs-keyword">while</span>(cur.next != <span class="hljs-literal">null</span> &amp;&amp; cur.next.next != <span class="hljs-literal">null</span>)&#123; <br>            <span class="hljs-comment">//遇到相邻两个节点值相同</span><br>            <span class="hljs-keyword">if</span>(cur.next.val == cur.next.next.val)&#123; <br>                <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> cur.next.val;<br>                <span class="hljs-comment">//将所有相同的都跳过</span><br>                <span class="hljs-keyword">while</span> (cur.next != <span class="hljs-literal">null</span> &amp;&amp; cur.next.val == temp) <br>                    cur.next = cur.next.next;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <br>                cur = cur.next;<br>        &#125;<br>        <span class="hljs-comment">//返回时去掉表头</span><br>        <span class="hljs-keyword">return</span> res.next; <br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h4 id="哈希表">2：哈希表</h4>
-<p>思路：该题是有序链表，可以直接与旁边的元素比较，删除重复的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.*;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">deleteDuplication</span><span class="hljs-params">(ListNode pHead)</span> &#123;<br>        <span class="hljs-comment">//空链表</span><br>        <span class="hljs-keyword">if</span>(pHead == <span class="hljs-literal">null</span>) <br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        Map&lt;Integer,Integer&gt; mp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> pHead;<br>        <span class="hljs-comment">//遍历链表统计每个节点值出现的次数</span><br>        <span class="hljs-keyword">while</span>(cur != <span class="hljs-literal">null</span>)&#123; <br>            <span class="hljs-keyword">if</span>(mp.containsKey(cur.val))<br>                mp.put(cur.val, (<span class="hljs-type">int</span>)mp.get(cur.val) + <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">else</span><br>                mp.put(cur.val,<span class="hljs-number">1</span>);<br>            cur = cur.next;<br>        &#125;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(<span class="hljs-number">0</span>);<br>        <span class="hljs-comment">//在链表前加一个表头</span><br>        res.next = pHead; <br>        cur = res;<br>        <span class="hljs-comment">//再次遍历链表</span><br>        <span class="hljs-keyword">while</span>(cur.next != <span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-comment">//如果节点值计数不为1 </span><br>            <span class="hljs-keyword">if</span>(mp.get(cur.next.val) != <span class="hljs-number">1</span>) <br>                <span class="hljs-comment">//删去该节点</span><br>                cur.next = cur.next.next; <br>            <span class="hljs-keyword">else</span><br>                cur = cur.next; <br>        &#125;<br>        <span class="hljs-comment">//去掉表头</span><br>        <span class="hljs-keyword">return</span> res.next; <br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h2 id="解法">2、解法</h2>
+<ul>
+<li>首先加入一个头部节点，方便于如果可能的话删除掉第一个元素。</li>
+<li>准备两个指针遍历链表，一个指针指向当前要遍历的元素，另一个指针指向该元素的前序节点，便于获取它的指针。</li>
+<li>遍历链表，找到目标节点，则断开连接，指向后一个。</li>
+<li>返回时去掉加入的头节点。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">deleteNode</span>(<span class="hljs-params">self , head: ListNode, val: <span class="hljs-built_in">int</span></span>) -&gt; ListNode:<br>        <span class="hljs-comment">#加入一个头节点</span><br>        res = ListNode(<span class="hljs-number">0</span>)<br>        res.<span class="hljs-built_in">next</span> = head<br>        <span class="hljs-comment">#前序节点</span><br>        pre = res<br>        <span class="hljs-comment">#当前节点</span><br>        cur = head<br>        <span class="hljs-comment">#遍历链表</span><br>        <span class="hljs-keyword">while</span> cur <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-comment">#找到目标节点</span><br>            <span class="hljs-keyword">if</span> cur.val == val:<br>                <span class="hljs-comment">#断开连接</span><br>                pre.<span class="hljs-built_in">next</span> = cur.<span class="hljs-built_in">next</span><br>                <span class="hljs-keyword">break</span><br>            pre = cur<br>            cur = cur.<span class="hljs-built_in">next</span><br>        <span class="hljs-comment">#返回去掉头节点</span><br>        <span class="hljs-keyword">return</span> res.<span class="hljs-built_in">next</span><br><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -342,8 +337,8 @@ alt="image-20231011231822155" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>del_repeated_node</div>
-      <div>http://example.com/2023/10/11/del-repeated-node/</div>
+      <div>del_node</div>
+      <div>http://example.com/2023/10/16/del-node/</div>
     </div>
     <div class="license-meta">
       
@@ -355,7 +350,7 @@ alt="image-20231011231822155" />
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月11日</div>
+          <div>2023年10月16日</div>
         </div>
       
       
@@ -387,18 +382,12 @@ alt="image-20231011231822155" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/16/del-node/" title="del_node">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">del_node</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/11/list-last-knode/" title="链表中倒数最后k个结点">
-                        <span class="hidden-mobile">链表中倒数最后k个结点</span>
+                      <a href="/2023/10/11/del-repeated-node/" title="del_repeated_node">
+                        <span class="hidden-mobile">del_repeated_node</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
