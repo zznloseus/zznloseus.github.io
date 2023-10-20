@@ -4,7 +4,45 @@
   
   
   <entry>
-    <title>del_node</title>
+    <title>二叉树深度</title>
+    <link href="/2023/10/20/Tree-depth/"/>
+    <url>/2023/10/20/Tree-depth/</url>
+    
+    <content type="html"><![CDATA[<h1 id="二叉树深度">二叉树深度</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310201609450.png"alt="image-20231020160911754" /><figcaption aria-hidden="true">image-20231020160911754</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="方法1递归">方法1：递归</h4><p>思路：如果结点存在则返回结点左右子树深度的最大值加1（<spanclass="math inline">\(root_{depth}=max(left_{depth},right_{depth})+1\)</span>）,如果</p><p>左右子树为空则返回0。</p><p>代码实现：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">TreeDepth</span>(<span class="hljs-params">self , pRoot: TreeNode</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> pRoot:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>        <br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>([self.TreeDepth(pRoot.left),self.TreeDepth(pRoot.right)]) + <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure><h4 id="方法2层遍历">方法2：层遍历</h4><p>思路：遍历每层的结点，用队列对结点进行存储。每次存储下一层结点时，深度加1。</p><p>代码实现：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> queue<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxDepth</span>(<span class="hljs-params">self , root: TreeNode</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-comment"># 空节点没有深度</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root: <br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>        <span class="hljs-comment"># 队列维护层次后续节点</span><br>        q= queue.Queue() <br>        <span class="hljs-comment"># 根入队</span><br>        q.put(root) <br>        <span class="hljs-comment"># 记录深度</span><br>        res = <span class="hljs-number">0</span><br>        <span class="hljs-comment"># 层次遍历</span><br>        <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> q.empty(): <br>            <span class="hljs-comment"># 记录当前层有多少节点</span><br>            n = q.qsize() <br>            <span class="hljs-comment"># 遍历完这一层，再进入下一层</span><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n): <br>                node = q.get()<br>                <span class="hljs-comment"># 添加下一层的左右节点</span><br>                <span class="hljs-keyword">if</span> node.left: <br>                    q.put(node.left)<br>                <span class="hljs-keyword">if</span> node.right:<br>                    q.put(node.right)<br>            <span class="hljs-comment"># 深度加1</span><br>            res += <span class="hljs-number">1</span> <br>        <span class="hljs-keyword">return</span> res<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>offer</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Prompt-Based Learning</title>
+    <link href="/2023/10/18/Prompt-Based-Learning/"/>
+    <url>/2023/10/18/Prompt-Based-Learning/</url>
+    
+    <content type="html"><![CDATA[<h1 id="prompt-based-learning">Prompt-Based Learning</h1><p>prompt-basedlearning可以理解成一种范式，分为三个过程：pre-train、prompt、predict。为了提升模型在下游任务中的表现，在prompt阶段对下游任务进行重构，从而适配pre-train的模型。</p><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310171117714.png"alt="image-20231017111256672" /><figcaption aria-hidden="true">image-20231017111256672</figcaption></figure><p>左边是微调方法的示意图，右边是prompt方法的示意图。</p><h4 id="如何进行重构">如何进行重构？</h4><p>假设输入文本为x，构造一个函数<spanclass="math inline">\(f_{prompt}(x)\)</span>,将输入文本进行转化：<spanclass="math inline">\({x}^{&#39;}=f_{prompt}(x)\)</span>。函数主要实现两个目的：</p><ul><li><p>选用一个由文本组成的模板，模板有两个槽位，[X]槽位用于填充输入<span class="math inline">\(x\)</span> ，[Z]槽位用于生成答案 <spanclass="math inline">\(z\)</span> （之后会被映射为标准的输出 <spanclass="math inline">\(y\)</span> ）</p></li><li><p>将输入 <span class="math inline">\(x\)</span>填入[X]槽位</p></li></ul><p>例如：情感分类任务中，令 <span class="math inline">\(x\)</span> ="Ilove this movie."，选用模板"[X] Overall, it was a [Z] movie."，则 <spanclass="math inline">\({x}^{&#39;}\)</span>="I love this movie. Overall,it was a [Z] movie."。至此，情感分类任务被重构为cloze task。</p><h5 id="ps">PS：</h5><ul><li>[Z]可以出现在模板的中间位置，也可以出现在模板的末尾，这两种情况也分别被称为clozeprompt、prefix prompt</li><li>组成模板的token，可以是自然语言中真实的word，也可以是虚拟的word（在embedding层以向量形式存在）</li><li>[X]和[Z]slot的数量不受限，可依实际任务而定</li></ul><h4 id="如何对重构后的任务求解">如何对重构后的任务求解？</h4><p>首先是利用pre-train的模型对重构后的<spanclass="math inline">\(x^{&#39;}\)</span>的slot进行预测，输出得分最高的token<spanclass="math inline">\(z^{&#39;}\)</span>。生成任务中，<spanclass="math inline">\(z\)</span>的取值集合可以无限制。</p><p>第二步是将中间输出<spanclass="math inline">\(z^{&#39;}\)</span>映射为最终输出<spanclass="math inline">\(y^{&#39;}\)</span>。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>删除链表的节点</title>
     <link href="/2023/10/16/del-node/"/>
     <url>/2023/10/16/del-node/</url>
     
@@ -389,9 +427,9 @@
     
     <tags>
       
-      <tag>微调</tag>
-      
       <tag>实习</tag>
+      
+      <tag>微调</tag>
       
     </tags>
     
