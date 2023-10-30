@@ -16,24 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="无重复字符的最长子串 1、题目   image-20231024215656387  2、题解 1 滑动窗口+哈希表 思路： 哈希表\(dic\)统计字符串\(s\)中每个字符最后出现的位置。 设置两个指针\(i、j\)，\(j\)指针遍历字符串，当遍历到重复字符时，\(i\)指针根据上轮的\(i\)和\(dic[s[j]]\)更新，保证区间\([i+1,j]\)中无重复字符且">
+    <meta name="description" content="《Better Few-Shot Relation Extraction with Label Prompt Dropout》 原文链接：arxiv.org&#x2F;pdf&#x2F;2210.13733.pdf 源码链接：jzhang38&#x2F;LPD: code for EMNLP 2022 paper Better Few-Shot Relation Extraction with Label Promp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无重复字符的最长子串">
-<meta property="og:url" content="http://example.com/2023/10/24/no-repeated-substr/index.html">
+<meta property="og:title" content="Better Few-Shot Relation Extraction with Label Prompt Dropout">
+<meta property="og:url" content="http://example.com/2023/10/30/LPD/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="无重复字符的最长子串 1、题目   image-20231024215656387  2、题解 1 滑动窗口+哈希表 思路： 哈希表\(dic\)统计字符串\(s\)中每个字符最后出现的位置。 设置两个指针\(i、j\)，\(j\)指针遍历字符串，当遍历到重复字符时，\(i\)指针根据上轮的\(i\)和\(dic[s[j]]\)更新，保证区间\([i+1,j]\)中无重复字符且">
+<meta property="og:description" content="《Better Few-Shot Relation Extraction with Label Prompt Dropout》 原文链接：arxiv.org&#x2F;pdf&#x2F;2210.13733.pdf 源码链接：jzhang38&#x2F;LPD: code for EMNLP 2022 paper Better Few-Shot Relation Extraction with Label Promp">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310242157172.png">
-<meta property="article:published_time" content="2023-10-24T14:24:26.000Z">
-<meta property="article:modified_time" content="2023-10-24T14:25:12.342Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310281431443.png">
+<meta property="article:published_time" content="2023-10-30T08:19:48.000Z">
+<meta property="article:modified_time" content="2023-10-30T08:27:40.491Z">
 <meta property="article:author" content="Z Z">
-<meta property="article:tag" content="实习">
+<meta property="article:tag" content="-Few Shot -Relation Exaction">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310242157172.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310281431443.png">
   
   
   
-  <title>无重复字符的最长子串 - Zspace</title>
+  <title>Better Few-Shot Relation Extraction with Label Prompt Dropout - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="无重复字符的最长子串"></span>
+            <span id="subtitle" data-typed-text="Better Few-Shot Relation Extraction with Label Prompt Dropout"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-24 22:24" pubdate>
-          2023年10月24日 晚上
+        <time datetime="2023-10-30 16:19" pubdate>
+          2023年10月30日 下午
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          834 字
+          1.8k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          7 分钟
+          16 分钟
         
       </span>
     
@@ -271,59 +271,91 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">无重复字符的最长子串</h1>
+            <h1 style="display: none">Better Few-Shot Relation Extraction with Label Prompt Dropout</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="无重复字符的最长子串">无重复字符的最长子串</h1>
-<h2 id="题目">1、题目</h2>
+                <h1
+id="better-few-shot-relation-extraction-with-label-prompt-dropout">《Better
+Few-Shot Relation Extraction with Label Prompt Dropout》</h1>
+<p>原文链接：<a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2210.13733.pdf">arxiv.org/pdf/2210.13733.pdf</a></p>
+<p>源码链接：<a target="_blank" rel="noopener" href="https://github.com/jzhang38/LPD">jzhang38/LPD:
+code for EMNLP 2022 paper Better Few-Shot Relation Extraction with Label
+Prompt Dropout (github.com)</a></p>
+<h2 id="概述">1、概述</h2>
+<p>​ 本文提出了一种新方法——LPD（Label Prompt
+Dropout），该方法将文本标签与上下文句子连接后传入Transformer
+Encoder。用文本标签代替标签提示符，知道Encoder关注自身输出标签感知的关系表示。在训练期间，模型还会随机删除提示符号来使模型学会在使用（不使用）关系描述的情景下进行训练。</p>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310242157172.png" srcset="/img/loading.gif" lazyload
-alt="image-20231024215656387" />
-<figcaption aria-hidden="true">image-20231024215656387</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310281431443.png" srcset="/img/loading.gif" lazyload
+alt="image-20231028143111344" />
+<figcaption aria-hidden="true">image-20231028143111344</figcaption>
 </figure>
-<h2 id="题解">2、题解</h2>
-<h4 id="滑动窗口哈希表">1 滑动窗口+哈希表</h4>
-<p>思路：</p>
-<p>哈希表<span class="math inline">\(dic\)</span>统计字符串<span
-class="math inline">\(s\)</span>中每个字符最后出现的位置。</p>
-<p>设置两个指针<span class="math inline">\(i、j\)</span>，<span
-class="math inline">\(j\)</span>指针遍历字符串，当遍历到重复字符时，<span
-class="math inline">\(i\)</span>指针根据上轮的<span
-class="math inline">\(i\)</span>和<span
-class="math inline">\(dic[s[j]]\)</span>更新，保证区间<span
-class="math inline">\([i+1,j]\)</span>中无重复字符且最大。</p>
-<p>每轮的结果为上轮结果和本轮双指针区间长度中的最大值。</p>
-<p>代码实现：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">lengthOfLongestSubstring</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        dic = &#123;&#125;<br>        res = <span class="hljs-number">0</span><br>        i = -<span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):<br>            <span class="hljs-keyword">if</span> s[j] <span class="hljs-keyword">in</span> dic:<br>                i=<span class="hljs-built_in">max</span>(dic[s[j]], i)<br>            dic[s[j]] = j<br>            res = <span class="hljs-built_in">max</span>(res, j-i)<br>        <span class="hljs-keyword">return</span> res     <br></code></pre></td></tr></table></figure>
-<p>复杂度分析：</p>
+<h2 id="模型构建">2、模型构建</h2>
+<h3 id="training-with-label-prompt-dropout">2.1 Training with Label
+Prompt Dropout</h3>
 <ul>
-<li>时间复杂度<span class="math inline">\(O(N)\)</span> ： 其中 <span
-class="math inline">\(N\)</span> 为字符串长度，动态规划需遍历计算 <span
-class="math inline">\(dp\)</span>列表。</li>
-<li>空间复杂度 <span class="math inline">\(O(1)\)</span> ： 字符的 ASCII
-码范围为$ 0 ~ 127$ ，哈希表 <span class="math inline">\(dic\)</span>
-最多使用 <span class="math inline">\(O(128)=O(1)\)</span>
-大小的额外空间。</li>
+<li><p>每个输入实例都是由<span class="math inline">\(:\)</span>将label
+prompt和上下文文本连接起来，来让Transformer
+Encoder学习到标签的关系表示。</p></li>
+<li><p>以一定概率随机剔除label
+prompt来防止模型依赖prompt而忽略上下文文本。</p></li>
+<li><p>使用特殊标记来标记上下文文本头尾以及分离token，例如：“[CLS]
+location of event: [E1] Beijing [/E1] held the [E2] 2022 winter Olympics
+[/E2] .”并将分离token起始位置的最后一层表示连接起来：<span
+class="math inline">\(r=[\mathrm{Encoder}(x)_h;\mathrm{Encoder}(x)_t]\)</span>,
+h表示[E1]的位置，t表示[E2]的位置，r为关系表示。</p></li>
+<li><p>对于K-way- n
+-shot学习，对一个类中K个支持实例的关系表示进行平均，以获得类原型。然后计算查询实例与每个类原型之间的点积，作为交叉熵损失中的logit:
+<span class="math display">\[
+\begin{gathered}
+u^{n}={\frac{1}{K}}\sum_{k=1}^{K}r_{k}^{n} \\
+{\mathcal
+L}_{train}=-\sum_{n=1}^{N}\log\frac{\exp(r_{q}^{\mathsf{T}}u^{n})}{\sum_{n^{\prime}=1}^{N}\exp(r_{q}^{\mathsf{T}}u^{n^{\prime}})}
+\end{gathered}
+\]</span> <span
+class="math inline">\(r_{k}^{n}\)</span>代表n类的k-th支持实例，<span
+class="math inline">\(r_{q}\)</span>事 查询实例的关系表示。</p></li>
 </ul>
-<h4 id="动态规划哈希表">2 动态规划+哈希表</h4>
-<p>思路：</p>
+<h3 id="testing-with-prompt-guided-prototypes">2.2 Testing with Prompt
+Guided Prototypes</h3>
+<p>LPD在测试中不会dropout任何支持实例的label
+prompt，而是将二者一起输入。通过找到与查询关系表示最接近的类原型来输出预测：<span
+class="math inline">\(\hat{y}_{num}=\arg\max_{n}r_{q}^{\top}u^{n}\)</span></p>
+<h3 id="contrastive-pre-training-with-label-prompt-dropout">2.3
+Contrastive Pre-training with Label Prompt Dropout</h3>
+<p>本文遵循MT-BERT框架，对对比预训练中使用的正样本和负样本进行抽样。给定一个知识图<span
+class="math inline">\(K\)</span>和两个具有实体对（h1,t1）和（h2,t2）的句子，如果K定义了一个关系R，使得（h1,t1）和（h2,t2）属于R，则两个句子标记为正样本，否则作为负样本。如图2所示：</p>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310242220731.png" srcset="/img/loading.gif" lazyload
-alt="image-20231024222023682" />
-<figcaption aria-hidden="true">image-20231024222023682</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310301501515.png" srcset="/img/loading.gif" lazyload
+alt="image-20231030150103412" />
+<figcaption aria-hidden="true">image-20231030150103412</figcaption>
+</figure>
+<p>预训练阶段的每个实例与训练阶段的支持实例进行相同的转换。在每个句子前加上一个标签提示，并在句子中插入特殊的标记。使用对比损失来训练模型:<span
+class="math inline">\(\mathcal{L}_{CP}=-\log\frac{\exp(r_Ar_B)}{\exp(r_Ar_B)+\sum_{i=1}^N\exp(r_Ar_B^i)}\)</span>。式中<span
+class="math inline">\((r_A, r_B)\)</span>为正对，<span
+class="math inline">\((r_A, r_{B}^{i})， 1≤i≤N\)</span>为负对。</p>
+<p>使用掩码语言建模目标(LMLM)来维持模型的语言理解能力。所以最终的预训练损失变成:<span
+class="math inline">\({\mathcal L}_{pre-train}={\mathcal
+L}_{CP}+{\mathcal L}_{MLM}\)</span></p>
+<h2 id="实验结果">3、实验结果</h2>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310301542385.png" srcset="/img/loading.gif" lazyload
+alt="image-20231030154246339" />
+<figcaption aria-hidden="true">image-20231030154246339</figcaption>
 </figure>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310242221862.png" srcset="/img/loading.gif" lazyload
-alt="image-20231024222111824" />
-<figcaption aria-hidden="true">image-20231024222111824</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310301542382.png" srcset="/img/loading.gif" lazyload
+alt="image-20231030154252348" />
+<figcaption aria-hidden="true">image-20231030154252348</figcaption>
 </figure>
-<p>代码实现：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">lengthOfLongestSubstring</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        dic = &#123;&#125;<br>        res = tmp = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):<br>            i = dic.get(s[j], -<span class="hljs-number">1</span>) <span class="hljs-comment"># 获取索引 i</span><br>            dic[s[j]] = j <span class="hljs-comment"># 更新哈希表</span><br>            tmp = tmp + <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> tmp &lt; j - i <span class="hljs-keyword">else</span> j - i <span class="hljs-comment"># dp[j - 1] -&gt; dp[j]</span><br>            res = <span class="hljs-built_in">max</span>(res, tmp) <span class="hljs-comment"># max(dp[j - 1], dp[j])</span><br>        <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>
+<p>LPD模型在不同类和样本数下的准确率都比以往的模型更高。</p>
 
                 
               </div>
@@ -342,7 +374,7 @@ alt="image-20231024222111824" />
     
       <span class="category-chain">
         
-  <a href="/categories/offer/" class="category-chain-item">offer</a>
+  <a href="/categories/NLP/" class="category-chain-item">NLP</a>
   
   
 
@@ -357,7 +389,7 @@ alt="image-20231024222111824" />
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
+        <a href="/tags/Few-Shot-Relation-Exaction/">#-Few Shot -Relation Exaction</a>
       
     </div>
   
@@ -369,8 +401,8 @@ alt="image-20231024222111824" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>无重复字符的最长子串</div>
-      <div>http://example.com/2023/10/24/no-repeated-substr/</div>
+      <div>Better Few-Shot Relation Extraction with Label Prompt Dropout</div>
+      <div>http://example.com/2023/10/30/LPD/</div>
     </div>
     <div class="license-meta">
       
@@ -382,7 +414,7 @@ alt="image-20231024222111824" />
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月24日</div>
+          <div>2023年10月30日</div>
         </div>
       
       
@@ -414,18 +446,12 @@ alt="image-20231024222111824" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/30/LPD/" title="Better Few-Shot Relation Extraction with Label Prompt Dropout">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Better Few-Shot Relation Extraction with Label Prompt Dropout</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/20/Tree-depth/" title="二叉树深度">
-                        <span class="hidden-mobile">二叉树深度</span>
+                      <a href="/2023/10/24/no-repeated-substr/" title="无重复字符的最长子串">
+                        <span class="hidden-mobile">无重复字符的最长子串</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
