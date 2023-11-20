@@ -238,7 +238,7 @@
       
       <a class="index-excerpt " href="/2023/10/09/circle-entrance/" target="_self">
         <div>
-          链表中环的入口结点1、题目 2、解题思路思路：双指针一快一慢指针。快指针每次跑两个element，慢指针每次跑一个。如果存在一个圈，经过一段时间后，快指针是能追上慢指针的。 如图所示，假设链表头到环入口结点X的距离为A，两指针相遇的结点为Y，X到Y的距离为B，Y到X的距离为C。设快指针进入环后经过n圈与慢指针相遇，根据假设可得到等式：$2(A+B)&#x3D;A+nB+(n-1)C$。  1234
+          链表中环的入口结点 1、题目   image-20231009223317010  2、解题思路 思路：双指针 一快一慢指针。快指针每次跑两个element，慢指针每次跑一个。如果存在一个圈，经过一段时间后，快指针是能追上慢指针的。 如图所示，假设链表头到环入口结点X的距离为A，两指针相遇的结点为Y，X到Y的距离为B，Y到X的距离为C。设快指针进入环后经过n圈与慢指针相遇，根据假
         </div>
       </a>
 
@@ -305,7 +305,7 @@
       
       <a class="index-excerpt " href="/2023/10/09/two-nums-plus/" target="_self">
         <div>
-          两数相加1、题目 2、解法两个链表存储方式相同，所以同一位置上的数字可以直接相加。设当前两个链表结点处相应位置的数字为$n_1,n_2$,进位值为$carry$,则和为$n_1+n_2+carry$; 其中答案链表对应结点位置的数为$(n_1+n_2+carry)mod10$,新的进位值为$⌊(n_1+n_2+carry)&#x2F;10⌋$。 如果两个链表的长度不同，则可以认为长度短的链表的后面
+          两数相加 1、题目   image-20231009082429629  2、解法 两个链表存储方式相同，所以同一位置上的数字可以直接相加。设当前两个链表结点处相应位置的数字为\(n_1,n_2\),进位值为\(carry\),则和为\(n_1+n_2+carry\); 其中答案链表对应结点位置的数为\((n_1+n_2+carry)mod10\),新的进位值为\(⌊(n_1+n_
         </div>
       </a>
 
@@ -372,7 +372,7 @@
       
       <a class="index-excerpt " href="/2023/10/07/two-list-together-node/" target="_self">
         <div>
-          两个链表的第一个公共结点1、题目 2、解法思路：使用两个指针N1,N2，一个从链表1的头节点开始遍历，我们记为N1，一个从链表2的头节点开始遍历，我们记为N2。 让N1和N2一起遍历，当N1先走完链表1的尽头（为null）的时候，则从链表2的头节点继续遍历，同样，如果N2先走完了链表2的尽头，则从链表1的头节点继续遍历，也就是说，N1和N2都会遍历链表1和链表2。 因为两个指针，同样的速度，走完同
+          两个链表的第一个公共结点 1、题目   image-20231007214226007  2、解法 思路： 使用两个指针N1,N2，一个从链表1的头节点开始遍历，我们记为N1，一个从链表2的头节点开始遍历，我们记为N2。 让N1和N2一起遍历，当N1先走完链表1的尽头（为null）的时候，则从链表2的头节点继续遍历，同样，如果N2先走完了链表2的尽头，则从链表1的头节点继续遍历，
         </div>
       </a>
 
@@ -439,7 +439,7 @@
       
       <a class="index-excerpt " href="/2023/10/07/two-nums-sums/" target="_self">
         <div>
-          两数之和1、题目描述 2、解法1：暴力枚举枚举数组中的每一个数 x，寻找数组中是否存在 target - x。 1234567891011121314class Solution &#123;    public int[] twoSum(int[] nums, int target) &#123;        int nums_length = nums.length;        for
+          两数之和 1、题目描述  2、解法 1：暴力枚举 枚举数组中的每一个数 x，寻找数组中是否存在 target - x。 1234567891011121314class Solution &#123;    public int[] twoSum(int[] nums, int target) &#123;        int nums_length = nums.length;
         </div>
       </a>
 
@@ -506,7 +506,7 @@
       
       <a class="index-excerpt " href="/2023/10/04/BERT/" target="_self">
         <div>
-          论文阅读——《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》论文链接：[1810.04805] BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding (arxiv.org) 源
+          论文阅读——《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》 论文链接：[1810.04805] BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding (arxiv.
         </div>
       </a>
 
@@ -552,7 +552,7 @@
       
       <a class="index-excerpt " href="/2023/10/01/merge-list/" target="_self">
         <div>
-          合并两个排序的链表 1、递归思路 终止条件：两链表其中一个为空时，返回另一个链表； 当前递归内容：若list1.val &lt;= list2.val 将较小的list1.next与merge后的表头连接，即list1.next = Merge(list1.next,list2); list2.val较大时同理； 每次的返回值：排序好的链表头；  1234567891011121314151617
+          合并两个排序的链表   image-20231001212551984  1、递归思路  终止条件：两链表其中一个为空时，返回另一个链表； 当前递归内容：若list1.val &lt;= list2.val 将较小的list1.next与merge后的表头连接，即list1.next = Merge(list1.next,list2); list2.val较大时同理； 每次的
         </div>
       </a>
 
@@ -619,7 +619,7 @@
       
       <a class="index-excerpt " href="/2023/09/30/reverse-listnode/" target="_self">
         <div>
-          反转链表1、题目描述 2、解题方法1：栈原理图：  12345678910111213141516171819202122232425import java.util.Stack;public class Solution &#123;public ListNode ReverseList(ListNode head) &#123;    Stack&lt;ListNode&gt; stack=
+          反转链表 1、题目描述   image-20230930222802631  2、解题方法 1：栈 原理图：   image-20230930222926165  12345678910111213141516171819202122232425import java.util.Stack;public class Solution &#123;public ListNo
         </div>
       </a>
 
@@ -686,7 +686,7 @@
       
       <a class="index-excerpt " href="/2023/09/19/genetic_algorithm/" target="_self">
         <div>
-          遗传算法（genetic algorithm）1、概述​	算法的主要思想就是模拟生物的遗传与变异，快速的求出最大值或最小值的随机全局搜索优化方法。 2、前置知识染色体（Chromosome）：又称为基因型个体。 个体（individual）：每个生物 种群（population）：一个系统中所有个体的总称。 种群个体数（POPULATION）：一个系统中个体的数量。 基因（gene）：控制生物的性
+          遗传算法（genetic algorithm） 1、概述 ​ 算法的主要思想就是模拟生物的遗传与变异，快速的求出最大值或最小值的随机全局搜索优化方法。 2、前置知识 染色体（Chromosome）：又称为基因型个体。 个体（individual）：每个生物 种群（population）：一个系统中所有个体的总称。 种群个体数（POPULATION）：一个系统中个体的数量。 基因（
         </div>
       </a>
 
@@ -753,7 +753,7 @@
       
       <a class="index-excerpt " href="/2023/09/18/clip/" target="_self">
         <div>
-          论文阅读——CLIP算法原文链接：[2103.00020] Learning Transferable Visual Models From Natural Language Supervision (arxiv.org) 代码链接：openai&#x2F;CLIP: CLIP (Contrastive Language-Image Pretraining), Predict the most r
+          论文阅读——CLIP算法 原文链接：[2103.00020] Learning Transferable Visual Models From Natural Language Supervision (arxiv.org) 代码链接：openai/CLIP: CLIP (Contrastive Language-Image Pretraining), Predict the most
         </div>
       </a>
 
@@ -814,7 +814,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/09/18/python/" target="_self">
         <div>
-          Python数据处理——去除 NaN 值1、NaN 的定义NaN 即 Not A Number 的缩写，表示不是一个数字。NaN 值是在进行数学计算时出现的一种特殊值，通常出现在计算过程中出现了错误或无法计算的情况下。 2、处理方法 使用 dropna() 方法删除 NaN 值所在的行或列  12345678910import pandas as pdimport numpy as np# 读取E
+          Python数据处理——去除 NaN 值 1、NaN 的定义 NaN 即 Not A Number 的缩写，表示不是一个数字。NaN 值是在进行数学计算时出现的一种特殊值，通常出现在计算过程中出现了错误或无法计算的情况下。 2、处理方法  使用 dropna() 方法删除 NaN 值所在的行或列  12345678910import pandas as pdimport numpy
         </div>
       </a>
 

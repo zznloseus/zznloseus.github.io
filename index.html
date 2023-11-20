@@ -238,7 +238,7 @@
       
       <a class="index-excerpt " href="/2023/11/20/Python-log/" target="_self">
         <div>
-          Python 日志logging 日志功能需要根据追踪事件的级别和严重性而定：  Python的logging库采用模块化方法，并且提供了一些组件：  记录器（Logger）：提供应用程序代码直接使用的接口。 处理器（Handler）：将日志记录（由记录器创建）发送到适当的目的地。 筛选器（Filter）：提供了更细粒度的功能，用于确定要输出的日志记录。 格式器（Formatter）：程序在最终输
+          Python 日志logging   image-20231120152320128  日志功能需要根据追踪事件的级别和严重性而定：   image-20231120152440314  Python的logging库采用模块化方法，并且提供了一些组件：  记录器（Logger）：提供应用程序代码直接使用的接口。 处理器（Handler）：将日志记录（由记录器创建）发送到
         </div>
       </a>
 
@@ -305,7 +305,7 @@
       
       <a class="index-excerpt " href="/2023/11/07/FPN/" target="_self">
         <div>
-          FPN ——特征金字塔论文链接：Feature Pyramid Networks for Object Detection (thecvf.com) 模型简介  以特征金字塔为基础结构，对每一层级的特征图分别进行预测。 这种网络结构，能够在增加较少计算量的前提下融合低分辨率语义信息较强的特征图和高分辨率语义信息较弱但空间信息丰富的特征图。  模型结构 1：Bottom-up pathway前馈Ba
+          FPN ——特征金字塔 论文链接：Feature Pyramid Networks for Object Detection (thecvf.com) 模型简介   image-20231107155943324   以特征金字塔为基础结构，对每一层级的特征图分别进行预测。 这种网络结构，能够在增加较少计算量的前提下融合低分辨率语义信息较强的特征图和高分辨率语义信息较弱但空间信
         </div>
       </a>
 
@@ -372,7 +372,7 @@
       
       <a class="index-excerpt " href="/2023/10/30/min-gifts/" target="_self">
         <div>
-          从数量最多的堆取走礼物1、题目 2、题解思路：每轮都寻找最大值，可以最大堆模拟。循环$k$次，每次循环弹出堆顶$top$，然后把$\lfloor\sqrt{top}\rfloor $入堆。 题解代码： 12345678910class Solution:    def pickGifts(self, gifts: List[int], k: int) -&gt; int:        for i
+          从数量最多的堆取走礼物 1、题目  ## 2、题解 思路：每轮都寻找最大值，可以最大堆模拟。循环\(k\)次，每次循环弹出堆顶\(top\)，然后把$$入堆。 题解代码： 12345678910class Solution:    def pickGifts(self, gifts: List[int], k: int) -&gt; int:        for i in range(
         </div>
       </a>
 
@@ -439,7 +439,7 @@
       
       <a class="index-excerpt " href="/2023/10/30/LPD/" target="_self">
         <div>
-          《Better Few-Shot Relation Extraction with Label Prompt Dropout》原文链接：arxiv.org&#x2F;pdf&#x2F;2210.13733.pdf 源码链接：jzhang38&#x2F;LPD: code for EMNLP 2022 paper Better Few-Shot Relation Extraction with La
+          《Better Few-Shot Relation Extraction with Label Prompt Dropout》 原文链接：arxiv.org/pdf/2210.13733.pdf 源码链接：jzhang38/LPD: code for EMNLP 2022 paper Better Few-Shot Relation Extraction with Label Promp
         </div>
       </a>
 
@@ -506,7 +506,7 @@
       
       <a class="index-excerpt " href="/2023/10/24/no-repeated-substr/" target="_self">
         <div>
-          无重复字符的最长子串1、题目 2、题解1 滑动窗口+哈希表思路： 哈希表$dic$统计字符串$s$中每个字符最后出现的位置。 设置两个指针$i、j$，$j$指针遍历字符串，当遍历到重复字符时，$i$指针根据上轮的$i$和$dic[s[j]]$更新，保证区间$[i+1,j]$中无重复字符且最大。 每轮的结果为上轮结果和本轮双指针区间长度中的最大值。 代码实现： 1234567891011class
+          无重复字符的最长子串 1、题目   image-20231024215656387  2、题解 1 滑动窗口+哈希表 思路： 哈希表\(dic\)统计字符串\(s\)中每个字符最后出现的位置。 设置两个指针\(i、j\)，\(j\)指针遍历字符串，当遍历到重复字符时，\(i\)指针根据上轮的\(i\)和\(dic[s[j]]\)更新，保证区间\([i+1,j]\)中无重复字符且
         </div>
       </a>
 
@@ -573,7 +573,7 @@
       
       <a class="index-excerpt " href="/2023/10/20/Tree-depth/" target="_self">
         <div>
-          二叉树深度1、题目 2、题解方法1：递归思路：如果结点存在则返回结点左右子树深度的最大值加1（$root_{depth}&#x3D;max(left_{depth},right_{depth})+1$）,如果 左右子树为空则返回0。 代码实现： 123456class Solution:    def TreeDepth(self , pRoot: TreeNode) -&gt; int:
+          二叉树深度 1、题目   image-20231020160911754  2、题解 方法1：递归 思路：如果结点存在则返回结点左右子树深度的最大值加1（\(root_{depth}=max(left_{depth},right_{depth})+1\)）,如果 左右子树为空则返回0。 代码实现： 123456class Solution:    def TreeDepth(
         </div>
       </a>
 
@@ -634,7 +634,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/10/18/Prompt-Based-Learning/" target="_self">
         <div>
-          Prompt-Based Learningprompt-based learning可以理解成一种范式，分为三个过程：pre-train、prompt、predict。为了提升模型在下游任务中的表现，在prompt阶段对下游任务进行重构，从而适配pre-train的模型。  左边是微调方法的示意图，右边是prompt方法的示意图。 如何进行重构？假设输入文本为x，构造一个函数$f_{prompt}
+          Prompt-Based Learning prompt-based learning可以理解成一种范式，分为三个过程：pre-train、prompt、predict。为了提升模型在下游任务中的表现，在prompt阶段对下游任务进行重构，从而适配pre-train的模型。   image-20231017111256672  左边是微调方法的示意图，右边是prompt方法的示意图。
         </div>
       </a>
 
@@ -673,7 +673,7 @@
       
       <a class="index-excerpt " href="/2023/10/16/del-node/" target="_self">
         <div>
-          删除链表的节点1、题目 2、解法 首先加入一个头部节点，方便于如果可能的话删除掉第一个元素。 准备两个指针遍历链表，一个指针指向当前要遍历的元素，另一个指针指向该元素的前序节点，便于获取它的指针。 遍历链表，找到目标节点，则断开连接，指向后一个。 返回时去掉加入的头节点。  123456789101112131415161718192021class Solution:    def delete
+          删除链表的节点 1、题目   image-20231016222405387  2、解法  首先加入一个头部节点，方便于如果可能的话删除掉第一个元素。 准备两个指针遍历链表，一个指针指向当前要遍历的元素，另一个指针指向该元素的前序节点，便于获取它的指针。 遍历链表，找到目标节点，则断开连接，指向后一个。 返回时去掉加入的头节点。  12345678910111213141
         </div>
       </a>
 
@@ -740,7 +740,7 @@
       
       <a class="index-excerpt " href="/2023/10/11/del-repeated-node/" target="_self">
         <div>
-          删除链表中重复的结点1、题目 2、解题1：直接删除思路：  给链表添加一个表头。 遍历链表，每次比较相邻两个节点，如果遇到了两个相邻节点相同，则新开内循环将这一段所有的相同都遍历过去。 在第二步中这一连串相同的节点前的节点直接连上后续第一个不相同值的节点。 返回时去掉添加的表头。  12345678910111213141516171819202122232425public class Solu
+          删除链表中重复的结点 1、题目   image-20231011231822155  2、解题 1：直接删除 思路：  给链表添加一个表头。 遍历链表，每次比较相邻两个节点，如果遇到了两个相邻节点相同，则新开内循环将这一段所有的相同都遍历过去。 在第二步中这一连串相同的节点前的节点直接连上后续第一个不相同值的节点。 返回时去掉添加的表头。  1234567891011
         </div>
       </a>
 
@@ -807,7 +807,7 @@
       
       <a class="index-excerpt " href="/2023/10/11/list-last-knode/" target="_self">
         <div>
-          链表中倒数最后k个结点1、题目 2、解法1：双指针思路：第一个指针先移动k步，然后第二个指针再从头开始，这个时候这两个指针同时移动，当第一个指针到链表的末尾的时候，返回第二个指针即可。注意，如果第一个指针还没走k步的时候链表就为空了，直接返回null即可。 123456789101112131415161718public ListNode FindKthToTail(ListNode pHead
+          链表中倒数最后k个结点 1、题目   image-20231011125251579  2、解法 1：双指针 思路：第一个指针先移动k步，然后第二个指针再从头开始，这个时候这两个指针同时移动，当第一个指针到链表的末尾的时候，返回第二个指针即可。注意，如果第一个指针还没走k步的时候链表就为空了，直接返回null即可。 123456789101112131415161718publi
         </div>
       </a>
 
