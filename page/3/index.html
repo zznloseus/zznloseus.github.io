@@ -17,8 +17,8 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://example.com/archives/2023/08/index.html">
+<meta property="og:title" content="Zspace">
+<meta property="og:url" content="http://example.com/page/3/index.html">
 <meta property="og:site_name" content="Zspace">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Z Z">
@@ -26,7 +26,7 @@
   
   
   
-  <title>归档 - Zspace</title>
+  <title>Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -80,7 +80,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 100vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -180,19 +180,23 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://2hang.oss-cn-beijing.aliyuncs.com/img/bule.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://2hang.oss-cn-beijing.aliyuncs.com/img/wutiaowu-scaled.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="归档"></span>
+            <span id="subtitle" data-typed-text="Why am I playing with time as it’s ticking away"></span>
           
         </div>
 
         
       </div>
 
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
       
     </div>
   </div>
@@ -206,30 +210,206 @@
     
       <div class="container nopadding-x-md">
         <div id="board"
-          >
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 23 篇文章</p>
-  <hr>
-  
-  
+
+  <div class="row mx-auto index-card">
     
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/09/12/VScode%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B0%8F%E9%97%AE%E9%A2%98/" target="_self">
+          VScode服务器小问题
+        </a>
+      </h1>
+
       
-      <p class="h5">2023</p>
-    
-    <a href="/2023/08/16/LORA%E5%BE%AE%E8%B0%83/" class="list-group-item list-group-item-action">
-      <time>08-16</time>
-      <div class="list-group-item-title">学习笔记——LORA微调</div>
-    </a>
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/12/VScode%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B0%8F%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          VScode服务器小问题 1、服务器不断要求输入密码，连不上服务器 原因：没有恰当的退出远程链接导致的 解决方法：打开VScode的 view→palette然后输入Kill VS Code Setver on Host，再重新连接就可以了。   image-20230911203505606  后续使用完远程服务器关闭资源的时候要使用File→Close Remote Con
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-12 10:39" pubdate>
+              2023-09-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
   
-</div>
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Server/" class="category-chain-item">Server</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">#服务器</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/09/11/XGBoost%E7%AE%97%E6%B3%95/" target="_self">
+          学习笔记——XGBoost算法
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/11/XGBoost%E7%AE%97%E6%B3%95/" target="_self">
+        <div>
+          学习笔记——XGBoost算法 XGBoost和GBDT两者都是boosting方法，除了工程实现、解决问题上的一些差异外，最大的不同就是目标函数的定义。 1、基本原理 1.1 目标函数 XGBoost算法是一个加法模型，在每一步迭代中，只调优当前的子模型：\(F_m(x_i)=F_{m-1}(x_i)+f_m(x_i)\)。其中\(f_m(x_i)\)表示当前的子模型，\(F_{m-1}
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-11 16:27" pubdate>
+              2023-09-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/algorithm/" class="category-chain-item">algorithm</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/boosting/">#boosting</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/16/LORA%E5%BE%AE%E8%B0%83/" target="_self">
+          学习笔记——LORA微调
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/16/LORA%E5%BE%AE%E8%B0%83/" target="_self">
+        <div>
+          学习笔记——LORA微调 ​ LORA是一种低资源微调LLM模型的方法，源自论文：LoRA: Low-Rank Adaptation of Large Language Models。 一、高效微调 ​ 对于语言模型来说，在微调过程中，模型加载预训练参数\(\Phi_{0}\)进行初始化，并通过最大化条件语言模型概率实现参数调整$_{0}+$​，即： \[ max_\Phi\sum_{
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-16 21:40" pubdate>
+              2023-08-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/NLP/" class="category-chain-item">NLP</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BE%AE%E8%B0%83/">#微调</a>
+            
+              <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
 
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span>
+    </span>
+  </nav>
 
 
 

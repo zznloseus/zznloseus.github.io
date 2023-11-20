@@ -16,24 +16,22 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="《Better Few-Shot Relation Extraction with Label Prompt Dropout》 原文链接：arxiv.org&#x2F;pdf&#x2F;2210.13733.pdf 源码链接：jzhang38&#x2F;LPD: code for EMNLP 2022 paper Better Few-Shot Relation Extraction with Label Promp">
+    <meta name="description" content="Python 日志logging   image-20231120152320128  日志功能需要根据追踪事件的级别和严重性而定：   image-20231120152440314  Python的logging库采用模块化方法，并且提供了一些组件：  记录器（Logger）：提供应用程序代码直接使用的接口。 处理器（Handler）：将日志记录（由记录器创建）发送到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Better Few-Shot Relation Extraction with Label Prompt Dropout">
-<meta property="og:url" content="http://example.com/2023/10/30/LPD/index.html">
+<meta property="og:title" content="Python 日志logging">
+<meta property="og:url" content="http://example.com/2023/11/20/Python-log/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="《Better Few-Shot Relation Extraction with Label Prompt Dropout》 原文链接：arxiv.org&#x2F;pdf&#x2F;2210.13733.pdf 源码链接：jzhang38&#x2F;LPD: code for EMNLP 2022 paper Better Few-Shot Relation Extraction with Label Promp">
+<meta property="og:description" content="Python 日志logging   image-20231120152320128  日志功能需要根据追踪事件的级别和严重性而定：   image-20231120152440314  Python的logging库采用模块化方法，并且提供了一些组件：  记录器（Logger）：提供应用程序代码直接使用的接口。 处理器（Handler）：将日志记录（由记录器创建）发送到">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310281431443.png">
-<meta property="article:published_time" content="2023-10-30T08:19:48.000Z">
-<meta property="article:modified_time" content="2023-11-06T06:33:44.320Z">
+<meta property="article:published_time" content="2023-11-20T07:36:11.000Z">
+<meta property="article:modified_time" content="2023-11-20T07:38:16.050Z">
 <meta property="article:author" content="Z Z">
-<meta property="article:tag" content="-Few Shot -Relation Exaction">
+<meta property="article:tag" content="代码技能">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310281431443.png">
   
   
   
-  <title>Better Few-Shot Relation Extraction with Label Prompt Dropout - Zspace</title>
+  <title>Python 日志logging - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Better Few-Shot Relation Extraction with Label Prompt Dropout"></span>
+            <span id="subtitle" data-typed-text="Python 日志logging"></span>
           
         </div>
 
@@ -210,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-30 16:19" pubdate>
-          2023年10月30日 下午
+        <time datetime="2023-11-20 15:36" pubdate>
+          2023年11月20日 下午
         </time>
       </span>
     
@@ -222,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          880 字
         
       </span>
     
@@ -233,7 +231,7 @@
         
         
         
-          22 分钟
+          8 分钟
         
       </span>
     
@@ -271,115 +269,40 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Better Few-Shot Relation Extraction with Label Prompt Dropout</h1>
+            <h1 style="display: none">Python 日志logging</h1>
             
             
               <div class="markdown-body">
                 
-                <h1
-id="better-few-shot-relation-extraction-with-label-prompt-dropout">《Better
-Few-Shot Relation Extraction with Label Prompt Dropout》</h1>
-<p>原文链接：<a
-target="_blank" rel="noopener" href="https://arxiv.org/pdf/2210.13733.pdf">arxiv.org/pdf/2210.13733.pdf</a></p>
-<p>源码链接：<a target="_blank" rel="noopener" href="https://github.com/jzhang38/LPD">jzhang38/LPD:
-code for EMNLP 2022 paper Better Few-Shot Relation Extraction with Label
-Prompt Dropout (github.com)</a></p>
-<h2 id="概述">1、概述</h2>
-<p>​ 本文提出了一种新方法——LPD（Label Prompt
-Dropout），该方法将文本标签与上下文句子连接后传入Transformer
-Encoder。用文本标签代替标签提示符，知道Encoder关注自身输出标签感知的关系表示。在训练期间，模型还会随机删除提示符号来使模型学会在使用（不使用）关系描述的情景下进行训练。</p>
+                <h1 id="python-日志logging">Python 日志logging</h1>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310281431443.png" srcset="/img/loading.gif" lazyload
-alt="image-20231028143111344" />
-<figcaption aria-hidden="true">image-20231028143111344</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311201523221.png" srcset="/img/loading.gif" lazyload
+alt="image-20231120152320128" />
+<figcaption aria-hidden="true">image-20231120152320128</figcaption>
 </figure>
-<h2 id="模型构建">2、模型构建</h2>
-<h3 id="training-with-label-prompt-dropout">2.1 Training with Label
-Prompt Dropout</h3>
+<p>日志功能需要根据追踪事件的级别和严重性而定：</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311201524357.png" srcset="/img/loading.gif" lazyload
+alt="image-20231120152440314" />
+<figcaption aria-hidden="true">image-20231120152440314</figcaption>
+</figure>
+<p>Python的logging库采用模块化方法，并且提供了一些组件：</p>
 <ul>
-<li><p>每个输入实例都是由<span class="math inline">\(:\)</span>将label
-prompt和上下文文本连接起来，来让Transformer
-Encoder学习到标签的关系表示。</p></li>
-<li><p>以一定概率随机剔除label
-prompt来防止模型依赖prompt而忽略上下文文本。</p></li>
-<li><p>使用特殊标记来标记上下文文本头尾以及分离token，例如：“[CLS]
-location of event: [E1] Beijing [/E1] held the [E2] 2022 winter Olympics
-[/E2] .”并将分离token起始位置的最后一层表示连接起来：<span
-class="math inline">\(r=[\mathrm{Encoder}(x)_h;\mathrm{Encoder}(x)_t]\)</span>,
-h表示[E1]的位置，t表示[E2]的位置，r为关系表示。</p></li>
-<li><p>对于K-way- n
--shot学习，对一个类中K个支持实例的关系表示进行平均，以获得类原型。然后计算查询实例与每个类原型之间的点积，作为交叉熵损失中的logit:
-<span class="math display">\[
-\begin{gathered}
-u^{n}={\frac{1}{K}}\sum_{k=1}^{K}r_{k}^{n} \\
-{\mathcal
-L}_{train}=-\sum_{n=1}^{N}\log\frac{\exp(r_{q}^{\mathsf{T}}u^{n})}{\sum_{n^{\prime}=1}^{N}\exp(r_{q}^{\mathsf{T}}u^{n^{\prime}})}
-\end{gathered}
-\]</span> <span
-class="math inline">\(r_{k}^{n}\)</span>代表n类的k-th支持实例，<span
-class="math inline">\(r_{q}\)</span>事 查询实例的关系表示。</p></li>
+<li>记录器（Logger）：提供应用程序代码直接使用的接口。</li>
+<li>处理器（Handler）：将日志记录（由记录器创建）发送到适当的目的地。</li>
+<li>筛选器（Filter）：提供了更细粒度的功能，用于确定要输出的日志记录。</li>
+<li>格式器（Formatter）：程序在最终输出日志记录的内容格式。</li>
 </ul>
-<h3 id="testing-with-prompt-guided-prototypes">2.2 Testing with Prompt
-Guided Prototypes</h3>
-<p>LPD在测试中不会dropout任何支持实例的label
-prompt，而是将二者一起输入。通过找到与查询关系表示最接近的类原型来输出预测：<span
-class="math inline">\(\hat{y}_{num}=\arg\max_{n}r_{q}^{\top}u^{n}\)</span></p>
-<h3 id="contrastive-pre-training-with-label-prompt-dropout">2.3
-Contrastive Pre-training with Label Prompt Dropout</h3>
-<p>本文遵循MT-BERT框架，对对比预训练中使用的正样本和负样本进行抽样。给定一个知识图<span
-class="math inline">\(K\)</span>和两个具有实体对（h1,t1）和（h2,t2）的句子，如果K定义了一个关系R，使得（h1,t1）和（h2,t2）属于R，则两个句子标记为正样本，否则作为负样本。如图2所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> logging<br><br>LOG_FORMAT = <span class="hljs-string">&quot;%(asctime)s - %(levelname)s %(name)s %(filename)s [line:%(lineno)d] - %(message)s&quot;</span><br>logging.basicConfig(filename=<span class="hljs-string">&#x27;log.log&#x27;</span>,<span class="hljs-built_in">format</span>=LOG_FORMAT,level=logging.DEBUG)<span class="hljs-comment">#设置日志级别并记录到日志文件</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">print_log</span>(<span class="hljs-params">name</span>):<br>    logging.debug(<span class="hljs-string">&#x27;this is print_hi debug&#x27;</span>)<br>    logging.info(<span class="hljs-string">&#x27;this is print_hi info&#x27;</span>)<br>    logging.warning(<span class="hljs-string">&#x27;this is print_hi warning&#x27;</span>)<br>    logging.error(<span class="hljs-string">&#x27;this is print_hi error&#x27;</span>)<br>    logging.critical(<span class="hljs-string">&#x27;this is print_hi critical&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Hi print_hi, <span class="hljs-subst">&#123;name&#125;</span>&#x27;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    print_log(<span class="hljs-string">&#x27;zz&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>LogRecord属性如下：</p>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310301501515.png" srcset="/img/loading.gif" lazyload
-alt="image-20231030150103412" />
-<figcaption aria-hidden="true">image-20231030150103412</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311201533099.png" srcset="/img/loading.gif" lazyload
+alt="image-20231120153329049" />
+<figcaption aria-hidden="true">image-20231120153329049</figcaption>
 </figure>
-<p>预训练阶段的每个实例与训练阶段的支持实例进行相同的转换。在每个句子前加上一个标签提示，并在句子中插入特殊的标记。使用对比损失来训练模型:<span
-class="math inline">\(\mathcal{L}_{CP}=-\log\frac{\exp(r_Ar_B)}{\exp(r_Ar_B)+\sum_{i=1}^N\exp(r_Ar_B^i)}\)</span>。式中<span
-class="math inline">\((r_A, r_B)\)</span>为正对，<span
-class="math inline">\((r_A, r_{B}^{i})， 1≤i≤N\)</span>为负对。</p>
-<p>使用掩码语言建模目标(LMLM)来维持模型的语言理解能力。所以最终的预训练损失变成:<span
-class="math inline">\({\mathcal L}_{pre-train}={\mathcal
-L}_{CP}+{\mathcal L}_{MLM}\)</span></p>
-<h2 id="实验结果">3、实验结果</h2>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310301542385.png" srcset="/img/loading.gif" lazyload
-alt="image-20231030154246339" />
-<figcaption aria-hidden="true">image-20231030154246339</figcaption>
-</figure>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310301542382.png" srcset="/img/loading.gif" lazyload
-alt="image-20231030154252348" />
-<figcaption aria-hidden="true">image-20231030154252348</figcaption>
-</figure>
-<p>LPD模型在不同类和样本数下的准确率都比以往的模型更高。 ##
-4、代码复现</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311041438026.png" srcset="/img/loading.gif" lazyload
-alt="image-20231104143744033" />
-<figcaption aria-hidden="true">image-20231104143744033</figcaption>
-</figure>
-<p>解决方法：手动下载模型并保存在代码目录下</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311041439419.png" srcset="/img/loading.gif" lazyload
-alt="image-20231104143920391" />
-<figcaption aria-hidden="true">image-20231104143920391</figcaption>
-</figure>
-<p>解决方法：修改源代码中的apex-master/apex/amp/utils.py文件</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">将 <span class="hljs-keyword">if</span> cached_x.grad_fn.next_functions[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>].variable <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> x:<br>改为 <span class="hljs-keyword">if</span> cached_x.grad_fn.next_functions[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>].variable <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> x:<br></code></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311051452680.png" srcset="/img/loading.gif" lazyload
-alt="image-20231105145252512" />
-<figcaption aria-hidden="true">image-20231105145252512</figcaption>
-</figure>
-<p>解决方法：首先检查pytorch和CUDA版本是否兼容，其次修改脚本：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-keyword">for</span> seed <span class="hljs-keyword">in</span> 43<br><span class="hljs-keyword">do</span><br>	<span class="hljs-keyword">for</span> Nway <span class="hljs-keyword">in</span> 10<br>	<span class="hljs-keyword">do</span><br>	<span class="hljs-keyword">for</span> Kshot <span class="hljs-keyword">in</span> 1<br>	<span class="hljs-keyword">do</span><br>	<span class="hljs-keyword">for</span> prob <span class="hljs-keyword">in</span>  0.4 <br>	<span class="hljs-keyword">do</span><br>	CUDA_VISIBLE_DEVICES=0 python train_demo.py \<br>	--trainN <span class="hljs-variable">$&#123;Nway&#125;</span> --N <span class="hljs-variable">$&#123;Nway&#125;</span> --K <span class="hljs-variable">$&#123;Kshot&#125;</span> --Q 1 \<br>	--val val_wiki --<span class="hljs-built_in">test</span> val_wiki \<br>	--model proto --encoder bert --hidden_size 768 --val_step 1000 \<br>	--mode CM \<br>  	--batch_size 4 --fp16 \<br>	--seed <span class="hljs-variable">$&#123;seed&#125;</span> \<br>	--path  ./checkpoint/20231103 --save_ckpt ./checkpoint/20231103_finetune  --label_mask_prob <span class="hljs-variable">$&#123;prob&#125;</span><br>	<span class="hljs-keyword">done</span><br>	<span class="hljs-keyword">done</span><br>	<span class="hljs-keyword">done</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -398,7 +321,7 @@ alt="image-20231105145252512" />
     
       <span class="category-chain">
         
-  <a href="/categories/NLP/" class="category-chain-item">NLP</a>
+  <a href="/categories/python/" class="category-chain-item">python</a>
   
   
 
@@ -413,7 +336,7 @@ alt="image-20231105145252512" />
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Few-Shot-Relation-Exaction/">#-Few Shot -Relation Exaction</a>
+        <a href="/tags/%E4%BB%A3%E7%A0%81%E6%8A%80%E8%83%BD/">#代码技能</a>
       
     </div>
   
@@ -425,8 +348,8 @@ alt="image-20231105145252512" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Better Few-Shot Relation Extraction with Label Prompt Dropout</div>
-      <div>http://example.com/2023/10/30/LPD/</div>
+      <div>Python 日志logging</div>
+      <div>http://example.com/2023/11/20/Python-log/</div>
     </div>
     <div class="license-meta">
       
@@ -438,7 +361,7 @@ alt="image-20231105145252512" />
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月30日</div>
+          <div>2023年11月20日</div>
         </div>
       
       
@@ -470,18 +393,12 @@ alt="image-20231105145252512" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/30/min-gifts/" title="从数量最多的堆取走礼物">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">从数量最多的堆取走礼物</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/24/no-repeated-substr/" title="无重复字符的最长子串">
-                        <span class="hidden-mobile">无重复字符的最长子串</span>
+                      <a href="/2023/11/07/FPN/" title="FPN ——特征金字塔">
+                        <span class="hidden-mobile">FPN ——特征金字塔</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
