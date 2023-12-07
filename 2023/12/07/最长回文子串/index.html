@@ -16,24 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Attention机制 一、概述 Attention机制：对于某个时刻的输出y,他在输入x上各个部分上的注意力（也可以称之为权重），即输入x的各部分对某时刻输出y贡献的权重。目的就是让模型更关注需要关注的信息。 二、经典Attention机制 以经典\(Seq2Seq\)翻译模型为例，\(Seq2Seq\)结构包含两个部分：Encoder和Decoder，分别用于对语句进行编码和解码。">
+    <meta name="description" content="最长回文子串 一、题目   image-20231207224707335  二、解法 1、动态规划 根据回文串的定义，回文串的子串也必然是回文串： \[ P(i,j)&#x3D;\begin{cases}\mathrm{truc},如果子串是回文串\\\mathrm{false},其他情况&amp;\end{cases} \] 可以得到回文串的动态规划边界条件： \[ \begin{">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Attention机制">
-<meta property="og:url" content="http://example.com/2023/11/21/attention/index.html">
+<meta property="og:title" content="最长回文子串">
+<meta property="og:url" content="http://example.com/2023/12/07/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="Attention机制 一、概述 Attention机制：对于某个时刻的输出y,他在输入x上各个部分上的注意力（也可以称之为权重），即输入x的各部分对某时刻输出y贡献的权重。目的就是让模型更关注需要关注的信息。 二、经典Attention机制 以经典\(Seq2Seq\)翻译模型为例，\(Seq2Seq\)结构包含两个部分：Encoder和Decoder，分别用于对语句进行编码和解码。">
+<meta property="og:description" content="最长回文子串 一、题目   image-20231207224707335  二、解法 1、动态规划 根据回文串的定义，回文串的子串也必然是回文串： \[ P(i,j)&#x3D;\begin{cases}\mathrm{truc},如果子串是回文串\\\mathrm{false},其他情况&amp;\end{cases} \] 可以得到回文串的动态规划边界条件： \[ \begin{">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211326353.png">
-<meta property="article:published_time" content="2023-11-21T05:38:33.000Z">
-<meta property="article:modified_time" content="2023-11-28T13:21:39.207Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312072247855.png">
+<meta property="article:published_time" content="2023-12-07T15:30:25.000Z">
+<meta property="article:modified_time" content="2023-12-07T15:31:26.641Z">
 <meta property="article:author" content="Z Z">
-<meta property="article:tag" content="经典技术">
+<meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211326353.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312072247855.png">
   
   
   
-  <title>Attention机制 - Zspace</title>
+  <title>最长回文子串 - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Attention机制"></span>
+            <span id="subtitle" data-typed-text="最长回文子串"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-21 13:38" pubdate>
-          2023年11月21日 下午
+        <time datetime="2023-12-07 23:30" pubdate>
+          2023年12月7日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          2k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          22 分钟
+          18 分钟
         
       </span>
     
@@ -271,129 +271,52 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Attention机制</h1>
+            <h1 style="display: none">最长回文子串</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="attention机制">Attention机制</h1>
-<h2 id="一概述">一、概述</h2>
-<p><strong>Attention机制：</strong>对于某个时刻的输出y,他在输入x上各个部分上的注意力（也可以称之为权重），即输入x的各部分对某时刻输出y贡献的权重。目的就是让模型更关注需要关注的信息。</p>
-<h2 id="二经典attention机制">二、经典Attention机制</h2>
-<p>以经典<span class="math inline">\(Seq2Seq\)</span>翻译模型为例，<span
-class="math inline">\(Seq2Seq\)</span>结构包含两个部分：Encoder和Decoder，分别用于对语句进行编码和解码。</p>
+                <h1 id="最长回文子串">最长回文子串</h1>
+<h2 id="一题目">一、题目</h2>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211248592.png" srcset="/img/loading.gif" lazyload
-alt="image-20231121124846555" />
-<figcaption aria-hidden="true">image-20231121124846555</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312072247855.png" srcset="/img/loading.gif" lazyload
+alt="image-20231207224707335" />
+<figcaption aria-hidden="true">image-20231207224707335</figcaption>
 </figure>
-<p>如图所示是生成单词<span
-class="math inline">\(machine\)</span>​的计算方式： <span
+<h2 id="二解法">二、解法</h2>
+<h3 id="动态规划">1、动态规划</h3>
+<p>根据回文串的定义，回文串的子串也必然是回文串： <span
 class="math display">\[
-[a_1,a_2,a_3,a_4]=softmax([s(q_2,h_1),s(q_2,h_2),s(q_2,h_3),s(q_2,h_4)])context\quad=\sum_{i=1}^4a_i\cdot
-h_i
-\]</span> 将前一时刻的输出状态<span
-class="math inline">\(q_2\)</span>和Encoder输出进行Attention计算，得到一个context。其中<span
-class="math inline">\(s(q_i,h_j)\)</span>表示注意力打分函数，表示当前时刻对Encoder结果的关注程度。</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211249783.png" srcset="/img/loading.gif" lazyload
-alt="image-20231121124918750" />
-<figcaption aria-hidden="true">image-20231121124918750</figcaption>
-</figure>
-<p>上图为抽象出的Attention原理图。假设有一组输入<span
-class="math inline">\(H=[h_1,h_2,h_3,\ldots,h_n]\)</span>输入上述流程，需要一个Query向量<span
-class="math inline">\(q\)</span>(这个向量往往和你做的任务有关，比如上述例子中用到的<span
-class="math inline">\(q_2\)</span>)，通过一个打分函数计算Query向量和每个输入<span
-class="math inline">\(h_i\)</span>之间的相关性，得出一个分数并进行softmax归一化，最终得到Query向量<span
-class="math inline">\(q\)</span>在各输入<span
-class="math inline">\(h_i\)</span>上的注意力分布<span
-class="math inline">\(a=[a_1,a_2,a_3,\ldots,a_n]\)</span>。 <span
+P(i,j)=\begin{cases}\mathrm{truc},如果子串是回文串\\\mathrm{false},其他情况&amp;\end{cases}
+\]</span> 可以得到回文串的动态规划边界条件： <span
 class="math display">\[
-a_i=softmax(s(h_i,q))=\frac{exp(s(h_i,q))}{\sum_{j=1}^nexp(s(h_j,q))}
-\]</span>
-最后根据注意力分布有选择的提取输入中的信息。这种方式是一种“soft”的信息提取方式，即根据注意力分布对输入信息进行加权求和，最终得到的context体现了模型当前应该关注的内容：<span
-class="math inline">\(context=\sum_{i=1}^na_i\cdot h_i\)</span></p>
-<p>对于打分函数有以下几种形式：</p>
+\begin{cases}P(i,i)=\text{true}\\P(i,i+1)=(S_i==S_{i+1})\end{cases}
+\]</span> 最终答案即是所有<span
+class="math inline">\(P(i,j)=\text{true}\)</span>中<span
+class="math inline">\(j-i+1\)</span>(子串长度)的最大值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">longestPalindrome</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>        s_length  = <span class="hljs-built_in">len</span>(s)<br><br>        <span class="hljs-keyword">if</span> s_length &lt;<span class="hljs-number">2</span>:<br>            <span class="hljs-keyword">return</span> s<br><br>        max_length = <span class="hljs-number">1</span> <br>        begin = <span class="hljs-number">0</span><br>        dp = [[<span class="hljs-literal">False</span>]*s_length <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(s_length)]<br><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(s_length):<br>            dp[i][i] = <span class="hljs-literal">True</span><br><br>        <span class="hljs-keyword">for</span> L <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>,s_length+<span class="hljs-number">1</span>):<br><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(s_length):<br><br>                j = L + i - <span class="hljs-number">1</span><br><br>                <span class="hljs-keyword">if</span> j &gt;=s_length:<br>                    <span class="hljs-keyword">break</span><br><br>                <span class="hljs-keyword">if</span> s[i] != s[j]:<br>                    dp[i][j] = <span class="hljs-literal">False</span><br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">if</span> j - i&lt;<span class="hljs-number">3</span>:<br>                        dp[i][j] =<span class="hljs-literal">True</span><br>                    <span class="hljs-keyword">else</span>:<br>                        dp[i][j] = dp[i+<span class="hljs-number">1</span>][j-<span class="hljs-number">1</span>]<br><br>                <span class="hljs-keyword">if</span> dp[i][j] <span class="hljs-keyword">and</span> j-i+<span class="hljs-number">1</span> &gt; max_length:<br>                    max_length = j-i+<span class="hljs-number">1</span><br>                    begin = i<br><br>        <span class="hljs-keyword">return</span> s[begin : begin + max_length]<br></code></pre></td></tr></table></figure>
+<h4 id="复杂度">复杂度</h4>
 <ul>
-<li><p>加性模型：<span
-class="math inline">\(s(h,q)=v^Ttanh(Wh+Uq)\)</span></p></li>
-<li><p>点积模型：<span
-class="math inline">\(s(h,q)=h^Tq\)</span>相较于加性模型有更好的计算效率</p></li>
-<li><p>缩放点积模型：<span
-class="math inline">\(s(h,q)=\frac{h^{T}q}{\sqrt{D}}\)</span>当输入维度较高时，相较于点积模型拥有更好的平滑性</p></li>
-<li><p>双线性模型：<span
-class="math inline">\(s(h_i,q)=h^TWq=h^T(U^TV)q=(Uh)^T(Vq)\)</span></p></li>
+<li>时间复杂度：<span class="math inline">\(O(n^2)\)</span></li>
+<li>空间复杂度：<span class="math inline">\(O(n^2)\)</span></li>
 </ul>
-<p>上述公式中的参数（<span
-class="math inline">\(W、U、v\)</span>）均为可学习的参数矩阵或向量，<span
-class="math inline">\(D\)</span>为输入向量的维度。</p>
-<h2 id="三一些变体">三、一些变体</h2>
-<h4 id="hard-attention">Hard Attention</h4>
-<p>该方法时根据注意力分布选择输入向量中的一个作为输入，有两种选择方式：</p>
+<h3 id="中心扩展法">2、中心扩展法</h3>
+<p>该方法可以理解成第一种方法的逆向思维：即以最短的回文串不断左右扩展，找到最长的回文串。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">expandAroundCenter</span>(<span class="hljs-params">self, s, left, right</span>):<br>        <span class="hljs-keyword">while</span> left &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> right &lt; <span class="hljs-built_in">len</span>(s) <span class="hljs-keyword">and</span> s[left] == s[right]:<br>            left -= <span class="hljs-number">1</span><br>            right += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> left + <span class="hljs-number">1</span>, right - <span class="hljs-number">1</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">longestPalindrome</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>        start, end = <span class="hljs-number">0</span>, <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):<br>            left1, right1 = self.expandAroundCenter(s, i, i)<br>            left2, right2 = self.expandAroundCenter(s, i, i + <span class="hljs-number">1</span>)<br>            <span class="hljs-keyword">if</span> right1 - left1 &gt; end - start:<br>                start, end = left1, right1<br>            <span class="hljs-keyword">if</span> right2 - left2 &gt; end - start:<br>                start, end = left2, right2<br>        <span class="hljs-keyword">return</span> s[start: end + <span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure>
+<h4 id="复杂度-1">复杂度</h4>
 <ul>
-<li>选择注意力分布中，分数最大的那一项对应的输入向量作为Attention机制的输出。</li>
-<li>根据注意力分布进行随机采样，采样结果作为Attention机制的输出。</li>
+<li>时间复杂度：<span class="math inline">\(O(n^2)\)</span></li>
+<li>空间复杂度：<span class="math inline">\(O(1)\)</span></li>
 </ul>
-<p>这两种方式的输出会导致损失函数与注意力分布之间的函数关系不可导，无法使用反向传播算法训练模型，该机制通常需要使用强化学习进行训练。</p>
-<h4 id="key-value-pair">key-value pair</h4>
-<p>当输入信息变为<span
-class="math inline">\((K,V)=[(k_1,v_1),(k_2,v_2),\ldots,(k_n,v_n)]\)</span>,这种模式下一般会使用Query向量和相应的键<span
-class="math inline">\(k_i\)</span>进行计算权值<span
-class="math inline">\(a_i\)</span>。</p>
-<h4 id="multi-head-attention">multi-head attention</h4>
-<p>该方法是利用多个Query向量<span
-class="math inline">\(Q=[q_1,q_2,\ldots,q_m]\)</span>,并行地从输入信息<span
-class="math inline">\((K,V)=[(k_1,v_1)，(k_2,v_2),\ldots,(k_n,v_n)]\)</span>中选取多组信息。在查询过程中，每个Query<span
-class="math inline">\(q_i\)</span>​ 将会关注输入信息的不同部分。 <span
-class="math display">\[
-\begin{aligned}
-a_{ij}=softmax(s(k_j,q_i))&amp;
-=\frac{exp(s(k_j,q_i))}{\sum_{t=1}^nexp(s(k_t,q_i))}  \\
-context_i&amp; =\sum_{j=1}^na_{ij}\cdot v_j
-\end{aligned}
-\]</span> <span class="math inline">\(a_{ij}\)</span>表示第<span
-class="math inline">\(i\)</span>个Query向量<span
-class="math inline">\(q_i\)</span>与第<span
-class="math inline">\(j\)</span>个输入信息<span
-class="math inline">\(k_j\)</span>的注意力权重。</p>
-<p>最终将所有Query向量进行拼接作为最终的结果： <span
-class="math display">\[
-context=context_1\oplus context_2\oplus context_3\oplus\ldots\oplus
-context_m
-\]</span></p>
-<h2 id="四self-attention">四、Self-Attention</h2>
-<p>在上述内容中提及的Query向量往往和任务相关，然而在self-attention中，Query向量可以使用输入信息进行生成，相当于模型读取输入信息后，根据信息本身决定当前最重要的信息。</p>
-<p>自注意力机制往往采用<span
-class="math inline">\(Query-Key-Value\)</span>的模型，以BERT中为例：</p>
+<h3 id="manacher暂时没看懂">3、Manacher（暂时没看懂）</h3>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211326353.png" srcset="/img/loading.gif" lazyload
-alt="image-20231121132658310" />
-<figcaption aria-hidden="true">image-20231121132658310</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312072323185.png" srcset="/img/loading.gif" lazyload
+alt="image-20231207232341114" />
+<figcaption aria-hidden="true">image-20231207232341114</figcaption>
 </figure>
-<p>如图所示：输入信息<span
-class="math inline">\(H=[h_1,h_2]\)</span>,蓝色矩阵每行对应一个输入，<span
-class="math inline">\(W_q,W_k,W_v\)</span>​负责将输入信息分别转换到对应的Query空间、Key空间和Value空间：
-<span class="math display">\[
-\begin{gathered}\begin{bmatrix}q_1=h_1W_q\\q_2=h_2W_q\end{bmatrix}\Rightarrow
-Q=HW_q\\\\\begin{bmatrix}k_1=h_1W_k\\k_2=h_2W_k\end{bmatrix}\Rightarrow
-K=HW_k\\\\\begin{bmatrix}v_1=h_1W_v\\v_2=h_2W_v\end{bmatrix}\Rightarrow
-V=HW_v\end{gathered}
-\]</span> 以<span
-class="math inline">\(h_1\)</span>为例，计算该位置上的attention输出向量<span
-class="math inline">\(context_1\)</span>，来展示具体过程（下图流程中分数计算采用的是点积操作。）：</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211332846.png" srcset="/img/loading.gif" lazyload
-alt="image-20231121133227796" />
-<figcaption aria-hidden="true">image-20231121133227796</figcaption>
-</figure>
-<p>根据上图self-attention的输出向量计算过程可以总结成一个经典公式：
-<span class="math display">\[
-context=softmax(\frac{QK^T}{\sqrt{D_k}})V
-\]</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">expand</span>(<span class="hljs-params">self, s, left, right</span>):<br>        <span class="hljs-keyword">while</span> left &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> right &lt; <span class="hljs-built_in">len</span>(s) <span class="hljs-keyword">and</span> s[left] == s[right]:<br>            left -= <span class="hljs-number">1</span><br>            right += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> (right - left - <span class="hljs-number">2</span>) // <span class="hljs-number">2</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">longestPalindrome</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>        end, start = -<span class="hljs-number">1</span>, <span class="hljs-number">0</span><br>        s = <span class="hljs-string">&#x27;#&#x27;</span> + <span class="hljs-string">&#x27;#&#x27;</span>.join(<span class="hljs-built_in">list</span>(s)) + <span class="hljs-string">&#x27;#&#x27;</span><br>        arm_len = []<br>        right = -<span class="hljs-number">1</span><br>        j = -<span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):<br>            <span class="hljs-keyword">if</span> right &gt;= i:<br>                i_sym = <span class="hljs-number">2</span> * j - i<br>                min_arm_len = <span class="hljs-built_in">min</span>(arm_len[i_sym], right - i)<br>                cur_arm_len = self.expand(s, i - min_arm_len, i + min_arm_len)<br>            <span class="hljs-keyword">else</span>:<br>                cur_arm_len = self.expand(s, i, i)<br>            arm_len.append(cur_arm_len)<br>            <span class="hljs-keyword">if</span> i + cur_arm_len &gt; right:<br>                j = i<br>                right = i + cur_arm_len<br>            <span class="hljs-keyword">if</span> <span class="hljs-number">2</span> * cur_arm_len + <span class="hljs-number">1</span> &gt; end - start:<br>                start = i - cur_arm_len<br>                end = i + cur_arm_len<br>        <span class="hljs-keyword">return</span> s[start+<span class="hljs-number">1</span>:end+<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -412,7 +335,7 @@ context=softmax(\frac{QK^T}{\sqrt{D_k}})V
     
       <span class="category-chain">
         
-  <a href="/categories/NLP/" class="category-chain-item">NLP</a>
+  <a href="/categories/offer/" class="category-chain-item">offer</a>
   
   
 
@@ -427,7 +350,7 @@ context=softmax(\frac{QK^T}{\sqrt{D_k}})V
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%BB%8F%E5%85%B8%E6%8A%80%E6%9C%AF/">#经典技术</a>
+        <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
       
     </div>
   
@@ -439,8 +362,8 @@ context=softmax(\frac{QK^T}{\sqrt{D_k}})V
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Attention机制</div>
-      <div>http://example.com/2023/11/21/attention/</div>
+      <div>最长回文子串</div>
+      <div>http://example.com/2023/12/07/最长回文子串/</div>
     </div>
     <div class="license-meta">
       
@@ -452,7 +375,7 @@ context=softmax(\frac{QK^T}{\sqrt{D_k}})V
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月21日</div>
+          <div>2023年12月7日</div>
         </div>
       
       
@@ -484,18 +407,12 @@ context=softmax(\frac{QK^T}{\sqrt{D_k}})V
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/07/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" title="最长回文子串">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">最长回文子串</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/20/Python-log/" title="Python 日志logging">
-                        <span class="hidden-mobile">Python 日志logging</span>
+                      <a href="/2023/11/21/attention/" title="Attention机制">
+                        <span class="hidden-mobile">Attention机制</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
