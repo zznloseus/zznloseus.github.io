@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>整数反转</title>
+    <link href="/2023/12/18/%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/"/>
+    <url>/2023/12/18/%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/</url>
+    
+    <content type="html"><![CDATA[<h1 id="整数反转">整数反转</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312181014596.png"alt="image-20231218101425194" /><figcaption aria-hidden="true">image-20231218101425194</figcaption></figure><h2 id="题解">2、题解</h2><h3id="思路1直接将int类型转换成str类型进行反转">思路1：直接将int类型转换成str类型进行反转</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">reverse</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">if</span> -<span class="hljs-number">10</span>&lt;x&lt;<span class="hljs-number">10</span>:<br>            <span class="hljs-keyword">return</span> x<br>        str_x = <span class="hljs-built_in">str</span>(x)<br><br>        <span class="hljs-keyword">if</span> str_x[<span class="hljs-number">0</span>] != <span class="hljs-string">&quot;-&quot;</span>:<br>            str_x = str_x[::-<span class="hljs-number">1</span>]<br>            x = <span class="hljs-built_in">int</span>(str_x)<br>        <span class="hljs-keyword">else</span>:<br>            str_x = str_x[:<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]<br>            x = <span class="hljs-built_in">int</span>(str_x)<br>            x = -x<br>        <br>        <span class="hljs-keyword">return</span> x <span class="hljs-keyword">if</span> -(<span class="hljs-number">2</span>**<span class="hljs-number">31</span>)&lt;x&lt;((<span class="hljs-number">2</span>**<span class="hljs-number">31</span>) -<span class="hljs-number">1</span>) <span class="hljs-keyword">else</span> <span class="hljs-number">0</span><br>            <br></code></pre></td></tr></table></figure><h3id="思路2将x的值不断模10得到的数字加到res中实现反转">思路2：将x的值不断模10，得到的数字加到res中实现反转</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">reverse</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        y, res = <span class="hljs-built_in">abs</span>(x), <span class="hljs-number">0</span><br>        <span class="hljs-comment"># 则其数值范围为 [−2^31,  2^31 − 1]</span><br>        boundry = (<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">31</span>) -<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> x&gt;<span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">31</span><br>        <span class="hljs-keyword">while</span> y != <span class="hljs-number">0</span>:<br>            res = res*<span class="hljs-number">10</span> +y%<span class="hljs-number">10</span><br>            <span class="hljs-keyword">if</span> res &gt; boundry :<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>            y //=<span class="hljs-number">10</span><br>        <span class="hljs-keyword">return</span> res <span class="hljs-keyword">if</span> x &gt;<span class="hljs-number">0</span> <span class="hljs-keyword">else</span> -res<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>offer</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>N字形变换</title>
+    <link href="/2023/12/13/N%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/"/>
+    <url>/2023/12/13/N%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="n字形变换">N字形变换</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312131031946.png"alt="image-20231213102851790" /><figcaption aria-hidden="true">image-20231213102851790</figcaption></figure><h2 id="题解">2、题解</h2><p>给定了输入字符串和要求行数，我们可以设定一个<spanclass="math inline">\(flag=1\)</span>，当到达转折点时对<spanclass="math inline">\(flag\)</span>进行取反，实现<spanclass="math inline">\(N\)</span>形存储。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">convert</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, numRows: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>        <span class="hljs-keyword">if</span> numRows &lt; <span class="hljs-number">2</span>: <span class="hljs-keyword">return</span> s<br>        res = [<span class="hljs-string">&quot;&quot;</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(numRows)]<br>        i, flag = <span class="hljs-number">0</span>, -<span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s:<br>            res[i] += c<br>            <span class="hljs-keyword">if</span> i == <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> i == numRows - <span class="hljs-number">1</span>: flag = -flag<br>            i += flag<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join(res)<br></code></pre></td></tr></table></figure><h4 id="复杂度分析">复杂度分析：</h4><ul><li><strong>时间复杂度 O(N)</strong> ：遍历一遍字符串 <spanclass="math inline">\(s\)</span>；</li><li><strong>空间复杂度 O(N) </strong>：各行字符串共占用 <spanclass="math inline">\(O(N)\)</span> 额外空间。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>offer</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>最长回文子串</title>
     <link href="/2023/12/07/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/"/>
     <url>/2023/12/07/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/</url>

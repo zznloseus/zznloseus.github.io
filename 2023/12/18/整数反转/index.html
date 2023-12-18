@@ -16,24 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="最长回文子串 一、题目   image-20231207224707335  二、解法 1、动态规划 根据回文串的定义，回文串的子串也必然是回文串： \[ P(i,j)&#x3D;\begin{cases}\mathrm{truc},如果子串是回文串\\\mathrm{false},其他情况&amp;\end{cases} \] 可以得到回文串的动态规划边界条件： \[ \begin{">
+    <meta name="description" content="整数反转 1、题目   image-20231218101425194  2、题解 思路1：直接将int类型转换成str类型进行反转 12345678910111213141516class Solution:    def reverse(self, x: int) -&gt; int:        if -10&lt;x&lt;10:            return x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最长回文子串">
-<meta property="og:url" content="http://example.com/2023/12/07/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/index.html">
+<meta property="og:title" content="整数反转">
+<meta property="og:url" content="http://example.com/2023/12/18/%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="最长回文子串 一、题目   image-20231207224707335  二、解法 1、动态规划 根据回文串的定义，回文串的子串也必然是回文串： \[ P(i,j)&#x3D;\begin{cases}\mathrm{truc},如果子串是回文串\\\mathrm{false},其他情况&amp;\end{cases} \] 可以得到回文串的动态规划边界条件： \[ \begin{">
+<meta property="og:description" content="整数反转 1、题目   image-20231218101425194  2、题解 思路1：直接将int类型转换成str类型进行反转 12345678910111213141516class Solution:    def reverse(self, x: int) -&gt; int:        if -10&lt;x&lt;10:            return x">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312072247855.png">
-<meta property="article:published_time" content="2023-12-07T15:30:25.000Z">
-<meta property="article:modified_time" content="2023-12-07T15:31:26.641Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312181014596.png">
+<meta property="article:published_time" content="2023-12-18T02:22:49.000Z">
+<meta property="article:modified_time" content="2023-12-18T02:23:23.510Z">
 <meta property="article:author" content="Z Z">
 <meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312072247855.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312181014596.png">
   
   
   
-  <title>最长回文子串 - Zspace</title>
+  <title>整数反转 - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="最长回文子串"></span>
+            <span id="subtitle" data-typed-text="整数反转"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-07 23:30" pubdate>
-          2023年12月7日 晚上
+        <time datetime="2023-12-18 10:22" pubdate>
+          2023年12月18日 上午
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          548 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          18 分钟
+          5 分钟
         
       </span>
     
@@ -271,52 +271,26 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">最长回文子串</h1>
+            <h1 style="display: none">整数反转</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="最长回文子串">最长回文子串</h1>
-<h2 id="一题目">一、题目</h2>
+                <h1 id="整数反转">整数反转</h1>
+<h2 id="题目">1、题目</h2>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312072247855.png" srcset="/img/loading.gif" lazyload
-alt="image-20231207224707335" />
-<figcaption aria-hidden="true">image-20231207224707335</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312181014596.png" srcset="/img/loading.gif" lazyload
+alt="image-20231218101425194" />
+<figcaption aria-hidden="true">image-20231218101425194</figcaption>
 </figure>
-<h2 id="二解法">二、解法</h2>
-<h3 id="动态规划">1、动态规划</h3>
-<p>根据回文串的定义，回文串的子串也必然是回文串： <span
-class="math display">\[
-P(i,j)=\begin{cases}\mathrm{truc},如果子串是回文串\\\mathrm{false},其他情况&amp;\end{cases}
-\]</span> 可以得到回文串的动态规划边界条件： <span
-class="math display">\[
-\begin{cases}P(i,i)=\text{true}\\P(i,i+1)=(S_i==S_{i+1})\end{cases}
-\]</span> 最终答案即是所有<span
-class="math inline">\(P(i,j)=\text{true}\)</span>中<span
-class="math inline">\(j-i+1\)</span>(子串长度)的最大值。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">longestPalindrome</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>        s_length  = <span class="hljs-built_in">len</span>(s)<br><br>        <span class="hljs-keyword">if</span> s_length &lt;<span class="hljs-number">2</span>:<br>            <span class="hljs-keyword">return</span> s<br><br>        max_length = <span class="hljs-number">1</span> <br>        begin = <span class="hljs-number">0</span><br>        dp = [[<span class="hljs-literal">False</span>]*s_length <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(s_length)]<br><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(s_length):<br>            dp[i][i] = <span class="hljs-literal">True</span><br><br>        <span class="hljs-keyword">for</span> L <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>,s_length+<span class="hljs-number">1</span>):<br><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(s_length):<br><br>                j = L + i - <span class="hljs-number">1</span><br><br>                <span class="hljs-keyword">if</span> j &gt;=s_length:<br>                    <span class="hljs-keyword">break</span><br><br>                <span class="hljs-keyword">if</span> s[i] != s[j]:<br>                    dp[i][j] = <span class="hljs-literal">False</span><br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">if</span> j - i&lt;<span class="hljs-number">3</span>:<br>                        dp[i][j] =<span class="hljs-literal">True</span><br>                    <span class="hljs-keyword">else</span>:<br>                        dp[i][j] = dp[i+<span class="hljs-number">1</span>][j-<span class="hljs-number">1</span>]<br><br>                <span class="hljs-keyword">if</span> dp[i][j] <span class="hljs-keyword">and</span> j-i+<span class="hljs-number">1</span> &gt; max_length:<br>                    max_length = j-i+<span class="hljs-number">1</span><br>                    begin = i<br><br>        <span class="hljs-keyword">return</span> s[begin : begin + max_length]<br></code></pre></td></tr></table></figure>
-<h4 id="复杂度">复杂度</h4>
-<ul>
-<li>时间复杂度：<span class="math inline">\(O(n^2)\)</span></li>
-<li>空间复杂度：<span class="math inline">\(O(n^2)\)</span></li>
-</ul>
-<h3 id="中心扩展法">2、中心扩展法</h3>
-<p>该方法可以理解成第一种方法的逆向思维：即以最短的回文串不断左右扩展，找到最长的回文串。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">expandAroundCenter</span>(<span class="hljs-params">self, s, left, right</span>):<br>        <span class="hljs-keyword">while</span> left &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> right &lt; <span class="hljs-built_in">len</span>(s) <span class="hljs-keyword">and</span> s[left] == s[right]:<br>            left -= <span class="hljs-number">1</span><br>            right += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> left + <span class="hljs-number">1</span>, right - <span class="hljs-number">1</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">longestPalindrome</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>        start, end = <span class="hljs-number">0</span>, <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):<br>            left1, right1 = self.expandAroundCenter(s, i, i)<br>            left2, right2 = self.expandAroundCenter(s, i, i + <span class="hljs-number">1</span>)<br>            <span class="hljs-keyword">if</span> right1 - left1 &gt; end - start:<br>                start, end = left1, right1<br>            <span class="hljs-keyword">if</span> right2 - left2 &gt; end - start:<br>                start, end = left2, right2<br>        <span class="hljs-keyword">return</span> s[start: end + <span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure>
-<h4 id="复杂度-1">复杂度</h4>
-<ul>
-<li>时间复杂度：<span class="math inline">\(O(n^2)\)</span></li>
-<li>空间复杂度：<span class="math inline">\(O(1)\)</span></li>
-</ul>
-<h3 id="manacher暂时没看懂">3、Manacher（暂时没看懂）</h3>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312072323185.png" srcset="/img/loading.gif" lazyload
-alt="image-20231207232341114" />
-<figcaption aria-hidden="true">image-20231207232341114</figcaption>
-</figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">expand</span>(<span class="hljs-params">self, s, left, right</span>):<br>        <span class="hljs-keyword">while</span> left &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> right &lt; <span class="hljs-built_in">len</span>(s) <span class="hljs-keyword">and</span> s[left] == s[right]:<br>            left -= <span class="hljs-number">1</span><br>            right += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> (right - left - <span class="hljs-number">2</span>) // <span class="hljs-number">2</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">longestPalindrome</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>        end, start = -<span class="hljs-number">1</span>, <span class="hljs-number">0</span><br>        s = <span class="hljs-string">&#x27;#&#x27;</span> + <span class="hljs-string">&#x27;#&#x27;</span>.join(<span class="hljs-built_in">list</span>(s)) + <span class="hljs-string">&#x27;#&#x27;</span><br>        arm_len = []<br>        right = -<span class="hljs-number">1</span><br>        j = -<span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):<br>            <span class="hljs-keyword">if</span> right &gt;= i:<br>                i_sym = <span class="hljs-number">2</span> * j - i<br>                min_arm_len = <span class="hljs-built_in">min</span>(arm_len[i_sym], right - i)<br>                cur_arm_len = self.expand(s, i - min_arm_len, i + min_arm_len)<br>            <span class="hljs-keyword">else</span>:<br>                cur_arm_len = self.expand(s, i, i)<br>            arm_len.append(cur_arm_len)<br>            <span class="hljs-keyword">if</span> i + cur_arm_len &gt; right:<br>                j = i<br>                right = i + cur_arm_len<br>            <span class="hljs-keyword">if</span> <span class="hljs-number">2</span> * cur_arm_len + <span class="hljs-number">1</span> &gt; end - start:<br>                start = i - cur_arm_len<br>                end = i + cur_arm_len<br>        <span class="hljs-keyword">return</span> s[start+<span class="hljs-number">1</span>:end+<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]<br></code></pre></td></tr></table></figure>
+<h2 id="题解">2、题解</h2>
+<h3
+id="思路1直接将int类型转换成str类型进行反转">思路1：直接将int类型转换成str类型进行反转</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">reverse</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">if</span> -<span class="hljs-number">10</span>&lt;x&lt;<span class="hljs-number">10</span>:<br>            <span class="hljs-keyword">return</span> x<br>        str_x = <span class="hljs-built_in">str</span>(x)<br><br>        <span class="hljs-keyword">if</span> str_x[<span class="hljs-number">0</span>] != <span class="hljs-string">&quot;-&quot;</span>:<br>            str_x = str_x[::-<span class="hljs-number">1</span>]<br>            x = <span class="hljs-built_in">int</span>(str_x)<br>        <span class="hljs-keyword">else</span>:<br>            str_x = str_x[:<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]<br>            x = <span class="hljs-built_in">int</span>(str_x)<br>            x = -x<br>        <br>        <span class="hljs-keyword">return</span> x <span class="hljs-keyword">if</span> -(<span class="hljs-number">2</span>**<span class="hljs-number">31</span>)&lt;x&lt;((<span class="hljs-number">2</span>**<span class="hljs-number">31</span>) -<span class="hljs-number">1</span>) <span class="hljs-keyword">else</span> <span class="hljs-number">0</span><br>            <br></code></pre></td></tr></table></figure>
+<h3
+id="思路2将x的值不断模10得到的数字加到res中实现反转">思路2：将x的值不断模10，得到的数字加到res中实现反转</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">reverse</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        y, res = <span class="hljs-built_in">abs</span>(x), <span class="hljs-number">0</span><br>        <span class="hljs-comment"># 则其数值范围为 [−2^31,  2^31 − 1]</span><br>        boundry = (<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">31</span>) -<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> x&gt;<span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">31</span><br>        <span class="hljs-keyword">while</span> y != <span class="hljs-number">0</span>:<br>            res = res*<span class="hljs-number">10</span> +y%<span class="hljs-number">10</span><br>            <span class="hljs-keyword">if</span> res &gt; boundry :<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>            y //=<span class="hljs-number">10</span><br>        <span class="hljs-keyword">return</span> res <span class="hljs-keyword">if</span> x &gt;<span class="hljs-number">0</span> <span class="hljs-keyword">else</span> -res<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -362,8 +336,8 @@ alt="image-20231207232341114" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>最长回文子串</div>
-      <div>http://example.com/2023/12/07/最长回文子串/</div>
+      <div>整数反转</div>
+      <div>http://example.com/2023/12/18/整数反转/</div>
     </div>
     <div class="license-meta">
       
@@ -375,7 +349,7 @@ alt="image-20231207232341114" />
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月7日</div>
+          <div>2023年12月18日</div>
         </div>
       
       
@@ -407,18 +381,12 @@ alt="image-20231207232341114" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/13/N%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/" title="N字形变换">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">N字形变换</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/21/attention/" title="Attention机制">
-                        <span class="hidden-mobile">Attention机制</span>
+                      <a href="/2023/12/13/N%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/" title="N字形变换">
+                        <span class="hidden-mobile">N字形变换</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
