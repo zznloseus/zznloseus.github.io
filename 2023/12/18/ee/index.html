@@ -16,24 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="整数反转 1、题目   image-20231218101425194  2、题解 思路1：直接将int类型转换成str类型进行反转 12345678910111213141516class Solution:    def reverse(self, x: int) -&gt; int:        if -10&lt;x&lt;10:            return x">
+    <meta name="description" content="Enhancing Document-level Event Argument Extraction with Contextual Clues and Role Relevance 论文链接：2023.findings-acl.817.pdf (aclanthology.org) 源码链接：LWL-cpu&#x2F;SCPRG-master: The code implement of &quot;En">
 <meta property="og:type" content="article">
-<meta property="og:title" content="整数反转">
-<meta property="og:url" content="http://example.com/2023/12/18/%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/index.html">
+<meta property="og:title" content="Enhancing Document-level Event Argument Extraction with Contextual Clues and Role Relevance">
+<meta property="og:url" content="http://example.com/2023/12/18/ee/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="整数反转 1、题目   image-20231218101425194  2、题解 思路1：直接将int类型转换成str类型进行反转 12345678910111213141516class Solution:    def reverse(self, x: int) -&gt; int:        if -10&lt;x&lt;10:            return x">
+<meta property="og:description" content="Enhancing Document-level Event Argument Extraction with Contextual Clues and Role Relevance 论文链接：2023.findings-acl.817.pdf (aclanthology.org) 源码链接：LWL-cpu&#x2F;SCPRG-master: The code implement of &quot;En">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312181014596.png">
-<meta property="article:published_time" content="2023-12-18T02:22:49.000Z">
-<meta property="article:modified_time" content="2023-12-18T02:23:23.510Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312181050055.png">
+<meta property="article:published_time" content="2023-12-18T10:46:44.000Z">
+<meta property="article:modified_time" content="2023-12-18T10:48:03.263Z">
 <meta property="article:author" content="Z Z">
-<meta property="article:tag" content="实习">
+<meta property="article:tag" content="事件抽取">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312181014596.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312181050055.png">
   
   
   
-  <title>整数反转 - Zspace</title>
+  <title>Enhancing Document-level Event Argument Extraction with Contextual Clues and Role Relevance - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="整数反转"></span>
+            <span id="subtitle" data-typed-text="Enhancing Document-level Event Argument Extraction with Contextual Clues and Role Relevance"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-18 10:22" pubdate>
-          2023年12月18日 上午
+        <time datetime="2023-12-18 18:46" pubdate>
+          2023年12月18日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          548 字
+          3.9k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          5 分钟
+          33 分钟
         
       </span>
     
@@ -271,26 +271,129 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">整数反转</h1>
+            <h1 style="display: none">Enhancing Document-level Event Argument Extraction with Contextual Clues and Role Relevance</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="整数反转">整数反转</h1>
-<h2 id="题目">1、题目</h2>
+                <h1
+id="enhancing-document-level-event-argument-extraction-with-contextual-clues-and-role-relevance">Enhancing
+Document-level Event Argument Extraction with Contextual Clues and Role
+Relevance</h1>
+<p>论文链接：<a
+target="_blank" rel="noopener" href="https://aclanthology.org/2023.findings-acl.817.pdf">2023.findings-acl.817.pdf
+(aclanthology.org)</a></p>
+<p>源码链接：<a
+target="_blank" rel="noopener" href="https://github.com/LWL-cpu/SCPRG-master">LWL-cpu/SCPRG-master: The
+code implement of "Enhancing Document-level Event Argument Extraction
+with Contextual Clues and Role Relevance" in the findings of ACL 2023.
+(github.com)</a></p>
+<h2 id="任务定义">任务定义</h2>
+<p>给定一个包含N个单词的文档<span
+class="math inline">\(\mathcal{D}=\{w_{1},w_{2},...,w_{N}\}\)</span>、预定义事件类型集<span
+class="math inline">\(\mathcal{E}\)</span>、对应的角色集<span
+class="math inline">\(\mathcal{R_e}\)</span>以及每个事件的触发器<span
+class="math inline">\(\mathcal{t}\)</span>。本任务旨在预测文档<span
+class="math inline">\(\mathcal{D}\)</span>中每个事件的所有<span
+class="math inline">\((r,s)\)</span>对，<span
+class="math inline">\(r\in\mathcal{R}_{e}\)</span>是事件<span
+class="math inline">\(e\in\mathcal{E}\)</span>的一个参数角色，<span
+class="math inline">\(s\in\mathcal{D}\)</span>是<span
+class="math inline">\(\mathcal{D}\)</span>中的一个连续文本跨度。</p>
+<h2 id="模型构建">模型构建</h2>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312181014596.png" srcset="/img/loading.gif" lazyload
-alt="image-20231218101425194" />
-<figcaption aria-hidden="true">image-20231218101425194</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312181050055.png" srcset="/img/loading.gif" lazyload
+alt="image-20231218104728546" />
+<figcaption aria-hidden="true">image-20231218104728546</figcaption>
 </figure>
-<h2 id="题解">2、题解</h2>
-<h3
-id="思路1直接将int类型转换成str类型进行反转">思路1：直接将int类型转换成str类型进行反转</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">reverse</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">if</span> -<span class="hljs-number">10</span>&lt;x&lt;<span class="hljs-number">10</span>:<br>            <span class="hljs-keyword">return</span> x<br>        str_x = <span class="hljs-built_in">str</span>(x)<br><br>        <span class="hljs-keyword">if</span> str_x[<span class="hljs-number">0</span>] != <span class="hljs-string">&quot;-&quot;</span>:<br>            str_x = str_x[::-<span class="hljs-number">1</span>]<br>            x = <span class="hljs-built_in">int</span>(str_x)<br>        <span class="hljs-keyword">else</span>:<br>            str_x = str_x[:<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]<br>            x = <span class="hljs-built_in">int</span>(str_x)<br>            x = -x<br>        <br>        <span class="hljs-keyword">return</span> x <span class="hljs-keyword">if</span> -(<span class="hljs-number">2</span>**<span class="hljs-number">31</span>)&lt;x&lt;((<span class="hljs-number">2</span>**<span class="hljs-number">31</span>) -<span class="hljs-number">1</span>) <span class="hljs-keyword">else</span> <span class="hljs-number">0</span><br>            <br></code></pre></td></tr></table></figure>
-<h3
-id="思路2将x的值不断模10得到的数字加到res中实现反转">思路2：将x的值不断模10，得到的数字加到res中实现反转</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">reverse</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        y, res = <span class="hljs-built_in">abs</span>(x), <span class="hljs-number">0</span><br>        <span class="hljs-comment"># 则其数值范围为 [−2^31,  2^31 − 1]</span><br>        boundry = (<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">31</span>) -<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> x&gt;<span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">31</span><br>        <span class="hljs-keyword">while</span> y != <span class="hljs-number">0</span>:<br>            res = res*<span class="hljs-number">10</span> +y%<span class="hljs-number">10</span><br>            <span class="hljs-keyword">if</span> res &gt; boundry :<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>            y //=<span class="hljs-number">10</span><br>        <span class="hljs-keyword">return</span> res <span class="hljs-keyword">if</span> x &gt;<span class="hljs-number">0</span> <span class="hljs-keyword">else</span> -res<br></code></pre></td></tr></table></figure>
+<h4 id="input">input</h4>
+<p>本文在embedding的过程中，对于事件信息和角色信息前后加入特殊token来标记特殊信息。</p>
+<h4 id="role-interactive-encoding">Role-interactive Encoding</h4>
+<p>对输入内容进行编码后分别得到事件表示<span
+class="math inline">\(\mathbf{H}^e\in\mathbb{R}^{l_w\times
+d}\)</span>、上下文表示<span
+class="math inline">\(\mathbf{H}^w\in\mathbb{R}^{l_w\times
+d}\)</span>以及角色表示<span
+class="math inline">\(\mathbf{H}^r\in\mathbb{R}^{l_w\times
+d}\)</span>,<span
+class="math inline">\(l_w\)</span>为词块列表的长度，<span
+class="math inline">\(l_r\)</span>为角色列表的长度。对于大于512的输入序列，本文用动态窗口对序列进行编码，对于不同窗口的重叠标记embedding进行平均，获得最终表示。本文的编码方式旨在获取语义相关性并适应目标事件和上下文。</p>
+<h4 id="span-trigger-based-contextual-pooling">Span-Trigger-based
+Contextual Pooling</h4>
+<p>获取pre-trained
+model中的最后一个transformers层的token-level上下文信息的attention heads
+矩阵：<span class="math inline">\(\mathbf{A}^w\in\mathbb{R}^{H\times
+l_w\times l_w}\)</span>，
+一定范围内中每个候选span的上下文attention可以通过average
+pooling计算得到：<span
+class="math inline">\(\mathbf{A}_{i:j}^C=\frac{1}{H(j-i+1)}\sum_{h=1}^H\sum_{m=i}^j\mathbf{A}_{h,m}^w\)</span>.对于span-trigger对<span
+class="math inline">\((s_{i:j},t)\)</span>​，将注意力相乘后归一化得到上下文中线索信息的相关性矩阵:
+<span class="math display">\[
+\begin{aligned}\mathbf{p}_{i:j}^c&amp;=softmax(\mathbf{A}_{i:j}^C\cdot\mathbf{A}_t^C),\\\mathbf{c}^{s_{i:j}}&amp;=\mathbf{H}^w\mathbf{p}_{i:j}^c,\end{aligned}
+\]</span></p>
+<h4 id="role-based-latent-information-guidance">Role-based Latent
+Information Guidance</h4>
+<p>与上述模块类似，获取pre-trained model
+中最后一个transformers层的角色信息的attention head矩阵<span
+class="math inline">\(\mathbf{A}^r\in\mathbb{R}^{H\times l_w\times
+l_w}\)</span>​,可以计算得到潜在角色信息的相关性矩阵： <span
+class="math display">\[
+\begin{gathered}
+\mathbf{A}_{i:j}^{R}=\frac{1}{H(j-i+1)}\sum_{h=1}^{H}\sum_{m=i}^{j}\mathbf{A}_{h,m}^{r},
+\\
+\mathbf{p}_{i:j}^{r}=softmax(\mathbf{A}_{i:j}^{R}\cdot\mathbf{A}_{t}^{R}),
+\\
+\mathbf{r}^{s_{i:j}}=\mathbf{H}^{r}\mathbf{p}_{i:j}^{r},
+\end{gathered}
+\]</span> 对于一个候选span，将average
+pooling、上下文中的线索信息以及潜在角色信息进行融合： <span
+class="math display">\[
+\mathbf{s}_{i:j}=tanh(\mathbf{W}_1[\frac{1}{j-i+1}\sum_{k=i}^j\mathbf{h}_k^w;\mathbf{c}^{s_{i:j}};\mathbf{r}^{s_{i:j}}]),
+\]</span> <span
+class="math inline">\(\mathbf{W}_1\in\mathbb{R}^{3d\times
+d}\)</span>为可学习参数，之后的<span
+class="math inline">\(W\)</span>均为可学习参数。</p>
+<h4 id="classification-module">Classification Module</h4>
+<p>Boundary loss：</p>
+<p>由于前面的工作是在span层面提取参数，可能对于边界的限定是模糊的，因此在该模块使用全连接神经网络构造起点和终点来强化span的范围表示：<span
+class="math inline">\(\mathbf{H}^{start}=\mathbf{W}^{start}\mathbf{H}^{s},\mathbf{H}^{end}=\mathbf{W}^{end}\mathbf{H}^{s}\)</span>,<span
+class="math inline">\(H^s\)</span>是输入序列的隐藏表示。在该基础上，将上下文和角色信息与基于span-trigger的上下文pooling相结合，增强开始和结束的表示：
+<span class="math display">\[
+\begin{gathered}
+\mathbf{z}_{i:j}^{start}=\mathbf{H}^{start}\mathbf{p}_{i:j}, \\
+\mathbf{z}_{i:j}^{end}=\mathbf{H}^{end}\mathbf{p}_{i:j}, \\
+\mathbf{h}_{i:j}^{start}=tanh(\mathbf{W}_{2}[\mathbf{h}_{i}^{start};\mathbf{z}_{i:j}^{start}]),
+\\
+\mathbf{h}_{i:j}^{end}=tanh(\mathbf{W}_{3}[\mathbf{h}_{j}^{end};\mathbf{z}_{i:j}^{end}]),
+\end{gathered}
+\]</span> <span class="math inline">\(h_i\)</span>表示<span
+class="math inline">\(H\)</span>的第i个向量。</p>
+<p>通过上述处理后可以得到span的最终表示：$_{i:j}=^{s}[_{i:j}<sup>{start};<em>{i:j};</em>{i:j}</sup>{end}]
+$</p>
+<p>boundary loss可以表示为： <span class="math display">\[
+\begin{aligned}\mathcal{L}_b&amp;=-\sum_{i=1}^{|\mathcal{D}|}[y_i^s\log
+P_i^s+(1-y_i^s)\log(1-P_i^s)+y_i^e\log
+P_i^e+(1-y_i^e)\log(1-P_i^e)]\end{aligned}
+\]</span> <span
+class="math inline">\(y_i^{s}、y_i^{e}\)</span>表示真实的labels，<span
+class="math inline">\(P_i^{s}=sigmoid(\mathbf{W}_{4}\mathbf{h}_{i}^{start})、P_i^{e}=sigmoid(\mathbf{W}_{5}\mathbf{h}_{i}^{end})\)</span>代表单词<span
+class="math inline">\(w_i\)</span>被预测为真实参数span的第一个、最后一个词的概率。</p>
+<p>Classification Loss ：</p>
+<p>本文将事件e中的候选span<span
+class="math inline">\(\widetilde{\mathbf{s}}_{i:j}\)</span>、trigger表示<span
+class="math inline">\(h_t\)</span>​、二者差的绝对值、两个矩阵对应元素相乘得到的矩阵、事件类型的embedding以及span长度的embedding
+concatenate起来，通过一个前向传播网络，得到预测值： <span
+class="math display">\[
+\begin{aligned}\mathbf{I}_{i:j}&amp;=[\widetilde{\mathbf{s}}_{i:j};\mathbf{h}_t;|\mathbf{h}_t-\widetilde{\mathbf{s}}_{i:j}|;\mathbf{h}_t\odot\widetilde{\mathbf{s}}_{i:j};\mathbf{H}^e;\mathbf{E}_{len}],\\\\&amp;P(r_{i:j})=\mathrm{FFN}(\mathbf{I}_{i:j})\end{aligned}
+\]</span>
+由于大多数候选参数是负样本以及不符合事件类型的角色分布，本文采用focal
+loss来让模型更加关注有用的正样本： <span class="math display">\[
+\begin{aligned}\mathcal{L}_{c}&amp;=-\sum_{i=1}^{|\mathcal{D}|}\sum_{j=1}^{|\mathcal{D}|}\alpha[1-P(r_{i:j}=y_{i:j}))]^{\gamma}\cdot\log
+P(r_{i:j}=y_{i:j})\end{aligned}
+\]</span> <span class="math inline">\(α、γ\)</span>都是超参数</p>
+<p>最后总loss：<span
+class="math inline">\(\mathcal{L}=\mathcal{L}_{c}+\lambda\mathcal{L}_{b}.\)</span></p>
 
                 
               </div>
@@ -309,7 +412,7 @@ id="思路2将x的值不断模10得到的数字加到res中实现反转">思路2
     
       <span class="category-chain">
         
-  <a href="/categories/offer/" class="category-chain-item">offer</a>
+  <a href="/categories/NLP/" class="category-chain-item">NLP</a>
   
   
 
@@ -324,7 +427,7 @@ id="思路2将x的值不断模10得到的数字加到res中实现反转">思路2
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
+        <a href="/tags/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96/">#事件抽取</a>
       
     </div>
   
@@ -336,8 +439,8 @@ id="思路2将x的值不断模10得到的数字加到res中实现反转">思路2
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>整数反转</div>
-      <div>http://example.com/2023/12/18/整数反转/</div>
+      <div>Enhancing Document-level Event Argument Extraction with Contextual Clues and Role Relevance</div>
+      <div>http://example.com/2023/12/18/ee/</div>
     </div>
     <div class="license-meta">
       
@@ -381,18 +484,12 @@ id="思路2将x的值不断模10得到的数字加到res中实现反转">思路2
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/18/ee/" title="Enhancing Document-level Event Argument Extraction with Contextual Clues and Role Relevance">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Enhancing Document-level Event Argument Extraction with Contextual Clues and Role Relevance</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/13/N%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/" title="N字形变换">
-                        <span class="hidden-mobile">N字形变换</span>
+                      <a href="/2023/12/18/%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/" title="整数反转">
+                        <span class="hidden-mobile">整数反转</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
