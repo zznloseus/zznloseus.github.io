@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312181050055.png">
 <meta property="article:published_time" content="2023-12-18T10:46:44.000Z">
-<meta property="article:modified_time" content="2023-12-18T10:48:03.263Z">
+<meta property="article:modified_time" content="2023-12-28T11:32:42.281Z">
 <meta property="article:author" content="Z Z">
 <meta property="article:tag" content="事件抽取">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.9k 字
+          4k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          33 分钟
+          34 分钟
         
       </span>
     
@@ -324,11 +324,11 @@ Contextual Pooling</h4>
 <p>获取pre-trained
 model中的最后一个transformers层的token-level上下文信息的attention heads
 矩阵：<span class="math inline">\(\mathbf{A}^w\in\mathbb{R}^{H\times
-l_w\times l_w}\)</span>，
-一定范围内中每个候选span的上下文attention可以通过average
-pooling计算得到：<span
+l_w\times
+l_w}\)</span>,一定范围内中每个候选span的上下文attention可以通过average
+pooling计算得到:<span
 class="math inline">\(\mathbf{A}_{i:j}^C=\frac{1}{H(j-i+1)}\sum_{h=1}^H\sum_{m=i}^j\mathbf{A}_{h,m}^w\)</span>.对于span-trigger对<span
-class="math inline">\((s_{i:j},t)\)</span>​，将注意力相乘后归一化得到上下文中线索信息的相关性矩阵:
+class="math inline">\((s_{i:j},t)\)</span>​,将注意力相乘后归一化得到上下文中线索信息的相关性矩阵:
 <span class="math display">\[
 \begin{aligned}\mathbf{p}_{i:j}^c&amp;=softmax(\mathbf{A}_{i:j}^C\cdot\mathbf{A}_t^C),\\\mathbf{c}^{s_{i:j}}&amp;=\mathbf{H}^w\mathbf{p}_{i:j}^c,\end{aligned}
 \]</span></p>
@@ -347,7 +347,7 @@ class="math display">\[
 \mathbf{r}^{s_{i:j}}=\mathbf{H}^{r}\mathbf{p}_{i:j}^{r},
 \end{gathered}
 \]</span> 对于一个候选span，将average
-pooling、上下文中的线索信息以及潜在角色信息进行融合： <span
+pooling、上下文中的线索信息以及潜在角色信息进行融合: <span
 class="math display">\[
 \mathbf{s}_{i:j}=tanh(\mathbf{W}_1[\frac{1}{j-i+1}\sum_{k=i}^j\mathbf{h}_k^w;\mathbf{c}^{s_{i:j}};\mathbf{r}^{s_{i:j}}]),
 \]</span> <span
@@ -355,10 +355,10 @@ class="math inline">\(\mathbf{W}_1\in\mathbb{R}^{3d\times
 d}\)</span>为可学习参数，之后的<span
 class="math inline">\(W\)</span>均为可学习参数。</p>
 <h4 id="classification-module">Classification Module</h4>
-<p>Boundary loss：</p>
-<p>由于前面的工作是在span层面提取参数，可能对于边界的限定是模糊的，因此在该模块使用全连接神经网络构造起点和终点来强化span的范围表示：<span
+<p>Boundary loss:</p>
+<p>由于前面的工作是在span层面提取参数，可能对于边界的限定是模糊的，因此在该模块使用全连接神经网络构造起点和终点来强化span的范围表示:<span
 class="math inline">\(\mathbf{H}^{start}=\mathbf{W}^{start}\mathbf{H}^{s},\mathbf{H}^{end}=\mathbf{W}^{end}\mathbf{H}^{s}\)</span>,<span
-class="math inline">\(H^s\)</span>是输入序列的隐藏表示。在该基础上，将上下文和角色信息与基于span-trigger的上下文pooling相结合，增强开始和结束的表示：
+class="math inline">\(H^s\)</span>是输入序列的隐藏表示。在该基础上，将上下文和角色信息与基于span-trigger的上下文pooling相结合，增强开始和结束的表示:
 <span class="math display">\[
 \begin{gathered}
 \mathbf{z}_{i:j}^{start}=\mathbf{H}^{start}\mathbf{p}_{i:j}, \\
@@ -369,9 +369,9 @@ class="math inline">\(H^s\)</span>是输入序列的隐藏表示。在该基础�
 \end{gathered}
 \]</span> <span class="math inline">\(h_i\)</span>表示<span
 class="math inline">\(H\)</span>的第i个向量。</p>
-<p>通过上述处理后可以得到span的最终表示：$_{i:j}=^{s}[_{i:j}<sup>{start};<em>{i:j};</em>{i:j}</sup>{end}]
-$</p>
-<p>boundary loss可以表示为： <span class="math display">\[
+<p>通过上述处理后可以得到span的最终表示:<span
+class="math inline">\(\widetilde{\mathbf{s}}_{i:j}=\mathbf{W}^{s}[\mathbf{h}_{i:j}^{start};\mathbf{s}_{i:j};\mathbf{h}_{i:j}^{end}]\)</span></p>
+<p>boundary loss可以表示为: <span class="math display">\[
 \begin{aligned}\mathcal{L}_b&amp;=-\sum_{i=1}^{|\mathcal{D}|}[y_i^s\log
 P_i^s+(1-y_i^s)\log(1-P_i^s)+y_i^e\log
 P_i^e+(1-y_i^e)\log(1-P_i^e)]\end{aligned}
@@ -379,20 +379,20 @@ P_i^e+(1-y_i^e)\log(1-P_i^e)]\end{aligned}
 class="math inline">\(y_i^{s}、y_i^{e}\)</span>表示真实的labels，<span
 class="math inline">\(P_i^{s}=sigmoid(\mathbf{W}_{4}\mathbf{h}_{i}^{start})、P_i^{e}=sigmoid(\mathbf{W}_{5}\mathbf{h}_{i}^{end})\)</span>代表单词<span
 class="math inline">\(w_i\)</span>被预测为真实参数span的第一个、最后一个词的概率。</p>
-<p>Classification Loss ：</p>
+<p>Classification Loss:</p>
 <p>本文将事件e中的候选span<span
 class="math inline">\(\widetilde{\mathbf{s}}_{i:j}\)</span>、trigger表示<span
 class="math inline">\(h_t\)</span>​、二者差的绝对值、两个矩阵对应元素相乘得到的矩阵、事件类型的embedding以及span长度的embedding
-concatenate起来，通过一个前向传播网络，得到预测值： <span
+concatenate起来，通过一个前向传播网络，得到预测值: <span
 class="math display">\[
 \begin{aligned}\mathbf{I}_{i:j}&amp;=[\widetilde{\mathbf{s}}_{i:j};\mathbf{h}_t;|\mathbf{h}_t-\widetilde{\mathbf{s}}_{i:j}|;\mathbf{h}_t\odot\widetilde{\mathbf{s}}_{i:j};\mathbf{H}^e;\mathbf{E}_{len}],\\\\&amp;P(r_{i:j})=\mathrm{FFN}(\mathbf{I}_{i:j})\end{aligned}
 \]</span>
 由于大多数候选参数是负样本以及不符合事件类型的角色分布，本文采用focal
 loss来让模型更加关注有用的正样本： <span class="math display">\[
-\begin{aligned}\mathcal{L}_{c}&amp;=-\sum_{i=1}^{|\mathcal{D}|}\sum_{j=1}^{|\mathcal{D}|}\alpha[1-P(r_{i:j}=y_{i:j}))]^{\gamma}\cdot\log
+\begin{aligned}\mathcal{L}_{c}&amp;=-\sum_{i=1}^{|\mathcal{D}|}\sum_{j=1}^{|\mathcal{D}|}\alpha[1-P(r_{i:j}=y_{i:j})]^{\gamma}\cdot\log
 P(r_{i:j}=y_{i:j})\end{aligned}
 \]</span> <span class="math inline">\(α、γ\)</span>都是超参数</p>
-<p>最后总loss：<span
+<p>最后总loss:<span
 class="math inline">\(\mathcal{L}=\mathcal{L}_{c}+\lambda\mathcal{L}_{b}.\)</span></p>
 
                 
