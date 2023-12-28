@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Attention机制一、概述Attention机制：对于某个时刻的输出y,他在输入x上各个部分上的注意力（也可以称之为权重），即输入x的各部分对某时刻输出y贡献的权重。目的就是让模型更关注需要关注的信息。 二、经典Attention机制以经典$Seq2Seq$翻译模型为例，$Seq2Seq$结构包含两个部分：Encoder和Decoder，分别用于对语句进行编码和解码。  如图所示是生成单词$m">
+    <meta name="description" content="Attention机制 一、概述 Attention机制：对于某个时刻的输出y,他在输入x上各个部分上的注意力（也可以称之为权重），即输入x的各部分对某时刻输出y贡献的权重。目的就是让模型更关注需要关注的信息。 二、经典Attention机制 以经典\(Seq2Seq\)翻译模型为例，\(Seq2Seq\)结构包含两个部分：Encoder和Decoder，分别用于对语句进行编码和解码。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Attention机制">
 <meta property="og:url" content="http://example.com/2023/11/21/attention/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="Attention机制一、概述Attention机制：对于某个时刻的输出y,他在输入x上各个部分上的注意力（也可以称之为权重），即输入x的各部分对某时刻输出y贡献的权重。目的就是让模型更关注需要关注的信息。 二、经典Attention机制以经典$Seq2Seq$翻译模型为例，$Seq2Seq$结构包含两个部分：Encoder和Decoder，分别用于对语句进行编码和解码。  如图所示是生成单词$m">
+<meta property="og:description" content="Attention机制 一、概述 Attention机制：对于某个时刻的输出y,他在输入x上各个部分上的注意力（也可以称之为权重），即输入x的各部分对某时刻输出y贡献的权重。目的就是让模型更关注需要关注的信息。 二、经典Attention机制 以经典\(Seq2Seq\)翻译模型为例，\(Seq2Seq\)结构包含两个部分：Encoder和Decoder，分别用于对语句进行编码和解码。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211326353.png">
 <meta property="article:published_time" content="2023-11-21T05:38:33.000Z">
@@ -276,39 +276,124 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Attention机制"><a href="#Attention机制" class="headerlink" title="Attention机制"></a>Attention机制</h1><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p><strong>Attention机制：</strong>对于某个时刻的输出y,他在输入x上各个部分上的注意力（也可以称之为权重），即输入x的各部分对某时刻输出y贡献的权重。目的就是让模型更关注需要关注的信息。</p>
-<h2 id="二、经典Attention机制"><a href="#二、经典Attention机制" class="headerlink" title="二、经典Attention机制"></a>二、经典Attention机制</h2><p>以经典$Seq2Seq$翻译模型为例，$Seq2Seq$结构包含两个部分：Encoder和Decoder，分别用于对语句进行编码和解码。</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211248592.png" srcset="/img/loading.gif" lazyload alt="image-20231121124846555"></p>
-<p>如图所示是生成单词$machine$​的计算方式：<br>$$<br>[a_1,a_2,a_3,a_4]&#x3D;softmax([s(q_2,h_1),s(q_2,h_2),s(q_2,h_3),s(q_2,h_4)])context\quad&#x3D;\sum_{i&#x3D;1}^4a_i\cdot h_i<br>$$<br>将前一时刻的输出状态$q_2$和Encoder输出进行Attention计算，得到一个context。其中$s(q_i,h_j)$表示注意力打分函数，表示当前时刻对Encoder结果的关注程度。</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211249783.png" srcset="/img/loading.gif" lazyload alt="image-20231121124918750"></p>
-<p>上图为抽象出的Attention原理图。假设有一组输入$H&#x3D;[h_1,h_2,h_3,\ldots,h_n]$输入上述流程，需要一个Query向量$q$(这个向量往往和你做的任务有关，比如上述例子中用到的$q_2$)，通过一个打分函数计算Query向量和每个输入$h_i$之间的相关性，得出一个分数并进行softmax归一化，最终得到Query向量$q$在各输入$h_i$上的注意力分布$a&#x3D;[a_1,a_2,a_3,\ldots,a_n]$。<br>$$<br>a_i&#x3D;softmax(s(h_i,q))&#x3D;\frac{exp(s(h_i,q))}{\sum_{j&#x3D;1}^nexp(s(h_j,q))}<br>$$<br>最后根据注意力分布有选择的提取输入中的信息。这种方式是一种“soft”的信息提取方式，即根据注意力分布对输入信息进行加权求和，最终得到的context体现了模型当前应该关注的内容：$context&#x3D;\sum_{i&#x3D;1}^na_i\cdot h_i$</p>
+                <h1 id="attention机制">Attention机制</h1>
+<h2 id="一概述">一、概述</h2>
+<p><strong>Attention机制：</strong>对于某个时刻的输出y,他在输入x上各个部分上的注意力（也可以称之为权重），即输入x的各部分对某时刻输出y贡献的权重。目的就是让模型更关注需要关注的信息。</p>
+<h2 id="二经典attention机制">二、经典Attention机制</h2>
+<p>以经典<span class="math inline">\(Seq2Seq\)</span>翻译模型为例，<span
+class="math inline">\(Seq2Seq\)</span>结构包含两个部分：Encoder和Decoder，分别用于对语句进行编码和解码。</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211248592.png" srcset="/img/loading.gif" lazyload
+alt="image-20231121124846555" />
+<figcaption aria-hidden="true">image-20231121124846555</figcaption>
+</figure>
+<p>如图所示是生成单词<span
+class="math inline">\(machine\)</span>​的计算方式： <span
+class="math display">\[
+[a_1,a_2,a_3,a_4]=softmax([s(q_2,h_1),s(q_2,h_2),s(q_2,h_3),s(q_2,h_4)])context\quad=\sum_{i=1}^4a_i\cdot
+h_i
+\]</span> 将前一时刻的输出状态<span
+class="math inline">\(q_2\)</span>和Encoder输出进行Attention计算，得到一个context。其中<span
+class="math inline">\(s(q_i,h_j)\)</span>表示注意力打分函数，表示当前时刻对Encoder结果的关注程度。</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211249783.png" srcset="/img/loading.gif" lazyload
+alt="image-20231121124918750" />
+<figcaption aria-hidden="true">image-20231121124918750</figcaption>
+</figure>
+<p>上图为抽象出的Attention原理图。假设有一组输入<span
+class="math inline">\(H=[h_1,h_2,h_3,\ldots,h_n]\)</span>输入上述流程，需要一个Query向量<span
+class="math inline">\(q\)</span>(这个向量往往和你做的任务有关，比如上述例子中用到的<span
+class="math inline">\(q_2\)</span>)，通过一个打分函数计算Query向量和每个输入<span
+class="math inline">\(h_i\)</span>之间的相关性，得出一个分数并进行softmax归一化，最终得到Query向量<span
+class="math inline">\(q\)</span>在各输入<span
+class="math inline">\(h_i\)</span>上的注意力分布<span
+class="math inline">\(a=[a_1,a_2,a_3,\ldots,a_n]\)</span>。 <span
+class="math display">\[
+a_i=softmax(s(h_i,q))=\frac{exp(s(h_i,q))}{\sum_{j=1}^nexp(s(h_j,q))}
+\]</span>
+最后根据注意力分布有选择的提取输入中的信息。这种方式是一种“soft”的信息提取方式，即根据注意力分布对输入信息进行加权求和，最终得到的context体现了模型当前应该关注的内容：<span
+class="math inline">\(context=\sum_{i=1}^na_i\cdot h_i\)</span></p>
 <p>对于打分函数有以下几种形式：</p>
 <ul>
-<li><p>加性模型：$s(h,q)&#x3D;v^Ttanh(Wh+Uq)$</p>
-</li>
-<li><p>点积模型：$s(h,q)&#x3D;h^Tq$相较于加性模型有更好的计算效率</p>
-</li>
-<li><p>缩放点积模型：$s(h,q)&#x3D;\frac{h^{T}q}{\sqrt{D}}$当输入维度较高时，相较于点积模型拥有更好的平滑性</p>
-</li>
-<li><p>双线性模型：$s(h_i,q)&#x3D;h^TWq&#x3D;h^T(U^TV)q&#x3D;(Uh)^T(Vq)$</p>
-</li>
+<li><p>加性模型：<span
+class="math inline">\(s(h,q)=v^Ttanh(Wh+Uq)\)</span></p></li>
+<li><p>点积模型：<span
+class="math inline">\(s(h,q)=h^Tq\)</span>相较于加性模型有更好的计算效率</p></li>
+<li><p>缩放点积模型：<span
+class="math inline">\(s(h,q)=\frac{h^{T}q}{\sqrt{D}}\)</span>当输入维度较高时，相较于点积模型拥有更好的平滑性</p></li>
+<li><p>双线性模型：<span
+class="math inline">\(s(h_i,q)=h^TWq=h^T(U^TV)q=(Uh)^T(Vq)\)</span></p></li>
 </ul>
-<p>上述公式中的参数（$W、U、v$）均为可学习的参数矩阵或向量，$D$为输入向量的维度。</p>
-<h2 id="三、一些变体"><a href="#三、一些变体" class="headerlink" title="三、一些变体"></a>三、一些变体</h2><h4 id="Hard-Attention"><a href="#Hard-Attention" class="headerlink" title="Hard Attention"></a>Hard Attention</h4><p>该方法时根据注意力分布选择输入向量中的一个作为输入，有两种选择方式：</p>
+<p>上述公式中的参数（<span
+class="math inline">\(W、U、v\)</span>）均为可学习的参数矩阵或向量，<span
+class="math inline">\(D\)</span>为输入向量的维度。</p>
+<h2 id="三一些变体">三、一些变体</h2>
+<h4 id="hard-attention">Hard Attention</h4>
+<p>该方法时根据注意力分布选择输入向量中的一个作为输入，有两种选择方式：</p>
 <ul>
 <li>选择注意力分布中，分数最大的那一项对应的输入向量作为Attention机制的输出。</li>
 <li>根据注意力分布进行随机采样，采样结果作为Attention机制的输出。</li>
 </ul>
 <p>这两种方式的输出会导致损失函数与注意力分布之间的函数关系不可导，无法使用反向传播算法训练模型，该机制通常需要使用强化学习进行训练。</p>
-<h4 id="key-value-pair"><a href="#key-value-pair" class="headerlink" title="key-value pair"></a>key-value pair</h4><p>当输入信息变为$(K,V)&#x3D;[(k_1,v_1),(k_2,v_2),\ldots,(k_n,v_n)]$,这种模式下一般会使用Query向量和相应的键$k_i$进行计算权值$a_i$。</p>
-<h4 id="multi-head-attention"><a href="#multi-head-attention" class="headerlink" title="multi-head attention"></a>multi-head attention</h4><p>该方法是利用多个Query向量$Q&#x3D;[q_1,q_2,\ldots,q_m]$,并行地从输入信息$(K,V)&#x3D;[(k_1,v_1)，(k_2,v_2),\ldots,(k_n,v_n)]$中选取多组信息。在查询过程中，每个Query$q_i$​ 将会关注输入信息的不同部分。<br>$$<br>\begin{aligned}<br>a_{ij}&#x3D;softmax(s(k_j,q_i))&amp; &#x3D;\frac{exp(s(k_j,q_i))}{\sum_{t&#x3D;1}^nexp(s(k_t,q_i))}  \<br>context_i&amp; &#x3D;\sum_{j&#x3D;1}^na_{ij}\cdot v_j<br>\end{aligned}<br>$$<br>$a_{ij}$表示第$i$个Query向量$q_i$与第$j$个输入信息$k_j$的注意力权重。</p>
-<p>最终将所有Query向量进行拼接作为最终的结果：<br>$$<br>context&#x3D;context_1\oplus context_2\oplus context_3\oplus\ldots\oplus context_m<br>$$</p>
-<h2 id="四、Self-Attention"><a href="#四、Self-Attention" class="headerlink" title="四、Self-Attention"></a>四、Self-Attention</h2><p>在上述内容中提及的Query向量往往和任务相关，然而在self-attention中，Query向量可以使用输入信息进行生成，相当于模型读取输入信息后，根据信息本身决定当前最重要的信息。</p>
-<p>自注意力机制往往采用$Query-Key-Value$的模型，以BERT中为例：</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211326353.png" srcset="/img/loading.gif" lazyload alt="image-20231121132658310"></p>
-<p>如图所示：输入信息$H&#x3D;[h_1,h_2]$,蓝色矩阵每行对应一个输入，$W_q,W_k,W_v$​负责将输入信息分别转换到对应的Query空间、Key空间和Value空间：<br>$$<br>\begin{gathered}\begin{bmatrix}q_1&#x3D;h_1W_q\q_2&#x3D;h_2W_q\end{bmatrix}\Rightarrow Q&#x3D;HW_q\\\begin{bmatrix}k_1&#x3D;h_1W_k\k_2&#x3D;h_2W_k\end{bmatrix}\Rightarrow K&#x3D;HW_k\\\begin{bmatrix}v_1&#x3D;h_1W_v\v_2&#x3D;h_2W_v\end{bmatrix}\Rightarrow V&#x3D;HW_v\end{gathered}<br>$$<br>以$h_1$为例，计算该位置上的attention输出向量$context_1$，来展示具体过程（下图流程中分数计算采用的是点积操作。）：</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211332846.png" srcset="/img/loading.gif" lazyload alt="image-20231121133227796"></p>
-<p>根据上图self-attention的输出向量计算过程可以总结成一个经典公式：<br>$$<br>context&#x3D;softmax(\frac{QK^T}{\sqrt{D_k}})V<br>$$</p>
+<h4 id="key-value-pair">key-value pair</h4>
+<p>当输入信息变为<span
+class="math inline">\((K,V)=[(k_1,v_1),(k_2,v_2),\ldots,(k_n,v_n)]\)</span>,这种模式下一般会使用Query向量和相应的键<span
+class="math inline">\(k_i\)</span>进行计算权值<span
+class="math inline">\(a_i\)</span>。</p>
+<h4 id="multi-head-attention">multi-head attention</h4>
+<p>该方法是利用多个Query向量<span
+class="math inline">\(Q=[q_1,q_2,\ldots,q_m]\)</span>,并行地从输入信息<span
+class="math inline">\((K,V)=[(k_1,v_1)，(k_2,v_2),\ldots,(k_n,v_n)]\)</span>中选取多组信息。在查询过程中，每个Query<span
+class="math inline">\(q_i\)</span>​ 将会关注输入信息的不同部分。 <span
+class="math display">\[
+\begin{aligned}
+a_{ij}=softmax(s(k_j,q_i))&amp;
+=\frac{exp(s(k_j,q_i))}{\sum_{t=1}^nexp(s(k_t,q_i))}  \\
+context_i&amp; =\sum_{j=1}^na_{ij}\cdot v_j
+\end{aligned}
+\]</span> <span class="math inline">\(a_{ij}\)</span>表示第<span
+class="math inline">\(i\)</span>个Query向量<span
+class="math inline">\(q_i\)</span>与第<span
+class="math inline">\(j\)</span>个输入信息<span
+class="math inline">\(k_j\)</span>的注意力权重。</p>
+<p>最终将所有Query向量进行拼接作为最终的结果： <span
+class="math display">\[
+context=context_1\oplus context_2\oplus context_3\oplus\ldots\oplus
+context_m
+\]</span></p>
+<h2 id="四self-attention">四、Self-Attention</h2>
+<p>在上述内容中提及的Query向量往往和任务相关，然而在self-attention中，Query向量可以使用输入信息进行生成，相当于模型读取输入信息后，根据信息本身决定当前最重要的信息。</p>
+<p>自注意力机制往往采用<span
+class="math inline">\(Query-Key-Value\)</span>的模型，以BERT中为例：</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211326353.png" srcset="/img/loading.gif" lazyload
+alt="image-20231121132658310" />
+<figcaption aria-hidden="true">image-20231121132658310</figcaption>
+</figure>
+<p>如图所示：输入信息<span
+class="math inline">\(H=[h_1,h_2]\)</span>,蓝色矩阵每行对应一个输入，<span
+class="math inline">\(W_q,W_k,W_v\)</span>​负责将输入信息分别转换到对应的Query空间、Key空间和Value空间：
+<span class="math display">\[
+\begin{gathered}\begin{bmatrix}q_1=h_1W_q\\q_2=h_2W_q\end{bmatrix}\Rightarrow
+Q=HW_q\\\\\begin{bmatrix}k_1=h_1W_k\\k_2=h_2W_k\end{bmatrix}\Rightarrow
+K=HW_k\\\\\begin{bmatrix}v_1=h_1W_v\\v_2=h_2W_v\end{bmatrix}\Rightarrow
+V=HW_v\end{gathered}
+\]</span> 以<span
+class="math inline">\(h_1\)</span>为例，计算该位置上的attention输出向量<span
+class="math inline">\(context_1\)</span>，来展示具体过程（下图流程中分数计算采用的是点积操作。）：</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311211332846.png" srcset="/img/loading.gif" lazyload
+alt="image-20231121133227796" />
+<figcaption aria-hidden="true">image-20231121133227796</figcaption>
+</figure>
+<p>根据上图self-attention的输出向量计算过程可以总结成一个经典公式：
+<span class="math display">\[
+context=softmax(\frac{QK^T}{\sqrt{D_k}})V
+\]</span></p>
 
                 
               </div>
