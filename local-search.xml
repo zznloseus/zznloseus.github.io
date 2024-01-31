@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>变分自编码器VAE(Variational Auto-Encoder)</title>
+    <link href="/2024/01/31/VAE/"/>
+    <url>/2024/01/31/VAE/</url>
+    
+    <content type="html"><![CDATA[<h1id="变分自编码器vaevariational-auto-encoder">变分自编码器VAE(VariationalAuto-Encoder)</h1><h4id="变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型">变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型</h4><p>假设有一组数据{<spanclass="math inline">\(x_1,x_2,…x_n\)</span>},整体用<spanclass="math inline">\(X\)</span>表示。理想情况下可以从数据中直接得到<spanclass="math inline">\(X\)</span>的分布<spanclass="math inline">\(P(X)\)</span>，根据<spanclass="math inline">\(P(X)\)</span>进行采样可以得到所有可能的<spanclass="math inline">\(X\)</span>。通常情况下很难实现上述所说的，而是将<spanclass="math inline">\(P(X)\)</span>​改写为： <spanclass="math display">\[p(X)=\sum_Zp(X|Z)p(Z)\]</span> <spanclass="math inline">\(p(X|Z)\)</span>表示一个由Z来生成<spanclass="math inline">\(X\)</span>的生成模型，假设已知<spanclass="math inline">\(Z\)</span>服从正态分布，就可以根据<spanclass="math inline">\(Z\)</span>来计算<spanclass="math inline">\(X\)</span>。</p><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311435107.jpeg"alt="img" /><figcaption aria-hidden="true">img</figcaption></figure><p>在<span class="math inline">\(VAE\)</span>模型中，并没有直接假设<spanclass="math inline">\(p(Z)\)</span>服从正态分布，而是假设<spanclass="math inline">\(p(Z|X)\)</span>服从正态分布(对于一个真实样本<spanclass="math inline">\(X_k\)</span>,都存在一个<strong>专属</strong>于<spanclass="math inline">\(X_k\)</span>的分布<spanclass="math inline">\(p(Z|X_k)\)</span>,方便后续进行从<spanclass="math inline">\(Z\)</span>到<spanclass="math inline">\(X\)</span>的精准映射)。</p><p>由上述可知有多少个<spanclass="math inline">\(X\)</span>就有相应数量的正态分布，可以借助神经网络来拟合分布的均值和方差。构建两个网络：<spanclass="math inline">\(μ_k=f_1(X_k),log\sigma^2=f_2(X_k)\)</span>。拟合<spanclass="math inline">\(log\sigma^2\)</span>是因为<spanclass="math inline">\(\sigma^2\)</span>非负，需要激活函数处理。</p><p>根据上述过程可以得到每个数据的专属生成器，<spanclass="math inline">\(VAE\)</span>示意图如下图所示：</p><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311511614.png"alt="变分自编码器（Variational Auto-Encoder，VAE） | 望江人工智库" /><figcaption aria-hidden="true">变分自编码器（VariationalAuto-Encoder，VAE） | 望江人工智库</figcaption></figure><p>重构<span class="math inline">\(X\)</span>的目的是最小化<spanclass="math inline">\(D(\hat{X}k,Xk)^2\)</span>,这个过程中会受到噪声影响，因为<spanclass="math inline">\(Z_K\)</span>是通过采样的，而不是直接由encoder编码出来的。为了保证采样的随机性，<span class="math inline">\(VAE\)</span>让所有<spanclass="math inline">\(p(Z|X)\)</span>​都对齐标准正态分布，这样防止噪声为0，同时保证模型具备生成能力：<span class="math display">\[p(Z)=\sum_Xp(Z|X)p(X)=\sum_X\mathcal{N}(0,I)p(X)=\mathcal{N}(0,I)\sum_Xp(X)=\mathcal{N}(0,I)\]</span> 这样就从而实现了先验分布<spanclass="math inline">\(P(Z)\)</span>是标准正态分布，从而进行采样。</p><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311534041.png"alt="image-20240131153443961" /><figcaption aria-hidden="true">image-20240131153443961</figcaption></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>NLP</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>因果推理</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>整数转罗马数字</title>
+    <link href="/2023/12/28/%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/"/>
+    <url>/2023/12/28/%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/</url>
+    
+    <content type="html"><![CDATA[<h1 id="整数转罗马数字">整数转罗马数字</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312281554022.png"alt="image-20231228155342506" /><figcaption aria-hidden="true">image-20231228155342506</figcaption></figure><h2 id="题解">2、题解</h2><p>思路：利用贪心哈希表来实现</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">intToRoman</span>(<span class="hljs-params">self, num: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>        hashmap = &#123;<span class="hljs-number">1000</span>:<span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-number">900</span>:<span class="hljs-string">&#x27;CM&#x27;</span>, <span class="hljs-number">500</span>:<span class="hljs-string">&#x27;D&#x27;</span>, <span class="hljs-number">400</span>:<span class="hljs-string">&#x27;CD&#x27;</span>, <span class="hljs-number">100</span>:<span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-number">90</span>:<span class="hljs-string">&#x27;XC&#x27;</span>, <span class="hljs-number">50</span>:<span class="hljs-string">&#x27;L&#x27;</span>, <span class="hljs-number">40</span>:<span class="hljs-string">&#x27;XL&#x27;</span>, <span class="hljs-number">10</span>:<span class="hljs-string">&#x27;X&#x27;</span>, <span class="hljs-number">9</span>:<span class="hljs-string">&#x27;IX&#x27;</span>, <span class="hljs-number">5</span>:<span class="hljs-string">&#x27;V&#x27;</span>, <span class="hljs-number">4</span>:<span class="hljs-string">&#x27;IV&#x27;</span>, <span class="hljs-number">1</span>:<span class="hljs-string">&#x27;I&#x27;</span>&#125;<br>        res = <span class="hljs-string">&#x27;&#x27;</span><br><br>        <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> hashmap:<br>            <span class="hljs-keyword">if</span> num//key !=<span class="hljs-number">0</span>:<br>                val = num//key<br>                res += hashmap[key] * val<br>                <span class="hljs-built_in">print</span>(hashmap[key] * val)<br>                num %= key<br>        <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>offer</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>盛水最多容器</title>
     <link href="/2023/12/24/%E7%9B%9B%E6%B0%B4%E6%9C%80%E5%A4%9A%E5%AE%B9%E5%99%A8/"/>
     <url>/2023/12/24/%E7%9B%9B%E6%B0%B4%E6%9C%80%E5%A4%9A%E5%AE%B9%E5%99%A8/</url>

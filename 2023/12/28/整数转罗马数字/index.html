@@ -16,24 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="盛最多水的容器 1、题目   image-20231224163543608  2、题解 双指针 思路：根据题目可以得到水槽面积公式为：\(S(i,j)&#x3D;min(h[i],h[j])\times(j-i)\),其中\(h[i]\)表示水槽高度。在所有状态下，无论如何移动槽板，都会使水槽宽度\(-1\):  若向内移动短板 ，水槽的短板 \(min(h[i],h[j])\)可能变">
+    <meta name="description" content="整数转罗马数字 1、题目   image-20231228155342506  2、题解 思路：利用贪心哈希表来实现 123456789101112class Solution:    def intToRoman(self, num: int) -&gt; str:        hashmap &#x3D; &amp;#123;1000:&amp;#x27;M&amp;#x27;, 900:&amp;#x27;CM&amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="盛水最多容器">
-<meta property="og:url" content="http://example.com/2023/12/24/%E7%9B%9B%E6%B0%B4%E6%9C%80%E5%A4%9A%E5%AE%B9%E5%99%A8/index.html">
+<meta property="og:title" content="整数转罗马数字">
+<meta property="og:url" content="http://example.com/2023/12/28/%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="盛最多水的容器 1、题目   image-20231224163543608  2、题解 双指针 思路：根据题目可以得到水槽面积公式为：\(S(i,j)&#x3D;min(h[i],h[j])\times(j-i)\),其中\(h[i]\)表示水槽高度。在所有状态下，无论如何移动槽板，都会使水槽宽度\(-1\):  若向内移动短板 ，水槽的短板 \(min(h[i],h[j])\)可能变">
+<meta property="og:description" content="整数转罗马数字 1、题目   image-20231228155342506  2、题解 思路：利用贪心哈希表来实现 123456789101112class Solution:    def intToRoman(self, num: int) -&gt; str:        hashmap &#x3D; &amp;#123;1000:&amp;#x27;M&amp;#x27;, 900:&amp;#x27;CM&amp;#">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312241636896.png">
-<meta property="article:published_time" content="2023-12-24T09:38:06.000Z">
-<meta property="article:modified_time" content="2023-12-24T09:38:51.214Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312281554022.png">
+<meta property="article:published_time" content="2023-12-28T13:50:10.000Z">
+<meta property="article:modified_time" content="2023-12-28T13:50:42.678Z">
 <meta property="article:author" content="Z Z">
 <meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312241636896.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312281554022.png">
   
   
   
-  <title>盛水最多容器 - Zspace</title>
+  <title>整数转罗马数字 - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="盛水最多容器"></span>
+            <span id="subtitle" data-typed-text="整数转罗马数字"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-24 17:38" pubdate>
-          2023年12月24日 下午
+        <time datetime="2023-12-28 21:50" pubdate>
+          2023年12月28日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          793 字
+          483 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          7 分钟
+          5 分钟
         
       </span>
     
@@ -271,55 +271,22 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">盛水最多容器</h1>
+            <h1 style="display: none">整数转罗马数字</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="盛最多水的容器">盛最多水的容器</h1>
+                <h1 id="整数转罗马数字">整数转罗马数字</h1>
 <h2 id="题目">1、题目</h2>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312241636896.png" srcset="/img/loading.gif" lazyload
-alt="image-20231224163543608" />
-<figcaption aria-hidden="true">image-20231224163543608</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312281554022.png" srcset="/img/loading.gif" lazyload
+alt="image-20231228155342506" />
+<figcaption aria-hidden="true">image-20231228155342506</figcaption>
 </figure>
 <h2 id="题解">2、题解</h2>
-<h4 id="双指针">双指针</h4>
-<p>思路：根据题目可以得到水槽面积公式为：<span
-class="math inline">\(S(i,j)=min(h[i],h[j])\times(j-i)\)</span>,其中<span
-class="math inline">\(h[i]\)</span>表示水槽高度。在所有状态下，无论如何移动槽板，都会使水槽宽度<span
-class="math inline">\(-1\)</span>:</p>
-<ul>
-<li><p>若向内<strong>移动短板</strong> ，水槽的短板 <span
-class="math inline">\(min(h[i],h[j])\)</span>可能变大，因此下个水槽的面积<strong>可能增大</strong>
-。</p></li>
-<li><p>若向内<strong>移动长板</strong> ，水槽的短板 <span
-class="math inline">\(min(h[i],h[j])\)</span>
-不变或变小，因此下个水槽的面积<strong>一定变小</strong> 。</p></li>
-</ul>
-<p>搞清迭代条件，我们就令双指针初始化为水槽左右两端，每轮迭代将短板向内移动一格，更新面积最大值，直到双指针相遇，结束迭代，得到最大面积。</p>
-<h3
-id="ps与双for一对双for走天下相比">PS：与双for(一对双for走天下)相比</h3>
-<p>在暴力枚举的情况下水槽面积的状态总数为:<span
-class="math inline">\(C(n,2)\)</span>,向内移动短板至<span
-class="math inline">\(S(i+1,j)\)</span>,相当于跳过了<span
-class="math inline">\(S(i,j-1),S(i,j-2),……，S(i,i+1)\)</span>状态集合。并且所有跳过的面积集合都一定小于当前面积，因为：</p>
-<ul>
-<li><p>短板高度：相比 <span class="math inline">\(S(i, j)\)</span>
-相同或更短；</p></li>
-<li><p>底边宽度：相比 <span class="math inline">\(S(i, j)\)</span>
-更短；</p></li>
-</ul>
-<p>因此，每轮向内移动短板，所有消去的状态都
-<strong>不会导致面积最大值丢失</strong>。</p>
-<h4 id="复杂度分析">复杂度分析：</h4>
-<ul>
-<li><strong>时间复杂度 O(N)</strong> ： 双指针遍历一次底边宽度 N 。</li>
-<li><strong>空间复杂度 O(1)</strong> ： 变量 i , j ,
-res使用常数额外空间。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxArea</span>(<span class="hljs-params">self, height: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        i, j, res = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(height) - <span class="hljs-number">1</span>, <span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span> i &lt; j:<br>            <span class="hljs-keyword">if</span> height[i] &lt; height[j]:<br>                res = <span class="hljs-built_in">max</span>(res, height[i] * (j - i))<br>                i += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                res = <span class="hljs-built_in">max</span>(res, height[j] * (j - i))<br>                j -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>
+<p>思路：利用贪心哈希表来实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">intToRoman</span>(<span class="hljs-params">self, num: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>        hashmap = &#123;<span class="hljs-number">1000</span>:<span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-number">900</span>:<span class="hljs-string">&#x27;CM&#x27;</span>, <span class="hljs-number">500</span>:<span class="hljs-string">&#x27;D&#x27;</span>, <span class="hljs-number">400</span>:<span class="hljs-string">&#x27;CD&#x27;</span>, <span class="hljs-number">100</span>:<span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-number">90</span>:<span class="hljs-string">&#x27;XC&#x27;</span>, <span class="hljs-number">50</span>:<span class="hljs-string">&#x27;L&#x27;</span>, <span class="hljs-number">40</span>:<span class="hljs-string">&#x27;XL&#x27;</span>, <span class="hljs-number">10</span>:<span class="hljs-string">&#x27;X&#x27;</span>, <span class="hljs-number">9</span>:<span class="hljs-string">&#x27;IX&#x27;</span>, <span class="hljs-number">5</span>:<span class="hljs-string">&#x27;V&#x27;</span>, <span class="hljs-number">4</span>:<span class="hljs-string">&#x27;IV&#x27;</span>, <span class="hljs-number">1</span>:<span class="hljs-string">&#x27;I&#x27;</span>&#125;<br>        res = <span class="hljs-string">&#x27;&#x27;</span><br><br>        <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> hashmap:<br>            <span class="hljs-keyword">if</span> num//key !=<span class="hljs-number">0</span>:<br>                val = num//key<br>                res += hashmap[key] * val<br>                <span class="hljs-built_in">print</span>(hashmap[key] * val)<br>                num %= key<br>        <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -365,8 +332,8 @@ res使用常数额外空间。</li>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>盛水最多容器</div>
-      <div>http://example.com/2023/12/24/盛水最多容器/</div>
+      <div>整数转罗马数字</div>
+      <div>http://example.com/2023/12/28/整数转罗马数字/</div>
     </div>
     <div class="license-meta">
       
@@ -378,7 +345,7 @@ res使用常数额外空间。</li>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月24日</div>
+          <div>2023年12月28日</div>
         </div>
       
       
@@ -410,9 +377,9 @@ res使用常数额外空间。</li>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/28/%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/" title="整数转罗马数字">
+                      <a href="/2024/01/31/VAE/" title="变分自编码器VAE(Variational Auto-Encoder)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">整数转罗马数字</span>
+                        <span class="hidden-mobile">变分自编码器VAE(Variational Auto-Encoder)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -420,8 +387,8 @@ res使用常数额外空间。</li>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/22/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0/" title="字符串转换整数">
-                        <span class="hidden-mobile">字符串转换整数</span>
+                      <a href="/2023/12/24/%E7%9B%9B%E6%B0%B4%E6%9C%80%E5%A4%9A%E5%AE%B9%E5%99%A8/" title="盛水最多容器">
+                        <span class="hidden-mobile">盛水最多容器</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

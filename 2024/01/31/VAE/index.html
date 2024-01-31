@@ -16,24 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="盛最多水的容器 1、题目   image-20231224163543608  2、题解 双指针 思路：根据题目可以得到水槽面积公式为：\(S(i,j)&#x3D;min(h[i],h[j])\times(j-i)\),其中\(h[i]\)表示水槽高度。在所有状态下，无论如何移动槽板，都会使水槽宽度\(-1\):  若向内移动短板 ，水槽的短板 \(min(h[i],h[j])\)可能变">
+    <meta name="description" content="变分自编码器VAE(Variational Auto-Encoder) 变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型 假设有一组数据{\(x_1,x_2,…x_n\)},整体用\(X\)表示。理想情况下可以从数据中直接得到\(X\)的分布\(P(X)\)，根据\(P(X)\)进行采样可以得到所有可能的\(X\)。通常情况下很难实现上述所说的，而是将\(P(X)\)​改写为： \">
 <meta property="og:type" content="article">
-<meta property="og:title" content="盛水最多容器">
-<meta property="og:url" content="http://example.com/2023/12/24/%E7%9B%9B%E6%B0%B4%E6%9C%80%E5%A4%9A%E5%AE%B9%E5%99%A8/index.html">
+<meta property="og:title" content="变分自编码器VAE(Variational Auto-Encoder)">
+<meta property="og:url" content="http://example.com/2024/01/31/VAE/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="盛最多水的容器 1、题目   image-20231224163543608  2、题解 双指针 思路：根据题目可以得到水槽面积公式为：\(S(i,j)&#x3D;min(h[i],h[j])\times(j-i)\),其中\(h[i]\)表示水槽高度。在所有状态下，无论如何移动槽板，都会使水槽宽度\(-1\):  若向内移动短板 ，水槽的短板 \(min(h[i],h[j])\)可能变">
+<meta property="og:description" content="变分自编码器VAE(Variational Auto-Encoder) 变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型 假设有一组数据{\(x_1,x_2,…x_n\)},整体用\(X\)表示。理想情况下可以从数据中直接得到\(X\)的分布\(P(X)\)，根据\(P(X)\)进行采样可以得到所有可能的\(X\)。通常情况下很难实现上述所说的，而是将\(P(X)\)​改写为： \">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312241636896.png">
-<meta property="article:published_time" content="2023-12-24T09:38:06.000Z">
-<meta property="article:modified_time" content="2023-12-24T09:38:51.214Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311534041.png">
+<meta property="article:published_time" content="2024-01-31T07:52:39.000Z">
+<meta property="article:modified_time" content="2024-01-31T07:53:39.226Z">
 <meta property="article:author" content="Z Z">
-<meta property="article:tag" content="实习">
+<meta property="article:tag" content="因果推理">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312241636896.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311534041.png">
   
   
   
-  <title>盛水最多容器 - Zspace</title>
+  <title>变分自编码器VAE(Variational Auto-Encoder) - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="盛水最多容器"></span>
+            <span id="subtitle" data-typed-text="变分自编码器VAE(Variational Auto-Encoder)"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-24 17:38" pubdate>
-          2023年12月24日 下午
+        <time datetime="2024-01-31 15:52" pubdate>
+          2024年1月31日 下午
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          793 字
+          927 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          7 分钟
+          8 分钟
         
       </span>
     
@@ -271,55 +271,76 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">盛水最多容器</h1>
+            <h1 style="display: none">变分自编码器VAE(Variational Auto-Encoder)</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="盛最多水的容器">盛最多水的容器</h1>
-<h2 id="题目">1、题目</h2>
+                <h1
+id="变分自编码器vaevariational-auto-encoder">变分自编码器VAE(Variational
+Auto-Encoder)</h1>
+<h4
+id="变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型">变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型</h4>
+<p>假设有一组数据{<span
+class="math inline">\(x_1,x_2,…x_n\)</span>},整体用<span
+class="math inline">\(X\)</span>表示。理想情况下可以从数据中直接得到<span
+class="math inline">\(X\)</span>的分布<span
+class="math inline">\(P(X)\)</span>，根据<span
+class="math inline">\(P(X)\)</span>进行采样可以得到所有可能的<span
+class="math inline">\(X\)</span>。通常情况下很难实现上述所说的，而是将<span
+class="math inline">\(P(X)\)</span>​改写为： <span
+class="math display">\[
+p(X)=\sum_Zp(X|Z)p(Z)
+\]</span> <span
+class="math inline">\(p(X|Z)\)</span>表示一个由Z来生成<span
+class="math inline">\(X\)</span>的生成模型，假设已知<span
+class="math inline">\(Z\)</span>服从正态分布，就可以根据<span
+class="math inline">\(Z\)</span>来计算<span
+class="math inline">\(X\)</span>。</p>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312241636896.png" srcset="/img/loading.gif" lazyload
-alt="image-20231224163543608" />
-<figcaption aria-hidden="true">image-20231224163543608</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311435107.jpeg" srcset="/img/loading.gif" lazyload
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
 </figure>
-<h2 id="题解">2、题解</h2>
-<h4 id="双指针">双指针</h4>
-<p>思路：根据题目可以得到水槽面积公式为：<span
-class="math inline">\(S(i,j)=min(h[i],h[j])\times(j-i)\)</span>,其中<span
-class="math inline">\(h[i]\)</span>表示水槽高度。在所有状态下，无论如何移动槽板，都会使水槽宽度<span
-class="math inline">\(-1\)</span>:</p>
-<ul>
-<li><p>若向内<strong>移动短板</strong> ，水槽的短板 <span
-class="math inline">\(min(h[i],h[j])\)</span>可能变大，因此下个水槽的面积<strong>可能增大</strong>
-。</p></li>
-<li><p>若向内<strong>移动长板</strong> ，水槽的短板 <span
-class="math inline">\(min(h[i],h[j])\)</span>
-不变或变小，因此下个水槽的面积<strong>一定变小</strong> 。</p></li>
-</ul>
-<p>搞清迭代条件，我们就令双指针初始化为水槽左右两端，每轮迭代将短板向内移动一格，更新面积最大值，直到双指针相遇，结束迭代，得到最大面积。</p>
-<h3
-id="ps与双for一对双for走天下相比">PS：与双for(一对双for走天下)相比</h3>
-<p>在暴力枚举的情况下水槽面积的状态总数为:<span
-class="math inline">\(C(n,2)\)</span>,向内移动短板至<span
-class="math inline">\(S(i+1,j)\)</span>,相当于跳过了<span
-class="math inline">\(S(i,j-1),S(i,j-2),……，S(i,i+1)\)</span>状态集合。并且所有跳过的面积集合都一定小于当前面积，因为：</p>
-<ul>
-<li><p>短板高度：相比 <span class="math inline">\(S(i, j)\)</span>
-相同或更短；</p></li>
-<li><p>底边宽度：相比 <span class="math inline">\(S(i, j)\)</span>
-更短；</p></li>
-</ul>
-<p>因此，每轮向内移动短板，所有消去的状态都
-<strong>不会导致面积最大值丢失</strong>。</p>
-<h4 id="复杂度分析">复杂度分析：</h4>
-<ul>
-<li><strong>时间复杂度 O(N)</strong> ： 双指针遍历一次底边宽度 N 。</li>
-<li><strong>空间复杂度 O(1)</strong> ： 变量 i , j ,
-res使用常数额外空间。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxArea</span>(<span class="hljs-params">self, height: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        i, j, res = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(height) - <span class="hljs-number">1</span>, <span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span> i &lt; j:<br>            <span class="hljs-keyword">if</span> height[i] &lt; height[j]:<br>                res = <span class="hljs-built_in">max</span>(res, height[i] * (j - i))<br>                i += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                res = <span class="hljs-built_in">max</span>(res, height[j] * (j - i))<br>                j -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>
+<p>在<span class="math inline">\(VAE\)</span>模型中，并没有直接假设<span
+class="math inline">\(p(Z)\)</span>服从正态分布，而是假设<span
+class="math inline">\(p(Z|X)\)</span>服从正态分布(对于一个真实样本<span
+class="math inline">\(X_k\)</span>,都存在一个<strong>专属</strong>于<span
+class="math inline">\(X_k\)</span>的分布<span
+class="math inline">\(p(Z|X_k)\)</span>,方便后续进行从<span
+class="math inline">\(Z\)</span>到<span
+class="math inline">\(X\)</span>的精准映射)。</p>
+<p>由上述可知有多少个<span
+class="math inline">\(X\)</span>就有相应数量的正态分布，可以借助神经网络来拟合分布的均值和方差。构建两个网络：<span
+class="math inline">\(μ_k=f_1(X_k),
+log\sigma^2=f_2(X_k)\)</span>。拟合<span
+class="math inline">\(log\sigma^2\)</span>是因为<span
+class="math inline">\(\sigma^2\)</span>非负，需要激活函数处理。</p>
+<p>根据上述过程可以得到每个数据的专属生成器，<span
+class="math inline">\(VAE\)</span>示意图如下图所示：</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311511614.png" srcset="/img/loading.gif" lazyload
+alt="变分自编码器（Variational Auto-Encoder，VAE） | 望江人工智库" />
+<figcaption aria-hidden="true">变分自编码器（Variational
+Auto-Encoder，VAE） | 望江人工智库</figcaption>
+</figure>
+<p>重构<span class="math inline">\(X\)</span>的目的是最小化<span
+class="math inline">\(D(\hat{X}k,Xk)^2\)</span>,这个过程中会受到噪声影响，因为<span
+class="math inline">\(Z_K\)</span>是通过采样的，而不是直接由encoder编码出来的。为了保证采样的随机性
+，<span class="math inline">\(VAE\)</span>让所有<span
+class="math inline">\(p(Z|X)\)</span>​都对齐标准正态分布，这样防止噪声为0，同时保证模型具备生成能力：
+<span class="math display">\[
+p(Z)=\sum_Xp(Z|X)p(X)=\sum_X\mathcal{N}(0,I)p(X)=\mathcal{N}(0,I)\sum_Xp(X)=\mathcal{N}(0,I)
+\]</span> 这样就从而实现了先验分布<span
+class="math inline">\(P(Z)\)</span>是标准正态分布，从而进行采样。</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311534041.png" srcset="/img/loading.gif" lazyload
+alt="image-20240131153443961" />
+<figcaption aria-hidden="true">image-20240131153443961</figcaption>
+</figure>
 
                 
               </div>
@@ -338,7 +359,7 @@ res使用常数额外空间。</li>
     
       <span class="category-chain">
         
-  <a href="/categories/offer/" class="category-chain-item">offer</a>
+  <a href="/categories/NLP/" class="category-chain-item">NLP</a>
   
   
 
@@ -353,7 +374,7 @@ res使用常数额外空间。</li>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
+        <a href="/tags/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E7%90%86/">#因果推理</a>
       
     </div>
   
@@ -365,8 +386,8 @@ res使用常数额外空间。</li>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>盛水最多容器</div>
-      <div>http://example.com/2023/12/24/盛水最多容器/</div>
+      <div>变分自编码器VAE(Variational Auto-Encoder)</div>
+      <div>http://example.com/2024/01/31/VAE/</div>
     </div>
     <div class="license-meta">
       
@@ -378,7 +399,7 @@ res使用常数额外空间。</li>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月24日</div>
+          <div>2024年1月31日</div>
         </div>
       
       
@@ -410,18 +431,12 @@ res使用常数额外空间。</li>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/28/%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/" title="整数转罗马数字">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">整数转罗马数字</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/22/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0/" title="字符串转换整数">
-                        <span class="hidden-mobile">字符串转换整数</span>
+                      <a href="/2023/12/28/%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/" title="整数转罗马数字">
+                        <span class="hidden-mobile">整数转罗马数字</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
