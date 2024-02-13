@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="FPN ——特征金字塔论文链接：Feature Pyramid Networks for Object Detection (thecvf.com) 模型简介  以特征金字塔为基础结构，对每一层级的特征图分别进行预测。 这种网络结构，能够在增加较少计算量的前提下融合低分辨率语义信息较强的特征图和高分辨率语义信息较弱但空间信息丰富的特征图。  模型结构 1：Bottom-up pathway前馈Ba">
+    <meta name="description" content="FPN ——特征金字塔 论文链接：Feature Pyramid Networks for Object Detection (thecvf.com) 模型简介   image-20231107155943324   以特征金字塔为基础结构，对每一层级的特征图分别进行预测。 这种网络结构，能够在增加较少计算量的前提下融合低分辨率语义信息较强的特征图和高分辨率语义信息较弱但空间信">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FPN ——特征金字塔">
 <meta property="og:url" content="http://example.com/2023/11/07/FPN/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="FPN ——特征金字塔论文链接：Feature Pyramid Networks for Object Detection (thecvf.com) 模型简介  以特征金字塔为基础结构，对每一层级的特征图分别进行预测。 这种网络结构，能够在增加较少计算量的前提下融合低分辨率语义信息较强的特征图和高分辨率语义信息较弱但空间信息丰富的特征图。  模型结构 1：Bottom-up pathway前馈Ba">
+<meta property="og:description" content="FPN ——特征金字塔 论文链接：Feature Pyramid Networks for Object Detection (thecvf.com) 模型简介   image-20231107155943324   以特征金字塔为基础结构，对每一层级的特征图分别进行预测。 这种网络结构，能够在增加较少计算量的前提下融合低分辨率语义信息较强的特征图和高分辨率语义信息较弱但空间信">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311071847681.png">
 <meta property="article:published_time" content="2023-11-07T10:47:12.000Z">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          964 字
+          1.1k 字
         
       </span>
     
@@ -276,24 +276,65 @@
             
               <div class="markdown-body">
                 
-                <h1 id="FPN-——特征金字塔"><a href="#FPN-——特征金字塔" class="headerlink" title="FPN ——特征金字塔"></a>FPN ——特征金字塔</h1><p>论文链接：<a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Lin_Feature_Pyramid_Networks_CVPR_2017_paper.pdf">Feature Pyramid Networks for Object Detection (thecvf.com)</a></p>
-<h2 id="模型简介"><a href="#模型简介" class="headerlink" title="模型简介"></a>模型简介</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311071847681.png" srcset="/img/loading.gif" lazyload alt="image-20231107155943324"></p>
+                <h1 id="fpn-特征金字塔">FPN ——特征金字塔</h1>
+<p>论文链接：<a
+target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Lin_Feature_Pyramid_Networks_CVPR_2017_paper.pdf">Feature
+Pyramid Networks for Object Detection (thecvf.com)</a></p>
+<h2 id="模型简介">模型简介</h2>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311071847681.png" srcset="/img/loading.gif" lazyload
+alt="image-20231107155943324" />
+<figcaption aria-hidden="true">image-20231107155943324</figcaption>
+</figure>
 <ul>
 <li>以特征金字塔为基础结构，对每一层级的特征图分别进行预测。</li>
 <li>这种网络结构，能够在增加较少计算量的前提下融合低分辨率语义信息较强的特征图和高分辨率语义信息较弱但空间信息丰富的特征图。</li>
 </ul>
-<h2 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311071601619.png" srcset="/img/loading.gif" lazyload alt="image-20231107160159580"></p>
-<h4 id="1：Bottom-up-pathway"><a href="#1：Bottom-up-pathway" class="headerlink" title="1：Bottom-up pathway"></a>1：Bottom-up pathway</h4><p>前馈Backbone（主干网络）的一部分，每一级向上使用step&#x3D;2的降采样（降采样：每个类别被选择的概率是原始样本数量的倒数）。</p>
+<h2 id="模型结构">模型结构</h2>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311071601619.png" srcset="/img/loading.gif" lazyload
+alt="image-20231107160159580" />
+<figcaption aria-hidden="true">image-20231107160159580</figcaption>
+</figure>
+<h4 id="bottom-up-pathway">1：Bottom-up pathway</h4>
+<p>前馈Backbone（主干网络）的一部分，每一级向上使用step=2的降采样（降采样：每个类别被选择的概率是原始样本数量的倒数）。</p>
 <p>输出size相同的网络部分称为一个stage，选择每一个stage的最后一层输出作为特征图的参考集。</p>
-<p>以fasterRCNN的网络结构为例，左列ResNet用每级最后一个Residual Block的输出，记为{C1,C2,C3,C4,C5}。</p>
+<p>以fasterRCNN的网络结构为例，左列ResNet用每级最后一个Residual
+Block的输出，记为{C1,C2,C3,C4,C5}。</p>
 <p>FPN用2~5级参与预测(因为第一级的语义还是太低了)，{C2,C3,C4,C5}表示conv2，conv3，conv4和conv5的输出层(最后一个残差block层)作为FPN的特征，分别对应于输入图片的下采样倍数为{4，8，16，32}。</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311071839345.png" srcset="/img/loading.gif" lazyload alt="image-20231107183949269"></p>
-<h4 id="2：Top-down-pathway-and-lateral-connections"><a href="#2：Top-down-pathway-and-lateral-connections" class="headerlink" title="2：Top-down pathway and lateral connections"></a>2：Top-down pathway and lateral connections</h4><p>自顶向下的过程通过上采样(up-sampling)的方式将顶层的小特征图。放大到上一个stage的特征图一样的大小。</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311071839345.png" srcset="/img/loading.gif" lazyload
+alt="image-20231107183949269" />
+<figcaption aria-hidden="true">image-20231107183949269</figcaption>
+</figure>
+<h4 id="top-down-pathway-and-lateral-connections">2：Top-down pathway
+and lateral connections</h4>
+<p>自顶向下的过程通过上采样(up-sampling)的方式将顶层的小特征图。放大到上一个stage的特征图一样的大小。</p>
 <p>上采样的方法是最近邻插值法：</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311071845690.png" srcset="/img/loading.gif" lazyload alt="image-20231107184543643"></p>
-<p>通过自底向上路径，FPN得到了四组Feature Map。浅层的Feature Map，例如C2含有更多的底层信息（纹理，颜色等），而深层的Feature Map如C5含有更多的语义信息。为了将这四组倾向不同特征的Feature Map组合起来，FPN使用了自顶向下及横向连接的策略，最终得到P2，P3，P4，P5四个输出。</p>
-<p>以P3为例，P3是由P4和C3共同得到，其中P4的通道数已经是 256 了，但是它的大小只是P3的 1&#x2F;2 ，因为我们使用上采样将它的尺寸增加到C3的大小，FPN中使用的上采样策略是最近邻居采样。继续，因为C3的通道数是128，而我们需要的P3的通道数是256，所以这里使用 1×1 卷积将C3的通道数扩充到 256 。最后P3是P4的上采样的Feature Map和C3的调整通道数的Feature Map的单位加。</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311071846070.png" srcset="/img/loading.gif" lazyload alt="image-20231107184628008"></p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311071845690.png" srcset="/img/loading.gif" lazyload
+alt="image-20231107184543643" />
+<figcaption aria-hidden="true">image-20231107184543643</figcaption>
+</figure>
+<p>通过自底向上路径，FPN得到了四组Feature Map。浅层的Feature
+Map，例如C2含有更多的底层信息（纹理，颜色等），而深层的Feature
+Map如C5含有更多的语义信息。为了将这四组倾向不同特征的Feature
+Map组合起来，FPN使用了自顶向下及横向连接的策略，最终得到P2，P3，P4，P5四个输出。</p>
+<p>以P3为例，P3是由P4和C3共同得到，其中P4的通道数已经是 256
+了，但是它的大小只是P3的 1/2
+，因为我们使用上采样将它的尺寸增加到C3的大小，FPN中使用的上采样策略是最近邻居采样。继续，因为C3的通道数是128，而我们需要的P3的通道数是256，所以这里使用
+1×1 卷积将C3的通道数扩充到 256 。最后P3是P4的上采样的Feature
+Map和C3的调整通道数的Feature Map的单位加。</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202311071846070.png" srcset="/img/loading.gif" lazyload
+alt="image-20231107184628008" />
+<figcaption aria-hidden="true">image-20231107184628008</figcaption>
+</figure>
 
                 
               </div>
