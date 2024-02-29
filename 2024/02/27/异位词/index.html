@@ -16,24 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="移动零 1、题目   image-20240212223822690  2、题解 思路1：双指针+两次遍历 创建两个指针a,b，首次遍历用b记录当前的非0元素个数，遇到非0元素就将其左移，遍历完成后b的下表就指向最后一个非0元素下标。第二次遍历，起始位置从b开始到结束，将剩余区域的元素全变为0。 1234567891011class Solution(object):    de">
+    <meta name="description" content="找到字符串中所有字母异位词 1、题目   image-20240227191448423  2、题解 1、滑动窗口 先在字符串s中构造一个p长度的滑动窗口，在滑动过程中固定窗口中字母的数量，当窗口中每种字母的数量与字符串p中每种字母的数量相同时，说明当前窗口为字符串p的字母异位词。 当字符串s的长度小于字符串p的长度时，字符串s中一定不存在p的异位词，此时字符串s中无法构造和字符">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动零">
-<meta property="og:url" content="http://example.com/2024/02/12/convey-zero/index.html">
+<meta property="og:title" content="找到字符串中所有字母异位词">
+<meta property="og:url" content="http://example.com/2024/02/27/%E5%BC%82%E4%BD%8D%E8%AF%8D/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="移动零 1、题目   image-20240212223822690  2、题解 思路1：双指针+两次遍历 创建两个指针a,b，首次遍历用b记录当前的非0元素个数，遇到非0元素就将其左移，遍历完成后b的下表就指向最后一个非0元素下标。第二次遍历，起始位置从b开始到结束，将剩余区域的元素全变为0。 1234567891011class Solution(object):    de">
+<meta property="og:description" content="找到字符串中所有字母异位词 1、题目   image-20240227191448423  2、题解 1、滑动窗口 先在字符串s中构造一个p长度的滑动窗口，在滑动过程中固定窗口中字母的数量，当窗口中每种字母的数量与字符串p中每种字母的数量相同时，说明当前窗口为字符串p的字母异位词。 当字符串s的长度小于字符串p的长度时，字符串s中一定不存在p的异位词，此时字符串s中无法构造和字符">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202402122238778.png">
-<meta property="article:published_time" content="2024-02-12T15:12:52.000Z">
-<meta property="article:modified_time" content="2024-02-13T10:15:19.672Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202402272251984.png">
+<meta property="article:published_time" content="2024-02-27T15:24:41.000Z">
+<meta property="article:modified_time" content="2024-02-27T15:25:36.940Z">
 <meta property="article:author" content="Z Z">
 <meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202402122238778.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202402272251984.png">
   
   
   
-  <title>移动零 - Zspace</title>
+  <title>找到字符串中所有字母异位词 - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="移动零"></span>
+            <span id="subtitle" data-typed-text="找到字符串中所有字母异位词"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-12 23:12" pubdate>
-          2024年2月12日 晚上
+        <time datetime="2024-02-27 23:24" pubdate>
+          2024年2月27日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          859 字
+          1.4k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          8 分钟
+          12 分钟
         
       </span>
     
@@ -271,33 +271,27 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">移动零</h1>
+            <h1 style="display: none">找到字符串中所有字母异位词</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="移动零">移动零</h1>
+                <h1 id="找到字符串中所有字母异位词">找到字符串中所有字母异位词</h1>
 <h2 id="题目">1、题目</h2>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202402122238778.png" srcset="/img/loading.gif" lazyload
-alt="image-20240212223822690" />
-<figcaption aria-hidden="true">image-20240212223822690</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202402272251984.png" srcset="/img/loading.gif" lazyload
+alt="image-20240227191448423" />
+<figcaption aria-hidden="true">image-20240227191448423</figcaption>
 </figure>
 <h2 id="题解">2、题解</h2>
-<h4 id="思路1双指针两次遍历">思路1：双指针+两次遍历</h4>
-<p>创建两个指针a,b，首次遍历用b记录当前的非0元素个数，遇到非0元素就将其左移，遍历完成后b的下表就指向最后一个非0元素下标。第二次遍历，起始位置从b开始到结束，将剩余区域的元素全变为0。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">moveZeroes</span>(<span class="hljs-params">self, nums</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> nums:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>	<br>        j = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)):<br>            <span class="hljs-keyword">if</span> nums[i]:<br>                nums[j] = nums[i]<br>                j += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(j,<span class="hljs-built_in">len</span>(nums)):<br>            nums[i] = <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
-<h4 id="思路2双指针快排">思路2：双指针+快排</h4>
-<p>快速排序：首先要确定一个待分割的元素做中间点
-X，然后把所有小于等于X的元素放到X的左边，大于X的元素放到其右边。</p>
-<p>用0作为中间点，将不等于0的放到中间点左边，等于0的放到中间点右边</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">moveZeroes</span>(<span class="hljs-params">self, nums</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> nums:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>	<br>        j = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)):<br>            <span class="hljs-keyword">if</span> nums[i]:<br>                nums[j],nums[i] = nums[i],nums[j]<br>                j += <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-<h4 id="思路3暴力去除0">思路3：暴力去除0</h4>
-<p>遍历列表，当元素等于0时，去除该元素并在列表末尾加入0</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">moveZeroes</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Do not return anything, modify nums in-place instead.</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        len_nums = <span class="hljs-built_in">len</span>(nums)<br>        i = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span>( i != len_nums):<br>            <span class="hljs-keyword">if</span> nums[i] == <span class="hljs-number">0</span>:<br>                nums.append(<span class="hljs-number">0</span>)<br>                nums.remove(<span class="hljs-number">0</span>)<br>            i +=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-<h2 id="总结">3、总结</h2>
-<p>此类不让重新声明数组或者列表的题目通常都涉及到双指针进行解题</p>
+<h4 id="滑动窗口">1、滑动窗口</h4>
+<p>先在字符串s中构造一个p长度的滑动窗口，在滑动过程中固定窗口中字母的数量，当窗口中每种字母的数量与字符串p中每种字母的数量相同时，说明当前窗口为字符串p的字母异位词。</p>
+<p>当字符串s的长度小于字符串p的长度时，字符串s中一定不存在p的异位词，此时字符串s中无法构造和字符串p长度相同的窗口，所以该情况需要单独处理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findAnagrams</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, p: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        s_len, p_len = <span class="hljs-built_in">len</span>(s), <span class="hljs-built_in">len</span>(p)<br>        <br>        <span class="hljs-keyword">if</span> s_len &lt; p_len:<br>            <span class="hljs-keyword">return</span> []<br><br>        ans = []<br>        s_count = [<span class="hljs-number">0</span>] * <span class="hljs-number">26</span><br>        p_count = [<span class="hljs-number">0</span>] * <span class="hljs-number">26</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(p_len):<br>            s_count[<span class="hljs-built_in">ord</span>(s[i]) - <span class="hljs-number">97</span>] += <span class="hljs-number">1</span><br>            p_count[<span class="hljs-built_in">ord</span>(p[i]) - <span class="hljs-number">97</span>] += <span class="hljs-number">1</span><br><br>        <span class="hljs-keyword">if</span> s_count == p_count:<br>            ans.append(<span class="hljs-number">0</span>)<br><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(s_len - p_len):<br>            s_count[<span class="hljs-built_in">ord</span>(s[i]) - <span class="hljs-number">97</span>] -= <span class="hljs-number">1</span><br>            s_count[<span class="hljs-built_in">ord</span>(s[i + p_len]) - <span class="hljs-number">97</span>] += <span class="hljs-number">1</span><br>            <br>            <span class="hljs-keyword">if</span> s_count == p_count:<br>                ans.append(i + <span class="hljs-number">1</span>)<br><br>        <span class="hljs-keyword">return</span> ans<br>                <br></code></pre></td></tr></table></figure>
+<h4 id="优化滑动窗口">2、优化滑动窗口</h4>
+<p>该方法在方法一的基础上，将统计滑动窗口和字符串p中每种字母数量转变为统计二者间每种字母数量的差，当差为0时，即二者为字母异位词。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findAnagrams</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, p: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        s_len, p_len = <span class="hljs-built_in">len</span>(s), <span class="hljs-built_in">len</span>(p)<br><br>        <span class="hljs-keyword">if</span> s_len &lt; p_len:<br>            <span class="hljs-keyword">return</span> []<br><br>        ans = []<br>        count = [<span class="hljs-number">0</span>] * <span class="hljs-number">26</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(p_len):<br>            count[<span class="hljs-built_in">ord</span>(s[i]) - <span class="hljs-number">97</span>] += <span class="hljs-number">1</span><br>            count[<span class="hljs-built_in">ord</span>(p[i]) - <span class="hljs-number">97</span>] -= <span class="hljs-number">1</span><br><br>        differ = [c != <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> count].count(<span class="hljs-literal">True</span>)<br><br>        <span class="hljs-keyword">if</span> differ == <span class="hljs-number">0</span>:<br>            ans.append(<span class="hljs-number">0</span>)<br><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(s_len - p_len):<br>            <span class="hljs-keyword">if</span> count[<span class="hljs-built_in">ord</span>(s[i]) - <span class="hljs-number">97</span>] == <span class="hljs-number">1</span>:  <span class="hljs-comment"># 窗口中字母 s[i] 的数量与字符串 p 中的数量从不同变得相同</span><br>                differ -= <span class="hljs-number">1</span><br>            <span class="hljs-keyword">elif</span> count[<span class="hljs-built_in">ord</span>(s[i]) - <span class="hljs-number">97</span>] == <span class="hljs-number">0</span>:  <span class="hljs-comment"># 窗口中字母 s[i] 的数量与字符串 p 中的数量从相同变得不同</span><br>                differ += <span class="hljs-number">1</span><br>            count[<span class="hljs-built_in">ord</span>(s[i]) - <span class="hljs-number">97</span>] -= <span class="hljs-number">1</span><br><br>            <span class="hljs-keyword">if</span> count[<span class="hljs-built_in">ord</span>(s[i + p_len]) - <span class="hljs-number">97</span>] == -<span class="hljs-number">1</span>:  <span class="hljs-comment"># 窗口中字母 s[i+p_len] 的数量与字符串 p 中的数量从不同变得相同</span><br>                differ -= <span class="hljs-number">1</span><br>            <span class="hljs-keyword">elif</span> count[<span class="hljs-built_in">ord</span>(s[i + p_len]) - <span class="hljs-number">97</span>] == <span class="hljs-number">0</span>:  <span class="hljs-comment"># 窗口中字母 s[i+p_len] 的数量与字符串 p 中的数量从相同变得不同</span><br>                differ += <span class="hljs-number">1</span><br>            count[<span class="hljs-built_in">ord</span>(s[i + p_len]) - <span class="hljs-number">97</span>] += <span class="hljs-number">1</span><br>            <br>            <span class="hljs-keyword">if</span> differ == <span class="hljs-number">0</span>:<br>                ans.append(i + <span class="hljs-number">1</span>)<br><br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -343,8 +337,8 @@ X，然后把所有小于等于X的元素放到X的左边，大于X的元素放�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>移动零</div>
-      <div>http://example.com/2024/02/12/convey-zero/</div>
+      <div>找到字符串中所有字母异位词</div>
+      <div>http://example.com/2024/02/27/异位词/</div>
     </div>
     <div class="license-meta">
       
@@ -356,7 +350,7 @@ X，然后把所有小于等于X的元素放到X的左边，大于X的元素放�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月12日</div>
+          <div>2024年2月27日</div>
         </div>
       
       
@@ -388,9 +382,9 @@ X，然后把所有小于等于X的元素放到X的左边，大于X的元素放�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/14/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" title="三数之和">
+                      <a href="/2024/02/29/%E5%92%8C%E4%B8%BAk/" title="和为k的子数组">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">三数之和</span>
+                        <span class="hidden-mobile">和为k的子数组</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -398,8 +392,8 @@ X，然后把所有小于等于X的元素放到X的左边，大于X的元素放�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/02/12/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97/" title="最长连续序列">
-                        <span class="hidden-mobile">最长连续序列</span>
+                      <a href="/2024/02/22/%E6%8E%A5%E9%9B%A8%E6%B0%B4/" title="接雨水">
+                        <span class="hidden-mobile">接雨水</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

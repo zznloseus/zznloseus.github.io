@@ -16,24 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="移动零 1、题目   image-20240212223822690  2、题解 思路1：双指针+两次遍历 创建两个指针a,b，首次遍历用b记录当前的非0元素个数，遇到非0元素就将其左移，遍历完成后b的下表就指向最后一个非0元素下标。第二次遍历，起始位置从b开始到结束，将剩余区域的元素全变为0。 1234567891011class Solution(object):    de">
+    <meta name="description" content="三数之和 1、题目   image-20240214233202251  2、题解 思想：排序+双指针 ​ 本题与两数之和有类似的思想，都是使用双指针来进行解题。不同的是该题要求返回的三元组中不能出现相同的三元组，因此需要对输入的list进行排序。只需要保证：  第二重循环枚举到的元素不小于当前第一重循环枚举到的元素； 第三重循环枚举到的元素不小于当前第二重循环枚举到的元素">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动零">
-<meta property="og:url" content="http://example.com/2024/02/12/convey-zero/index.html">
+<meta property="og:title" content="三数之和">
+<meta property="og:url" content="http://example.com/2024/02/14/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="移动零 1、题目   image-20240212223822690  2、题解 思路1：双指针+两次遍历 创建两个指针a,b，首次遍历用b记录当前的非0元素个数，遇到非0元素就将其左移，遍历完成后b的下表就指向最后一个非0元素下标。第二次遍历，起始位置从b开始到结束，将剩余区域的元素全变为0。 1234567891011class Solution(object):    de">
+<meta property="og:description" content="三数之和 1、题目   image-20240214233202251  2、题解 思想：排序+双指针 ​ 本题与两数之和有类似的思想，都是使用双指针来进行解题。不同的是该题要求返回的三元组中不能出现相同的三元组，因此需要对输入的list进行排序。只需要保证：  第二重循环枚举到的元素不小于当前第一重循环枚举到的元素； 第三重循环枚举到的元素不小于当前第二重循环枚举到的元素">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202402122238778.png">
-<meta property="article:published_time" content="2024-02-12T15:12:52.000Z">
-<meta property="article:modified_time" content="2024-02-13T10:15:19.672Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202402142332361.png">
+<meta property="article:published_time" content="2024-02-14T15:57:49.000Z">
+<meta property="article:modified_time" content="2024-02-14T15:58:28.903Z">
 <meta property="article:author" content="Z Z">
 <meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202402122238778.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202402142332361.png">
   
   
   
-  <title>移动零 - Zspace</title>
+  <title>三数之和 - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="移动零"></span>
+            <span id="subtitle" data-typed-text="三数之和"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-12 23:12" pubdate>
-          2024年2月12日 晚上
+        <time datetime="2024-02-14 23:57" pubdate>
+          2024年2月14日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          859 字
+          1k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -271,33 +271,29 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">移动零</h1>
+            <h1 style="display: none">三数之和</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="移动零">移动零</h1>
+                <h1 id="三数之和">三数之和</h1>
 <h2 id="题目">1、题目</h2>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202402122238778.png" srcset="/img/loading.gif" lazyload
-alt="image-20240212223822690" />
-<figcaption aria-hidden="true">image-20240212223822690</figcaption>
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202402142332361.png" srcset="/img/loading.gif" lazyload
+alt="image-20240214233202251" />
+<figcaption aria-hidden="true">image-20240214233202251</figcaption>
 </figure>
 <h2 id="题解">2、题解</h2>
-<h4 id="思路1双指针两次遍历">思路1：双指针+两次遍历</h4>
-<p>创建两个指针a,b，首次遍历用b记录当前的非0元素个数，遇到非0元素就将其左移，遍历完成后b的下表就指向最后一个非0元素下标。第二次遍历，起始位置从b开始到结束，将剩余区域的元素全变为0。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">moveZeroes</span>(<span class="hljs-params">self, nums</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> nums:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>	<br>        j = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)):<br>            <span class="hljs-keyword">if</span> nums[i]:<br>                nums[j] = nums[i]<br>                j += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(j,<span class="hljs-built_in">len</span>(nums)):<br>            nums[i] = <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
-<h4 id="思路2双指针快排">思路2：双指针+快排</h4>
-<p>快速排序：首先要确定一个待分割的元素做中间点
-X，然后把所有小于等于X的元素放到X的左边，大于X的元素放到其右边。</p>
-<p>用0作为中间点，将不等于0的放到中间点左边，等于0的放到中间点右边</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">moveZeroes</span>(<span class="hljs-params">self, nums</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> nums:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>	<br>        j = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)):<br>            <span class="hljs-keyword">if</span> nums[i]:<br>                nums[j],nums[i] = nums[i],nums[j]<br>                j += <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-<h4 id="思路3暴力去除0">思路3：暴力去除0</h4>
-<p>遍历列表，当元素等于0时，去除该元素并在列表末尾加入0</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">moveZeroes</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Do not return anything, modify nums in-place instead.</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        len_nums = <span class="hljs-built_in">len</span>(nums)<br>        i = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span>( i != len_nums):<br>            <span class="hljs-keyword">if</span> nums[i] == <span class="hljs-number">0</span>:<br>                nums.append(<span class="hljs-number">0</span>)<br>                nums.remove(<span class="hljs-number">0</span>)<br>            i +=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-<h2 id="总结">3、总结</h2>
-<p>此类不让重新声明数组或者列表的题目通常都涉及到双指针进行解题</p>
+<h4 id="思想排序双指针">思想：排序+双指针</h4>
+<p>​
+本题与两数之和有类似的思想，都是使用双指针来进行解题。不同的是该题要求返回的三元组中不能出现相同的三元组，因此需要对输入的list进行排序。只需要保证：</p>
+<ul>
+<li>第二重循环枚举到的元素不小于当前第一重循环枚举到的元素；</li>
+<li>第三重循环枚举到的元素不小于当前第二重循环枚举到的元素。</li>
+</ul>
+<p>这样做的目的是让结果中的元组按数的大小进行排列，这样就可以避免出现重复的结果。同时，对于每一重循环而言，相邻两次枚举的元素不能相同，否则也会造成重复。再进行一定的思考可以发现如果固定第一重循环的数x和第二重循环的数y，第三重循环进行遍历时就只有唯一的数z满足等式。当第二重循环进行下一次遍历，y'&gt;y,所以c'需要小于c，即c'一定出现在c的左侧。所以可以从小到大枚举b,从大到小枚举c。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#官方题解</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">threeSum</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]:<br>        n = <span class="hljs-built_in">len</span>(nums)<br>        nums.sort()<br>        ans = <span class="hljs-built_in">list</span>()<br>        <br>        <span class="hljs-comment"># 枚举 a</span><br>        <span class="hljs-keyword">for</span> first <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>            <span class="hljs-comment"># 需要和上一次枚举的数不相同</span><br>            <span class="hljs-keyword">if</span> first &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> nums[first] == nums[first - <span class="hljs-number">1</span>]:<br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-comment"># c 对应的指针初始指向数组的最右端</span><br>            third = n - <span class="hljs-number">1</span><br>            target = -nums[first]<br>            <span class="hljs-comment"># 枚举 b</span><br>            <span class="hljs-keyword">for</span> second <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(first + <span class="hljs-number">1</span>, n):<br>                <span class="hljs-comment"># 需要和上一次枚举的数不相同</span><br>                <span class="hljs-keyword">if</span> second &gt; first + <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> nums[second] == nums[second - <span class="hljs-number">1</span>]:<br>                    <span class="hljs-keyword">continue</span><br>                <span class="hljs-comment"># 需要保证 b 的指针在 c 的指针的左侧</span><br>                <span class="hljs-keyword">while</span> second &lt; third <span class="hljs-keyword">and</span> nums[second] + nums[third] &gt; target:<br>                    third -= <span class="hljs-number">1</span><br>                <span class="hljs-comment"># 如果指针重合，随着 b 后续的增加</span><br>                <span class="hljs-comment"># 就不会有满足 a+b+c=0 并且 b&lt;c 的 c 了，可以退出循环</span><br>                <span class="hljs-keyword">if</span> second == third:<br>                    <span class="hljs-keyword">break</span><br>                <span class="hljs-keyword">if</span> nums[second] + nums[third] == target:<br>                    ans.append([nums[first], nums[second], nums[third]])<br>        <br>        <span class="hljs-keyword">return</span> ans   <br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -343,8 +339,8 @@ X，然后把所有小于等于X的元素放到X的左边，大于X的元素放�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>移动零</div>
-      <div>http://example.com/2024/02/12/convey-zero/</div>
+      <div>三数之和</div>
+      <div>http://example.com/2024/02/14/三数之和/</div>
     </div>
     <div class="license-meta">
       
@@ -356,7 +352,7 @@ X，然后把所有小于等于X的元素放到X的左边，大于X的元素放�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月12日</div>
+          <div>2024年2月14日</div>
         </div>
       
       
@@ -388,9 +384,9 @@ X，然后把所有小于等于X的元素放到X的左边，大于X的元素放�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/14/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" title="三数之和">
+                      <a href="/2024/02/22/%E6%8E%A5%E9%9B%A8%E6%B0%B4/" title="接雨水">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">三数之和</span>
+                        <span class="hidden-mobile">接雨水</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -398,8 +394,8 @@ X，然后把所有小于等于X的元素放到X的左边，大于X的元素放�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/02/12/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97/" title="最长连续序列">
-                        <span class="hidden-mobile">最长连续序列</span>
+                      <a href="/2024/02/12/convey-zero/" title="移动零">
+                        <span class="hidden-mobile">移动零</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
