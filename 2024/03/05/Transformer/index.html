@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Transformer学习笔记 1、架构  上图是\(Transformer\)的详细架构，可以从中抽象出基础模块进行理解：  以翻译任务为例，可以将\(Transform\)理解成一个黑盒，输入模型一句话，输出能够得到一个翻译结果。Transform是一个\(Seq2Seq\)模型（\(Encoder-Decoder\) 框架的模型），$Encoder和Decoder $默认是有6层">
+    <meta name="description" content="Transformer学习笔记1、架构  上图是$Transformer$的详细架构，可以从中抽象出基础模块进行理解：   以翻译任务为例，可以将$Transform$理解成一个黑盒，输入模型一句话，输出能够得到一个翻译结果。Transform是一个$Seq2Seq$模型（$Encoder-Decoder$ 框架的模型），$Encoder和Decoder $默认是有6层：   这里$Encoder">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Transformer">
 <meta property="og:url" content="http://example.com/2024/03/05/Transformer/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="Transformer学习笔记 1、架构  上图是\(Transformer\)的详细架构，可以从中抽象出基础模块进行理解：  以翻译任务为例，可以将\(Transform\)理解成一个黑盒，输入模型一句话，输出能够得到一个翻译结果。Transform是一个\(Seq2Seq\)模型（\(Encoder-Decoder\) 框架的模型），$Encoder和Decoder $默认是有6层">
+<meta property="og:description" content="Transformer学习笔记1、架构  上图是$Transformer$的详细架构，可以从中抽象出基础模块进行理解：   以翻译任务为例，可以将$Transform$理解成一个黑盒，输入模型一句话，输出能够得到一个翻译结果。Transform是一个$Seq2Seq$模型（$Encoder-Decoder$ 框架的模型），$Encoder和Decoder $默认是有6层：   这里$Encoder">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403052131299.jpeg">
 <meta property="article:published_time" content="2024-03-05T13:30:01.000Z">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          844 字
+          820 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          8 分钟
+          7 分钟
         
       </span>
     
@@ -276,69 +276,33 @@
             
               <div class="markdown-body">
                 
-                <h1 id="transformer学习笔记">Transformer学习笔记</h1>
-<h2 id="架构">1、架构</h2>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403052131299.jpeg" srcset="/img/loading.gif" lazyload alt="图1" style="zoom: 33%;" /></p>
-<p>上图是<span
-class="math inline">\(Transformer\)</span>的详细架构，可以从中抽象出基础模块进行理解：</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403051543793.png" srcset="/img/loading.gif" lazyload alt="图2" style="zoom: 67%;" /></p>
-<p>以翻译任务为例，可以将<span
-class="math inline">\(Transform\)</span>理解成一个黑盒，输入模型一句话，输出能够得到一个翻译结果。Transform是一个<span
-class="math inline">\(Seq2Seq\)</span>模型（<span
-class="math inline">\(Encoder-Decoder\)</span>
-框架的模型），$Encoder和Decoder $默认是有6层：</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403051605301.png" srcset="/img/loading.gif" lazyload alt="图3" style="zoom:67%;" /></p>
-<p>这里<span
-class="math inline">\(Encoders\)</span>的输出会和每一层的<span
-class="math inline">\(Decoder\)</span>进行结合，原因是Encoder向每层的Decoder输入KV，Decoder
-产生的Q 从Encoder的KV中查询信息。</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403051620772.png" srcset="/img/loading.gif" lazyload
-alt="图4" />
-<figcaption aria-hidden="true">图4</figcaption>
-</figure>
-<h2 id="encoder">2、Encoder</h2>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403052124785.png" srcset="/img/loading.gif" lazyload
-alt="图5" />
-<figcaption aria-hidden="true">图5</figcaption>
-</figure>
-<p>从图5中可以看到，<span
-class="math inline">\(Encoder\)</span>包含两个子层：</p>
+                <h1 id="Transformer学习笔记"><a href="#Transformer学习笔记" class="headerlink" title="Transformer学习笔记"></a>Transformer学习笔记</h1><h2 id="1、架构"><a href="#1、架构" class="headerlink" title="1、架构"></a>1、架构</h2><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403052131299.jpeg" srcset="/img/loading.gif" lazyload alt="图1" style="zoom: 33%;" />
+
+<p>上图是$Transformer$的详细架构，可以从中抽象出基础模块进行理解：</p>
+<img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403051543793.png" srcset="/img/loading.gif" lazyload alt="图2" style="zoom: 67%;" />
+
+<p>以翻译任务为例，可以将$Transform$理解成一个黑盒，输入模型一句话，输出能够得到一个翻译结果。Transform是一个$Seq2Seq$模型（$Encoder-Decoder$ 框架的模型），$Encoder和Decoder $默认是有6层：</p>
+<img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403051605301.png" srcset="/img/loading.gif" lazyload alt="图3" style="zoom:67%;" />
+
+<p>这里$Encoders$的输出会和每一层的$Decoder$进行结合，原因是Encoder向每层的Decoder输入KV，Decoder 产生的Q 从Encoder的KV中查询信息。</p>
+<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403051620772.png" srcset="/img/loading.gif" lazyload alt="图4"></p>
+<h2 id="2、Encoder"><a href="#2、Encoder" class="headerlink" title="2、Encoder"></a>2、Encoder</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403052124785.png" srcset="/img/loading.gif" lazyload alt="图5"></p>
+<p>从图5中可以看到，$Encoder$包含两个子层：</p>
 <ul>
-<li>第一个是Multi-Head self-Attention，用于计算输入的<span
-class="math inline">\(self-attention\)</span>；</li>
+<li>第一个是Multi-Head self-Attention，用于计算输入的$self-attention$；</li>
 </ul>
-<p>残差模块表示：<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403051917053.png" srcset="/img/loading.gif" lazyload
-alt="图6" /></p>
-<p>残差结构的作用：避免出现梯度消失的情况，由图5所示，网络在反向传播时，错误信号可以不经过任何中间权重矩阵变换直接传播到低层，一定程度上可以缓解梯度消失问题。</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403051914487.png" srcset="/img/loading.gif" lazyload
-alt="图7" />
-<figcaption aria-hidden="true">图7</figcaption>
-</figure>
-<p>Layer
-Norm作用：保证数据特征分布的稳定性，并且可以加速模型的收敛。</p>
-<h4 id="为什么transformer用layer-norm">为什么Transformer用Layer
-Norm</h4>
-<p>Layer Norm主要解决的是内部变量转移(Internal Covariate
-Shift)的问题，在传统深度神经网络中，通常采用批归一化(Batch
-Normalization)来解决这个问题，<strong>但是在Transformer中，每个位置的输入都是高维变量，Batch
-Norm会破坏向量的位置信息。Layer
-Norm对每个样本单独计算均值和方差，不会破坏向量的位置信息。</strong></p>
+<p>残差模块表示：<img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403051917053.png" srcset="/img/loading.gif" lazyload alt="图6"></p>
+<p>残差结构的作用：避免出现梯度消失的情况，由图5所示，网络在反向传播时，错误信号可以不经过任何中间权重矩阵变换直接传播到低层，一定程度上可以缓解梯度消失问题。	</p>
+<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403051914487.png" srcset="/img/loading.gif" lazyload alt="图7"></p>
+<p>Layer Norm作用：保证数据特征分布的稳定性，并且可以加速模型的收敛。</p>
+<h4 id="为什么Transformer用Layer-Norm"><a href="#为什么Transformer用Layer-Norm" class="headerlink" title="为什么Transformer用Layer Norm"></a>为什么Transformer用Layer Norm</h4><p>Layer Norm主要解决的是内部变量转移(Internal Covariate Shift)的问题，在传统深度神经网络中，通常采用批归一化(Batch Normalization)来解决这个问题，<strong>但是在Transformer中，每个位置的输入都是高维变量，Batch Norm会破坏向量的位置信息。Layer Norm对每个样本单独计算均值和方差，不会破坏向量的位置信息。</strong></p>
 <ul>
-<li>第二个是简单的前馈神经网络层。每个层的输出都会通过残差网络：<span
-class="math inline">\(LayerNorm (x + Sub_layer(x))\)</span>。</li>
+<li>第二个是简单的前馈神经网络层。每个层的输出都会通过残差网络：$LayerNorm (x + Sub_layer(x))$。</li>
 </ul>
 <p>Feed Forward作用：</p>
-<h2 id="decoder">3、Decoder</h2>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403052125915.png" srcset="/img/loading.gif" lazyload alt="图8" style="zoom:80%;" /></p>
-<p>Decoder包含三个层：两个Multi-Head self-Attention 层和一个Feed
-Forward层</p>
+<h2 id="3、Decoder"><a href="#3、Decoder" class="headerlink" title="3、Decoder"></a>3、Decoder</h2><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403052125915.png" srcset="/img/loading.gif" lazyload alt="图8" style="zoom:80%;" />
+
+<p>Decoder包含三个层：两个Multi-Head self-Attention 层和一个Feed Forward层</p>
 
                 
               </div>
@@ -428,6 +392,12 @@ Forward层</p>
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/03/08/%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/" title="轮转数组">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">轮转数组</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
