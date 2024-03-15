@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="链表中环的入口结点1、题目 2、解题思路思路：双指针一快一慢指针。快指针每次跑两个element，慢指针每次跑一个。如果存在一个圈，经过一段时间后，快指针是能追上慢指针的。 如图所示，假设链表头到环入口结点X的距离为A，两指针相遇的结点为Y，X到Y的距离为B，Y到X的距离为C。设快指针进入环后经过n圈与慢指针相遇，根据假设可得到等式：$2(A+B)&#x3D;A+nB+(n-1)C$。  1234">
+    <meta name="description" content="链表中环的入口结点 1、题目   image-20231009223317010  2、解题思路 思路：双指针 一快一慢指针。快指针每次跑两个element，慢指针每次跑一个。如果存在一个圈，经过一段时间后，快指针是能追上慢指针的。 如图所示，假设链表头到环入口结点X的距离为A，两指针相遇的结点为Y，X到Y的距离为B，Y到X的距离为C。设快指针进入环后经过n圈与慢指针相遇，根据假">
 <meta property="og:type" content="article">
 <meta property="og:title" content="链表中环的入口结点">
 <meta property="og:url" content="http://example.com/2023/10/09/circle-entrance/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="链表中环的入口结点1、题目 2、解题思路思路：双指针一快一慢指针。快指针每次跑两个element，慢指针每次跑一个。如果存在一个圈，经过一段时间后，快指针是能追上慢指针的。 如图所示，假设链表头到环入口结点X的距离为A，两指针相遇的结点为Y，X到Y的距离为B，Y到X的距离为C。设快指针进入环后经过n圈与慢指针相遇，根据假设可得到等式：$2(A+B)&#x3D;A+nB+(n-1)C$。  1234">
+<meta property="og:description" content="链表中环的入口结点 1、题目   image-20231009223317010  2、解题思路 思路：双指针 一快一慢指针。快指针每次跑两个element，慢指针每次跑一个。如果存在一个圈，经过一段时间后，快指针是能追上慢指针的。 如图所示，假设链表头到环入口结点X的距离为A，两指针相遇的结点为Y，X到Y的距离为B，Y到X的距离为C。设快指针进入环后经过n圈与慢指针相遇，根据假">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310092233113.png">
 <meta property="article:published_time" content="2023-10-09T14:31:27.000Z">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          779 字
+          822 字
         
       </span>
     
@@ -276,12 +276,26 @@
             
               <div class="markdown-body">
                 
-                <h1 id="链表中环的入口结点"><a href="#链表中环的入口结点" class="headerlink" title="链表中环的入口结点"></a>链表中环的入口结点</h1><h2 id="1、题目"><a href="#1、题目" class="headerlink" title="1、题目"></a>1、题目</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310092233113.png" srcset="/img/loading.gif" lazyload alt="image-20231009223317010"></p>
-<h2 id="2、解题思路"><a href="#2、解题思路" class="headerlink" title="2、解题思路"></a>2、解题思路</h2><h4 id="思路：双指针"><a href="#思路：双指针" class="headerlink" title="思路：双指针"></a>思路：双指针</h4><p>一快一慢指针。快指针每次跑两个element，慢指针每次跑一个。如果存在一个圈，经过一段时间后，快指针是能追上慢指针的。</p>
-<p>如图所示，假设链表头到环入口结点X的距离为A，两指针相遇的结点为Y，X到Y的距离为B，Y到X的距离为C。设快指针进入环后经过n圈与慢指针相遇，根据假设可得到等式：$2(A+B)&#x3D;A+nB+(n-1)C$。</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310092246110.png" srcset="/img/loading.gif" lazyload alt="image-20231009224631071"></p>
+                <h1 id="链表中环的入口结点">链表中环的入口结点</h1>
+<h2 id="题目">1、题目</h2>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310092233113.png" srcset="/img/loading.gif" lazyload
+alt="image-20231009223317010" />
+<figcaption aria-hidden="true">image-20231009223317010</figcaption>
+</figure>
+<h2 id="解题思路">2、解题思路</h2>
+<h4 id="思路双指针">思路：双指针</h4>
+<p>一快一慢指针。快指针每次跑两个element，慢指针每次跑一个。如果存在一个圈，经过一段时间后，快指针是能追上慢指针的。</p>
+<p>如图所示，假设链表头到环入口结点X的距离为A，两指针相遇的结点为Y，X到Y的距离为B，Y到X的距离为C。设快指针进入环后经过n圈与慢指针相遇，根据假设可得到等式：<span
+class="math inline">\(2(A+B)=A+nB+(n-1)C\)</span>。</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310092246110.png" srcset="/img/loading.gif" lazyload
+alt="image-20231009224631071" />
+<figcaption aria-hidden="true">image-20231009224631071</figcaption>
+</figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.*;<br><br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListNode</span> &#123;<br>    <span class="hljs-type">int</span> val;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">next</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br><br>    ListNode(<span class="hljs-type">int</span> val) &#123;<br>        <span class="hljs-built_in">this</span>.val = val;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">EntryNodeOfLoop</span><span class="hljs-params">(ListNode pHead)</span> &#123;<br>        <br>        <span class="hljs-keyword">if</span>(pHead == <span class="hljs-literal">null</span> || pHead.next == <span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        &#125;<br><br>        ListNode fast=pHead;<br>        ListNode slow=pHead;<br><br>        <span class="hljs-keyword">while</span>(fast != <span class="hljs-literal">null</span> &amp;&amp; fast.next != <span class="hljs-literal">null</span>)&#123;<br>            fast = fast.next.next;<br>            slow = slow.next;<br><br>            <span class="hljs-keyword">if</span>(fast==slow)&#123;<br>                <span class="hljs-type">ListNode</span> <span class="hljs-variable">slow2</span> <span class="hljs-operator">=</span> pHead;<br>                <span class="hljs-keyword">while</span>(slow2 != slow)&#123;<br>                    slow = slow.next;<br>                    slow2 = slow2.next;<br>                &#125;<br>                <span class="hljs-keyword">return</span> slow2;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
 
                 
               </div>
