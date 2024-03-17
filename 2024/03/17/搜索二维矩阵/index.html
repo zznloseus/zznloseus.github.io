@@ -16,24 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="螺旋矩阵 1、题目   图1  2、题解 设定边界  当矩阵为空时，直接返回列表 初始化矩阵左、右、上、下四个边界 从左向右、从上向下、从右向左、从下向上四个方向循环打印。  ​ 根据边界打印，将元素按顺序添加到列表中； ​ 边界向内收缩1； ​ 判断边界是否相遇，若打印完毕则跳出  返回列表  12345678910111213141516171819cla">
+    <meta name="description" content="搜索二维矩阵 1、题目   图1  2、题解 贪心 利用矩阵从左到右、从上到下依次递增的特性，可以发现矩阵的结构类似于二叉搜索树。根节点对应矩阵左下角和右上角的元素，若以矩阵左下角元素为标志数flag：  若\(flag&gt;target\),则\(targe\)t一定在\(flag\)所在行的上方，\(flag\)所在行可被消去 若\(flag&lt;target\),则">
 <meta property="og:type" content="article">
-<meta property="og:title" content="螺旋矩阵">
-<meta property="og:url" content="http://example.com/2024/03/15/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/index.html">
+<meta property="og:title" content="搜索二维矩阵">
+<meta property="og:url" content="http://example.com/2024/03/17/%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="螺旋矩阵 1、题目   图1  2、题解 设定边界  当矩阵为空时，直接返回列表 初始化矩阵左、右、上、下四个边界 从左向右、从上向下、从右向左、从下向上四个方向循环打印。  ​ 根据边界打印，将元素按顺序添加到列表中； ​ 边界向内收缩1； ​ 判断边界是否相遇，若打印完毕则跳出  返回列表  12345678910111213141516171819cla">
+<meta property="og:description" content="搜索二维矩阵 1、题目   图1  2、题解 贪心 利用矩阵从左到右、从上到下依次递增的特性，可以发现矩阵的结构类似于二叉搜索树。根节点对应矩阵左下角和右上角的元素，若以矩阵左下角元素为标志数flag：  若\(flag&gt;target\),则\(targe\)t一定在\(flag\)所在行的上方，\(flag\)所在行可被消去 若\(flag&lt;target\),则">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403152349839.png">
-<meta property="article:published_time" content="2024-03-15T15:55:48.000Z">
-<meta property="article:modified_time" content="2024-03-15T15:57:38.660Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403172222355.png">
+<meta property="article:published_time" content="2024-03-17T14:22:58.000Z">
+<meta property="article:modified_time" content="2024-03-17T14:23:46.692Z">
 <meta property="article:author" content="Z Z">
 <meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403152349839.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403172222355.png">
   
   
   
-  <title>螺旋矩阵 - Zspace</title>
+  <title>搜索二维矩阵 - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="螺旋矩阵"></span>
+            <span id="subtitle" data-typed-text="搜索二维矩阵"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-15 23:55" pubdate>
-          2024年3月15日 晚上
+        <time datetime="2024-03-17 22:22" pubdate>
+          2024年3月17日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          614 字
+          623 字
         
       </span>
     
@@ -271,33 +271,45 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">螺旋矩阵</h1>
+            <h1 style="display: none">搜索二维矩阵</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="螺旋矩阵">螺旋矩阵</h1>
+                <h1 id="搜索二维矩阵">搜索二维矩阵</h1>
 <h2 id="题目">1、题目</h2>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403152349839.png" srcset="/img/loading.gif" lazyload
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403172222355.png" srcset="/img/loading.gif" lazyload
 alt="图1" />
 <figcaption aria-hidden="true">图1</figcaption>
 </figure>
 <h2 id="题解">2、题解</h2>
-<h4 id="设定边界">设定边界</h4>
+<h4 id="贪心">贪心</h4>
+<p>利用矩阵从左到右、从上到下依次递增的特性，可以发现矩阵的结构类似于二叉搜索树。根节点对应矩阵左下角和右上角的元素，若以矩阵左下角元素为标志数flag：</p>
 <ul>
-<li>当矩阵为空时，直接返回列表</li>
-<li>初始化矩阵左、右、上、下四个边界</li>
-<li>从左向右、从上向下、从右向左、从下向上四个方向循环打印。</li>
+<li>若<span class="math inline">\(flag&gt;target\)</span>,则<span
+class="math inline">\(targe\)</span>t一定在<span
+class="math inline">\(flag\)</span>所在行的上方，<span
+class="math inline">\(flag\)</span>所在行可被消去</li>
+<li>若<span class="math inline">\(flag&lt;target\)</span>,则<span
+class="math inline">\(target\)</span>一定在<span
+class="math inline">\(flag\)</span>所在列的右方，<span
+class="math inline">\(flag\)</span>​所在列可被消去</li>
 </ul>
-<p>​ 根据边界打印，将元素按顺序添加到列表中；</p>
-<p>​ 边界向内收缩1；</p>
-<p>​ 判断边界是否相遇，若打印完毕则跳出</p>
+<p>从矩阵左下角元素开始遍历，与目标值进行比对：</p>
 <ul>
-<li>返回列表</li>
+<li>当<span
+class="math inline">\(matrix[i][j]&gt;target\)</span>时，执行<span
+class="math inline">\(i--\)</span>,消去第i行元素</li>
+<li>当<span
+class="math inline">\(matrix[i][j]&lt;target\)</span>时，执行<span
+class="math inline">\(j++\)</span>,消去第j列元素</li>
+<li>当<span
+class="math inline">\(matrix[i][j]=target\)</span>时，返回True</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">spiralOrder</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> matrix: <span class="hljs-keyword">return</span> []<br>        l, r, t, b, res = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>]) - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(matrix) - <span class="hljs-number">1</span>, []<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l, r + <span class="hljs-number">1</span>): res.append(matrix[t][i]) <span class="hljs-comment"># left to right</span><br>            t += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> t &gt; b: <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(t, b + <span class="hljs-number">1</span>): res.append(matrix[i][r]) <span class="hljs-comment"># top to bottom</span><br>            r -= <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> l &gt; r: <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(r, l - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>): res.append(matrix[b][i]) <span class="hljs-comment"># right to left</span><br>            b -= <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> t &gt; b: <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(b, t - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>): res.append(matrix[i][l]) <span class="hljs-comment"># bottom to top</span><br>            l += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> l &gt; r: <span class="hljs-keyword">break</span><br>        <span class="hljs-keyword">return</span> res<br><br></code></pre></td></tr></table></figure>
+<p>若行或列索引越界，则代表矩阵中无目标值，返回False</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">searchMatrix</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], target: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        i, j = <span class="hljs-built_in">len</span>(matrix) - <span class="hljs-number">1</span>, <span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span> i &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> j &lt; <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>]):<br>            <span class="hljs-keyword">if</span> matrix[i][j] &gt; target: i -= <span class="hljs-number">1</span><br>            <span class="hljs-keyword">elif</span> matrix[i][j] &lt; target: j += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>        <br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -343,8 +355,8 @@ alt="图1" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>螺旋矩阵</div>
-      <div>http://example.com/2024/03/15/螺旋矩阵/</div>
+      <div>搜索二维矩阵</div>
+      <div>http://example.com/2024/03/17/搜索二维矩阵/</div>
     </div>
     <div class="license-meta">
       
@@ -356,7 +368,7 @@ alt="图1" />
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年3月15日</div>
+          <div>2024年3月17日</div>
         </div>
       
       
@@ -388,18 +400,12 @@ alt="图1" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/17/%E6%97%8B%E8%BD%AC%E5%9B%BE%E8%B1%A1/" title="旋转图象">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">旋转图象</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/13/%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/" title="矩阵置零">
-                        <span class="hidden-mobile">矩阵置零</span>
+                      <a href="/2024/03/17/%E6%97%8B%E8%BD%AC%E5%9B%BE%E8%B1%A1/" title="旋转图象">
+                        <span class="hidden-mobile">旋转图象</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>搜索二维矩阵</title>
+    <link href="/2024/03/17/%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5/"/>
+    <url>/2024/03/17/%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5/</url>
+    
+    <content type="html"><![CDATA[<h1 id="搜索二维矩阵">搜索二维矩阵</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403172222355.png"alt="图1" /><figcaption aria-hidden="true">图1</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="贪心">贪心</h4><p>利用矩阵从左到右、从上到下依次递增的特性，可以发现矩阵的结构类似于二叉搜索树。根节点对应矩阵左下角和右上角的元素，若以矩阵左下角元素为标志数flag：</p><ul><li>若<span class="math inline">\(flag&gt;target\)</span>,则<spanclass="math inline">\(targe\)</span>t一定在<spanclass="math inline">\(flag\)</span>所在行的上方，<spanclass="math inline">\(flag\)</span>所在行可被消去</li><li>若<span class="math inline">\(flag&lt;target\)</span>,则<spanclass="math inline">\(target\)</span>一定在<spanclass="math inline">\(flag\)</span>所在列的右方，<spanclass="math inline">\(flag\)</span>​所在列可被消去</li></ul><p>从矩阵左下角元素开始遍历，与目标值进行比对：</p><ul><li>当<spanclass="math inline">\(matrix[i][j]&gt;target\)</span>时，执行<spanclass="math inline">\(i--\)</span>,消去第i行元素</li><li>当<spanclass="math inline">\(matrix[i][j]&lt;target\)</span>时，执行<spanclass="math inline">\(j++\)</span>,消去第j列元素</li><li>当<spanclass="math inline">\(matrix[i][j]=target\)</span>时，返回True</li></ul><p>若行或列索引越界，则代表矩阵中无目标值，返回False</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">searchMatrix</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], target: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        i, j = <span class="hljs-built_in">len</span>(matrix) - <span class="hljs-number">1</span>, <span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span> i &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> j &lt; <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>]):<br>            <span class="hljs-keyword">if</span> matrix[i][j] &gt; target: i -= <span class="hljs-number">1</span><br>            <span class="hljs-keyword">elif</span> matrix[i][j] &lt; target: j += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>        <br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hot100</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>旋转图象</title>
+    <link href="/2024/03/17/%E6%97%8B%E8%BD%AC%E5%9B%BE%E8%B1%A1/"/>
+    <url>/2024/03/17/%E6%97%8B%E8%BD%AC%E5%9B%BE%E8%B1%A1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="旋转图象">旋转图象</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403162315069.png"alt="图1" /><figcaption aria-hidden="true">图1</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="辅助存储">辅助存储</h4><p>根据旋转示意不难看出：</p><ul><li>原矩阵第i行元素旋转到第n-1-i列</li><li>原矩阵第j列元素旋转到第j行</li></ul><p>该方法存在问题：写入一个元素后，原矩阵的元素会被覆盖，导致被覆盖的元素无法写入到旋转后的位置，所以需要一个辅助矩阵进行元素存储。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">rotate</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Do not return anything, modify matrix in-place instead.</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        row = <span class="hljs-built_in">len</span>(matrix)<br>        col = <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])<br>        tmp = [[matrix[r][c] <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(col)]<span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(row)]<br><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(row):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(col):<br>                matrix[i][j] = tmp[row-<span class="hljs-number">1</span>-j][i]<br></code></pre></td></tr></table></figure><p>上述方法需要遍历所有元素以及创建新的辅助矩阵，因此时间复杂度和空间复杂度都是<spanclass="math inline">\(N^2\)</span></p><h4 id="原地修改">原地修改</h4><p>以矩阵四个角的元素为例，从左上角开始顺时针元素一次为A,B,C,D,旋转90°等价于依次执行<spanclass="math inline">\(D\to A,A\to B,B\to C,C\toD\)</span>。第一次覆盖会让A元素丢失，需要一个tmp预先存储A，旋转的操作就变为<spanclass="math inline">\(A\leftarrow D\leftarrow C\leftarrow B\leftarrowtmp\)</span>。</p><p>从循环流程来看，当矩阵大小<spanclass="math inline">\(n\)</span>为偶数时，取前<spanclass="math inline">\(\frac{n}2\)</span>行、前<spanclass="math inline">\(\frac{n}2\)</span>列的元素为起始点；当矩阵大小n为奇数时，取前<spanclass="math inline">\(\frac{n}2\)</span>行、前<spanclass="math inline">\(\frac{n+1}2\)</span>列的元素为起始点。最后再结合上一个方法的旋转公式。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">rotate</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-literal">None</span>:<br>        n = <span class="hljs-built_in">len</span>(matrix)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n // <span class="hljs-number">2</span>):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>((n + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>):<br>                tmp = matrix[i][j]<br>                matrix[i][j] = matrix[n - <span class="hljs-number">1</span> - j][i]<br>                matrix[n - <span class="hljs-number">1</span> - j][i] = matrix[n - <span class="hljs-number">1</span> - i][n - <span class="hljs-number">1</span> - j]<br>                matrix[n - <span class="hljs-number">1</span> - i][n - <span class="hljs-number">1</span> - j] = matrix[j][n - <span class="hljs-number">1</span> - i]<br>                matrix[j][n - <span class="hljs-number">1</span> - i] = tmp<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hot100</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>螺旋矩阵</title>
     <link href="/2024/03/15/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/"/>
     <url>/2024/03/15/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/</url>
