@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="旋转图象1、题目 2、题解辅助存储根据旋转示意不难看出：  原矩阵第i行元素旋转到第n-1-i列 原矩阵第j列元素旋转到第j行  该方法存在问题：写入一个元素后，原矩阵的元素会被覆盖，导致被覆盖的元素无法写入到旋转后的位置，所以需要一个辅助矩阵进行元素存储。 123456789101112class Solution:    def rotate(self, matrix: List[List[i">
+    <meta name="description" content="旋转图象 1、题目   图1  2、题解 辅助存储 根据旋转示意不难看出：  原矩阵第i行元素旋转到第n-1-i列 原矩阵第j列元素旋转到第j行  该方法存在问题：写入一个元素后，原矩阵的元素会被覆盖，导致被覆盖的元素无法写入到旋转后的位置，所以需要一个辅助矩阵进行元素存储。 123456789101112class Solution:    def rotate(se">
 <meta property="og:type" content="article">
 <meta property="og:title" content="旋转图象">
 <meta property="og:url" content="http://example.com/2024/03/17/%E6%97%8B%E8%BD%AC%E5%9B%BE%E8%B1%A1/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="旋转图象1、题目 2、题解辅助存储根据旋转示意不难看出：  原矩阵第i行元素旋转到第n-1-i列 原矩阵第j列元素旋转到第j行  该方法存在问题：写入一个元素后，原矩阵的元素会被覆盖，导致被覆盖的元素无法写入到旋转后的位置，所以需要一个辅助矩阵进行元素存储。 123456789101112class Solution:    def rotate(self, matrix: List[List[i">
+<meta property="og:description" content="旋转图象 1、题目   图1  2、题解 辅助存储 根据旋转示意不难看出：  原矩阵第i行元素旋转到第n-1-i列 原矩阵第j列元素旋转到第j行  该方法存在问题：写入一个元素后，原矩阵的元素会被覆盖，导致被覆盖的元素无法写入到旋转后的位置，所以需要一个辅助矩阵进行元素存储。 123456789101112class Solution:    def rotate(se">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403162315069.png">
 <meta property="article:published_time" content="2024-03-16T16:09:14.000Z">
@@ -276,20 +276,38 @@
             
               <div class="markdown-body">
                 
-                <h1 id="旋转图象"><a href="#旋转图象" class="headerlink" title="旋转图象"></a>旋转图象</h1><h2 id="1、题目"><a href="#1、题目" class="headerlink" title="1、题目"></a>1、题目</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403162315069.png" srcset="/img/loading.gif" lazyload alt="图1"></p>
-<h2 id="2、题解"><a href="#2、题解" class="headerlink" title="2、题解"></a>2、题解</h2><h4 id="辅助存储"><a href="#辅助存储" class="headerlink" title="辅助存储"></a>辅助存储</h4><p>根据旋转示意不难看出：</p>
+                <h1 id="旋转图象">旋转图象</h1>
+<h2 id="题目">1、题目</h2>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403162315069.png" srcset="/img/loading.gif" lazyload
+alt="图1" />
+<figcaption aria-hidden="true">图1</figcaption>
+</figure>
+<h2 id="题解">2、题解</h2>
+<h4 id="辅助存储">辅助存储</h4>
+<p>根据旋转示意不难看出：</p>
 <ul>
 <li>原矩阵第i行元素旋转到第n-1-i列</li>
 <li>原矩阵第j列元素旋转到第j行</li>
 </ul>
 <p>该方法存在问题：写入一个元素后，原矩阵的元素会被覆盖，导致被覆盖的元素无法写入到旋转后的位置，所以需要一个辅助矩阵进行元素存储。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">rotate</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Do not return anything, modify matrix in-place instead.</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        row = <span class="hljs-built_in">len</span>(matrix)<br>        col = <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])<br>        tmp = [[matrix[r][c] <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(col)]<span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(row)]<br><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(row):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(col):<br>                matrix[i][j] = tmp[row-<span class="hljs-number">1</span>-j][i]<br></code></pre></td></tr></table></figure>
-
-<p>上述方法需要遍历所有元素以及创建新的辅助矩阵，因此时间复杂度和空间复杂度都是$N^2$</p>
-<h4 id="原地修改"><a href="#原地修改" class="headerlink" title="原地修改"></a>原地修改</h4><p>以矩阵四个角的元素为例，从左上角开始顺时针元素一次为A,B,C,D,旋转90°等价于依次执行$D\to A,A\to B,B\to C,C\to D$。第一次覆盖会让A元素丢失，需要一个tmp预先存储A，旋转的操作就变为$A\leftarrow D\leftarrow C\leftarrow B\leftarrow tmp$。</p>
-<p>从循环流程来看，当矩阵大小$n$为偶数时，取前$\frac{n}2$行、前$\frac{n}2$列的元素为起始点；当矩阵大小n为奇数时，取前$\frac{n}2$行、前$\frac{n+1}2$列的元素为起始点。最后再结合上一个方法的旋转公式。</p>
+<p>上述方法需要遍历所有元素以及创建新的辅助矩阵，因此时间复杂度和空间复杂度都是<span
+class="math inline">\(N^2\)</span></p>
+<h4 id="原地修改">原地修改</h4>
+<p>以矩阵四个角的元素为例，从左上角开始顺时针元素一次为A,B,C,D,旋转90°等价于依次执行<span
+class="math inline">\(D\to A,A\to B,B\to C,C\to
+D\)</span>。第一次覆盖会让A元素丢失，需要一个tmp预先存储A，旋转的操作就变为<span
+class="math inline">\(A\leftarrow D\leftarrow C\leftarrow B\leftarrow
+tmp\)</span>。</p>
+<p>从循环流程来看，当矩阵大小<span
+class="math inline">\(n\)</span>为偶数时，取前<span
+class="math inline">\(\frac{n}2\)</span>行、前<span
+class="math inline">\(\frac{n}2\)</span>列的元素为起始点；当矩阵大小n为奇数时，取前<span
+class="math inline">\(\frac{n}2\)</span>行、前<span
+class="math inline">\(\frac{n+1}2\)</span>列的元素为起始点。最后再结合上一个方法的旋转公式。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">rotate</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-literal">None</span>:<br>        n = <span class="hljs-built_in">len</span>(matrix)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n // <span class="hljs-number">2</span>):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>((n + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>):<br>                tmp = matrix[i][j]<br>                matrix[i][j] = matrix[n - <span class="hljs-number">1</span> - j][i]<br>                matrix[n - <span class="hljs-number">1</span> - j][i] = matrix[n - <span class="hljs-number">1</span> - i][n - <span class="hljs-number">1</span> - j]<br>                matrix[n - <span class="hljs-number">1</span> - i][n - <span class="hljs-number">1</span> - j] = matrix[j][n - <span class="hljs-number">1</span> - i]<br>                matrix[j][n - <span class="hljs-number">1</span> - i] = tmp<br><br></code></pre></td></tr></table></figure>
-
 
                 
               </div>
