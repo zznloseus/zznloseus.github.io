@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="变分自编码器VAE(Variational Auto-Encoder)变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型假设有一组数据{$x_1,x_2,…x_n$},整体用$X$表示。理想情况下可以从数据中直接得到$X$的分布$P(X)$，根据$P(X)$进行采样可以得到所有可能的$X$。通常情况下很难实现上述所说的，而是将$P(X)$​改写为：$$p(X)&#x3D;\sum_Zp(X">
+    <meta name="description" content="变分自编码器VAE(Variational Auto-Encoder) 变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型 假设有一组数据{\(x_1,x_2,…x_n\)},整体用\(X\)表示。理想情况下可以从数据中直接得到\(X\)的分布\(P(X)\)，根据\(P(X)\)进行采样可以得到所有可能的\(X\)。通常情况下很难实现上述所说的，而是将\(P(X)\)​改写为： \">
 <meta property="og:type" content="article">
 <meta property="og:title" content="变分自编码器VAE(Variational Auto-Encoder)">
 <meta property="og:url" content="http://example.com/2024/01/31/VAE/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="变分自编码器VAE(Variational Auto-Encoder)变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型假设有一组数据{$x_1,x_2,…x_n$},整体用$X$表示。理想情况下可以从数据中直接得到$X$的分布$P(X)$，根据$P(X)$进行采样可以得到所有可能的$X$。通常情况下很难实现上述所说的，而是将$P(X)$​改写为：$$p(X)&#x3D;\sum_Zp(X">
+<meta property="og:description" content="变分自编码器VAE(Variational Auto-Encoder) 变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型 假设有一组数据{\(x_1,x_2,…x_n\)},整体用\(X\)表示。理想情况下可以从数据中直接得到\(X\)的分布\(P(X)\)，根据\(P(X)\)进行采样可以得到所有可能的\(X\)。通常情况下很难实现上述所说的，而是将\(P(X)\)​改写为： \">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311534041.png">
 <meta property="article:published_time" content="2024-01-31T07:52:39.000Z">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          832 字
+          927 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          7 分钟
+          8 分钟
         
       </span>
     
@@ -276,14 +276,71 @@
             
               <div class="markdown-body">
                 
-                <h1 id="变分自编码器VAE-Variational-Auto-Encoder"><a href="#变分自编码器VAE-Variational-Auto-Encoder" class="headerlink" title="变分自编码器VAE(Variational Auto-Encoder)"></a>变分自编码器VAE(Variational Auto-Encoder)</h1><h4 id="变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型"><a href="#变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型" class="headerlink" title="变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型"></a>变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型</h4><p>假设有一组数据{$x_1,x_2,…x_n$},整体用$X$表示。理想情况下可以从数据中直接得到$X$的分布$P(X)$，根据$P(X)$进行采样可以得到所有可能的$X$。通常情况下很难实现上述所说的，而是将$P(X)$​改写为：<br>$$<br>p(X)&#x3D;\sum_Zp(X|Z)p(Z)<br>$$<br>$p(X|Z)$表示一个由Z来生成$X$的生成模型，假设已知$Z$服从正态分布，就可以根据$Z$来计算$X$。</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311435107.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>在$VAE$模型中，并没有直接假设$p(Z)$服从正态分布，而是假设$p(Z|X)$服从正态分布(对于一个真实样本$X_k$,都存在一个<strong>专属</strong>于$X_k$的分布$p(Z|X_k)$,方便后续进行从$Z$到$X$的精准映射)。</p>
-<p>由上述可知有多少个$X$就有相应数量的正态分布，可以借助神经网络来拟合分布的均值和方差。构建两个网络：$μ_k&#x3D;f_1(X_k), log\sigma^2&#x3D;f_2(X_k)$。拟合$log\sigma^2$是因为$\sigma^2$非负，需要激活函数处理。</p>
-<p>根据上述过程可以得到每个数据的专属生成器，$VAE$示意图如下图所示：</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311511614.png" srcset="/img/loading.gif" lazyload alt="变分自编码器（Variational Auto-Encoder，VAE） | 望江人工智库"></p>
-<p>重构$X$的目的是最小化$D(\hat{X}k,Xk)^2$,这个过程中会受到噪声影响，因为$Z_K$是通过采样的，而不是直接由encoder编码出来的。为了保证采样的随机性 ，$VAE$让所有$p(Z|X)$​都对齐标准正态分布，这样防止噪声为0，同时保证模型具备生成能力：<br>$$<br>p(Z)&#x3D;\sum_Xp(Z|X)p(X)&#x3D;\sum_X\mathcal{N}(0,I)p(X)&#x3D;\mathcal{N}(0,I)\sum_Xp(X)&#x3D;\mathcal{N}(0,I)<br>$$<br>这样就从而实现了先验分布$P(Z)$是标准正态分布，从而进行采样。</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311534041.png" srcset="/img/loading.gif" lazyload alt="image-20240131153443961"></p>
+                <h1
+id="变分自编码器vaevariational-auto-encoder">变分自编码器VAE(Variational
+Auto-Encoder)</h1>
+<h4
+id="变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型">变分自编码器的目标是构建一个根据隐藏变量生成目标数据的模型</h4>
+<p>假设有一组数据{<span
+class="math inline">\(x_1,x_2,…x_n\)</span>},整体用<span
+class="math inline">\(X\)</span>表示。理想情况下可以从数据中直接得到<span
+class="math inline">\(X\)</span>的分布<span
+class="math inline">\(P(X)\)</span>，根据<span
+class="math inline">\(P(X)\)</span>进行采样可以得到所有可能的<span
+class="math inline">\(X\)</span>。通常情况下很难实现上述所说的，而是将<span
+class="math inline">\(P(X)\)</span>​改写为： <span
+class="math display">\[
+p(X)=\sum_Zp(X|Z)p(Z)
+\]</span> <span
+class="math inline">\(p(X|Z)\)</span>表示一个由Z来生成<span
+class="math inline">\(X\)</span>的生成模型，假设已知<span
+class="math inline">\(Z\)</span>服从正态分布，就可以根据<span
+class="math inline">\(Z\)</span>来计算<span
+class="math inline">\(X\)</span>。</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311435107.jpeg" srcset="/img/loading.gif" lazyload
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>在<span class="math inline">\(VAE\)</span>模型中，并没有直接假设<span
+class="math inline">\(p(Z)\)</span>服从正态分布，而是假设<span
+class="math inline">\(p(Z|X)\)</span>服从正态分布(对于一个真实样本<span
+class="math inline">\(X_k\)</span>,都存在一个<strong>专属</strong>于<span
+class="math inline">\(X_k\)</span>的分布<span
+class="math inline">\(p(Z|X_k)\)</span>,方便后续进行从<span
+class="math inline">\(Z\)</span>到<span
+class="math inline">\(X\)</span>的精准映射)。</p>
+<p>由上述可知有多少个<span
+class="math inline">\(X\)</span>就有相应数量的正态分布，可以借助神经网络来拟合分布的均值和方差。构建两个网络：<span
+class="math inline">\(μ_k=f_1(X_k),
+log\sigma^2=f_2(X_k)\)</span>。拟合<span
+class="math inline">\(log\sigma^2\)</span>是因为<span
+class="math inline">\(\sigma^2\)</span>非负，需要激活函数处理。</p>
+<p>根据上述过程可以得到每个数据的专属生成器，<span
+class="math inline">\(VAE\)</span>示意图如下图所示：</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311511614.png" srcset="/img/loading.gif" lazyload
+alt="变分自编码器（Variational Auto-Encoder，VAE） | 望江人工智库" />
+<figcaption aria-hidden="true">变分自编码器（Variational
+Auto-Encoder，VAE） | 望江人工智库</figcaption>
+</figure>
+<p>重构<span class="math inline">\(X\)</span>的目的是最小化<span
+class="math inline">\(D(\hat{X}k,Xk)^2\)</span>,这个过程中会受到噪声影响，因为<span
+class="math inline">\(Z_K\)</span>是通过采样的，而不是直接由encoder编码出来的。为了保证采样的随机性
+，<span class="math inline">\(VAE\)</span>让所有<span
+class="math inline">\(p(Z|X)\)</span>​都对齐标准正态分布，这样防止噪声为0，同时保证模型具备生成能力：
+<span class="math display">\[
+p(Z)=\sum_Xp(Z|X)p(X)=\sum_X\mathcal{N}(0,I)p(X)=\mathcal{N}(0,I)\sum_Xp(X)=\mathcal{N}(0,I)
+\]</span> 这样就从而实现了先验分布<span
+class="math inline">\(P(Z)\)</span>是标准正态分布，从而进行采样。</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202401311534041.png" srcset="/img/loading.gif" lazyload
+alt="image-20240131153443961" />
+<figcaption aria-hidden="true">image-20240131153443961</figcaption>
+</figure>
 
                 
               </div>

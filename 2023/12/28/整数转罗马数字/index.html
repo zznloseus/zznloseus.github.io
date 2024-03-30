@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="整数转罗马数字1、题目 2、题解思路：利用贪心哈希表来实现 123456789101112class Solution:    def intToRoman(self, num: int) -&gt; str:        hashmap &#x3D; &amp;#123;1000:&amp;#x27;M&amp;#x27;, 900:&amp;#x27;CM&amp;#x27;, 500:&amp;#x27;D&amp;#x27;, 400:&amp;#x27;CD">
+    <meta name="description" content="整数转罗马数字 1、题目   image-20231228155342506  2、题解 思路：利用贪心哈希表来实现 123456789101112class Solution:    def intToRoman(self, num: int) -&gt; str:        hashmap &#x3D; &amp;#123;1000:&amp;#x27;M&amp;#x27;, 900:&amp;#x27;CM&amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="整数转罗马数字">
 <meta property="og:url" content="http://example.com/2023/12/28/%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="整数转罗马数字1、题目 2、题解思路：利用贪心哈希表来实现 123456789101112class Solution:    def intToRoman(self, num: int) -&gt; str:        hashmap &#x3D; &amp;#123;1000:&amp;#x27;M&amp;#x27;, 900:&amp;#x27;CM&amp;#x27;, 500:&amp;#x27;D&amp;#x27;, 400:&amp;#x27;CD">
+<meta property="og:description" content="整数转罗马数字 1、题目   image-20231228155342506  2、题解 思路：利用贪心哈希表来实现 123456789101112class Solution:    def intToRoman(self, num: int) -&gt; str:        hashmap &#x3D; &amp;#123;1000:&amp;#x27;M&amp;#x27;, 900:&amp;#x27;CM&amp;#">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312281554022.png">
 <meta property="article:published_time" content="2023-12-28T13:50:10.000Z">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          460 字
+          483 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -276,10 +276,17 @@
             
               <div class="markdown-body">
                 
-                <h1 id="整数转罗马数字"><a href="#整数转罗马数字" class="headerlink" title="整数转罗马数字"></a>整数转罗马数字</h1><h2 id="1、题目"><a href="#1、题目" class="headerlink" title="1、题目"></a>1、题目</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312281554022.png" srcset="/img/loading.gif" lazyload alt="image-20231228155342506"></p>
-<h2 id="2、题解"><a href="#2、题解" class="headerlink" title="2、题解"></a>2、题解</h2><p>思路：利用贪心哈希表来实现</p>
+                <h1 id="整数转罗马数字">整数转罗马数字</h1>
+<h2 id="题目">1、题目</h2>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202312281554022.png" srcset="/img/loading.gif" lazyload
+alt="image-20231228155342506" />
+<figcaption aria-hidden="true">image-20231228155342506</figcaption>
+</figure>
+<h2 id="题解">2、题解</h2>
+<p>思路：利用贪心哈希表来实现</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">intToRoman</span>(<span class="hljs-params">self, num: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>        hashmap = &#123;<span class="hljs-number">1000</span>:<span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-number">900</span>:<span class="hljs-string">&#x27;CM&#x27;</span>, <span class="hljs-number">500</span>:<span class="hljs-string">&#x27;D&#x27;</span>, <span class="hljs-number">400</span>:<span class="hljs-string">&#x27;CD&#x27;</span>, <span class="hljs-number">100</span>:<span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-number">90</span>:<span class="hljs-string">&#x27;XC&#x27;</span>, <span class="hljs-number">50</span>:<span class="hljs-string">&#x27;L&#x27;</span>, <span class="hljs-number">40</span>:<span class="hljs-string">&#x27;XL&#x27;</span>, <span class="hljs-number">10</span>:<span class="hljs-string">&#x27;X&#x27;</span>, <span class="hljs-number">9</span>:<span class="hljs-string">&#x27;IX&#x27;</span>, <span class="hljs-number">5</span>:<span class="hljs-string">&#x27;V&#x27;</span>, <span class="hljs-number">4</span>:<span class="hljs-string">&#x27;IV&#x27;</span>, <span class="hljs-number">1</span>:<span class="hljs-string">&#x27;I&#x27;</span>&#125;<br>        res = <span class="hljs-string">&#x27;&#x27;</span><br><br>        <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> hashmap:<br>            <span class="hljs-keyword">if</span> num//key !=<span class="hljs-number">0</span>:<br>                val = num//key<br>                res += hashmap[key] * val<br>                <span class="hljs-built_in">print</span>(hashmap[key] * val)<br>                num %= key<br>        <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>
-
 
                 
               </div>
