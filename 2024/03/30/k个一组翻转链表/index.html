@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="K个一组翻转链表 1、题目   图1  2、题解 局部反转链表 根据题目要求，我们可以将改问题分解成一个个局部反转链表。需要将链表节点按k个一组分组，使用一个指针head依次指向每组的头节点，该指针每次向前移动k步，直到结尾，对于每个分组，判断分组长度是否大于等于k，是则翻转，不是就不需要。  对于每一个子链表，除了翻转链表本身外，还需要将子链表的头部和上一个子链表尾部链接，将">
+    <meta name="description" content="K个一组翻转链表1、题目 2、题解局部反转链表根据题目要求，我们可以将改问题分解成一个个局部反转链表。需要将链表节点按k个一组分组，使用一个指针head依次指向每组的头节点，该指针每次向前移动k步，直到结尾，对于每个分组，判断分组长度是否大于等于k，是则翻转，不是就不需要。  对于每一个子链表，除了翻转链表本身外，还需要将子链表的头部和上一个子链表尾部链接，将尾部与下一个子链表头部链接。因此，在翻">
 <meta property="og:type" content="article">
 <meta property="og:title" content="k个一组翻转链表">
 <meta property="og:url" content="http://example.com/2024/03/30/k%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="K个一组翻转链表 1、题目   图1  2、题解 局部反转链表 根据题目要求，我们可以将改问题分解成一个个局部反转链表。需要将链表节点按k个一组分组，使用一个指针head依次指向每组的头节点，该指针每次向前移动k步，直到结尾，对于每个分组，判断分组长度是否大于等于k，是则翻转，不是就不需要。  对于每一个子链表，除了翻转链表本身外，还需要将子链表的头部和上一个子链表尾部链接，将">
+<meta property="og:description" content="K个一组翻转链表1、题目 2、题解局部反转链表根据题目要求，我们可以将改问题分解成一个个局部反转链表。需要将链表节点按k个一组分组，使用一个指针head依次指向每组的头节点，该指针每次向前移动k步，直到结尾，对于每个分组，判断分组长度是否大于等于k，是则翻转，不是就不需要。  对于每一个子链表，除了翻转链表本身外，还需要将子链表的头部和上一个子链表尾部链接，将尾部与下一个子链表头部链接。因此，在翻">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403301523445.png">
 <meta property="article:published_time" content="2024-03-30T07:49:19.000Z">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          887 字
+          885 字
         
       </span>
     
@@ -276,22 +276,14 @@
             
               <div class="markdown-body">
                 
-                <h1 id="k个一组翻转链表">K个一组翻转链表</h1>
-<h2 id="题目">1、题目</h2>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403301523445.png" srcset="/img/loading.gif" lazyload
-alt="图1" />
-<figcaption aria-hidden="true">图1</figcaption>
-</figure>
-<h2 id="题解">2、题解</h2>
-<h4 id="局部反转链表">局部反转链表</h4>
-<p>根据题目要求，我们可以将改问题分解成一个个局部反转链表。需要将链表节点按k个一组分组，使用一个指针head依次指向每组的头节点，该指针每次向前移动k步，直到结尾，对于每个分组，判断分组长度是否大于等于k，是则翻转，不是就不需要。</p>
+                <h1 id="K个一组翻转链表"><a href="#K个一组翻转链表" class="headerlink" title="K个一组翻转链表"></a>K个一组翻转链表</h1><h2 id="1、题目"><a href="#1、题目" class="headerlink" title="1、题目"></a>1、题目</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202403301523445.png" srcset="/img/loading.gif" lazyload alt="图1"></p>
+<h2 id="2、题解"><a href="#2、题解" class="headerlink" title="2、题解"></a>2、题解</h2><h4 id="局部反转链表"><a href="#局部反转链表" class="headerlink" title="局部反转链表"></a>局部反转链表</h4><p>根据题目要求，我们可以将改问题分解成一个个局部反转链表。需要将链表节点按k个一组分组，使用一个指针head依次指向每组的头节点，该指针每次向前移动k步，直到结尾，对于每个分组，判断分组长度是否大于等于k，是则翻转，不是就不需要。</p>
 <ul>
 <li>对于每一个子链表，除了翻转链表本身外，还需要将子链表的头部和上一个子链表尾部链接，将尾部与下一个子链表头部链接。因此，在翻转完链表后，需要得到子链表的头尾节点，以及上、下一个的子链表的头尾节点。</li>
 <li>对于第一个子链表，我们可以设立一个哨兵节点与头节点链接。最后返回结果返回该哨兵节点的下一个即可。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Definition for singly-linked list.</span><br><span class="hljs-comment"># class ListNode:</span><br><span class="hljs-comment">#     def __init__(self, val=0, next=None):</span><br><span class="hljs-comment">#         self.val = val</span><br><span class="hljs-comment">#         self.next = next</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">reverseKGroup</span>(<span class="hljs-params">self, head: <span class="hljs-type">Optional</span>[ListNode], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-type">Optional</span>[ListNode]:<br>        dummy = ListNode(-<span class="hljs-number">1</span>)<br>        dummy.<span class="hljs-built_in">next</span> = head<br>        pre = dummy<br>        <span class="hljs-keyword">while</span> head:<br>            tail = pre<br><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(k):<br>                tail =tail.<span class="hljs-built_in">next</span><br>                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> tail:<br>                    <span class="hljs-keyword">return</span> dummy.<span class="hljs-built_in">next</span><br>            nex = tail.<span class="hljs-built_in">next</span><br>            head, tail = self.reverseList(head,tail)<br>            pre.<span class="hljs-built_in">next</span> = head<br>            tail.<span class="hljs-built_in">next</span> = nex<br>            pre = tail<br>            head = tail.<span class="hljs-built_in">next</span><br>        <span class="hljs-keyword">return</span> dummy.<span class="hljs-built_in">next</span><br>            <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">reverseList</span>(<span class="hljs-params">self, head, tail</span>):<br>        prev = tail.<span class="hljs-built_in">next</span><br>        p = head<br>        <span class="hljs-keyword">while</span> prev != tail:<br>            nex = p.<span class="hljs-built_in">next</span><br>            p.<span class="hljs-built_in">next</span> = prev<br>            prev = p <br>            p =nex<br>        <span class="hljs-keyword">return</span> tail, head<br><br></code></pre></td></tr></table></figure>
+
 
                 
               </div>

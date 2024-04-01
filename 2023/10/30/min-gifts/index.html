@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="从数量最多的堆取走礼物 1、题目  ## 2、题解 思路：每轮都寻找最大值，可以最大堆模拟。循环\(k\)次，每次循环弹出堆顶\(top\)，然后把\(\lfloor\sqrt{top}\rfloor\)入堆。 题解代码： 12345678910class Solution:    def pickGifts(self, gifts: List[int], k: int) -&gt; i">
+    <meta name="description" content="从数量最多的堆取走礼物1、题目 2、题解思路：每轮都寻找最大值，可以最大堆模拟。循环$k$次，每次循环弹出堆顶$top$，然后把$\lfloor\sqrt{top}\rfloor$入堆。 题解代码： 12345678910class Solution:    def pickGifts(self, gifts: List[int], k: int) -&gt; int:        for i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从数量最多的堆取走礼物">
 <meta property="og:url" content="http://example.com/2023/10/30/min-gifts/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="从数量最多的堆取走礼物 1、题目  ## 2、题解 思路：每轮都寻找最大值，可以最大堆模拟。循环\(k\)次，每次循环弹出堆顶\(top\)，然后把\(\lfloor\sqrt{top}\rfloor\)入堆。 题解代码： 12345678910class Solution:    def pickGifts(self, gifts: List[int], k: int) -&gt; i">
+<meta property="og:description" content="从数量最多的堆取走礼物1、题目 2、题解思路：每轮都寻找最大值，可以最大堆模拟。循环$k$次，每次循环弹出堆顶$top$，然后把$\lfloor\sqrt{top}\rfloor$入堆。 题解代码： 12345678910class Solution:    def pickGifts(self, gifts: List[int], k: int) -&gt; int:        for i">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310302316265.png">
 <meta property="article:published_time" content="2023-10-30T15:15:21.000Z">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          635 字
+          627 字
         
       </span>
     
@@ -276,19 +276,14 @@
             
               <div class="markdown-body">
                 
-                <h1 id="从数量最多的堆取走礼物">从数量最多的堆取走礼物</h1>
-<h2 id="题目">1、题目</h2>
-<p><img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310302316265.png" srcset="/img/loading.gif" lazyload
-alt="image-20231030225117425" /> ## 2、题解</p>
-<p>思路：每轮都寻找最大值，可以最大堆模拟。循环<span
-class="math inline">\(k\)</span>次，每次循环弹出堆顶<span
-class="math inline">\(top\)</span>，然后把<span
-class="math inline">\(\lfloor\sqrt{top}\rfloor\)</span>入堆。</p>
+                <h1 id="从数量最多的堆取走礼物"><a href="#从数量最多的堆取走礼物" class="headerlink" title="从数量最多的堆取走礼物"></a>从数量最多的堆取走礼物</h1><h2 id="1、题目"><a href="#1、题目" class="headerlink" title="1、题目"></a>1、题目</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310302316265.png" srcset="/img/loading.gif" lazyload alt="image-20231030225117425"></p>
+<h2 id="2、题解"><a href="#2、题解" class="headerlink" title="2、题解"></a>2、题解</h2><p>思路：每轮都寻找最大值，可以最大堆模拟。循环$k$次，每次循环弹出堆顶$top$，然后把$\lfloor\sqrt{top}\rfloor$入堆。</p>
 <p>题解代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">pickGifts</span>(<span class="hljs-params">self, gifts: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(gifts)):<br>            gifts[i] *= -<span class="hljs-number">1</span><br>        heapify(gifts)<br>        <span class="hljs-built_in">print</span>(gifts)<br>        <span class="hljs-keyword">while</span> k <span class="hljs-keyword">and</span> -gifts[<span class="hljs-number">0</span>]&gt;<span class="hljs-number">1</span>:<br>            heapreplace(gifts,-isqrt(-gifts[<span class="hljs-number">0</span>]))<br>            k -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> -<span class="hljs-built_in">sum</span>(gifts)<br></code></pre></td></tr></table></figure>
+
 <p>我的方法（时间复杂度被爆杀）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">pickGifts</span>(<span class="hljs-params">self, gifts: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">while</span>(k != <span class="hljs-number">0</span>):<br>            temp=<span class="hljs-number">0</span><br>            temp_num = gifts[<span class="hljs-number">0</span>]     <br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(gifts)):<br>                <span class="hljs-keyword">if</span> gifts[i]&gt;temp_num:<br>                    temp_num = gifts[i]<br>                    temp = i  <br>          <br>            gifts[temp] = <span class="hljs-built_in">int</span>(gifts[temp] **<span class="hljs-number">0.5</span>)<br>            k = k -<span class="hljs-number">1</span><br>        sum_gifts = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(gifts)):<br>            sum_gifts += gifts[j]<br>        <span class="hljs-keyword">return</span> sum_gifts<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
