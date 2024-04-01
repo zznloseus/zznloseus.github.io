@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>翻转二叉树</title>
+    <link href="/2024/04/01/%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <url>/2024/04/01/%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
+    
+    <content type="html"><![CDATA[<h1 id="翻转二叉树">翻转二叉树</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404010949424.png"alt="图1" /><figcaption aria-hidden="true">图1</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="递归">递归</h4><p>根据二叉镜像树的定义，考虑<spanclass="math inline">\(DFS\)</span>递归遍历二叉树。</p><p>算法流程：</p><ul><li>终止条件：当节点root为空时，则返回None</li><li>递归：<ul><li>初始化节点tmp，暂存root的左子节点</li><li>开始递归右子节点，并将返回值作为root的左子节点</li><li>开始递归左子节点，并将返回值作为root的右子节点</li></ul></li><li>返回：当前节点root</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Definition for a binary tree node.</span><br><span class="hljs-comment"># class TreeNode:</span><br><span class="hljs-comment">#     def __init__(self, val=0, left=None, right=None):</span><br><span class="hljs-comment">#         self.val = val</span><br><span class="hljs-comment">#         self.left = left</span><br><span class="hljs-comment">#         self.right = right</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">invertTree</span>(<span class="hljs-params">self, root: <span class="hljs-type">Optional</span>[TreeNode]</span>) -&gt; <span class="hljs-type">Optional</span>[TreeNode]:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root: <span class="hljs-keyword">return</span><br>        tmp = root.left<br>        root.left = self.invertTree(root.right)<br>        root.right = self.invertTree(tmp)<br>        <span class="hljs-keyword">return</span> root<br>        <br></code></pre></td></tr></table></figure><h4 id="辅助栈">辅助栈</h4><p>算法流程：</p><ul><li>当root为空时，直接返回None</li><li>初始化栈，加入根节点root</li><li>当栈为空时结束。出栈的节点记为node，将node左和右子节点入栈，交换node的左右子节点</li><li>返回根节点root</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Definition for a binary tree node.</span><br><span class="hljs-comment"># class TreeNode:</span><br><span class="hljs-comment">#     def __init__(self, val=0, left=None, right=None):</span><br><span class="hljs-comment">#         self.val = val</span><br><span class="hljs-comment">#         self.left = left</span><br><span class="hljs-comment">#         self.right = right</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">invertTree</span>(<span class="hljs-params">self, root: <span class="hljs-type">Optional</span>[TreeNode]</span>) -&gt; <span class="hljs-type">Optional</span>[TreeNode]:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root: <span class="hljs-keyword">return</span> root<br>        stack = [root]<br>        <span class="hljs-keyword">while</span> stack:<br>            node = stack.pop()<br>            <span class="hljs-keyword">if</span> node.left: stack.append(node.left)<br>            <span class="hljs-keyword">if</span> node.right: stack.append(node.right)<br><br>            node.left,node.right = node.right, node.left<br>        <br>        <span class="hljs-keyword">return</span> root<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hot100</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>二叉树最大深度</title>
     <link href="/2024/03/30/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/"/>
     <url>/2024/03/30/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/</url>
