@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041528009.png">
 <meta property="article:published_time" content="2023-10-04T07:26:02.000Z">
-<meta property="article:modified_time" content="2024-03-05T03:11:00.571Z">
+<meta property="article:modified_time" content="2024-04-11T13:53:35.625Z">
 <meta property="article:author" content="Z Z">
 <meta property="article:tag" content="PLM">
 <meta name="twitter:card" content="summary_large_image">
@@ -233,7 +233,7 @@
         
         
         
-          10 分钟
+          11 分钟
         
       </span>
     
@@ -296,9 +296,6 @@ src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041319454.png" srcset="
 alt="图1" />
 <figcaption aria-hidden="true">图1</figcaption>
 </figure>
-<ul>
-<li></li>
-</ul>
 <h2 id="预训练任务">2、预训练任务</h2>
 <p>预训练流程如下：</p>
 <figure>
@@ -308,10 +305,12 @@ alt="图2" />
 <figcaption aria-hidden="true">图2</figcaption>
 </figure>
 <ul>
-<li>Bert Encoder：采用默认的12层transformer encoder
-layer对输入进行编码。编码后输出的张量形状：[Batch Size， Seq lens， Emb
-dim]。</li>
-<li>MLM模块：掩蔽语言模型，可以理解为完形填空，mask句子中若干词，用周围词去预测遮盖的词。作者会随机mask每一个句子中15%的词，用其上下文来做预测。</li>
+<li><span class="math inline">\(Bert
+Encoder\)</span>：采用默认的12层<span class="math inline">\(transformer
+encoder layer\)</span>对输入进行编码。编码后输出的张量形状：<span
+class="math inline">\([Batch Size， SeqLens， Emb Dim]\)</span>。</li>
+<li><span
+class="math inline">\(MLM\)</span>模块：掩蔽语言模型，可以理解为完形填空，mask句子中若干词，用周围词去预测遮盖的词。作者会随机mask每一个句子中15%的词，用其上下文来做预测。</li>
 </ul>
 <p>80%的时间是采用[mask]，my dog is cute → my dog is [MASK]</p>
 <p>10%的时间是随机取一个词来代替mask的词，my dog is cute -&gt; my dog is
@@ -319,7 +318,8 @@ apple</p>
 <p>10%的时间保持不变，my dog is cute -&gt; my dog is cute</p>
 <p>这样做的目的是因为Transformer要保持对每个输入token分布式的表征，否则Transformer很可能会记住这个[MASK]就是"cute"。</p>
 <ul>
-<li>NSP模块：下个句子预测，判断句子B在文章中是否属于句子A的下一句。选择句子对（A，B），B中50%的数据是A的下一条句子，剩余50%的数据是语料库中随机选择的，学习其中的相关性。</li>
+<li><span
+class="math inline">\(NSP\)</span>模块：下个句子预测，判断句子B在文章中是否属于句子A的下一句。选择句子对（A，B），B中50%的数据是A的下一条句子，剩余50%的数据是语料库中随机选择的，学习其中的相关性。</li>
 </ul>
 <h2 id="微调">3、微调</h2>
 <p>对于下游不同的NLP任务，模型的输入会进行微调，例如：</p>
@@ -332,11 +332,15 @@ alt="图3" />
 <ul>
 <li>单文本分类任务</li>
 </ul>
-<p>对于文本分类任务，BERT模型在文本前插入一个[CLS]符号，并将该符号对应的输出向量作为整篇文本的语义表示，用于文本分类。</p>
+<p>对于文本分类任务，BERT模型在文本前插入一个<span
+class="math inline">\([CLS]\)</span>符号，并将该符号对应的输出向量作为整篇文本的语义表示，用于文本分类。</p>
 <ul>
 <li>语句对分类任务</li>
 </ul>
-<p>该任务的实际应用场景包括：问答（判断一个问题与一个答案是否匹配）、语句匹配（两句话是否表达同一个意思）等。对于该任务，BERT模型除了添加[CLS]符号并将对应的输出作为文本的语义表示，还对输入的两句话用一个[SEP]符号作分割，并分别对两句话附加两个不同的文本向量以作区分。</p>
+<p>该任务的实际应用场景包括：问答（判断一个问题与一个答案是否匹配）、语句匹配（两句话是否表达同一个意思）等。对于该任务，<span
+class="math inline">\(BERT\)</span>模型除了添加<span
+class="math inline">\([CLS]\)</span>符号并将对应的输出作为文本的语义表示，还对输入的两句话用一个<span
+class="math inline">\([SEP]\)</span>符号作分割，并分别对两句话附加两个不同的文本向量以作区分。</p>
 <h2 id="模型效果">4、模型效果</h2>
 <figure>
 <img
@@ -344,8 +348,9 @@ src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041519047.png" srcset="
 alt="图4" />
 <figcaption aria-hidden="true">图4</figcaption>
 </figure>
-<p>除了架构差异之外，BERT和OpenAI
-GPT都是调优方法，而ELMo是基于特性的方法。</p>
+<p>除了架构差异之外，<span class="math inline">\(BERT\)</span>和<span
+class="math inline">\(OpenAI GPT\)</span>都是调优方法，而<span
+class="math inline">\(ELMo\)</span>是基于特性的方法。</p>
 <figure>
 <img
 src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202310041522054.png" srcset="/img/loading.gif" lazyload
