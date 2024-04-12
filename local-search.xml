@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>子集</title>
+    <link href="/2024/04/12/%E5%AD%90%E9%9B%86/"/>
+    <url>/2024/04/12/%E5%AD%90%E9%9B%86/</url>
+    
+    <content type="html"><![CDATA[<h1 id="子集">子集</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404122028530.png"alt="图1" /><figcaption aria-hidden="true">图1</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="回溯法">回溯法</h4><p>设定一个tmp为子集，用来存放每次递归获得的数组，作为回溯的节点。遍历给定的数组，利用递归进行枚举和回溯。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">subsets</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]:<br>        res = []<br>        n = <span class="hljs-built_in">len</span>(nums)<br>        tmp = []<br><br>        <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">i</span>):<br>            res.append(tmp[:])<br>            <span class="hljs-keyword">if</span> i == n:<br>                <span class="hljs-keyword">return</span><br>            <br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i,n):<br>                tmp.append(nums[j])<br>                dfs(j+<span class="hljs-number">1</span>)<br>                tmp.pop()<br>        <br>        dfs(<span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hot100</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>全排列</title>
     <link href="/2024/04/11/%E5%85%A8%E6%8E%92%E5%88%97/"/>
     <url>/2024/04/11/%E5%85%A8%E6%8E%92%E5%88%97/</url>
