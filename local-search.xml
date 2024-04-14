@@ -4,6 +4,156 @@
   
   
   <entry>
+    <title>买卖股票的最佳时机</title>
+    <link href="/2024/04/14/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/"/>
+    <url>/2024/04/14/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/</url>
+    
+    <content type="html"><![CDATA[<h1 id="买卖股票的最佳时机">买卖股票的最佳时机</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141720273.png"alt="图1" /><figcaption aria-hidden="true">图1</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="动态规划">动态规划</h4><ul><li>更新前<spanclass="math inline">\(i\)</span>天的最低价格，即最低买入成本<spanclass="math inline">\(cost\)</span></li><li>更新前<span class="math inline">\(i\)</span>天的最高利润<spanclass="math inline">\(profit\)</span>，即选择前<spanclass="math inline">\(i-1\)</span>天最高利润<spanclass="math inline">\(profit\)</span>和第<spanclass="math inline">\(i\)</span>天卖出的最高利润<spanclass="math inline">\(price-cost\)</span>中的最大值</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxProfit</span>(<span class="hljs-params">self, prices: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        cost = prices[<span class="hljs-number">0</span>]<br>        days = <span class="hljs-built_in">len</span>(prices)<br>        money = <span class="hljs-number">0</span><br><br>        <span class="hljs-keyword">for</span> price <span class="hljs-keyword">in</span> prices:<br>            <span class="hljs-keyword">if</span> cost &gt;= price:<br>                cost = price<br>            <br>            <span class="hljs-keyword">if</span> money&lt;=price-cost:<br>                money = price-cost<br><br>        <span class="hljs-keyword">return</span> money<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hot100</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>数组中的第k个最大元素</title>
+    <link href="/2024/04/14/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/"/>
+    <url>/2024/04/14/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="数组中的第k个最大元素">数组中的第k个最大元素</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141704077.png"alt="图1" /><figcaption aria-hidden="true">图1</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="堆排序">堆排序</h4><p>基本思想：堆排序（HeapSort）是一种基于二叉堆数据结构的排序算法，它通过将元素构建成一个最大堆或最小堆，然后重复从堆中移除根节点，直到堆为空，从而得到有序数组。堆排序是一种原地排序算法，具有稳定的时间复杂度，通常效率较高。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">heapify</span>(<span class="hljs-params">arr, n, i</span>):<br>    largest = i<br>    left = <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span><br>    right = <span class="hljs-number">2</span> * i + <span class="hljs-number">2</span><br><br>    <span class="hljs-keyword">if</span> left &lt; n <span class="hljs-keyword">and</span> arr[left] &gt; arr[largest]:<br>        largest = left<br><br>    <span class="hljs-keyword">if</span> right &lt; n <span class="hljs-keyword">and</span> arr[right] &gt; arr[largest]:<br>        largest = right<br><br>    <span class="hljs-keyword">if</span> largest != i:<br>        arr[i], arr[largest] = arr[largest], arr[i]<br>        heapify(arr, n, largest)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">heap_sort</span>(<span class="hljs-params">arr</span>):<br>    n = <span class="hljs-built_in">len</span>(arr)<br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n // <span class="hljs-number">2</span> - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):<br>        heapify(arr, n, i)<br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):<br>        arr[i], arr[<span class="hljs-number">0</span>] = arr[<span class="hljs-number">0</span>], arr[i]<br>        heapify(arr, i, <span class="hljs-number">0</span>)<br><br></code></pre></td></tr></table></figure><p>这道题可以借助一个小顶堆来维护当前堆内元素的最小值，同时保证堆的大小为k：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findKthLargest</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        pq = []   <span class="hljs-comment"># 将数组加入小顶堆，堆中维护当前值最大的k个数</span><br>        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums:<br>            heapq.heappush(pq, num) <span class="hljs-comment"># 当前元素入堆</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(pq) &gt; k:<br>                heapq.heappop(pq)   <span class="hljs-comment"># 堆中元素超过k个，弹出最小的那个</span><br>        <span class="hljs-keyword">return</span> pq[<span class="hljs-number">0</span>]    <span class="hljs-comment"># 最后堆顶的即为第k大的数</span><br><br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hot100</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>最小栈</title>
+    <link href="/2024/04/14/%E6%9C%80%E5%B0%8F%E6%A0%88/"/>
+    <url>/2024/04/14/%E6%9C%80%E5%B0%8F%E6%A0%88/</url>
+    
+    <content type="html"><![CDATA[<h1 id="最小栈">最小栈</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141530455.png"alt="图1" /><figcaption aria-hidden="true">图1</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="最小插值法">最小插值法</h4><p>当元素入栈时，只要没有加入更小值时，当前最小值是保持不变的。我们可以改变入栈元素内容，将当前入栈值与最小值插值入栈，这样可以根据最小值还原栈内值。</p><p>这样有一个新问题：最小值不是一直不变，当有更小值入栈时，最小值就会改变，原来记录的差值就不对了。</p><p>当更小值入栈，插值小于0，而之前的插值都是大于等于0。因此可以根据负数插值作为一个判断，表示再这个时候发生了最小值的改变。只有在元素出栈的时候才可能需要还原最小值，还原的最小值就是<spanclass="math inline">\(当前最小值-插值\)</span>。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MinStack</span>:<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.diffs = []  <span class="hljs-comment"># 存储入栈的元素</span><br>        self.min_val = <span class="hljs-number">0</span> <span class="hljs-comment"># 当前最小值</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">push</span>(<span class="hljs-params">self, val: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self.diffs:<br>            self.diffs.append(<span class="hljs-number">0</span>)     <span class="hljs-comment"># 当前栈内没有元素，差值为0入栈</span><br>            self.min_val = val      <span class="hljs-comment"># 最小值为当前入栈元素</span><br>        <span class="hljs-keyword">else</span>:<br>            self.diffs.append(val - self.min_val)    <span class="hljs-comment"># 先记录差值</span><br>            self.min_val = <span class="hljs-built_in">min</span>(val, self.min_val)   <span class="hljs-comment"># 再更新最小值</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">pop</span>(<span class="hljs-params">self</span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-comment"># 弹出栈顶差值</span><br>        <span class="hljs-comment"># 如果差值为负，表示在这个位置最小值发生改变，需要还原原来的最小值</span><br>        <span class="hljs-comment"># minVal = minVal - diff，否则最小值不变</span><br>        self.min_val -= <span class="hljs-built_in">min</span>(self.diffs.pop(),<span class="hljs-number">0</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">top</span>(<span class="hljs-params">self</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-comment"># 根据差值还原当前元素</span><br>        <span class="hljs-comment"># 如果差值为负，说明当前位置发生了最小值改变，入栈值为最小值，记录的是和原来最小值的差值</span><br>        <span class="hljs-comment"># 否则记录的差值是入栈值和当前最小值的差值，相加还原</span><br>        <span class="hljs-keyword">return</span> self.min_val + <span class="hljs-built_in">max</span>(self.diffs[-<span class="hljs-number">1</span>], <span class="hljs-number">0</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">getMin</span>(<span class="hljs-params">self</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">return</span> self.min_val<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hot100</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>有效的括号</title>
+    <link href="/2024/04/14/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"/>
+    <url>/2024/04/14/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/</url>
+    
+    <content type="html"><![CDATA[<h1 id="有效的括号">有效的括号</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141501426.png"alt="图1" /><figcaption aria-hidden="true">图1</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="辅助栈">辅助栈</h4><ul><li>遇到左括号入栈，遇到右括号时，对应栈顶左括号出战，则遍历完所有括号后，栈为空。</li><li>建立哈希表，构建左右括号对应关系。</li></ul><p>边界问题：</p><ul><li>当栈为空时，此时<spanclass="math inline">\(stack.pop()\)</span>会报错，因此需要给stack赋予初值，并在哈希表中建立对应关系，予以配合。此时当stack为空，且字符串为右括号可以正常提前返回False。</li><li>字符串以左括号结尾，该情况下可以正常遍历，最后根据<spanclass="math inline">\(len(stack)==1\)</span>，判断是否是有效的括号组合。</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">isValid</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        dic = &#123;<span class="hljs-string">&#x27;&#123;&#x27;</span>: <span class="hljs-string">&#x27;&#125;&#x27;</span>,  <span class="hljs-string">&#x27;[&#x27;</span>: <span class="hljs-string">&#x27;]&#x27;</span>, <span class="hljs-string">&#x27;(&#x27;</span>: <span class="hljs-string">&#x27;)&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>: <span class="hljs-string">&#x27;?&#x27;</span>&#125;<br>        stack = [<span class="hljs-string">&#x27;?&#x27;</span>]<br>        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s:<br>            <span class="hljs-keyword">if</span> c <span class="hljs-keyword">in</span> dic: <br>            stack.append(c)<br>            <span class="hljs-keyword">elif</span> dic[stack.pop()] != c: <br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span> <br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(stack) == <span class="hljs-number">1</span><br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hot100</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>搜索二维矩阵(二分法)</title>
+    <link href="/2024/04/14/%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5-1/"/>
+    <url>/2024/04/14/%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5-1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="搜索二维矩阵">搜索二维矩阵</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141436730.png"alt="图1" /><figcaption aria-hidden="true">图1</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="两次二分查找">两次二分查找</h4><p>先二分查找找到小于target的是哪一行，并且下一行的第一个数大于target，然后在该行二分查找到target。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">searchMatrix</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], target: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        r_t,r_b = <span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(matrix)<br>        l_l,l_r = <span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])<br>        m,n = <span class="hljs-built_in">len</span>(matrix), <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])<br>        col0 = [col[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> col <span class="hljs-keyword">in</span> matrix]<br>        <span class="hljs-keyword">while</span> r_t&lt;r_b:<br>            r_mid = r_t + (r_b - r_t)//<span class="hljs-number">2</span><br>            <span class="hljs-keyword">if</span> col0[r_mid]&lt;= target:<br>                r_t = r_mid+<span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                r_b = r_mid<br>        <span class="hljs-keyword">if</span> r_t  &lt; <span class="hljs-number">0</span> :<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br>        <span class="hljs-keyword">while</span> l_l&lt;l_r:<br>            l_mid = l_l + (l_r - l_l)//<span class="hljs-number">2</span><br>            <span class="hljs-keyword">if</span> matrix[r_t-<span class="hljs-number">1</span>][l_mid]&lt;target:<br>                l_l = l_mid + <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                l_r = l_mid<br><br>        <span class="hljs-keyword">if</span> l_l &gt;= n:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>            <br>        <span class="hljs-keyword">if</span> matrix[r_t-<span class="hljs-number">1</span>][l_l] == target: <br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>        <br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hot100</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>搜索插入位置</title>
+    <link href="/2024/04/14/%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/"/>
+    <url>/2024/04/14/%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="搜索插入位置">搜索插入位置</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141348623.png"alt="图1" /><figcaption aria-hidden="true">图1</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="二分法">二分法</h4><ul><li>先确定查找区间的左右开闭情况<ul><li>将区间定义左闭右开的好处：很多函数堆区间的操作都是左闭右开的形式；在返回值问题上，退出循环时，必然满足<spanclass="math inline">\(left==right\)</span>，这样在最后返回值上就可以任意返回。</li></ul></li><li>数组长度<ul><li>区间为左闭右开，数组长度就固定为<spanclass="math inline">\([0,len(nums))\)</span>。</li></ul></li><li>循环退出条件<ul><li>由于左闭右开，所以条件为<spanclass="math inline">\(left&lt;right\)</span>，不能有<spanclass="math inline">\(=\)</span>。</li></ul></li><li>中间值的写法<ul><li><spanclass="math inline">\(mid=left+(right-left)//2\)</span>，这样写的目的是为了防止大数<spanclass="math inline">\((left+right)\)</span>溢出。</li></ul></li><li>中间值和目标值的比较关系<ul><li>当<spanclass="math inline">\(nums[mid]&lt;target\)</span>，表示得到比<strong>targe</strong>t校的数中的最大数时，<strong>left</strong>的值为<spanclass="math inline">\(mid+1\)</span>，下一个值必然是大于等于target的值，此时可能取到和target相等的位置。</li><li>当<span class="math inline">\(nums[mid]\leq target\)</span>，当<spanclass="math inline">\(nums[mid]==target\)</span>时，仍会进入条件，<spanclass="math inline">\(left=mid+1\)</span>的值肯定是大于target的值，此时会收敛到第一个大于target的值。</li></ul></li><li>左右区间变化<ul><li>区间变化取决于区间定义，所以<spanclass="math inline">\(left=mid+1,right=mid\)</span>，right的真是取值为mid-1。</li></ul></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">searchInsert</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], target: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        left = <span class="hljs-number">0</span><br>        right = <span class="hljs-built_in">len</span>(nums)<br><br>        <span class="hljs-keyword">while</span> left &lt; right:<br>            mid = (left + right)//<span class="hljs-number">2</span><br><br>            <span class="hljs-keyword">if</span> nums[mid] &lt; target:<br>                left = mid + <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                right = mid<br>        <br>        <span class="hljs-keyword">return</span> left<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hot100</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>RoPE——旋转式位置编码</title>
     <link href="/2024/04/13/%E6%97%8B%E8%BD%AC%E5%BC%8F%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/"/>
     <url>/2024/04/13/%E6%97%8B%E8%BD%AC%E5%BC%8F%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/</url>
