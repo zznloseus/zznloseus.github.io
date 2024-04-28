@@ -16,24 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="买卖股票的最佳时机 1、题目   图1  2、题解 动态规划  更新前\(i\)天的最低价格，即最低买入成本\(cost\) 更新前\(i\)天的最高利润\(profit\)，即选择前\(i-1\)天最高利润\(profit\)和第\(i\)天卖出的最高利润\(price-cost\)中的最大值  1234567891011121314class Solution:">
+    <meta name="description" content="跳跃游戏 1、题目   图1  2、题解 贪心 对于每一个位置x，该位置可以到达的最远距离是\(x+nums[x]\)。通过遍历数组中每一个位置，同时维持该位置可以到达的最远距离。在遍历的过程中，如果最远可以到达的位置大于等于数组中的最后一个位置，那就说明最后一个位置可达，直接返回\(True\)。如果遍历结束不可到达，则返回\(False\)。 1234567891011cla">
 <meta property="og:type" content="article">
-<meta property="og:title" content="买卖股票的最佳时机">
-<meta property="og:url" content="http://example.com/2024/04/14/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/index.html">
+<meta property="og:title" content="跳跃游戏">
+<meta property="og:url" content="http://example.com/2024/04/28/%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="买卖股票的最佳时机 1、题目   图1  2、题解 动态规划  更新前\(i\)天的最低价格，即最低买入成本\(cost\) 更新前\(i\)天的最高利润\(profit\)，即选择前\(i-1\)天最高利润\(profit\)和第\(i\)天卖出的最高利润\(price-cost\)中的最大值  1234567891011121314class Solution:">
+<meta property="og:description" content="跳跃游戏 1、题目   图1  2、题解 贪心 对于每一个位置x，该位置可以到达的最远距离是\(x+nums[x]\)。通过遍历数组中每一个位置，同时维持该位置可以到达的最远距离。在遍历的过程中，如果最远可以到达的位置大于等于数组中的最后一个位置，那就说明最后一个位置可达，直接返回\(True\)。如果遍历结束不可到达，则返回\(False\)。 1234567891011cla">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141720273.png">
-<meta property="article:published_time" content="2024-04-14T09:24:05.000Z">
-<meta property="article:modified_time" content="2024-04-14T09:24:34.897Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404282256955.png">
+<meta property="article:published_time" content="2024-04-28T14:57:33.000Z">
+<meta property="article:modified_time" content="2024-04-28T14:58:09.803Z">
 <meta property="article:author" content="Z Z">
 <meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141720273.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404282256955.png">
   
   
   
-  <title>买卖股票的最佳时机 - Zspace</title>
+  <title>跳跃游戏 - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="买卖股票的最佳时机"></span>
+            <span id="subtitle" data-typed-text="跳跃游戏"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-14 17:24" pubdate>
-          2024年4月14日 下午
+        <time datetime="2024-04-28 22:57" pubdate>
+          2024年4月28日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          346 字
+          361 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -271,33 +271,26 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">买卖股票的最佳时机</h1>
+            <h1 style="display: none">跳跃游戏</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="买卖股票的最佳时机">买卖股票的最佳时机</h1>
+                <h1 id="跳跃游戏">跳跃游戏</h1>
 <h2 id="题目">1、题目</h2>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141720273.png" srcset="/img/loading.gif" lazyload
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404282256955.png" srcset="/img/loading.gif" lazyload
 alt="图1" />
 <figcaption aria-hidden="true">图1</figcaption>
 </figure>
 <h2 id="题解">2、题解</h2>
-<h4 id="动态规划">动态规划</h4>
-<ul>
-<li>更新前<span
-class="math inline">\(i\)</span>天的最低价格，即最低买入成本<span
-class="math inline">\(cost\)</span></li>
-<li>更新前<span class="math inline">\(i\)</span>天的最高利润<span
-class="math inline">\(profit\)</span>，即选择前<span
-class="math inline">\(i-1\)</span>天最高利润<span
-class="math inline">\(profit\)</span>和第<span
-class="math inline">\(i\)</span>天卖出的最高利润<span
-class="math inline">\(price-cost\)</span>中的最大值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxProfit</span>(<span class="hljs-params">self, prices: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        cost = prices[<span class="hljs-number">0</span>]<br>        days = <span class="hljs-built_in">len</span>(prices)<br>        money = <span class="hljs-number">0</span><br><br>        <span class="hljs-keyword">for</span> price <span class="hljs-keyword">in</span> prices:<br>            <span class="hljs-keyword">if</span> cost &gt;= price:<br>                cost = price<br>            <br>            <span class="hljs-keyword">if</span> money&lt;=price-cost:<br>                money = price-cost<br><br>        <span class="hljs-keyword">return</span> money<br></code></pre></td></tr></table></figure>
+<h4 id="贪心">贪心</h4>
+<p>对于每一个位置x，该位置可以到达的最远距离是<span
+class="math inline">\(x+nums[x]\)</span>。通过遍历数组中每一个位置，同时维持该位置可以到达的最远距离。在遍历的过程中，如果最远可以到达的位置大于等于数组中的最后一个位置，那就说明最后一个位置可达，直接返回<span
+class="math inline">\(True\)</span>。如果遍历结束不可到达，则返回<span
+class="math inline">\(False\)</span>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">canJump</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        max_step = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i,jump <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(nums):<br>            <span class="hljs-keyword">if</span> max_step&gt;=i <span class="hljs-keyword">and</span> i+jump&gt;max_step:<br>                max_step = i+jump<br>            <br>            <span class="hljs-keyword">if</span> max_step&lt;i:<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>        <br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -343,8 +336,8 @@ class="math inline">\(price-cost\)</span>中的最大值</li>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>买卖股票的最佳时机</div>
-      <div>http://example.com/2024/04/14/买卖股票的最佳时机/</div>
+      <div>跳跃游戏</div>
+      <div>http://example.com/2024/04/28/跳跃游戏/</div>
     </div>
     <div class="license-meta">
       
@@ -356,7 +349,7 @@ class="math inline">\(price-cost\)</span>中的最大值</li>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年4月14日</div>
+          <div>2024年4月28日</div>
         </div>
       
       
@@ -388,9 +381,9 @@ class="math inline">\(price-cost\)</span>中的最大值</li>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/28/%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" title="跳跃游戏">
+                      <a href="/2024/04/29/%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8FII/" title="跳跃游戏II">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">跳跃游戏</span>
+                        <span class="hidden-mobile">跳跃游戏II</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -398,8 +391,8 @@ class="math inline">\(price-cost\)</span>中的最大值</li>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/14/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/" title="数组中的第k个最大元素">
-                        <span class="hidden-mobile">数组中的第k个最大元素</span>
+                      <a href="/2024/04/14/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="买卖股票的最佳时机">
+                        <span class="hidden-mobile">买卖股票的最佳时机</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
