@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>打家劫舍</title>
+    <link href="/2024/04/30/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/"/>
+    <url>/2024/04/30/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/</url>
+    
+    <content type="html"><![CDATA[<h1 id="打家劫舍">打家劫舍</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404300037198.png"alt="图1" /><figcaption aria-hidden="true">图1</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="动态规划">动态规划</h4><p>设置状态数组，每个位置能抢到的最多钱等于<spanclass="math inline">\(max(前一屋能偷到的最多前，再前一屋偷到的最多钱+目前该屋能偷到钱)\)</span></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">rob</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(nums)&lt;<span class="hljs-number">2</span>:<br>            <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>]<br>        dp = [<span class="hljs-number">0</span>]*<span class="hljs-built_in">len</span>(nums)<br>        dp[<span class="hljs-number">0</span>] = nums[<span class="hljs-number">0</span>]<br>        dp[<span class="hljs-number">1</span>] = <span class="hljs-built_in">max</span>(nums[<span class="hljs-number">0</span>],nums[<span class="hljs-number">1</span>])<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>,<span class="hljs-built_in">len</span>(nums)):<br>                dp[i] = <span class="hljs-built_in">max</span>(dp[i-<span class="hljs-number">1</span>],nums[i]+dp[i-<span class="hljs-number">2</span>])      <br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(dp)<br></code></pre></td></tr></table></figure><p><strong>空间优化</strong>：用两个指针来记录偷盗的金额</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">rob</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>    prev = <span class="hljs-number">0</span><br>    curr = <span class="hljs-number">0</span><br>    <br>    <span class="hljs-comment"># 每次循环，计算“偷到当前房子为止的最大金额”</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> nums:<br>        <span class="hljs-comment"># 循环开始时，curr 表示 dp[k-1]，prev 表示 dp[k-2]</span><br>        <span class="hljs-comment"># dp[k] = max&#123; dp[k-1], dp[k-2] + i &#125;</span><br>        prev, curr = curr, <span class="hljs-built_in">max</span>(curr, prev + i)<br>        <span class="hljs-comment"># 循环结束时，curr 表示 dp[k]，prev 表示 dp[k-1]</span><br><br>    <span class="hljs-keyword">return</span> curr<br><br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hot100</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>不同路径</title>
+    <link href="/2024/04/30/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/"/>
+    <url>/2024/04/30/%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/</url>
+    
+    <content type="html"><![CDATA[<h1 id="不同路径">不同路径</h1><h2 id="题目">1、题目</h2><figure><imgsrc="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404300025716.png"alt="图1" /><figcaption aria-hidden="true">图1</figcaption></figure><h2 id="题解">2、题解</h2><h4 id="动态规划">动态规划</h4><p>设置状态数组dp，对于<spanclass="math inline">\(dp[i][0]\)</span>和<spanclass="math inline">\(dp[0][j]\)</span>都只有一条路径可走，对于<spanclass="math inline">\(dp[i][j]=dp[i-1][j]+dp[i][j-1]\)</span></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">uniquePaths</span>(<span class="hljs-params">self, m: <span class="hljs-built_in">int</span>, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        down = <span class="hljs-number">0</span><br>        right = <span class="hljs-number">0</span><br>        dp = [[<span class="hljs-number">1</span>]*n] + [[<span class="hljs-number">1</span>]+[<span class="hljs-number">0</span>]*(n-<span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m-<span class="hljs-number">1</span>)]<br><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,m):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,n):<br>                dp[i][j] = dp[i-<span class="hljs-number">1</span>][j] + dp[i][j-<span class="hljs-number">1</span>]<br>    <br>        <span class="hljs-keyword">return</span> dp[-<span class="hljs-number">1</span>][-<span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure><p><strong>优化空间</strong>：按行遍历</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">uniquePaths</span>(<span class="hljs-params">self, m: <span class="hljs-built_in">int</span>, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        cur = [<span class="hljs-number">1</span>] * n<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, m):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):<br>                cur[j] += cur[j-<span class="hljs-number">1</span>]<br>        <span class="hljs-keyword">return</span> cur[-<span class="hljs-number">1</span>]<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hot100</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>跳跃游戏II</title>
     <link href="/2024/04/29/%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8FII/"/>
     <url>/2024/04/29/%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8FII/</url>
@@ -1827,9 +1877,9 @@
     
     <tags>
       
-      <tag>微调</tag>
-      
       <tag>实习</tag>
+      
+      <tag>微调</tag>
       
     </tags>
     
