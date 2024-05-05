@@ -16,25 +16,22 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="学习笔记——LORA微调 ​ LORA是一种低资源微调LLM模型的方法，源自论文：LoRA: Low-Rank Adaptation of Large Language Models。 一、高效微调 ​ 对于语言模型来说，在微调过程中，模型加载预训练参数\(\Phi_{0}\)进行初始化，并通过最大化条件语言模型概率实现参数调整$_{0}+$​，即： \[ max_\Phi\sum_{">
+    <meta name="description" content="位置编码 绝对位置编码 训练式 该类方法将位置编码作为可训练的参数，例如最大长度为512，编码维度为768，那么就初始化一个\(512*768\)的矩阵作为位置向量，随着训练过程更新。目前的BERT、GPT1等模型使用的就是该类编码。 对于这类方法的缺点，普遍的想法都是缺乏外推性，只能处理最大长度以内的句子，或者将超过最大长度的位置向量随机初始化，进行微调。最近有研究发现，可以通过层次分解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习笔记——LORA微调">
-<meta property="og:url" content="http://example.com/2023/08/16/LORA%E5%BE%AE%E8%B0%83/index.html">
+<meta property="og:title" content="位置编码">
+<meta property="og:url" content="http://example.com/2024/05/05/%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="学习笔记——LORA微调 ​ LORA是一种低资源微调LLM模型的方法，源自论文：LoRA: Low-Rank Adaptation of Large Language Models。 一、高效微调 ​ 对于语言模型来说，在微调过程中，模型加载预训练参数\(\Phi_{0}\)进行初始化，并通过最大化条件语言模型概率实现参数调整$_{0}+$​，即： \[ max_\Phi\sum_{">
+<meta property="og:description" content="位置编码 绝对位置编码 训练式 该类方法将位置编码作为可训练的参数，例如最大长度为512，编码维度为768，那么就初始化一个\(512*768\)的矩阵作为位置向量，随着训练过程更新。目前的BERT、GPT1等模型使用的就是该类编码。 对于这类方法的缺点，普遍的想法都是缺乏外推性，只能处理最大长度以内的句子，或者将超过最大长度的位置向量随机初始化，进行微调。最近有研究发现，可以通过层次分解">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161517289.png">
-<meta property="article:published_time" content="2023-08-16T13:40:48.000Z">
-<meta property="article:modified_time" content="2024-03-05T03:12:13.098Z">
+<meta property="article:published_time" content="2024-05-05T07:32:45.000Z">
+<meta property="article:modified_time" content="2024-05-05T07:34:00.280Z">
 <meta property="article:author" content="Z Z">
-<meta property="article:tag" content="微调">
 <meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161517289.png">
   
   
   
-  <title>学习笔记——LORA微调 - Zspace</title>
+  <title>位置编码 - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="学习笔记——LORA微调"></span>
+            <span id="subtitle" data-typed-text="位置编码"></span>
           
         </div>
 
@@ -211,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-16 21:40" pubdate>
-          2023年8月16日 晚上
+        <time datetime="2024-05-05 15:32" pubdate>
+          2024年5月5日 下午
         </time>
       </span>
     
@@ -223,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          3.6k 字
         
       </span>
     
@@ -234,7 +231,7 @@
         
         
         
-          21 分钟
+          31 分钟
         
       </span>
     
@@ -272,132 +269,98 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">学习笔记——LORA微调</h1>
+            <h1 style="display: none">位置编码</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="学习笔记lora微调">学习笔记——LORA微调</h1>
-<p>​ LORA是一种低资源微调LLM模型的方法，源自论文：<a
-href="%5B2106.09685.pdf%20(arxiv.org)%5D(https://arxiv.org/pdf/2106.09685.pdf)">LoRA:
-Low-Rank Adaptation of Large Language Models。</a></p>
-<h2 id="一高效微调">一、高效微调</h2>
-<p>​ 对于语言模型来说，在微调过程中，模型加载预训练参数<span
-class="math inline">\(\Phi_{0}\)</span>进行初始化，并通过最大化条件语言模型概率实现参数调整$_{0}+$​，即：
-<span class="math display">\[
-max_\Phi\sum_{(x,y)\in\mathcal{Z})}\sum_{t=1}^{|y|}log(P_\Phi(y_t|x,y&lt;t))
-\]</span> 这种方式的主要缺点参数增量<span
-class="math inline">\(\Delta\Phi\)</span>的维度和预训练参数<span
-class="math inline">\(\Phi_{0}\)</span>是相同的，所需资源比较多，一般被称为full
-fine-tuing。</p>
-<p>为了用更少的参数来表示学习增量<span
-class="math inline">\(\Delta\Phi\)</span>,提出了一系列方法叫做高效微调。例如：Adapter、prefixtuning等。相比于其他方法LORA使用一个低秩矩阵来编码参数增量，这种方法不会增加推理耗时并且便于优化。</p>
-<h2 id="二实现方式">二、实现方式</h2>
-<p>​ 研究表明：预训练模型拥有极小的内在维度（<strong>instrisic
-dimension</strong>，表示数据变化的自由变量的个数），换而言之，存在一个极低维度的参数，微调它和在全参数空间中微调能起到相同的效果。</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161517289.png" srcset="/img/loading.gif" lazyload
-alt="图1" />
-<figcaption aria-hidden="true">图1</figcaption>
-</figure>
-<p>该论文认为参数矩阵更新的过程中也存在一个‘内在秩’。对于预训练的权重矩阵<span
-class="math inline">\(W_0\)</span>，可以用一个低秩分解来表示参数更新<span
-class="math inline">\(\Delta W\)</span>，即： <span
-class="math display">\[
-W_0+\Delta W=W_0+BA\quad B\in\mathbb{R}^{d\times
-r},A\in\mathbb{R}^{r\times k}\quad and\quad r\ll min(d,k)
-\]</span> 训练过程中可以冻结参数<span
-class="math inline">\(W_0\)</span>，只训练A和B中的参数。如图所示，对于<span
-class="math inline">\(h=W_{0}x\)</span>​,前向传播过程就变为： <span
-class="math display">\[
-h=W_0x+\Delta Wx=W_0x+BAx
-\]</span></p>
-<h2 id="三qlora">三、<a
-href="%5B2305.14314.pdf%20(arxiv.org)%5D(https://arxiv.org/pdf/2305.14314.pdf)">QLORA</a></h2>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161959472.png" srcset="/img/loading.gif" lazyload
-alt="图2" />
-<figcaption aria-hidden="true">图2</figcaption>
-</figure>
-<p>QLORA训练过程和LORA基本一致，区别在于QLORA模型是按照NF4保存的，训练时需要将参数反量化到bf16后进行训练。
-<span class="math display">\[
-Y^{BF16}=X^{BF16}doubleDequant(c_{2}^{FP32},c_{2}^{k-bit},W^{NF8}
-)+X^{BF16}B^{BF16}A^{BF16}
-\]</span></p>
-<h3 id="分块量化block-wis-quantization">分块量化（Block-wis
-Quantization）</h3>
-<p>量化是将输入从存储更多信息的表征映射为存储较少信息的表征的过程。</p>
-<p>全局量化的方式存在一个问题：当输入中存在极大值或者离群值时，一些较小的参数无法被精确的表示，从而导致量化后的神经网络效果急剧下降。</p>
-<p>分块量化是将输入划分为多个块，每个块分别量化，如图所示：</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161954660.png" srcset="/img/loading.gif" lazyload
-alt="图3" />
-<figcaption aria-hidden="true">图3</figcaption>
-</figure>
-<p>明显看到分块量化能够减少过程中的误差。</p>
-<h3 id="分位量化quantile-quantization">分位量化（Quantile
-Quantization）</h3>
-<p>在将一个参数量化到4bit的情境中，最多可以使用<span
-class="math inline">\(2^4\)</span>一共16个数字。按照传统的简易方法，一般是取最接近的数字或者直接round函数。分位量化则是将数字按顺序排列，再分为十六等分，最小的一块映射成量化后的第一个数，第二块映射成量化后的第二数，以此类推。这样就充分利用了已有的数位，原始数据在量化后的数字上分布也是均匀的。</p>
-<h3 id="bit-normalfloatnf4">4-bit NormalFloat（NF4）</h3>
-<p>这个概念是在分位量化的基础上进行改进，并结合分块量化，降低计算复杂度和误差。上述的分位量化会增加计算消耗，预训练模型的参数基本上都服从均值为0的正态分布，可以将其缩放到[-1,1]的范围内。同时可以在[-1,1]的范围内，将正态分布函数划分为<span
-class="math inline">\(2^k
-+1\)</span>份，直接将参数映射到对应的分位上，不用每次都进行排序。</p>
-<h3 id="双重量化double-quantization">双重量化（double
-Quantization）</h3>
-<p>分块量化中每个块都会额外产生一个量化常数c，以块大小为64为例，每个块会产生32bit的量化常数，双重量化则是在第一次量化后，不会直接存储量化常数<span
-class="math inline">\(C_1\)</span>,而是按照块大小256对量化常数再量化为8bit去存储，这个阶段会产生一个量化常数<span
-class="math inline">\(C_2\)</span>。最终存储的参数为<span
-class="math inline">\(8/64 +32/(64-256)=0.127bits\)</span>.</p>
-<h2 id="四adalora">四、AdaLORA</h2>
-<h3 id="技术背景">技术背景</h3>
-<p>LORA技术预先规定每个增量矩阵<span
-class="math inline">\(\Delta\)</span>的秩必须相同，这就忽略了不同层、类型参数对下游任务的影响。</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308162040469.png" srcset="/img/loading.gif" lazyload
-alt="图4" />
-<figcaption aria-hidden="true">图4</figcaption>
-</figure>
-<p>如图所示，将微调参数放在FFN的效果优于放在Attention矩阵中的效果；同时微调高层参数的效果优于微调底层参数。那么如何根据下游任务自动地找出重要的参数模块并给其分配更多地可微调参数呢？</p>
-<h3 id="解决方案">解决方案</h3>
-<p>AdaLORA主要包含两个模块：</p>
-<ul>
-<li><p><strong>SVD形式参数更新（SVD-based
-adaptation）</strong>：直接将增量矩阵<span
-class="math inline">\(\Delta\)</span>参数化为SVD地形式，避免在训练过程中进行SVD计算带来的计算资源消耗；</p></li>
-<li><p><strong>根据重要程度地参数分配（Importance-aware rank
-allocation）</strong>：去除一些冗余的奇异值。</p></li>
-</ul>
+                <h1 id="位置编码">位置编码</h1>
+<h2 id="绝对位置编码">绝对位置编码</h2>
+<h3 id="训练式">训练式</h3>
+<p>该类方法将位置编码作为可训练的参数，例如最大长度为512，编码维度为768，那么就初始化一个<span
+class="math inline">\(512*768\)</span>的矩阵作为位置向量，随着训练过程更新。目前的BERT、GPT1等模型使用的就是该类编码。</p>
+<p>对于这类方法的缺点，普遍的想法都是缺乏外推性，只能处理最大长度以内的句子，或者将超过最大长度的位置向量随机初始化，进行微调。最近有研究发现，可以通过层次分解的方法，让绝对位置编码外推到一定长度的范围。</p>
+<h3 id="三角式sinusoidal位置编码">三角式（Sinusoidal位置编码）</h3>
 <p><span class="math display">\[
-W=W^{(0)}+\Delta=W^{(0)}+P\Lambda Q
+\begin{cases}\boldsymbol{p}_{k,2\boldsymbol{i}}=\sin\left(k/10000^{2\boldsymbol{i}/\boldsymbol{d}}\right)\\\boldsymbol{p}_{k,2\boldsymbol{i}+1}=\cos\left(k/10000^{2\boldsymbol{i}/\boldsymbol{d}}\right)\end{cases}
 \]</span></p>
-<p><span class="math display">\[
-R(P,Q)=||P^TP-I||_F^2+||Q^TQ-I||_F^2
+<p>其中<span
+class="math inline">\(\boldsymbol{p}_{k,2\boldsymbol{i}}、\boldsymbol{p}_{k,2\boldsymbol{i}+1}\)</span>分别是位置<span
+class="math inline">\(k\)</span>的位置编码向量的第<span
+class="math inline">\(2i、2i+1\)</span>个分量，<span
+class="math inline">\(d\)</span>是位置向量的维度。</p>
+<h3 id="递归式">递归式</h3>
+<p>如果在输入后先接入一层RNN，然后再输入Transformer，理论上就不需要再加入位置编码。因此，可以用RNN模型来学习一种绝对位置编码。这种基于递归模型的方法具有比较好的外推性，但是牺牲了一定的并行性，在速度方面存在一定瓶颈。代表方法有FLOATER，他提出用微分方程的方式来建模位置编码。</p>
+<h2 id="相对位置编码">相对位置编码</h2>
+<h3 id="经典式">经典式</h3>
+<p>通常认为相对位置编码是通过绝对位置编码启发得到的，对于一般的绝对位置编码的Attention：
+<span class="math display">\[
+\begin{aligned}&amp;\boldsymbol{q}_i=(\boldsymbol{x}_i+\boldsymbol{p}_i)\boldsymbol{W}_Q\\&amp;\boldsymbol{k}_j=(\boldsymbol{x}_j+\boldsymbol{p}_j)\boldsymbol{W}_K\\&amp;\boldsymbol{v}_j=(\boldsymbol{x}_j+\boldsymbol{p}_j)\boldsymbol{W}_V\\&amp;a_{i,j}=softmax\left(\boldsymbol{q}_i\boldsymbol{k}_j^\top\right)\\&amp;\boldsymbol{o}_i=\sum_ja_{i,j}\boldsymbol{v}_j\end{aligned}
+\]</span> 展开<span class="math inline">\(q_ik^T_j:\)</span> <span
+class="math display">\[
+q_ik_j^\top=(\boldsymbol{x}_i+\boldsymbol{p}_i)\boldsymbol{W}_Q\boldsymbol{W}_K^\top(\boldsymbol{x}_j+\boldsymbol{p}_j)^\top=(\boldsymbol{x}_i\boldsymbol{W}_Q+\boldsymbol{p}_i\boldsymbol{W}_Q)\left(\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{W}_K^\top\boldsymbol{p}_j^\top\right)
+\]</span> 为了引入相对位置信息，将(3)中的第一项位置部分去掉，第二项<span
+class="math inline">\(p_jW_k\)</span>改为二元位置向量<span
+class="math inline">\(R^K_{i,j}\)</span>​，变成： <span
+class="math display">\[
+a_{i,j}=softmax\left(\boldsymbol{x}_i\boldsymbol{W}_Q\left(\boldsymbol{x}_j\boldsymbol{W}_K+\boldsymbol{R}_{i,j}^K\right)^\top\right)
+\]</span> 同时将<span class="math inline">\(v_j\)</span>中的<span
+class="math inline">\(p_jW_v\)</span>换成<span
+class="math inline">\(R^V_{i,j}\)</span>。</p>
+<p>相对位置表示的是将依赖二元坐标<span
+class="math inline">\((i,j)\)</span>的向量<span
+class="math inline">\(R^K_{i,j},R^V_{i,j}\)</span>，改为只依赖于相对距离<span
+class="math inline">\(i-j\)</span>​，并且通常来说会进行截断，来适应不同的距离：
+<span class="math display">\[
+\boldsymbol{R}_{i,j}^{K}=\boldsymbol{p}_K\left[\mathrm{clip}(i-j,p_{\min},p_{\max})\right]\\\boldsymbol{R}_{i,j}^{V}=\boldsymbol{p}_V\left[\mathrm{clip}(i-j,p_{\min},p_{\max})\right]
 \]</span></p>
-<p>如式(5)，AdaLORA增量矩阵<span
-class="math inline">\(\Delta\)</span>替换为<span
-class="math inline">\(P\Lambda
-Q\)</span>,这样既省去复杂的SVD计算又能去除奇异值。同时，为保证P和Q的正交性，在训练过程中增加了一个正则化，保证<span
-class="math inline">\(P^{T}P=Q^{T}Q=I\)</span>.</p>
-<p>该方法相较于LORA有两个优点：</p>
-<ul>
-<li>AdaLORA只去除奇异值矩阵，并不会去除奇异向量，更容易恢复误删的奇异值。</li>
-<li>AdaLORA的P和Q为正交举证，LORA的A和B矩阵非正交。训练过程中裁剪操作不会影响其他奇异值对应的奇异向量，训练会更稳定，泛化性能更好。</li>
-</ul>
-<h2 id="参考文章">参考文章：</h2>
-<p><a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/646791309">LORA微调系列(一)：LORA和它的基本原理
-- 知乎 (zhihu.com)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/648239462">LORA微调系列(二)：QLORA和它的基本原理
-- 知乎 (zhihu.com)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649756885">LORA微调系列(三)：AdaLORA和它的基本原理
-- 知乎 (zhihu.com)</a></p>
+<h3 id="xlnet式">XLNET式</h3>
+<p>将经典式中的<span class="math inline">\(q_ik^T_j\)</span>​完全展开：
+<span class="math display">\[
+q_ik_j^\top=x_iW_QW_K^\top x_j^\top+x_iW_QW_K^\top
+p_j^\top+p_iW_QW_K^\top x_j^\top+p_iW_QW_K^\top p_j^\top
+\]</span> 该方法直接将<span
+class="math inline">\(p_j\)</span>替换成相对位置向量<span
+class="math inline">\(R_{i-j}\)</span>，对于两个<span
+class="math inline">\(p_i\)</span>，直接替换为两个可训练的向量<span
+class="math inline">\(u、v\)</span>: <span class="math display">\[
+\boldsymbol{x}_i\boldsymbol{W}_Q\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{x}_i\boldsymbol{W}_Q\boldsymbol{W}_K^\top
+R_{i-j}^\top+\boldsymbol{u}\boldsymbol{W}_Q\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{v}\boldsymbol{W}_Q\boldsymbol{W}_K^\top
+R_{i-j}^\top
+\]</span> 该编码方式中的<span
+class="math inline">\(R_{i-j}\)</span>直接使用了三角式的生成方案，由于<span
+class="math inline">\(R_{i-j}\)</span>的编码空间与<span
+class="math inline">\(x_j\)</span>不一定相同，所以<span
+class="math inline">\(R_{i-j}\)</span>前的<span
+class="math inline">\(W^T_K\)</span>换成了一个独立矩阵<span
+class="math inline">\(W^T_{K,R}\)</span>，将<span
+class="math inline">\(uW_Q和vW_Q\)</span>直接合并成单个<span
+class="math inline">\(u、v\)</span>​： <span class="math display">\[
+\boldsymbol{x}_i\boldsymbol{W}_Q\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{x}_i\boldsymbol{W}_Q\boldsymbol{W}_{K,R}^\top
+R_{i-j}^\top+\boldsymbol{u}\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{v}\boldsymbol{W}_{K,R}^\top
+R_{i-j}^\top
+\]</span> 另外，<span
+class="math inline">\(v_j\)</span>上的位置偏置直接去掉。</p>
+<h3 id="t5式">T5式</h3>
+<p>该方式思路源自(6)，其中每一项的含义可以分别理解为“输入-输入”、“输入-位置”、“位置-输入”、“位置-位置”四项注意力的组合。如果我们认为输入信息与位置信息应该是独立（解耦）的，那么它们就不应该有过多的交互，所以“输入-位置”、“位置-输入”两项Attention可以删掉，<span
+class="math inline">\(p_iW_QW_K^\top
+p_j^\top\)</span>实际上只是依赖于<span
+class="math inline">\((i,j)\)</span>​的标量，可以将其作为参数进行训练,将(6)简化成：
+<span class="math display">\[
+x_iW_QW_K^\top\boldsymbol{x}_j^\top+\beta_{i,j}
+\]</span>
+简而言之，在Attention矩阵上加入了一个可训练的偏置项。而跟XLNET式一样，在<span
+class="math inline">\(v_j\)</span>上的位置偏置则直接被去掉了。</p>
+<h3 id="deberta式">DeBERTa式</h3>
+<p>DeBERTa的主要改进也是在位置编码上，同样还是从展开式(6)出发，DeBERTa刚好相反，去掉了第四项，保留了二、三项，并且替换为相对位置编码：
+<span class="math display">\[
+q_ik_j^\top=x_iW_QW_K^\top x_j^\top+x_iW_QW_K^\top
+R_{i,j}^\top+R_{j,i}W_QW_K^\top x_j^\top
+\]</span> 对于<span
+class="math inline">\(R_{i,j}\)</span>的设计与经典式相同。</p>
+<p>DeBERTa指出NLP的大多数任务可能都只需要相对位置信息，但确实有些场景下绝对位置信息更有帮助，于是它将整个模型分为两部分来理解。以Base版的MLM预训练模型为例，它一共有13层，前11层只是用相对位置编码，这部分称为Encoder，后面2层加入绝对位置信息，这部分它称之为Decoder，还弄了个简称EMD(Enhanced
+Mask
+Decoder)至于下游任务的微调截断，则是使用前11层的Encoder加上1层的Decoder来进行。</p>
 
                 
               </div>
@@ -431,8 +394,6 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649756885">LOR
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%BE%AE%E8%B0%83/">#微调</a>
-      
         <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
       
     </div>
@@ -445,8 +406,8 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649756885">LOR
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>学习笔记——LORA微调</div>
-      <div>http://example.com/2023/08/16/LORA微调/</div>
+      <div>位置编码</div>
+      <div>http://example.com/2024/05/05/位置编码/</div>
     </div>
     <div class="license-meta">
       
@@ -458,7 +419,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649756885">LOR
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月16日</div>
+          <div>2024年5月5日</div>
         </div>
       
       
@@ -490,15 +451,15 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649756885">LOR
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/11/XGBoost%E7%AE%97%E6%B3%95/" title="学习笔记——XGBoost算法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">学习笔记——XGBoost算法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/05/04/%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" title="排序数组">
+                        <span class="hidden-mobile">排序数组</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

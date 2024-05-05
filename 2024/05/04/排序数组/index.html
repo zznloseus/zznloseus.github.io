@@ -16,25 +16,24 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="学习笔记——LORA微调 ​ LORA是一种低资源微调LLM模型的方法，源自论文：LoRA: Low-Rank Adaptation of Large Language Models。 一、高效微调 ​ 对于语言模型来说，在微调过程中，模型加载预训练参数\(\Phi_{0}\)进行初始化，并通过最大化条件语言模型概率实现参数调整$_{0}+$​，即： \[ max_\Phi\sum_{">
+    <meta name="description" content="排序数组 1、题目   图1  2、题解 快速排序  挑选基准值 分割数组 递归排序子数组  12345678910111213141516171819202122232425262728293031323334353637class Solution:    def quickSort(self,nums,low,high):        pivot &#x3D; nums[l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习笔记——LORA微调">
-<meta property="og:url" content="http://example.com/2023/08/16/LORA%E5%BE%AE%E8%B0%83/index.html">
+<meta property="og:title" content="排序数组">
+<meta property="og:url" content="http://example.com/2024/05/04/%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="学习笔记——LORA微调 ​ LORA是一种低资源微调LLM模型的方法，源自论文：LoRA: Low-Rank Adaptation of Large Language Models。 一、高效微调 ​ 对于语言模型来说，在微调过程中，模型加载预训练参数\(\Phi_{0}\)进行初始化，并通过最大化条件语言模型概率实现参数调整$_{0}+$​，即： \[ max_\Phi\sum_{">
+<meta property="og:description" content="排序数组 1、题目   图1  2、题解 快速排序  挑选基准值 分割数组 递归排序子数组  12345678910111213141516171819202122232425262728293031323334353637class Solution:    def quickSort(self,nums,low,high):        pivot &#x3D; nums[l">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161517289.png">
-<meta property="article:published_time" content="2023-08-16T13:40:48.000Z">
-<meta property="article:modified_time" content="2024-03-05T03:12:13.098Z">
+<meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405042127033.png">
+<meta property="article:published_time" content="2024-05-04T13:26:09.000Z">
+<meta property="article:modified_time" content="2024-05-04T13:27:42.478Z">
 <meta property="article:author" content="Z Z">
-<meta property="article:tag" content="微调">
 <meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161517289.png">
+<meta name="twitter:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405042127033.png">
   
   
   
-  <title>学习笔记——LORA微调 - Zspace</title>
+  <title>排序数组 - Zspace</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="学习笔记——LORA微调"></span>
+            <span id="subtitle" data-typed-text="排序数组"></span>
           
         </div>
 
@@ -211,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-16 21:40" pubdate>
-          2023年8月16日 晚上
+        <time datetime="2024-05-04 21:26" pubdate>
+          2024年5月4日 晚上
         </time>
       </span>
     
@@ -223,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          1.4k 字
         
       </span>
     
@@ -234,7 +233,7 @@
         
         
         
-          21 分钟
+          12 分钟
         
       </span>
     
@@ -272,132 +271,29 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">学习笔记——LORA微调</h1>
+            <h1 style="display: none">排序数组</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="学习笔记lora微调">学习笔记——LORA微调</h1>
-<p>​ LORA是一种低资源微调LLM模型的方法，源自论文：<a
-href="%5B2106.09685.pdf%20(arxiv.org)%5D(https://arxiv.org/pdf/2106.09685.pdf)">LoRA:
-Low-Rank Adaptation of Large Language Models。</a></p>
-<h2 id="一高效微调">一、高效微调</h2>
-<p>​ 对于语言模型来说，在微调过程中，模型加载预训练参数<span
-class="math inline">\(\Phi_{0}\)</span>进行初始化，并通过最大化条件语言模型概率实现参数调整$_{0}+$​，即：
-<span class="math display">\[
-max_\Phi\sum_{(x,y)\in\mathcal{Z})}\sum_{t=1}^{|y|}log(P_\Phi(y_t|x,y&lt;t))
-\]</span> 这种方式的主要缺点参数增量<span
-class="math inline">\(\Delta\Phi\)</span>的维度和预训练参数<span
-class="math inline">\(\Phi_{0}\)</span>是相同的，所需资源比较多，一般被称为full
-fine-tuing。</p>
-<p>为了用更少的参数来表示学习增量<span
-class="math inline">\(\Delta\Phi\)</span>,提出了一系列方法叫做高效微调。例如：Adapter、prefixtuning等。相比于其他方法LORA使用一个低秩矩阵来编码参数增量，这种方法不会增加推理耗时并且便于优化。</p>
-<h2 id="二实现方式">二、实现方式</h2>
-<p>​ 研究表明：预训练模型拥有极小的内在维度（<strong>instrisic
-dimension</strong>，表示数据变化的自由变量的个数），换而言之，存在一个极低维度的参数，微调它和在全参数空间中微调能起到相同的效果。</p>
+                <h1 id="排序数组">排序数组</h1>
+<h2 id="题目">1、题目</h2>
 <figure>
 <img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161517289.png" srcset="/img/loading.gif" lazyload
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405042127033.png" srcset="/img/loading.gif" lazyload
 alt="图1" />
 <figcaption aria-hidden="true">图1</figcaption>
 </figure>
-<p>该论文认为参数矩阵更新的过程中也存在一个‘内在秩’。对于预训练的权重矩阵<span
-class="math inline">\(W_0\)</span>，可以用一个低秩分解来表示参数更新<span
-class="math inline">\(\Delta W\)</span>，即： <span
-class="math display">\[
-W_0+\Delta W=W_0+BA\quad B\in\mathbb{R}^{d\times
-r},A\in\mathbb{R}^{r\times k}\quad and\quad r\ll min(d,k)
-\]</span> 训练过程中可以冻结参数<span
-class="math inline">\(W_0\)</span>，只训练A和B中的参数。如图所示，对于<span
-class="math inline">\(h=W_{0}x\)</span>​,前向传播过程就变为： <span
-class="math display">\[
-h=W_0x+\Delta Wx=W_0x+BAx
-\]</span></p>
-<h2 id="三qlora">三、<a
-href="%5B2305.14314.pdf%20(arxiv.org)%5D(https://arxiv.org/pdf/2305.14314.pdf)">QLORA</a></h2>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161959472.png" srcset="/img/loading.gif" lazyload
-alt="图2" />
-<figcaption aria-hidden="true">图2</figcaption>
-</figure>
-<p>QLORA训练过程和LORA基本一致，区别在于QLORA模型是按照NF4保存的，训练时需要将参数反量化到bf16后进行训练。
-<span class="math display">\[
-Y^{BF16}=X^{BF16}doubleDequant(c_{2}^{FP32},c_{2}^{k-bit},W^{NF8}
-)+X^{BF16}B^{BF16}A^{BF16}
-\]</span></p>
-<h3 id="分块量化block-wis-quantization">分块量化（Block-wis
-Quantization）</h3>
-<p>量化是将输入从存储更多信息的表征映射为存储较少信息的表征的过程。</p>
-<p>全局量化的方式存在一个问题：当输入中存在极大值或者离群值时，一些较小的参数无法被精确的表示，从而导致量化后的神经网络效果急剧下降。</p>
-<p>分块量化是将输入划分为多个块，每个块分别量化，如图所示：</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308161954660.png" srcset="/img/loading.gif" lazyload
-alt="图3" />
-<figcaption aria-hidden="true">图3</figcaption>
-</figure>
-<p>明显看到分块量化能够减少过程中的误差。</p>
-<h3 id="分位量化quantile-quantization">分位量化（Quantile
-Quantization）</h3>
-<p>在将一个参数量化到4bit的情境中，最多可以使用<span
-class="math inline">\(2^4\)</span>一共16个数字。按照传统的简易方法，一般是取最接近的数字或者直接round函数。分位量化则是将数字按顺序排列，再分为十六等分，最小的一块映射成量化后的第一个数，第二块映射成量化后的第二数，以此类推。这样就充分利用了已有的数位，原始数据在量化后的数字上分布也是均匀的。</p>
-<h3 id="bit-normalfloatnf4">4-bit NormalFloat（NF4）</h3>
-<p>这个概念是在分位量化的基础上进行改进，并结合分块量化，降低计算复杂度和误差。上述的分位量化会增加计算消耗，预训练模型的参数基本上都服从均值为0的正态分布，可以将其缩放到[-1,1]的范围内。同时可以在[-1,1]的范围内，将正态分布函数划分为<span
-class="math inline">\(2^k
-+1\)</span>份，直接将参数映射到对应的分位上，不用每次都进行排序。</p>
-<h3 id="双重量化double-quantization">双重量化（double
-Quantization）</h3>
-<p>分块量化中每个块都会额外产生一个量化常数c，以块大小为64为例，每个块会产生32bit的量化常数，双重量化则是在第一次量化后，不会直接存储量化常数<span
-class="math inline">\(C_1\)</span>,而是按照块大小256对量化常数再量化为8bit去存储，这个阶段会产生一个量化常数<span
-class="math inline">\(C_2\)</span>。最终存储的参数为<span
-class="math inline">\(8/64 +32/(64-256)=0.127bits\)</span>.</p>
-<h2 id="四adalora">四、AdaLORA</h2>
-<h3 id="技术背景">技术背景</h3>
-<p>LORA技术预先规定每个增量矩阵<span
-class="math inline">\(\Delta\)</span>的秩必须相同，这就忽略了不同层、类型参数对下游任务的影响。</p>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202308162040469.png" srcset="/img/loading.gif" lazyload
-alt="图4" />
-<figcaption aria-hidden="true">图4</figcaption>
-</figure>
-<p>如图所示，将微调参数放在FFN的效果优于放在Attention矩阵中的效果；同时微调高层参数的效果优于微调底层参数。那么如何根据下游任务自动地找出重要的参数模块并给其分配更多地可微调参数呢？</p>
-<h3 id="解决方案">解决方案</h3>
-<p>AdaLORA主要包含两个模块：</p>
+<h2 id="题解">2、题解</h2>
+<h4 id="快速排序">快速排序</h4>
 <ul>
-<li><p><strong>SVD形式参数更新（SVD-based
-adaptation）</strong>：直接将增量矩阵<span
-class="math inline">\(\Delta\)</span>参数化为SVD地形式，避免在训练过程中进行SVD计算带来的计算资源消耗；</p></li>
-<li><p><strong>根据重要程度地参数分配（Importance-aware rank
-allocation）</strong>：去除一些冗余的奇异值。</p></li>
+<li>挑选基准值</li>
+<li>分割数组</li>
+<li>递归排序子数组</li>
 </ul>
-<p><span class="math display">\[
-W=W^{(0)}+\Delta=W^{(0)}+P\Lambda Q
-\]</span></p>
-<p><span class="math display">\[
-R(P,Q)=||P^TP-I||_F^2+||Q^TQ-I||_F^2
-\]</span></p>
-<p>如式(5)，AdaLORA增量矩阵<span
-class="math inline">\(\Delta\)</span>替换为<span
-class="math inline">\(P\Lambda
-Q\)</span>,这样既省去复杂的SVD计算又能去除奇异值。同时，为保证P和Q的正交性，在训练过程中增加了一个正则化，保证<span
-class="math inline">\(P^{T}P=Q^{T}Q=I\)</span>.</p>
-<p>该方法相较于LORA有两个优点：</p>
-<ul>
-<li>AdaLORA只去除奇异值矩阵，并不会去除奇异向量，更容易恢复误删的奇异值。</li>
-<li>AdaLORA的P和Q为正交举证，LORA的A和B矩阵非正交。训练过程中裁剪操作不会影响其他奇异值对应的奇异向量，训练会更稳定，泛化性能更好。</li>
-</ul>
-<h2 id="参考文章">参考文章：</h2>
-<p><a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/646791309">LORA微调系列(一)：LORA和它的基本原理
-- 知乎 (zhihu.com)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/648239462">LORA微调系列(二)：QLORA和它的基本原理
-- 知乎 (zhihu.com)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649756885">LORA微调系列(三)：AdaLORA和它的基本原理
-- 知乎 (zhihu.com)</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">quickSort</span>(<span class="hljs-params">self,nums,low,high</span>):<br>        pivot = nums[low]<br>        left,right=low,high<br>        <span class="hljs-keyword">while</span> left&lt;right:<br><br>            <span class="hljs-keyword">while</span> left&lt;right <span class="hljs-keyword">and</span> nums[right]&gt;=pivot:<br>                right -= <span class="hljs-number">1</span>            <br>            nums[left] = nums[right]<br><br>            <span class="hljs-keyword">while</span> left&lt;right <span class="hljs-keyword">and</span> nums[left]&lt;=pivot:<br>                left += <span class="hljs-number">1</span><br>            nums[right] = nums[left]<br>        <br>        nums[left] = pivot<br><br>        <span class="hljs-keyword">return</span> left<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">random_init</span>(<span class="hljs-params">self,nums,low,high</span>):<br>        pivot_idx = random.randint(low,high)<br>        nums[low],nums[pivot_idx] = nums[pivot_idx],nums[low]<br><br>        <span class="hljs-keyword">return</span> self.quickSort(nums,low,high)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">quick_sort</span>(<span class="hljs-params">self,nums,low,high</span>):<br>        <span class="hljs-keyword">if</span> low &gt;= high:<br>            <span class="hljs-keyword">return</span><br>        mid = self.random_init(nums,low,high)<br><br>        self.quick_sort(nums,low,mid-<span class="hljs-number">1</span>)<br>        self.quick_sort(nums,mid+<span class="hljs-number">1</span>,high)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sortArray</span>(<span class="hljs-params">self, num1: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br><br>        self.quick_sort(num1,<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(num1)-<span class="hljs-number">1</span>)<br><br>        <span class="hljs-keyword">return</span> num1<br></code></pre></td></tr></table></figure>
+<h4 id="堆排序">堆排序</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">heapify</span>(<span class="hljs-params">self,nums,n,i</span>):<br>        largest = i<br>        <span class="hljs-keyword">while</span> largest*<span class="hljs-number">2</span> + <span class="hljs-number">1</span> &lt; n :<br>            l,r = <span class="hljs-number">2</span>*largest+<span class="hljs-number">1</span>, <span class="hljs-number">2</span>*largest+<span class="hljs-number">2</span><br><br>            <span class="hljs-keyword">if</span> n&lt;= r <span class="hljs-keyword">or</span> nums[r]&lt;nums[l]:<br>                tmp = l<br>            <span class="hljs-keyword">else</span>:<br>                tmp = r<br>            <br>            <span class="hljs-keyword">if</span> nums[largest]&lt; nums[tmp]:<br>                nums[largest],nums[tmp] = nums[tmp], nums[largest]<br>                largest = tmp<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">break</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">build_heap</span>(<span class="hljs-params">self,nums</span>):<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>):<br>            self.heapify(nums,<span class="hljs-built_in">len</span>(nums),i)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">heap_sort</span>(<span class="hljs-params">self,nums</span>):<br>        self.build_heap(nums)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>):<br>            nums[i],nums[<span class="hljs-number">0</span>] = nums[<span class="hljs-number">0</span>],nums[i]<br>            self.heapify(nums,i,<span class="hljs-number">0</span>)    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sortArray</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        self.heap_sort(nums)<br>        <span class="hljs-keyword">return</span> nums<br>        <br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -416,7 +312,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649756885">LOR
     
       <span class="category-chain">
         
-  <a href="/categories/NLP/" class="category-chain-item">NLP</a>
+  <a href="/categories/Hot100/" class="category-chain-item">Hot100</a>
   
   
 
@@ -431,8 +327,6 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649756885">LOR
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%BE%AE%E8%B0%83/">#微调</a>
-      
         <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
       
     </div>
@@ -445,8 +339,8 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649756885">LOR
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>学习笔记——LORA微调</div>
-      <div>http://example.com/2023/08/16/LORA微调/</div>
+      <div>排序数组</div>
+      <div>http://example.com/2024/05/04/排序数组/</div>
     </div>
     <div class="license-meta">
       
@@ -458,7 +352,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649756885">LOR
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月16日</div>
+          <div>2024年5月4日</div>
         </div>
       
       
@@ -490,15 +384,21 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649756885">LOR
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/11/XGBoost%E7%AE%97%E6%B3%95/" title="学习笔记——XGBoost算法">
+                      <a href="/2024/05/05/%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/" title="位置编码">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">学习笔记——XGBoost算法</span>
+                        <span class="hidden-mobile">位置编码</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/04/30/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/" title="打家劫舍">
+                        <span class="hidden-mobile">打家劫舍</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
