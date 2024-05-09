@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="搜索插入位置 1、题目   图1  2、题解 二分法  先确定查找区间的左右开闭情况  将区间定义左闭右开的好处：很多函数堆区间的操作都是左闭右开的形式；在返回值问题上，退出循环时，必然满足\(left&#x3D;&#x3D;right\)，这样在最后返回值上就可以任意返回。  数组长度  区间为左闭右开，数组长度就固定为\([0,len(nums))\)。  循环退出条件  由">
+    <meta name="description" content="搜索插入位置1、题目 2、题解二分法 先确定查找区间的左右开闭情况 将区间定义左闭右开的好处：很多函数堆区间的操作都是左闭右开的形式；在返回值问题上，退出循环时，必然满足$left&#x3D;&#x3D;right$，这样在最后返回值上就可以任意返回。   数组长度 区间为左闭右开，数组长度就固定为$[0,len(nums))$。   循环退出条件 由于左闭右开，所以条件为$left&lt;rig">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搜索插入位置">
 <meta property="og:url" content="http://example.com/2024/04/14/%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="搜索插入位置 1、题目   图1  2、题解 二分法  先确定查找区间的左右开闭情况  将区间定义左闭右开的好处：很多函数堆区间的操作都是左闭右开的形式；在返回值问题上，退出循环时，必然满足\(left&#x3D;&#x3D;right\)，这样在最后返回值上就可以任意返回。  数组长度  区间为左闭右开，数组长度就固定为\([0,len(nums))\)。  循环退出条件  由">
+<meta property="og:description" content="搜索插入位置1、题目 2、题解二分法 先确定查找区间的左右开闭情况 将区间定义左闭右开的好处：很多函数堆区间的操作都是左闭右开的形式；在返回值问题上，退出循环时，必然满足$left&#x3D;&#x3D;right$，这样在最后返回值上就可以任意返回。   数组长度 区间为左闭右开，数组长度就固定为$[0,len(nums))$。   循环退出条件 由于左闭右开，所以条件为$left&lt;rig">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141348623.png">
 <meta property="article:published_time" content="2024-04-14T06:11:16.000Z">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          753 字
+          782 字
         
       </span>
     
@@ -276,56 +276,35 @@
             
               <div class="markdown-body">
                 
-                <h1 id="搜索插入位置">搜索插入位置</h1>
-<h2 id="题目">1、题目</h2>
-<figure>
-<img
-src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141348623.png" srcset="/img/loading.gif" lazyload
-alt="图1" />
-<figcaption aria-hidden="true">图1</figcaption>
-</figure>
-<h2 id="题解">2、题解</h2>
-<h4 id="二分法">二分法</h4>
-<ul>
-<li>先确定查找区间的左右开闭情况
-<ul>
-<li>将区间定义左闭右开的好处：很多函数堆区间的操作都是左闭右开的形式；在返回值问题上，退出循环时，必然满足<span
-class="math inline">\(left==right\)</span>，这样在最后返回值上就可以任意返回。</li>
-</ul></li>
-<li>数组长度
-<ul>
-<li>区间为左闭右开，数组长度就固定为<span
-class="math inline">\([0,len(nums))\)</span>。</li>
-</ul></li>
-<li>循环退出条件
-<ul>
-<li>由于左闭右开，所以条件为<span
-class="math inline">\(left&lt;right\)</span>，不能有<span
-class="math inline">\(=\)</span>。</li>
-</ul></li>
-<li>中间值的写法
-<ul>
-<li><span
-class="math inline">\(mid=left+(right-left)//2\)</span>，这样写的目的是为了防止大数<span
-class="math inline">\((left+right)\)</span>溢出。</li>
-</ul></li>
-<li>中间值和目标值的比较关系
-<ul>
-<li>当<span
-class="math inline">\(nums[mid]&lt;target\)</span>，表示得到比<strong>targe</strong>t校的数中的最大数时，<strong>left</strong>的值为<span
-class="math inline">\(mid+1\)</span>，下一个值必然是大于等于target的值，此时可能取到和target相等的位置。</li>
-<li>当<span class="math inline">\(nums[mid]\leq target\)</span>，当<span
-class="math inline">\(nums[mid]==target\)</span>时，仍会进入条件，<span
-class="math inline">\(left=mid+1\)</span>的值肯定是大于target的值，此时会收敛到第一个大于target的值。</li>
-</ul></li>
-<li>左右区间变化
-<ul>
-<li>区间变化取决于区间定义，所以<span
-class="math inline">\(left=mid+1,right=mid\)</span>，right的真是取值为mid-1。</li>
-</ul></li>
+                <h1 id="搜索插入位置"><a href="#搜索插入位置" class="headerlink" title="搜索插入位置"></a>搜索插入位置</h1><h2 id="1、题目"><a href="#1、题目" class="headerlink" title="1、题目"></a>1、题目</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141348623.png" srcset="/img/loading.gif" lazyload alt="图1"></p>
+<h2 id="2、题解"><a href="#2、题解" class="headerlink" title="2、题解"></a>2、题解</h2><h4 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h4><ul>
+<li>先确定查找区间的左右开闭情况<ul>
+<li>将区间定义左闭右开的好处：很多函数堆区间的操作都是左闭右开的形式；在返回值问题上，退出循环时，必然满足$left&#x3D;&#x3D;right$，这样在最后返回值上就可以任意返回。</li>
+</ul>
+</li>
+<li>数组长度<ul>
+<li>区间为左闭右开，数组长度就固定为$[0,len(nums))$。</li>
+</ul>
+</li>
+<li>循环退出条件<ul>
+<li>由于左闭右开，所以条件为$left&lt;right$，不能有$&#x3D;$。</li>
+</ul>
+</li>
+<li>中间值的写法<ul>
+<li>$mid&#x3D;left+(right-left)&#x2F;&#x2F;2$，这样写的目的是为了防止大数$(left+right)$溢出。</li>
+</ul>
+</li>
+<li>中间值和目标值的比较关系<ul>
+<li>当$nums[mid]&lt;target$，表示得到比<strong>targe</strong>t校的数中的最大数时，<strong>left</strong>的值为$mid+1$，下一个值必然是大于等于target的值，此时可能取到和target相等的位置。</li>
+<li>当$nums[mid]\leq target$，当$nums[mid]&#x3D;&#x3D;target$时，仍会进入条件，$left&#x3D;mid+1$的值肯定是大于target的值，此时会收敛到第一个大于target的值。</li>
+</ul>
+</li>
+<li>左右区间变化<ul>
+<li>区间变化取决于区间定义，所以$left&#x3D;mid+1,right&#x3D;mid$，right的真是取值为mid-1。</li>
+</ul>
+</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">searchInsert</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], target: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        left = <span class="hljs-number">0</span><br>        right = <span class="hljs-built_in">len</span>(nums)<br><br>        <span class="hljs-keyword">while</span> left &lt; right:<br>            mid = (left + right)//<span class="hljs-number">2</span><br><br>            <span class="hljs-keyword">if</span> nums[mid] &lt; target:<br>                left = mid + <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                right = mid<br>        <br>        <span class="hljs-keyword">return</span> left<br></code></pre></td></tr></table></figure>
-
                 
               </div>
             

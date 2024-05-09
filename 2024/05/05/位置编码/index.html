@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="位置编码 绝对位置编码 训练式 该类方法将位置编码作为可训练的参数，例如最大长度为512，编码维度为768，那么就初始化一个\(512*768\)的矩阵作为位置向量，随着训练过程更新。目前的BERT、GPT1等模型使用的就是该类编码。 对于这类方法的缺点，普遍的想法都是缺乏外推性，只能处理最大长度以内的句子，或者将超过最大长度的位置向量随机初始化，进行微调。最近有研究发现，可以通过层次分解">
+    <meta name="description" content="位置编码绝对位置编码训练式该类方法将位置编码作为可训练的参数，例如最大长度为512，编码维度为768，那么就初始化一个$512*768$的矩阵作为位置向量，随着训练过程更新。目前的BERT、GPT1等模型使用的就是该类编码。 对于这类方法的缺点，普遍的想法都是缺乏外推性，只能处理最大长度以内的句子，或者将超过最大长度的位置向量随机初始化，进行微调。最近有研究发现，可以通过层次分解的方法，让绝对位置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="位置编码">
 <meta property="og:url" content="http://example.com/2024/05/05/%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="位置编码 绝对位置编码 训练式 该类方法将位置编码作为可训练的参数，例如最大长度为512，编码维度为768，那么就初始化一个\(512*768\)的矩阵作为位置向量，随着训练过程更新。目前的BERT、GPT1等模型使用的就是该类编码。 对于这类方法的缺点，普遍的想法都是缺乏外推性，只能处理最大长度以内的句子，或者将超过最大长度的位置向量随机初始化，进行微调。最近有研究发现，可以通过层次分解">
+<meta property="og:description" content="位置编码绝对位置编码训练式该类方法将位置编码作为可训练的参数，例如最大长度为512，编码维度为768，那么就初始化一个$512*768$的矩阵作为位置向量，随着训练过程更新。目前的BERT、GPT1等模型使用的就是该类编码。 对于这类方法的缺点，普遍的想法都是缺乏外推性，只能处理最大长度以内的句子，或者将超过最大长度的位置向量随机初始化，进行微调。最近有研究发现，可以通过层次分解的方法，让绝对位置">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-05T07:32:45.000Z">
 <meta property="article:modified_time" content="2024-05-05T07:34:00.280Z">
@@ -274,93 +274,17 @@
             
               <div class="markdown-body">
                 
-                <h1 id="位置编码">位置编码</h1>
-<h2 id="绝对位置编码">绝对位置编码</h2>
-<h3 id="训练式">训练式</h3>
-<p>该类方法将位置编码作为可训练的参数，例如最大长度为512，编码维度为768，那么就初始化一个<span
-class="math inline">\(512*768\)</span>的矩阵作为位置向量，随着训练过程更新。目前的BERT、GPT1等模型使用的就是该类编码。</p>
+                <h1 id="位置编码"><a href="#位置编码" class="headerlink" title="位置编码"></a>位置编码</h1><h2 id="绝对位置编码"><a href="#绝对位置编码" class="headerlink" title="绝对位置编码"></a>绝对位置编码</h2><h3 id="训练式"><a href="#训练式" class="headerlink" title="训练式"></a>训练式</h3><p>该类方法将位置编码作为可训练的参数，例如最大长度为512，编码维度为768，那么就初始化一个$512*768$的矩阵作为位置向量，随着训练过程更新。目前的BERT、GPT1等模型使用的就是该类编码。</p>
 <p>对于这类方法的缺点，普遍的想法都是缺乏外推性，只能处理最大长度以内的句子，或者将超过最大长度的位置向量随机初始化，进行微调。最近有研究发现，可以通过层次分解的方法，让绝对位置编码外推到一定长度的范围。</p>
-<h3 id="三角式sinusoidal位置编码">三角式（Sinusoidal位置编码）</h3>
-<p><span class="math display">\[
-\begin{cases}\boldsymbol{p}_{k,2\boldsymbol{i}}=\sin\left(k/10000^{2\boldsymbol{i}/\boldsymbol{d}}\right)\\\boldsymbol{p}_{k,2\boldsymbol{i}+1}=\cos\left(k/10000^{2\boldsymbol{i}/\boldsymbol{d}}\right)\end{cases}
-\]</span></p>
-<p>其中<span
-class="math inline">\(\boldsymbol{p}_{k,2\boldsymbol{i}}、\boldsymbol{p}_{k,2\boldsymbol{i}+1}\)</span>分别是位置<span
-class="math inline">\(k\)</span>的位置编码向量的第<span
-class="math inline">\(2i、2i+1\)</span>个分量，<span
-class="math inline">\(d\)</span>是位置向量的维度。</p>
-<h3 id="递归式">递归式</h3>
-<p>如果在输入后先接入一层RNN，然后再输入Transformer，理论上就不需要再加入位置编码。因此，可以用RNN模型来学习一种绝对位置编码。这种基于递归模型的方法具有比较好的外推性，但是牺牲了一定的并行性，在速度方面存在一定瓶颈。代表方法有FLOATER，他提出用微分方程的方式来建模位置编码。</p>
-<h2 id="相对位置编码">相对位置编码</h2>
-<h3 id="经典式">经典式</h3>
-<p>通常认为相对位置编码是通过绝对位置编码启发得到的，对于一般的绝对位置编码的Attention：
-<span class="math display">\[
-\begin{aligned}&amp;\boldsymbol{q}_i=(\boldsymbol{x}_i+\boldsymbol{p}_i)\boldsymbol{W}_Q\\&amp;\boldsymbol{k}_j=(\boldsymbol{x}_j+\boldsymbol{p}_j)\boldsymbol{W}_K\\&amp;\boldsymbol{v}_j=(\boldsymbol{x}_j+\boldsymbol{p}_j)\boldsymbol{W}_V\\&amp;a_{i,j}=softmax\left(\boldsymbol{q}_i\boldsymbol{k}_j^\top\right)\\&amp;\boldsymbol{o}_i=\sum_ja_{i,j}\boldsymbol{v}_j\end{aligned}
-\]</span> 展开<span class="math inline">\(q_ik^T_j:\)</span> <span
-class="math display">\[
-q_ik_j^\top=(\boldsymbol{x}_i+\boldsymbol{p}_i)\boldsymbol{W}_Q\boldsymbol{W}_K^\top(\boldsymbol{x}_j+\boldsymbol{p}_j)^\top=(\boldsymbol{x}_i\boldsymbol{W}_Q+\boldsymbol{p}_i\boldsymbol{W}_Q)\left(\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{W}_K^\top\boldsymbol{p}_j^\top\right)
-\]</span> 为了引入相对位置信息，将(3)中的第一项位置部分去掉，第二项<span
-class="math inline">\(p_jW_k\)</span>改为二元位置向量<span
-class="math inline">\(R^K_{i,j}\)</span>​，变成： <span
-class="math display">\[
-a_{i,j}=softmax\left(\boldsymbol{x}_i\boldsymbol{W}_Q\left(\boldsymbol{x}_j\boldsymbol{W}_K+\boldsymbol{R}_{i,j}^K\right)^\top\right)
-\]</span> 同时将<span class="math inline">\(v_j\)</span>中的<span
-class="math inline">\(p_jW_v\)</span>换成<span
-class="math inline">\(R^V_{i,j}\)</span>。</p>
-<p>相对位置表示的是将依赖二元坐标<span
-class="math inline">\((i,j)\)</span>的向量<span
-class="math inline">\(R^K_{i,j},R^V_{i,j}\)</span>，改为只依赖于相对距离<span
-class="math inline">\(i-j\)</span>​，并且通常来说会进行截断，来适应不同的距离：
-<span class="math display">\[
-\boldsymbol{R}_{i,j}^{K}=\boldsymbol{p}_K\left[\mathrm{clip}(i-j,p_{\min},p_{\max})\right]\\\boldsymbol{R}_{i,j}^{V}=\boldsymbol{p}_V\left[\mathrm{clip}(i-j,p_{\min},p_{\max})\right]
-\]</span></p>
-<h3 id="xlnet式">XLNET式</h3>
-<p>将经典式中的<span class="math inline">\(q_ik^T_j\)</span>​完全展开：
-<span class="math display">\[
-q_ik_j^\top=x_iW_QW_K^\top x_j^\top+x_iW_QW_K^\top
-p_j^\top+p_iW_QW_K^\top x_j^\top+p_iW_QW_K^\top p_j^\top
-\]</span> 该方法直接将<span
-class="math inline">\(p_j\)</span>替换成相对位置向量<span
-class="math inline">\(R_{i-j}\)</span>，对于两个<span
-class="math inline">\(p_i\)</span>，直接替换为两个可训练的向量<span
-class="math inline">\(u、v\)</span>: <span class="math display">\[
-\boldsymbol{x}_i\boldsymbol{W}_Q\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{x}_i\boldsymbol{W}_Q\boldsymbol{W}_K^\top
-R_{i-j}^\top+\boldsymbol{u}\boldsymbol{W}_Q\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{v}\boldsymbol{W}_Q\boldsymbol{W}_K^\top
-R_{i-j}^\top
-\]</span> 该编码方式中的<span
-class="math inline">\(R_{i-j}\)</span>直接使用了三角式的生成方案，由于<span
-class="math inline">\(R_{i-j}\)</span>的编码空间与<span
-class="math inline">\(x_j\)</span>不一定相同，所以<span
-class="math inline">\(R_{i-j}\)</span>前的<span
-class="math inline">\(W^T_K\)</span>换成了一个独立矩阵<span
-class="math inline">\(W^T_{K,R}\)</span>，将<span
-class="math inline">\(uW_Q和vW_Q\)</span>直接合并成单个<span
-class="math inline">\(u、v\)</span>​： <span class="math display">\[
-\boldsymbol{x}_i\boldsymbol{W}_Q\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{x}_i\boldsymbol{W}_Q\boldsymbol{W}_{K,R}^\top
-R_{i-j}^\top+\boldsymbol{u}\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{v}\boldsymbol{W}_{K,R}^\top
-R_{i-j}^\top
-\]</span> 另外，<span
-class="math inline">\(v_j\)</span>上的位置偏置直接去掉。</p>
-<h3 id="t5式">T5式</h3>
-<p>该方式思路源自(6)，其中每一项的含义可以分别理解为“输入-输入”、“输入-位置”、“位置-输入”、“位置-位置”四项注意力的组合。如果我们认为输入信息与位置信息应该是独立（解耦）的，那么它们就不应该有过多的交互，所以“输入-位置”、“位置-输入”两项Attention可以删掉，<span
-class="math inline">\(p_iW_QW_K^\top
-p_j^\top\)</span>实际上只是依赖于<span
-class="math inline">\((i,j)\)</span>​的标量，可以将其作为参数进行训练,将(6)简化成：
-<span class="math display">\[
-x_iW_QW_K^\top\boldsymbol{x}_j^\top+\beta_{i,j}
-\]</span>
-简而言之，在Attention矩阵上加入了一个可训练的偏置项。而跟XLNET式一样，在<span
-class="math inline">\(v_j\)</span>上的位置偏置则直接被去掉了。</p>
-<h3 id="deberta式">DeBERTa式</h3>
-<p>DeBERTa的主要改进也是在位置编码上，同样还是从展开式(6)出发，DeBERTa刚好相反，去掉了第四项，保留了二、三项，并且替换为相对位置编码：
-<span class="math display">\[
-q_ik_j^\top=x_iW_QW_K^\top x_j^\top+x_iW_QW_K^\top
-R_{i,j}^\top+R_{j,i}W_QW_K^\top x_j^\top
-\]</span> 对于<span
-class="math inline">\(R_{i,j}\)</span>的设计与经典式相同。</p>
-<p>DeBERTa指出NLP的大多数任务可能都只需要相对位置信息，但确实有些场景下绝对位置信息更有帮助，于是它将整个模型分为两部分来理解。以Base版的MLM预训练模型为例，它一共有13层，前11层只是用相对位置编码，这部分称为Encoder，后面2层加入绝对位置信息，这部分它称之为Decoder，还弄了个简称EMD(Enhanced
-Mask
-Decoder)至于下游任务的微调截断，则是使用前11层的Encoder加上1层的Decoder来进行。</p>
+<h3 id="三角式（Sinusoidal位置编码）"><a href="#三角式（Sinusoidal位置编码）" class="headerlink" title="三角式（Sinusoidal位置编码）"></a>三角式（Sinusoidal位置编码）</h3><p>$$<br>\begin{cases}\boldsymbol{p}<em>{k,2\boldsymbol{i}}&#x3D;\sin\left(k&#x2F;10000^{2\boldsymbol{i}&#x2F;\boldsymbol{d}}\right)\\boldsymbol{p}</em>{k,2\boldsymbol{i}+1}&#x3D;\cos\left(k&#x2F;10000^{2\boldsymbol{i}&#x2F;\boldsymbol{d}}\right)\end{cases}<br>$$</p>
+<p>其中$\boldsymbol{p}<em>{k,2\boldsymbol{i}}、\boldsymbol{p}</em>{k,2\boldsymbol{i}+1}$分别是位置$k$的位置编码向量的第$2i、2i+1$个分量，$d$是位置向量的维度。</p>
+<h3 id="递归式"><a href="#递归式" class="headerlink" title="递归式"></a>递归式</h3><p>如果在输入后先接入一层RNN，然后再输入Transformer，理论上就不需要再加入位置编码。因此，可以用RNN模型来学习一种绝对位置编码。这种基于递归模型的方法具有比较好的外推性，但是牺牲了一定的并行性，在速度方面存在一定瓶颈。代表方法有FLOATER，他提出用微分方程的方式来建模位置编码。</p>
+<h2 id="相对位置编码"><a href="#相对位置编码" class="headerlink" title="相对位置编码"></a>相对位置编码</h2><h3 id="经典式"><a href="#经典式" class="headerlink" title="经典式"></a>经典式</h3><p>通常认为相对位置编码是通过绝对位置编码启发得到的，对于一般的绝对位置编码的Attention：<br>$$<br>\begin{aligned}&amp;\boldsymbol{q}_i&#x3D;(\boldsymbol{x}_i+\boldsymbol{p}_i)\boldsymbol{W}_Q\&amp;\boldsymbol{k}_j&#x3D;(\boldsymbol{x}_j+\boldsymbol{p}_j)\boldsymbol{W}_K\&amp;\boldsymbol{v}_j&#x3D;(\boldsymbol{x}_j+\boldsymbol{p}_j)\boldsymbol{W}<em>V\&amp;a</em>{i,j}&#x3D;softmax\left(\boldsymbol{q}_i\boldsymbol{k}_j^\top\right)\&amp;\boldsymbol{o}<em>i&#x3D;\sum_ja</em>{i,j}\boldsymbol{v}_j\end{aligned}<br>$$<br>展开$q_ik^T_j:$<br>$$<br>q_ik_j^\top&#x3D;(\boldsymbol{x}_i+\boldsymbol{p}_i)\boldsymbol{W}_Q\boldsymbol{W}_K^\top(\boldsymbol{x}_j+\boldsymbol{p}_j)^\top&#x3D;(\boldsymbol{x}_i\boldsymbol{W}_Q+\boldsymbol{p}_i\boldsymbol{W}_Q)\left(\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{W}<em>K^\top\boldsymbol{p}<em>j^\top\right)<br>$$<br>为了引入相对位置信息，将(3)中的第一项位置部分去掉，第二项$p_jW_k$改为二元位置向量$R^K</em>{i,j}$​，变成：<br>$$<br>a</em>{i,j}&#x3D;softmax\left(\boldsymbol{x}_i\boldsymbol{W}_Q\left(\boldsymbol{x}<em>j\boldsymbol{W}<em>K+\boldsymbol{R}</em>{i,j}^K\right)^\top\right)<br>$$<br>同时将$v_j$中的$p_jW_v$换成$R^V</em>{i,j}$。</p>
+<p>相对位置表示的是将依赖二元坐标$(i,j)$的向量$R^K_{i,j},R^V_{i,j}$，改为只依赖于相对距离$i-j$​，并且通常来说会进行截断，来适应不同的距离：<br>$$<br>\boldsymbol{R}<em>{i,j}^{K}&#x3D;\boldsymbol{p}<em>K\left[\mathrm{clip}(i-j,p</em>{\min},p</em>{\max})\right]\\boldsymbol{R}<em>{i,j}^{V}&#x3D;\boldsymbol{p}<em>V\left[\mathrm{clip}(i-j,p</em>{\min},p</em>{\max})\right]<br>$$</p>
+<h3 id="XLNET式"><a href="#XLNET式" class="headerlink" title="XLNET式"></a>XLNET式</h3><p>将经典式中的$q_ik^T_j$​完全展开：<br>$$<br>q_ik_j^\top&#x3D;x_iW_QW_K^\top x_j^\top+x_iW_QW_K^\top p_j^\top+p_iW_QW_K^\top x_j^\top+p_iW_QW_K^\top p_j^\top<br>$$<br>该方法直接将$p_j$替换成相对位置向量$R_{i-j}$，对于两个$p_i$，直接替换为两个可训练的向量$u、v$:<br>$$<br>\boldsymbol{x}_i\boldsymbol{W}_Q\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{x}_i\boldsymbol{W}_Q\boldsymbol{W}<em>K^\top R</em>{i-j}^\top+\boldsymbol{u}\boldsymbol{W}<em>Q\boldsymbol{W}<em>K^\top\boldsymbol{x}<em>j^\top+\boldsymbol{v}\boldsymbol{W}<em>Q\boldsymbol{W}<em>K^\top R</em>{i-j}^\top<br>$$<br>该编码方式中的$R</em>{i-j}$直接使用了三角式的生成方案，由于$R</em>{i-j}$的编码空间与$x_j$不一定相同，所以$R</em>{i-j}$前的$W^T_K$换成了一个独立矩阵$W^T</em>{K,R}$，将$uW_Q和vW_Q$直接合并成单个$u、v$​：<br>$$<br>\boldsymbol{x}_i\boldsymbol{W}_Q\boldsymbol{W}_K^\top\boldsymbol{x}_j^\top+\boldsymbol{x}<em>i\boldsymbol{W}<em>Q\boldsymbol{W}</em>{K,R}^\top R</em>{i-j}^\top+\boldsymbol{u}\boldsymbol{W}<em>K^\top\boldsymbol{x}<em>j^\top+\boldsymbol{v}\boldsymbol{W}</em>{K,R}^\top R</em>{i-j}^\top<br>$$<br>另外，$v_j$上的位置偏置直接去掉。</p>
+<h3 id="T5式"><a href="#T5式" class="headerlink" title="T5式"></a>T5式</h3><p>该方式思路源自(6)，其中每一项的含义可以分别理解为“输入-输入”、“输入-位置”、“位置-输入”、“位置-位置”四项注意力的组合。如果我们认为输入信息与位置信息应该是独立（解耦）的，那么它们就不应该有过多的交互，所以“输入-位置”、“位置-输入”两项Attention可以删掉，$p_iW_QW_K^\top p_j^\top$实际上只是依赖于$(i,j)$​的标量，可以将其作为参数进行训练,将(6)简化成：<br>$$<br>x_iW_QW_K^\top\boldsymbol{x}<em>j^\top+\beta</em>{i,j}<br>$$<br>简而言之，在Attention矩阵上加入了一个可训练的偏置项。而跟XLNET式一样，在$v_j$上的位置偏置则直接被去掉了。</p>
+<h3 id="DeBERTa式"><a href="#DeBERTa式" class="headerlink" title="DeBERTa式"></a>DeBERTa式</h3><p>DeBERTa的主要改进也是在位置编码上，同样还是从展开式(6)出发，DeBERTa刚好相反，去掉了第四项，保留了二、三项，并且替换为相对位置编码：<br>$$<br>q_ik_j^\top&#x3D;x_iW_QW_K^\top x_j^\top+x_iW_QW_K^\top R_{i,j}^\top+R_{j,i}W_QW_K^\top x_j^\top<br>$$<br>对于$R_{i,j}$的设计与经典式相同。</p>
+<p>DeBERTa指出NLP的大多数任务可能都只需要相对位置信息，但确实有些场景下绝对位置信息更有帮助，于是它将整个模型分为两部分来理解。以Base版的MLM预训练模型为例，它一共有13层，前11层只是用相对位置编码，这部分称为Encoder，后面2层加入绝对位置信息，这部分它称之为Decoder，还弄了个简称EMD(Enhanced Mask Decoder)至于下游任务的微调截断，则是使用前11层的Encoder加上1层的Decoder来进行。</p>
 
                 
               </div>
@@ -450,6 +374,12 @@ Decoder)至于下游任务的微调截断，则是使用前11层的Encoder加上
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/05/09/GPT%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/" title="GPT系列模型">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">GPT系列模型</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
