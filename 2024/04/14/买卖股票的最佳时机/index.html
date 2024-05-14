@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="买卖股票的最佳时机1、题目 2、题解动态规划 更新前$i$天的最低价格，即最低买入成本$cost$ 更新前$i$天的最高利润$profit$，即选择前$i-1$天最高利润$profit$和第$i$天卖出的最高利润$price-cost$中的最大值  1234567891011121314class Solution:    def maxProfit(self, prices: List[int]">
+    <meta name="description" content="买卖股票的最佳时机 1、题目   图1  2、题解 动态规划  更新前\(i\)天的最低价格，即最低买入成本\(cost\) 更新前\(i\)天的最高利润\(profit\)，即选择前\(i-1\)天最高利润\(profit\)和第\(i\)天卖出的最高利润\(price-cost\)中的最大值  1234567891011121314class Solution:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="买卖股票的最佳时机">
 <meta property="og:url" content="http://example.com/2024/04/14/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="买卖股票的最佳时机1、题目 2、题解动态规划 更新前$i$天的最低价格，即最低买入成本$cost$ 更新前$i$天的最高利润$profit$，即选择前$i-1$天最高利润$profit$和第$i$天卖出的最高利润$price-cost$中的最大值  1234567891011121314class Solution:    def maxProfit(self, prices: List[int]">
+<meta property="og:description" content="买卖股票的最佳时机 1、题目   图1  2、题解 动态规划  更新前\(i\)天的最低价格，即最低买入成本\(cost\) 更新前\(i\)天的最高利润\(profit\)，即选择前\(i-1\)天最高利润\(profit\)和第\(i\)天卖出的最高利润\(price-cost\)中的最大值  1234567891011121314class Solution:">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141720273.png">
 <meta property="article:published_time" content="2024-04-14T09:24:05.000Z">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          328 字
+          346 字
         
       </span>
     
@@ -276,13 +276,28 @@
             
               <div class="markdown-body">
                 
-                <h1 id="买卖股票的最佳时机"><a href="#买卖股票的最佳时机" class="headerlink" title="买卖股票的最佳时机"></a>买卖股票的最佳时机</h1><h2 id="1、题目"><a href="#1、题目" class="headerlink" title="1、题目"></a>1、题目</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141720273.png" srcset="/img/loading.gif" lazyload alt="图1"></p>
-<h2 id="2、题解"><a href="#2、题解" class="headerlink" title="2、题解"></a>2、题解</h2><h4 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h4><ul>
-<li>更新前$i$天的最低价格，即最低买入成本$cost$</li>
-<li>更新前$i$天的最高利润$profit$，即选择前$i-1$天最高利润$profit$和第$i$天卖出的最高利润$price-cost$中的最大值</li>
+                <h1 id="买卖股票的最佳时机">买卖股票的最佳时机</h1>
+<h2 id="题目">1、题目</h2>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141720273.png" srcset="/img/loading.gif" lazyload
+alt="图1" />
+<figcaption aria-hidden="true">图1</figcaption>
+</figure>
+<h2 id="题解">2、题解</h2>
+<h4 id="动态规划">动态规划</h4>
+<ul>
+<li>更新前<span
+class="math inline">\(i\)</span>天的最低价格，即最低买入成本<span
+class="math inline">\(cost\)</span></li>
+<li>更新前<span class="math inline">\(i\)</span>天的最高利润<span
+class="math inline">\(profit\)</span>，即选择前<span
+class="math inline">\(i-1\)</span>天最高利润<span
+class="math inline">\(profit\)</span>和第<span
+class="math inline">\(i\)</span>天卖出的最高利润<span
+class="math inline">\(price-cost\)</span>中的最大值</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxProfit</span>(<span class="hljs-params">self, prices: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        cost = prices[<span class="hljs-number">0</span>]<br>        days = <span class="hljs-built_in">len</span>(prices)<br>        money = <span class="hljs-number">0</span><br><br>        <span class="hljs-keyword">for</span> price <span class="hljs-keyword">in</span> prices:<br>            <span class="hljs-keyword">if</span> cost &gt;= price:<br>                cost = price<br>            <br>            <span class="hljs-keyword">if</span> money&lt;=price-cost:<br>                money = price-cost<br><br>        <span class="hljs-keyword">return</span> money<br></code></pre></td></tr></table></figure>
-
 
                 
               </div>

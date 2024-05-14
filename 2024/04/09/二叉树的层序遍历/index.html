@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="二叉树的层序遍历1、题目 2、题解广度优先搜索借助数据结构队列，实现逐层打印 算法流程：  根节点为空时，返回空列表 初始化队列为根节点 当队列为空时跳出循环： 新建临时结果列表用于存储当前层结果和临时队列用于存储下一层结果 遍历队列，将结果存储临时结果列表，若当前节点的左(右)子节点不为空，则将临时节点加入临时队列 令队列等于临时队列   返回结果列表  12345678910111213141">
+    <meta name="description" content="二叉树的层序遍历 1、题目   图1  2、题解 广度优先搜索 借助数据结构队列，实现逐层打印 算法流程：  根节点为空时，返回空列表 初始化队列为根节点 当队列为空时跳出循环：  新建临时结果列表用于存储当前层结果和临时队列用于存储下一层结果 遍历队列，将结果存储临时结果列表，若当前节点的左(右)子节点不为空，则将临时节点加入临时队列 令队列等于临时队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树的层序遍历">
 <meta property="og:url" content="http://example.com/2024/04/09/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="二叉树的层序遍历1、题目 2、题解广度优先搜索借助数据结构队列，实现逐层打印 算法流程：  根节点为空时，返回空列表 初始化队列为根节点 当队列为空时跳出循环： 新建临时结果列表用于存储当前层结果和临时队列用于存储下一层结果 遍历队列，将结果存储临时结果列表，若当前节点的左(右)子节点不为空，则将临时节点加入临时队列 令队列等于临时队列   返回结果列表  12345678910111213141">
+<meta property="og:description" content="二叉树的层序遍历 1、题目   图1  2、题解 广度优先搜索 借助数据结构队列，实现逐层打印 算法流程：  根节点为空时，返回空列表 初始化队列为根节点 当队列为空时跳出循环：  新建临时结果列表用于存储当前层结果和临时队列用于存储下一层结果 遍历队列，将结果存储临时结果列表，若当前节点的左(右)子节点不为空，则将临时节点加入临时队列 令队列等于临时队列">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404091550883.png">
 <meta property="article:published_time" content="2024-04-09T08:31:27.000Z">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          612 字
+          614 字
         
       </span>
     
@@ -276,22 +276,30 @@
             
               <div class="markdown-body">
                 
-                <h1 id="二叉树的层序遍历"><a href="#二叉树的层序遍历" class="headerlink" title="二叉树的层序遍历"></a>二叉树的层序遍历</h1><h2 id="1、题目"><a href="#1、题目" class="headerlink" title="1、题目"></a>1、题目</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404091550883.png" srcset="/img/loading.gif" lazyload alt="图1"></p>
-<h2 id="2、题解"><a href="#2、题解" class="headerlink" title="2、题解"></a>2、题解</h2><h4 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h4><p>借助数据结构队列，实现逐层打印</p>
+                <h1 id="二叉树的层序遍历">二叉树的层序遍历</h1>
+<h2 id="题目">1、题目</h2>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404091550883.png" srcset="/img/loading.gif" lazyload
+alt="图1" />
+<figcaption aria-hidden="true">图1</figcaption>
+</figure>
+<h2 id="题解">2、题解</h2>
+<h4 id="广度优先搜索">广度优先搜索</h4>
+<p>借助数据结构队列，实现逐层打印</p>
 <p>算法流程：</p>
 <ul>
 <li>根节点为空时，返回空列表</li>
 <li>初始化队列为根节点</li>
-<li>当队列为空时跳出循环：<ul>
+<li>当队列为空时跳出循环：
+<ul>
 <li>新建临时结果列表用于存储当前层结果和临时队列用于存储下一层结果</li>
 <li>遍历队列，将结果存储临时结果列表，若当前节点的左(右)子节点不为空，则将临时节点加入临时队列</li>
 <li>令队列等于临时队列</li>
-</ul>
-</li>
+</ul></li>
 <li>返回结果列表</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Definition for a binary tree node.</span><br><span class="hljs-comment"># class TreeNode:</span><br><span class="hljs-comment">#     def __init__(self, val=0, left=None, right=None):</span><br><span class="hljs-comment">#         self.val = val</span><br><span class="hljs-comment">#         self.left = left</span><br><span class="hljs-comment">#         self.right = right</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">levelOrder</span>(<span class="hljs-params">self, root: <span class="hljs-type">Optional</span>[TreeNode]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root: <span class="hljs-keyword">return</span> []<br>        stack = [root]<br>        ans = []<br>        <span class="hljs-keyword">while</span> stack:<br>            val = []<br>            tmp = []<br>            <span class="hljs-keyword">for</span> node <span class="hljs-keyword">in</span> stack:<br>                val.append(node.val)<br>                <span class="hljs-keyword">if</span> node.left: tmp.append(node.left)<br>                <span class="hljs-keyword">if</span> node.right: tmp.append(node.right)<br>            ans.append(val)<br>            stack = tmp  <br><br>        <span class="hljs-keyword">return</span> ans  <br><br></code></pre></td></tr></table></figure>
-
 
                 
               </div>

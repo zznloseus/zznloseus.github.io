@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="有效的括号1、题目 2、题解辅助栈 遇到左括号入栈，遇到右括号时，对应栈顶左括号出战，则遍历完所有括号后，栈为空。 建立哈希表，构建左右括号对应关系。  边界问题：  当栈为空时，此时$stack.pop()$会报错，因此需要给stack赋予初值，并在哈希表中建立对应关系，予以配合。此时当stack为空，且字符串为右括号可以正常提前返回False。 字符串以左括号结尾，该情况下可以正常遍历，最后根">
+    <meta name="description" content="有效的括号 1、题目   图1  2、题解 辅助栈  遇到左括号入栈，遇到右括号时，对应栈顶左括号出战，则遍历完所有括号后，栈为空。 建立哈希表，构建左右括号对应关系。  边界问题：  当栈为空时，此时\(stack.pop()\)会报错，因此需要给stack赋予初值，并在哈希表中建立对应关系，予以配合。此时当stack为空，且字符串为右括号可以正常提前返回False。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="有效的括号">
 <meta property="og:url" content="http://example.com/2024/04/14/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="有效的括号1、题目 2、题解辅助栈 遇到左括号入栈，遇到右括号时，对应栈顶左括号出战，则遍历完所有括号后，栈为空。 建立哈希表，构建左右括号对应关系。  边界问题：  当栈为空时，此时$stack.pop()$会报错，因此需要给stack赋予初值，并在哈希表中建立对应关系，予以配合。此时当stack为空，且字符串为右括号可以正常提前返回False。 字符串以左括号结尾，该情况下可以正常遍历，最后根">
+<meta property="og:description" content="有效的括号 1、题目   图1  2、题解 辅助栈  遇到左括号入栈，遇到右括号时，对应栈顶左括号出战，则遍历完所有括号后，栈为空。 建立哈希表，构建左右括号对应关系。  边界问题：  当栈为空时，此时\(stack.pop()\)会报错，因此需要给stack赋予初值，并在哈希表中建立对应关系，予以配合。此时当stack为空，且字符串为右括号可以正常提前返回False。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141501426.png">
 <meta property="article:published_time" content="2024-04-14T07:23:15.000Z">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          535 字
+          531 字
         
       </span>
     
@@ -276,18 +276,28 @@
             
               <div class="markdown-body">
                 
-                <h1 id="有效的括号"><a href="#有效的括号" class="headerlink" title="有效的括号"></a>有效的括号</h1><h2 id="1、题目"><a href="#1、题目" class="headerlink" title="1、题目"></a>1、题目</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141501426.png" srcset="/img/loading.gif" lazyload alt="图1"></p>
-<h2 id="2、题解"><a href="#2、题解" class="headerlink" title="2、题解"></a>2、题解</h2><h4 id="辅助栈"><a href="#辅助栈" class="headerlink" title="辅助栈"></a>辅助栈</h4><ul>
+                <h1 id="有效的括号">有效的括号</h1>
+<h2 id="题目">1、题目</h2>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202404141501426.png" srcset="/img/loading.gif" lazyload
+alt="图1" />
+<figcaption aria-hidden="true">图1</figcaption>
+</figure>
+<h2 id="题解">2、题解</h2>
+<h4 id="辅助栈">辅助栈</h4>
+<ul>
 <li>遇到左括号入栈，遇到右括号时，对应栈顶左括号出战，则遍历完所有括号后，栈为空。</li>
 <li>建立哈希表，构建左右括号对应关系。</li>
 </ul>
 <p>边界问题：</p>
 <ul>
-<li>当栈为空时，此时$stack.pop()$会报错，因此需要给stack赋予初值，并在哈希表中建立对应关系，予以配合。此时当stack为空，且字符串为右括号可以正常提前返回False。</li>
-<li>字符串以左括号结尾，该情况下可以正常遍历，最后根据$len(stack)&#x3D;&#x3D;1$，判断是否是有效的括号组合。</li>
+<li>当栈为空时，此时<span
+class="math inline">\(stack.pop()\)</span>会报错，因此需要给stack赋予初值，并在哈希表中建立对应关系，予以配合。此时当stack为空，且字符串为右括号可以正常提前返回False。</li>
+<li>字符串以左括号结尾，该情况下可以正常遍历，最后根据<span
+class="math inline">\(len(stack)==1\)</span>，判断是否是有效的括号组合。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">isValid</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        dic = &#123;<span class="hljs-string">&#x27;&#123;&#x27;</span>: <span class="hljs-string">&#x27;&#125;&#x27;</span>,  <span class="hljs-string">&#x27;[&#x27;</span>: <span class="hljs-string">&#x27;]&#x27;</span>, <span class="hljs-string">&#x27;(&#x27;</span>: <span class="hljs-string">&#x27;)&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>: <span class="hljs-string">&#x27;?&#x27;</span>&#125;<br>        stack = [<span class="hljs-string">&#x27;?&#x27;</span>]<br>        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s:<br>            <span class="hljs-keyword">if</span> c <span class="hljs-keyword">in</span> dic: <br>            	stack.append(c)<br>            <span class="hljs-keyword">elif</span> dic[stack.pop()] != c: <br>            	<span class="hljs-keyword">return</span> <span class="hljs-literal">False</span> <br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(stack) == <span class="hljs-number">1</span><br><br></code></pre></td></tr></table></figure>
-
 
                 
               </div>

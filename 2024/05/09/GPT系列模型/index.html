@@ -16,12 +16,12 @@
   <meta name="author" content="Z Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="GPT系列模型1、GPT1 训练过程 pre-train：利用大量无标注的语料进行预训练 SFT(Supervised Fine-Tuning)：利用NLP任务的数据进行微调    GPT1是一个decoder—only模型，模型的目标是让下一个词预测的概率最大 2、GPT2&#x2F;3与GPT1结构没有变化，但是训练数据集和模型的参数量更大(模型的层数更多，模型更复杂1) 3、GPT3.5训练">
+    <meta name="description" content="GPT系列模型 1、GPT1   图1  训练过程  pre-train：利用大量无标注的语料进行预训练 SFT(Supervised Fine-Tuning)：利用NLP任务的数据进行微调   GPT1是一个decoder—only模型，模型的目标是让下一个词预测的概率最大 2、GPT2&#x2F;3 与GPT1结构没有变化，但是训练数据集和模型的参数量更大(模型的层数更多，模">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GPT系列模型">
 <meta property="og:url" content="http://example.com/2024/05/09/GPT%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Zspace">
-<meta property="og:description" content="GPT系列模型1、GPT1 训练过程 pre-train：利用大量无标注的语料进行预训练 SFT(Supervised Fine-Tuning)：利用NLP任务的数据进行微调    GPT1是一个decoder—only模型，模型的目标是让下一个词预测的概率最大 2、GPT2&#x2F;3与GPT1结构没有变化，但是训练数据集和模型的参数量更大(模型的层数更多，模型更复杂1) 3、GPT3.5训练">
+<meta property="og:description" content="GPT系列模型 1、GPT1   图1  训练过程  pre-train：利用大量无标注的语料进行预训练 SFT(Supervised Fine-Tuning)：利用NLP任务的数据进行微调   GPT1是一个decoder—only模型，模型的目标是让下一个词预测的概率最大 2、GPT2&#x2F;3 与GPT1结构没有变化，但是训练数据集和模型的参数量更大(模型的层数更多，模">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091403495.png">
 <meta property="article:published_time" content="2024-05-09T10:02:59.000Z">
@@ -276,81 +276,177 @@
             
               <div class="markdown-body">
                 
-                <h1 id="GPT系列模型"><a href="#GPT系列模型" class="headerlink" title="GPT系列模型"></a>GPT系列模型</h1><h2 id="1、GPT1"><a href="#1、GPT1" class="headerlink" title="1、GPT1"></a>1、GPT1</h2><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091403495.png" srcset="/img/loading.gif" lazyload alt="图1"></p>
-<h3 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h3><ul>
+                <h1 id="gpt系列模型">GPT系列模型</h1>
+<h2 id="gpt1">1、GPT1</h2>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091403495.png" srcset="/img/loading.gif" lazyload
+alt="图1" />
+<figcaption aria-hidden="true">图1</figcaption>
+</figure>
+<h3 id="训练过程">训练过程</h3>
+<ul>
 <li>pre-train：利用大量无标注的语料进行预训练</li>
 <li>SFT(Supervised Fine-Tuning)：利用NLP任务的数据进行微调</li>
 </ul>
-<img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091405058.png" srcset="/img/loading.gif" lazyload alt="图2" style="zoom: 80%;" />
-
+<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091405058.png" srcset="/img/loading.gif" lazyload alt="图2" style="zoom: 80%;" /></p>
 <p>GPT1是一个decoder—only模型，模型的目标是让下一个词预测的概率最大</p>
-<h2 id="2、GPT2-3"><a href="#2、GPT2-3" class="headerlink" title="2、GPT2&#x2F;3"></a>2、GPT2&#x2F;3</h2><p>与GPT1结构没有变化，但是训练数据集和模型的参数量更大(模型的层数更多，模型更复杂1)</p>
-<h2 id="3、GPT3-5"><a href="#3、GPT3-5" class="headerlink" title="3、GPT3.5"></a>3、GPT3.5</h2><h3 id="训练过程-1"><a href="#训练过程-1" class="headerlink" title="训练过程"></a>训练过程</h3><ul>
-<li><p>pre-train：利用大量无标注的语料进行预训练</p>
-</li>
-<li><p>SFT(Supervised Fine-Tuning)：利用NLP任务的数据进行微调</p>
-</li>
-<li><p>RLHF(Reinforcement Learning from Human Feedback，人类反馈强化学习)</p>
+<h2 id="gpt23">2、GPT2/3</h2>
+<p>与GPT1结构没有变化，但是训练数据集和模型的参数量更大(模型的层数更多，模型更复杂1)</p>
+<h2 id="gpt3.5">3、GPT3.5</h2>
+<h3 id="训练过程-1">训练过程</h3>
+<ul>
+<li><p>pre-train：利用大量无标注的语料进行预训练</p></li>
+<li><p>SFT(Supervised Fine-Tuning)：利用NLP任务的数据进行微调</p></li>
+<li><p>RLHF(Reinforcement Learning from Human
+Feedback，人类反馈强化学习)</p>
 <ul>
 <li>得到一个SFT后语言模型(LM)</li>
 </ul>
-<img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091446994.png" srcset="/img/loading.gif" lazyload alt="图3" style="zoom:33%;" />
-
+<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091446994.png" srcset="/img/loading.gif" lazyload alt="图3" style="zoom:33%;" /></p>
 <ul>
 <li>训练一个奖励模型(Reward Model,RM)</li>
 </ul>
-<img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091447377.png" srcset="/img/loading.gif" lazyload alt="图4" style="zoom: 25%;" />
-
+<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091447377.png" srcset="/img/loading.gif" lazyload alt="图4" style="zoom: 25%;" /></p>
 <p>奖励模型训练过程是接受一系列文本并返回一个标量奖励，数值上对应人的偏好。关于模型选择方面，RM可以是另一个经过微调的LM，也可以是根据偏好数据从头开始训练的LM。RM通常比LM的规模小一些。</p>
-<p>RM的输入是$prompt+answer$的形式，让模型学会对$prompt+answer$进行打分。RM最后一层hidden层输出维度为$(B,L,D)$,通过一个$Dx1$的MLP将维度变为$(B,L)$。$L$维度中第$i$个位置表示：从第$i$位置到最后一个位置输出能获得的奖励分值的累加。</p>
-<p>对于RM来说，模型目标是对一个句子进行打分，通常来说每个句子对应一个分值，但是RM对长度为$L$的句子输出了$L$个值。训练过程将$L$维度上的最后一个位置的值作为句子的奖励得分。RM训练优化采用<strong>pair wiss loss(同时输入同一个问题的两个回答，让模型学会两个句子哪个分高，哪个分低)。</strong>这样做的原因是<strong>在对训练数据进行标柱时，给同一问题的不同回答量化的打具体分值比较难，但是进行排序相对容易</strong>。</p>
+<p>RM的输入是<span
+class="math inline">\(prompt+answer\)</span>的形式，让模型学会对<span
+class="math inline">\(prompt+answer\)</span>进行打分。RM最后一层hidden层输出维度为<span
+class="math inline">\((B,L,D)\)</span>,通过一个<span
+class="math inline">\(Dx1\)</span>的MLP将维度变为<span
+class="math inline">\((B,L)\)</span>。<span
+class="math inline">\(L\)</span>维度中第<span
+class="math inline">\(i\)</span>个位置表示：从第<span
+class="math inline">\(i\)</span>位置到最后一个位置输出能获得的奖励分值的累加。</p>
+<p>对于RM来说，模型目标是对一个句子进行打分，通常来说每个句子对应一个分值，但是RM对长度为<span
+class="math inline">\(L\)</span>的句子输出了<span
+class="math inline">\(L\)</span>个值。训练过程将<span
+class="math inline">\(L\)</span>维度上的最后一个位置的值作为句子的奖励得分。RM训练优化采用<strong>pair
+wiss
+loss(同时输入同一个问题的两个回答，让模型学会两个句子哪个分高，哪个分低)。</strong>这样做的原因是<strong>在对训练数据进行标柱时，给同一问题的不同回答量化的打具体分值比较难，但是进行排序相对容易</strong>。</p>
 <ul>
 <li>用强化学习方式微调(LM)</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091520636.png" srcset="/img/loading.gif" lazyload alt="图5" style="zoom: 33%;" />
-
-<p>此处LM模型是进行推理。LM的训练模型和推理模式的区别：<strong>训练模式</strong>是用teacher force的方式(在每一轮预测时，不使用上一轮预测的输出，而强制使用正确的单词，过这样的方法可以有效的避免因中间预测错误而对后续序列的预测，从而加快训练速度)，将整句话输入到模型中，并通过mask机制，在保证不泄漏未来的单词情况下预测下一个单词。<strong>推理模式</strong>是真正的自回归，预测出下一个单词之后，当作下一步输入再预测下下个单词。</p>
-<p>可以将微调任务表述为RL问题，目前可行的方案是使用策略梯度强化学习 (Policy Gradient RL) 算法、近端策略优化 (Proximal Policy Optimization，PPO) 、直接偏好优化算法（Direct Preference Optimization，DPO）微调初始 LM 的部分或全部参数。</p>
-<p>首先，该 <strong>策略</strong> (policy) 是一个接受提示并返回一系列文本 (或文本的概率分布) 的 LM。这个策略的 <strong>行动空间</strong> (action space) 是 LM 的词表对应的所有词元 (一般在 50k 数量级) ，<strong>观察空间</strong> (observation space) 是可能的输入词元序列，也比较大 (词汇量 ^ 输入标记的数量) 。<strong>奖励函数</strong> 是偏好模型和策略转变约束 (Policy shift constraint) 的结合。</p>
-<h4 id="PPO算法"><a href="#PPO算法" class="headerlink" title="PPO算法"></a>PPO算法</h4><p>PPO 算法确定的奖励函数具体计算如下：</p>
-<p>首先将提示 <em>x</em> +预训练的输出answer输入当前微调的推理模式下的 LM，将得到的输出传递给 RM 得到一个标量的奖励$r_\theta$。再将提示 <em>x</em> 输入训练模式下的initial LM 和当前微调的 LM，分别得到了输出文本 <em>y1</em>, <em>y2</em>，将两个模型的生成文本进行比较计算差异的惩罚项，多篇论文中设计为输出词分布序列之间的 Kullback–Leibler (KL) 散度的缩放，即$r&#x3D;r_{\theta}-\lambda r_{\mathrm{KL}}$。这一项被用于惩罚 RL 策略在每个训练批次中生成大幅偏离初始模型，以确保模型输出合理连贯的文本。如果去掉这一惩罚项可能导致模型在优化中生成乱码文本来愚弄奖励模型提供高奖励值。</p>
-<p>PPO训练时候的奖励值综合考虑KL散度和reward模型的输出，只考虑answer部分的KL散度，将reward model的输出加到KL散度L维度的最后一个位置上，得到最终的奖励值。</p>
-<p>训练过程中的目标函数是更新PPO更新公式里边的advantage。Advantage 函数计算<strong>在状态下执行该操作与状态的平均值相比有多好</strong>。它从状态操作对中减去状态的平均值：</p>
-<img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091514107.png" srcset="/img/loading.gif" lazyload alt="图6" style="zoom: 25%;" />
-
+<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091520636.png" srcset="/img/loading.gif" lazyload alt="图5" style="zoom: 33%;" /></p>
+<p>此处LM模型是进行推理。LM的训练模型和推理模式的区别：<strong>训练模式</strong>是用teacher
+force的方式(在每一轮预测时，不使用上一轮预测的输出，而强制使用正确的单词，过这样的方法可以有效的避免因中间预测错误而对后续序列的预测，从而加快训练速度)，将整句话输入到模型中，并通过mask机制，在保证不泄漏未来的单词情况下预测下一个单词。<strong>推理模式</strong>是真正的自回归，预测出下一个单词之后，当作下一步输入再预测下下个单词。</p>
+<p>可以将微调任务表述为RL问题，目前可行的方案是使用策略梯度强化学习
+(Policy Gradient RL) 算法、近端策略优化 (Proximal Policy
+Optimization，PPO) 、直接偏好优化算法（Direct Preference
+Optimization，DPO）微调初始 LM 的部分或全部参数。</p>
+<p>首先，该 <strong>策略</strong> (policy)
+是一个接受提示并返回一系列文本 (或文本的概率分布) 的 LM。这个策略的
+<strong>行动空间</strong> (action space) 是 LM 的词表对应的所有词元
+(一般在 50k 数量级) ，<strong>观察空间</strong> (observation space)
+是可能的输入词元序列，也比较大 (词汇量 ^ 输入标记的数量)
+。<strong>奖励函数</strong> 是偏好模型和策略转变约束 (Policy shift
+constraint) 的结合。</p>
+<h4 id="ppo算法">PPO算法</h4>
+<p>PPO 算法确定的奖励函数具体计算如下：</p>
+<p>首先将提示 <em>x</em> +预训练的输出answer输入当前微调的推理模式下的
+LM，将得到的输出传递给 RM 得到一个标量的奖励<span
+class="math inline">\(r_\theta\)</span>。再将提示 <em>x</em>
+输入训练模式下的initial LM 和当前微调的 LM，分别得到了输出文本
+<em>y1</em>,
+<em>y2</em>，将两个模型的生成文本进行比较计算差异的惩罚项，多篇论文中设计为输出词分布序列之间的
+Kullback–Leibler (KL) 散度的缩放，即<span
+class="math inline">\(r=r_{\theta}-\lambda
+r_{\mathrm{KL}}\)</span>。这一项被用于惩罚 RL
+策略在每个训练批次中生成大幅偏离初始模型，以确保模型输出合理连贯的文本。如果去掉这一惩罚项可能导致模型在优化中生成乱码文本来愚弄奖励模型提供高奖励值。</p>
+<p>PPO训练时候的奖励值综合考虑KL散度和reward模型的输出，只考虑answer部分的KL散度，将reward
+model的输出加到KL散度L维度的最后一个位置上，得到最终的奖励值。</p>
+<p>训练过程中的目标函数是更新PPO更新公式里边的advantage。Advantage
+函数计算<strong>在状态下执行该操作与状态的平均值相比有多好</strong>。它从状态操作对中减去状态的平均值：</p>
+<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091514107.png" srcset="/img/loading.gif" lazyload alt="图6" style="zoom: 25%;" /></p>
 <p>换句话说，此函数计算<strong>如果我们在该状态下执行此操作时获得的额外奖励，与我们在该状态下获得的平均奖励相比</strong>：</p>
 <ul>
-<li>如果$A（s，a） &gt; 0$​：我们的梯度<strong>被推到那个方向</strong>。</li>
-<li>如果$A（s，a） &lt; 0$​（我们的动作比该状态的平均值差），<strong>则我们的梯度被推向相反的方向</strong>。</li>
+<li>如果<span class="math inline">\(A（s，a） &gt;
+0\)</span>​：我们的梯度<strong>被推到那个方向</strong>。</li>
+<li>如果<span class="math inline">\(A（s，a） &lt;
+0\)</span>​（我们的动作比该状态的平均值差），<strong>则我们的梯度被推向相反的方向</strong>。</li>
 </ul>
-<p>求解Advantage函数可以转换为求两个值函数，对于求接值函数我们又可以转换为求解TD Error：</p>
-<img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091517189.png" srcset="/img/loading.gif" lazyload alt="图7" style="zoom: 25%;" />
-
-<h4 id="DPO算法"><a href="#DPO算法" class="headerlink" title="DPO算法"></a>DPO算法</h4><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091622176.png" srcset="/img/loading.gif" lazyload alt="图8"></p>
+<p>求解Advantage函数可以转换为求两个值函数，对于求接值函数我们又可以转换为求解TD
+Error：</p>
+<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091517189.png" srcset="/img/loading.gif" lazyload alt="图7" style="zoom: 25%;" /></p>
+<h4 id="dpo算法">DPO算法</h4>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091622176.png" srcset="/img/loading.gif" lazyload
+alt="图8" />
+<figcaption aria-hidden="true">图8</figcaption>
+</figure>
 <p>相比于PPO算法的强化学习过程，DPO跳过了训练RM的步骤，直接用偏好数据优化语言模型。算法的核心观点是利用从奖励函数到最优策略的解析映射，将对奖励函数的损失转化为对策略的损失。</p>
-<p>RL问题中的目标是最大化奖励函数：<br>$$<br>\max_{\pi_{\theta}}\mathbb{E}<em>{x\sim\mathcal{D},y\sim\pi</em>{\theta}(y\mid x)}\begin{bmatrix}r_{\phi}(x,y)\end{bmatrix}-\beta\mathbb{D}<em>{\mathrm{KL}}\begin{bmatrix}\pi</em>{\theta}(y\mid x)\parallel\pi_{\mathrm{ref}}(y\mid x)\end{bmatrix}<br>$$<br>经过公式推导可以得到公式中 KL 约束的奖励最大化目标的最优解为：<br>$$<br>\pi_r(y\mid x)&#x3D;\frac{1}{Z(x)}\pi_\text{ref}(y\mid x)\exp\left(\frac{1}{\beta}r(x,y)\right)<br>$$<br>其中，$Z(x)&#x3D;\sum_y\pi_{ref}(y|x)exp(\frac{1}{\beta}r(x,y))$是一个配分函数。估计配分函数的值是十分困难的，可以对(2)式进行一些处理:<br>$$<br>r(x,y)&#x3D;\beta\log\frac{\pi_r(y\mid x)}{\pi_\text{ref}(y\mid x)}+\beta\log Z(x)<br>$$<br>同理可得$(x,y)$在最优奖励函数$r^*$下获得的奖励可以由最优策略$\pi^*$​表示：<br>$$<br>r^*(x,y)&#x3D;\beta\log\frac{\pi^*(y|x)}{\pi_\text{ref}(y|x)}+\beta\log Z(x)<br>$$<br>但是最优策略是不知道的，因此可以先用参数化的策略$\pi_\theta$来表达，构造与RM模型训练类似的训练目标，最大化偏好答案与非偏好答案奖励的差值($Z(x)被抵消$​)：<br>$$<br>\begin{aligned}<br>\mathcal{L}<em>{\mathrm{DPO}}(\theta)&amp; &#x3D;-\mathbb{E}</em>{(x,y_{w},y_{t})\sim\mathcal{D}}\left[\log\sigma\left(r_{\theta}(x,y_{w})-r_{\theta}(x,y_{l})\right)\right] \<br>&amp;&#x3D;-\mathbb{E}<em>{(x,y</em>{w},y_{l})\sim\mathcal{D}}\left[\log\sigma\left(\beta\log\frac{\pi_{\theta}(y_{w}|x)}{\pi_{\mathrm{ref}}(y_{w}|x)}-\beta\log\frac{\pi_{\theta}(y_{l}|x)}{\pi_{\mathrm{ref}}(y_{l}|x)}\right)\right]<br>\end{aligned}<br>$$</p>
-<h2 id="GPT4"><a href="#GPT4" class="headerlink" title="GPT4"></a>GPT4</h2><h3 id="核心技术"><a href="#核心技术" class="headerlink" title="核心技术"></a>核心技术</h3><h4 id="涌现能力（Emergent-Abilities）"><a href="#涌现能力（Emergent-Abilities）" class="headerlink" title="涌现能力（Emergent Abilities）"></a>涌现能力（Emergent Abilities）</h4><p>该能力是指模型具有从原始训练数据中自动学习并发现新的、更高层次的特征和模式的能力。当模型的参数量到达一定量级时，模型的性能有明显的提升。</p>
-<img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091725428.png" srcset="/img/loading.gif" lazyload alt="图9" style="zoom:150%;" />
-
-<h4 id="缩放定律-Scaling-Laws"><a href="#缩放定律-Scaling-Laws" class="headerlink" title="缩放定律(Scaling Laws)"></a>缩放定律(Scaling Laws)</h4><p>该定律是指模型性能（如测试集上的预测精度）随着模型参数的数量以及训练过程中使用的数据量和计算量的对数线性增长。</p>
-<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091728447.png" srcset="/img/loading.gif" lazyload alt="图10"></p>
-<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h5><ul>
+<p>RL问题中的目标是最大化奖励函数： <span class="math display">\[
+\max_{\pi_{\theta}}\mathbb{E}_{x\sim\mathcal{D},y\sim\pi_{\theta}(y\mid
+x)}\begin{bmatrix}r_{\phi}(x,y)\end{bmatrix}-\beta\mathbb{D}_{\mathrm{KL}}\begin{bmatrix}\pi_{\theta}(y\mid
+x)\parallel\pi_{\mathrm{ref}}(y\mid x)\end{bmatrix}
+\]</span> 经过公式推导可以得到公式中 KL 约束的奖励最大化目标的最优解为：
+<span class="math display">\[
+\pi_r(y\mid x)=\frac{1}{Z(x)}\pi_\text{ref}(y\mid
+x)\exp\left(\frac{1}{\beta}r(x,y)\right)
+\]</span> 其中，<span
+class="math inline">\(Z(x)=\sum_y\pi_{ref}(y|x)exp(\frac{1}{\beta}r(x,y))\)</span>是一个配分函数。估计配分函数的值是十分困难的，可以对(2)式进行一些处理:
+<span class="math display">\[
+r(x,y)=\beta\log\frac{\pi_r(y\mid x)}{\pi_\text{ref}(y\mid x)}+\beta\log
+Z(x)
+\]</span> 同理可得<span
+class="math inline">\((x,y)\)</span>在最优奖励函数<span
+class="math inline">\(r^*\)</span>下获得的奖励可以由最优策略<span
+class="math inline">\(\pi^*\)</span>​表示： <span class="math display">\[
+r^*(x,y)=\beta\log\frac{\pi^*(y|x)}{\pi_\text{ref}(y|x)}+\beta\log Z(x)
+\]</span> 但是最优策略是不知道的，因此可以先用参数化的策略<span
+class="math inline">\(\pi_\theta\)</span>来表达，构造与RM模型训练类似的训练目标，最大化偏好答案与非偏好答案奖励的差值(<span
+class="math inline">\(Z(x)被抵消\)</span>​)： <span
+class="math display">\[
+\begin{aligned}
+\mathcal{L}_{\mathrm{DPO}}(\theta)&amp;
+=-\mathbb{E}_{(x,y_{w},y_{t})\sim\mathcal{D}}\left[\log\sigma\left(r_{\theta}(x,y_{w})-r_{\theta}(x,y_{l})\right)\right]
+\\
+&amp;=-\mathbb{E}_{(x,y_{w},y_{l})\sim\mathcal{D}}\left[\log\sigma\left(\beta\log\frac{\pi_{\theta}(y_{w}|x)}{\pi_{\mathrm{ref}}(y_{w}|x)}-\beta\log\frac{\pi_{\theta}(y_{l}|x)}{\pi_{\mathrm{ref}}(y_{l}|x)}\right)\right]
+\end{aligned}
+\]</span></p>
+<h2 id="gpt4">GPT4</h2>
+<h3 id="核心技术">核心技术</h3>
+<h4 id="涌现能力emergent-abilities">涌现能力（Emergent Abilities）</h4>
+<p>该能力是指模型具有从原始训练数据中自动学习并发现新的、更高层次的特征和模式的能力。当模型的参数量到达一定量级时，模型的性能有明显的提升。</p>
+<p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091725428.png" srcset="/img/loading.gif" lazyload alt="图9" style="zoom:150%;" /></p>
+<h4 id="缩放定律scaling-laws">缩放定律(Scaling Laws)</h4>
+<p>该定律是指模型性能（如测试集上的预测精度）随着模型参数的数量以及训练过程中使用的数据量和计算量的对数线性增长。</p>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091728447.png" srcset="/img/loading.gif" lazyload
+alt="图10" />
+<figcaption aria-hidden="true">图10</figcaption>
+</figure>
+<h5 id="优点">优点：</h5>
+<ul>
 <li>提前预测最终模型效果，知道每次训练的大概能到什么程度，要是不及预期可以根据预算再进行调整</li>
 <li>在小尺寸模型上做置信的实验，进行数据、算法策略验证，降低实验的时间、资源成本</li>
 <li>在真正的大规模预训练中，随时监测模型效果是否符合预期</li>
 </ul>
-<h4 id="思维链-Chain-of-Thought"><a href="#思维链-Chain-of-Thought" class="headerlink" title="思维链(Chain of Thought)"></a>思维链(Chain of Thought)</h4><p><img src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091740961.png" srcset="/img/loading.gif" lazyload alt="图11"></p>
+<h4 id="思维链chain-of-thought">思维链(Chain of Thought)</h4>
+<figure>
+<img
+src="https://2hang.oss-cn-beijing.aliyuncs.com/img/202405091740961.png" srcset="/img/loading.gif" lazyload
+alt="图11" />
+<figcaption aria-hidden="true">图11</figcaption>
+</figure>
 <p>思维链的方法将一个多步骤的问题（例如图表推理）<strong>分解为可以单独解决的中间步骤</strong>。在解决多步骤推理问题时，模型生成的思维链会模仿人类思维过程。这意味着<strong>额外的计算资源被分配</strong>给需要更多推理步骤的问题，可以进一步增强GPT-4的表达和推理能力。</p>
 <p>一般认为模型的思维推理能力与模型参数大小有正相关趋势，当参数量突破一个临界规模，模型才能通过思维链提示的训练获得相应的能力。</p>
-<h4 id="提示工程"><a href="#提示工程" class="headerlink" title="提示工程"></a>提示工程</h4><p>GPT3&#x2F;4 的提示范式可以归纳为：<strong>“预训练+提示+预测”</strong>（Pre-train+Prompt+Predict）。在这一范式中，各种下游任务被调整为类似预训练任务的形式。通过选取合适的提示，使用者可以控制模型预测输出，从而一个完全预训练模型可以被用来解决多样的下游任务。</p>
-<h3 id="幻觉检测"><a href="#幻觉检测" class="headerlink" title="幻觉检测"></a>幻觉检测</h3><p>大模型的幻觉(Hallucination)是指：模型生成的输出包含一些与输入不符合的信息，这些信息可能是错误的、无关的或者荒谬的。</p>
+<h4 id="提示工程">提示工程</h4>
+<p>GPT3/4
+的提示范式可以归纳为：<strong>“预训练+提示+预测”</strong>（Pre-train+Prompt+Predict）。在这一范式中，各种下游任务被调整为类似预训练任务的形式。通过选取合适的提示，使用者可以控制模型预测输出，从而一个完全预训练模型可以被用来解决多样的下游任务。</p>
+<h3 id="幻觉检测">幻觉检测</h3>
+<p>大模型的幻觉(Hallucination)是指：模型生成的输出包含一些与输入不符合的信息，这些信息可能是错误的、无关的或者荒谬的。</p>
 <p>大模型的幻觉大体上包含以下几类：</p>
 <ul>
-<li>含义相关性的幻觉(Semantic Relatedness)：模型生成的输出可能包含与输入语境无关或不相关的单词或短语，这些单词或短语通常是通过模型之前接触过的文本来学习的。</li>
-<li>语义扩张(Semantic Expansion)的幻觉：模型生成的输出可能包含与输入语境相关但是过于具体或者过于抽象的内容，这些内容也可能是通过模型之前接触过的文本来学习的。</li>
-<li>结构错误的幻觉(Structural Errors)：模型生成的输出可能不符合正确的语言表达或句子结构，这些错误可能是由于模型在生成时遗漏了某些信息，或者将不相关的信息结合在一起导致的。</li>
+<li>含义相关性的幻觉(Semantic
+Relatedness)：模型生成的输出可能包含与输入语境无关或不相关的单词或短语，这些单词或短语通常是通过模型之前接触过的文本来学习的。</li>
+<li>语义扩张(Semantic
+Expansion)的幻觉：模型生成的输出可能包含与输入语境相关但是过于具体或者过于抽象的内容，这些内容也可能是通过模型之前接触过的文本来学习的。</li>
+<li>结构错误的幻觉(Structural
+Errors)：模型生成的输出可能不符合正确的语言表达或句子结构，这些错误可能是由于模型在生成时遗漏了某些信息，或者将不相关的信息结合在一起导致的。</li>
 </ul>
 
                 
@@ -441,6 +537,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/05/09/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/" title="电话号码的字母组合">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电话号码的字母组合</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
